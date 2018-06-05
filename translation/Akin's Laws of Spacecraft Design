@@ -1,6 +1,6 @@
 # Akin's Laws of Spacecraft Design
 1. Engineering is done with numbers. Analysis without numbers is only an opinion.  
-   工程学建立在数学的基础上，定性分析只是一个选择。
+   工程学建立在数学的基础上，相对于定量分析，定性分析只能看做是个人见解。
 2. To design a spacecraft right takes an infinite amount of effort. This is why it's a good idea to design them to operate when some things are wrong .  
    完全正确的设计一个航天器，需要付出无尽的努力。因此，能够设计一个有些瑕疵也能正常运作的航天器是一个好主意
 3. Design is an iterative process. The necessary number of iterations is one more than the number you have currently done. This is true at any point in time.  
@@ -24,8 +24,7 @@
 12. There is never a single right solution. There are always multiple wrong ones, though.
     正确的解决方案永远不止一种。错误的解决办法也不止一种。
 13. Design is based on requirements. There's no justification for designing something one bit "better" than the requirements dictate.
-    设计是基于需求的。没有理由设计一个东西，比需求要求的还要“好一些”
-
+    设计是基于需求的。没有理由设计一个东西，比需求要求的还要“好一些”。
 14. (Edison's Law) "Better" is the enemy of "good".
     Edison法则：“更好”是“好”的敌人。
 15. (Shea's Law) The ability to improve a design occurs primarily at the interfaces. This is also the prime location for screwing it up.
@@ -35,35 +34,35 @@
 17. The fact that an analysis appears in print has no relationship to the likelihood of its being correct.
     书上的分析并不一定是正确的
 18. Past experience is excellent for providing a reality check. Too much reality can doom an otherwise worthwhile design, though.
-      
+    过去的经验提供的实践检验是非常棒的。但是太多的实践也会回调某些有价值的设计。
 19. The odds are greatly against you being immensely smarter than everyone else in the field. If your analysis says your terminal velocity is twice the speed of light, you may have invented warp drive, but the chances are a lot better that you've screwed up.
-
+    你比某个领域里面所有人都聪明的概率是极低的。如果你的分析表明你的终端速度为两倍光速，那么你确实有可能发明了曲率引擎，但是更可能的是你搞错了。
 20. A bad design with a good presentation is doomed eventually. A good design with a bad presentation is doomed immediately.
-
+    坏的设计配上极佳的展示效果，最终还是会失败的。好的设计配上糟糕的展示，当场就会悲剧。
 21. (Larrabee's Law) Half of everything you hear in a classroom is crap. Education is figuring out which half is which.
-
+    Larrabee法则，你在课堂上听到的东西，有一半都是垃圾。教育的意义就是让你学会如何甄别出正确的那一半。
 22. When in doubt, document. (Documentation requirements will reach a maximum shortly after the termination of a program.)
-
+    如果有疑问，要记录文档。（文档需求在程序结束后会达到最大值）
 23. The schedule you develop will seem like a complete work of fiction up until the time your customer fires you for not meeting it.
-
+    
 24. It's called a "Work Breakdown Structure" because the Work remaining will grow until you have a Breakdown, unless you enforce some Structure on it.
 
 25. (Bowden's Law) Following a testing failure, it's always possible to refine the analysis to show that you really had negative margins all along.
-
+     Bowden法则：
 26. (Montemerlo's Law) Don't do nuthin' dumb.
-
+    Montemerlo法则：别做蠢事。
 27. (Varsi's Law) Schedules only move in one direction.
-
+    Varsi法则：计划只会向延期的方向移动
 28. (Ranger's Law) There ain't no such thing as a free launch.
-
+    Ranger法则：天底下没有免费的午餐。
 29. (von Tiesenhausen's Law of Program Management) To get an accurate estimate of final program requirements, multiply the initial time estimates by pi, and slide the decimal point on the cost estimates one place to the right.
-
+    von Tiesenhausen的软件项目管理法则：精确估计软件开发最终所需资源的方法是，把初始需求乘以pi，然后再把小数点右移一位。
 30. (von Tiesenhausen's Law of Engineering Design) If you want to have a maximum effect on the design of a new engineering system, learn to draw. Engineers always wind up designing the vehicle to look like the initial artist's concept.
-
+    von Tiesenhausen的工程设计法则：如果你希望最大程度上的影响一个新系统的设计，学习绘画吧。工程师们总是会把产品设计为最初艺术家描绘的概念图那样。
 31. (Mo's Law of Evolutionary Development) You can't get to the moon by climbing successively taller trees.
-
+    Mo的进化式开发法则：你不可能通过不断攀爬更高一点的树来登月
 32. (Atkin's Law of Demonstrations) When the hardware is working perfectly, the really important visitors don't show up.
-
+    Atkin
 33. (Patton's Law of Program Planning) A good plan violently executed now is better than a perfect plan next week.
 
 34. (Roosevelt's Law of Task Planning) Do what you can, where you are, with what you have.
