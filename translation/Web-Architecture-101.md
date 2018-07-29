@@ -6,6 +6,7 @@ title: Web Architecture 101
 The basic architecture concepts I wish I knew when I was getting started as a web developer  
 
 
+当我开始学习web开发的时候，作为一个新晋web开发者，我希望我能知道的那些关于web基础架构的概念。
 
 ![Modern web application architecture overview](https://cdn-images-1.medium.com/max/800/1*K6M-x-6e39jMq_c-2xqZIQ.png)
 
