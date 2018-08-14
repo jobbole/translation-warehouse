@@ -8,43 +8,56 @@
 
 According to the latest Stack Overflow developer survey, more than 70 percent of developers use Git, making it the most-used VCS in the world. Git is commonly used for both open source and commercial software development, with significant benefits for individuals, teams and businesses.
 
+在最新的 Stack Overflow 开发者调查报告中，超过 70% 的开发者使用 Git，使其成为世界上使用人数最多 VCS。Git 通常用于开源和商业软件开发，对个人、团队和企业都受益匪浅。
+
 ### Q1: What is Git fork? What is difference between fork, branch and clone?
 
-> Topic: **Git**
-> Difficulty: ⭐⭐
+### 问题一：什么是 Git 复刻（fork）？复刻（fork）、分支和克隆之前有什么区别？
+
+> 主题：**Git**
+> 难度：⭐⭐
 
 - A **fork** is a remote, server-side copy of a repository, distinct from the original. A fork isn't a Git concept really, it's more a political/social idea.
 - A **clone** is not a fork; a clone is a local copy of some remote repository. When you clone, you are actually copying the entire source repository, including all the history and branches.
 - A **branch** is a mechanism to handle the changes within a single repository in order to eventually merge them with the rest of code. A branch is something that is within a repository. Conceptually, it represents a thread of development.
 
-🔗**Source:** [stackoverflow.com](https://stackoverflow.com/questions/3329943/git-branch-fork-fetch-merge-rebase-and-clone-what-are-the-differences/)
+- __复刻（fork）__ 是对存储仓库（repository）进行的远程的、服务器端的副本，从源头上就有所区别。复刻（fork）实际上不是 Git 的范畴。他更像是个政治/社会概念。
+- __克隆__ 不是一个复刻（fork），克隆是个对某个远程仓库的本地副本。克隆时，实际上是在复制整个源存储仓库，包括所有历史记录和分支。
+- __分支__ 是一种机制，用于处理单一存储仓库中的变更，并最终目的是用于与其他部分代码合并。
+
+🔗**来源：** [stackoverflow.com](https://stackoverflow.com/questions/3329943/git-branch-fork-fetch-merge-rebase-and-clone-what-are-the-differences/)
 
 ### Q2: What's the difference between a "pull request" and a "branch"?
 
-> Topic: **Git**
-> Difficulty: ⭐⭐
+### 问题二：“拉取请求”和“分支”之间有什么区别？
+
+> 主题：**Git**
+> 难度：⭐⭐
 
 - A **branch** is just a separate version of the code.
 - A **pull request** is when someone take the repository, makes their own branch, does some changes, then tries to merge that branch in (put their changes in the other person's code repository).
 
-🔗**Source:** [stackoverflow.com](https://stackoverflow.com/questions/19059838/whats-the-difference-between-a-pull-request-and-a-branch)
+- __分支__ 是代码的一个独立版本。
+- __拉取请求__ 是当有人那仓库（repository），建立了自己的分支，做了些修改并合并到该分支（把自己修改应用到别人的代码仓库（repository））。
+
+🔗**来源：** [stackoverflow.com](https://stackoverflow.com/questions/19059838/whats-the-difference-between-a-pull-request-and-a-branch)
 
 ### Q3: What is the difference between "git pull" and "git fetch"?
 
-> Topic: **Git**
-> Difficulty: ⭐⭐
+> 主题：**Git**
+> 难度：⭐⭐
 
 In the simplest terms, `git pull` does a `git fetch` followed by a `git merge`.
 
 - When you use `pull`, Git tries to automatically do your work for you. **It is context sensitive**, so Git will merge any pulled commits into the branch you are currently working in. `pull` **automatically merges the commits without letting you review them first**. If you don’t closely manage your branches, you may run into frequent conflicts.
 - When you `fetch`, Git gathers any commits from the target branch that do not exist in your current branch and **stores them in your local repository**. However, **it does not merge them with your current branch**. This is particularly useful if you need to keep your repository up to date, but are working on something that might break if you update your files. To integrate the commits into your master branch, you use `merge`.
 
-🔗**Source:** [stackoverflow.com](https://stackoverflow.com/questions/292357/what-is-the-difference-between-git-pull-and-git-fetch)
+🔗**来源：** [stackoverflow.com](https://stackoverflow.com/questions/292357/what-is-the-difference-between-git-pull-and-git-fetch)
 
 ### Q4: How to revert previous commit in git?
 
-> Topic: **Git**
-> Difficulty: ⭐⭐⭐
+> 主题：**Git**
+> 难度：⭐⭐⭐
 
 Say you have this, where C is your HEAD and (F) is the state of your files.
 
@@ -79,12 +92,12 @@ git reset --soft HEAD~1
 
 When you do `git status`, you'll see that the same files are in the index as before.
 
-🔗**Source:** [stackoverflow.com](https://stackoverflow.com/questions/927358/how-to-undo-the-most-recent-commits-in-git)
+🔗**来源：** [stackoverflow.com](https://stackoverflow.com/questions/927358/how-to-undo-the-most-recent-commits-in-git)
 
 ### Q5: What is "git cherry-pick"?
 
-> Topic: **Git**
-> Difficulty: ⭐⭐⭐
+> 主题：**Git**
+> 难度：⭐⭐⭐
 
 The command git *cherry-pick* is typically used to introduce particular commits from one branch within a repository onto a different branch. A common use is to forward- or back-port commits from a maintenance branch to a development branch.
 
@@ -96,12 +109,12 @@ Consider:
 git cherry-pick <commit-hash>
 ```
 
-🔗**Source:** [stackoverflow.com](https://stackoverflow.com/questions/9339429/what-does-cherry-picking-a-commit-with-git-mean)
+🔗**来源：** [stackoverflow.com](https://stackoverflow.com/questions/9339429/what-does-cherry-picking-a-commit-with-git-mean)
 
 ### Q6: Explain the advantages of Forking Workflow
 
-> Topic: **Git**
-> Difficulty: ⭐⭐⭐
+> 主题：**Git**
+> 难度：⭐⭐⭐
 
 The **Forking Workflow** is fundamentally different than other popular Git workflows. Instead of using a single server-side repository to act as the “central” codebase, it gives every developer their own server-side repository. The Forking Workflow is most often seen in public open source projects.
 
@@ -109,23 +122,23 @@ The *main advantage* of the Forking Workflow is that contributions can be integr
 
 When developers are ready to publish a local commit, they push the commit to their own public repository—not the official one. Then, they file a pull request with the main repository, which lets the project maintainer know that an update is ready to be integrated.
 
-🔗**Source:** [atlassian.com](https://www.atlassian.com/git/tutorials/comparing-workflows/forking-workflow)
+🔗**来源：** [atlassian.com](https://www.atlassian.com/git/tutorials/comparing-workflows/forking-workflow)
 
 ### Q7: Tell me the difference between HEAD, working tree and index, in Git?
 
-> Topic: **Git**
-> Difficulty: ⭐⭐⭐
+> 主题：**Git**
+> 难度：⭐⭐⭐
 
 - The **working tree/working directory/workspace** is the directory tree of (source) files that you see and edit.
 - The **index/staging area** is a single, large, binary file in /.git/index, which lists all files in the current branch, their sha1 checksums, time stamps and the file name - it is not another directory with a copy of files in it.
 - **HEAD** is a reference to the last commit in the currently checked-out branch.
 
-🔗**Source:** [stackoverflow.com](https://stackoverflow.com/questions/3689838/whats-the-difference-between-head-working-tree-and-index-in-git)
+🔗**来源：** [stackoverflow.com](https://stackoverflow.com/questions/3689838/whats-the-difference-between-head-working-tree-and-index-in-git)
 
 ### Q8: Could you explain the Gitflow workflow?
 
-> Topic: **Git**
-> Difficulty: ⭐⭐⭐
+> 主题：**Git**
+> 难度：⭐⭐⭐
 
 Gitflow workflow employs two parallel *long-running* branches to record the history of the project, `master` and `develop`:
 
@@ -141,12 +154,12 @@ Gitflow workflow employs two parallel *long-running* branches to record the hist
 
 [![Gitflow workflow](https://res.cloudinary.com/practicaldev/image/fetch/s--pLQxGakq--/c_limit%2Cf_auto%2Cfl_progressive%2Cq_auto%2Cw_880/https://wac-cdn.atlassian.com/dam/jcr:61ccc620-5249-4338-be66-94d563f2843c/05%2520%282%29.svg%3FcdnVersion%3Dji)](https://res.cloudinary.com/practicaldev/image/fetch/s--pLQxGakq--/c_limit%2Cf_auto%2Cfl_progressive%2Cq_auto%2Cw_880/https://wac-cdn.atlassian.com/dam/jcr:61ccc620-5249-4338-be66-94d563f2843c/05%2520%282%29.svg%3FcdnVersion%3Dji)
 
-🔗**Source:** [atlassian.com](https://www.atlassian.com/git/tutorials/comparing-workflows/gitflow-workflow)
+🔗**来源：** [atlassian.com](https://www.atlassian.com/git/tutorials/comparing-workflows/gitflow-workflow)
 
 ### Q9: When should I use "git stash"?
 
-> Topic: **Git**
-> Difficulty: ⭐⭐⭐
+> 主题：**Git**
+> 难度：⭐⭐⭐
 
 The `git stash` command takes your uncommitted changes (both staged and unstaged), saves them away for later use, and then reverts them from your working copy.
 
@@ -186,12 +199,12 @@ $ git commit --ammend
 $ git stash pop
 ```
 
-🔗**Source:** [atlassian.com](https://www.atlassian.com/git/tutorials/saving-changes/git-stash)
+🔗**来源：** [atlassian.com](https://www.atlassian.com/git/tutorials/saving-changes/git-stash)
 
 ### Q10: How to remove a file from git without removing it from your file system?
 
-> Topic: **Git**
-> Difficulty: ⭐⭐⭐⭐
+> 主题：**Git**
+> 难度：⭐⭐⭐⭐
 
 If you are not careful during a `git add`, you may end up adding files that you didn’t want to commit. However, `git rm` will remove it from both your staging area (index), as well as your file system (working tree), which may not be what you want.
 
@@ -204,12 +217,12 @@ echo filename >> .gitingore # add it to .gitignore to avoid re-adding it
 
 This means that `git reset <paths>` is the opposite of `git add <paths>`.
 
-🔗**Source:** [codementor.io](https://www.codementor.io/citizen428/git-tutorial-10-common-git-problems-and-how-to-fix-them-aajv0katd)
+🔗**来源：** [codementor.io](https://www.codementor.io/citizen428/git-tutorial-10-common-git-problems-and-how-to-fix-them-aajv0katd)
 
 ### Q11: When do you use "git rebase" instead of "git merge"?
 
-> Topic: **Git**
-> Difficulty: ⭐⭐⭐⭐⭐
+> 主题：**Git**
+> 难度：⭐⭐⭐⭐⭐
 
 Both of these commands are designed to integrate changes from one branch into another branch - they just do it in very different ways.
 
@@ -251,4 +264,4 @@ With rebase you say to use another branch as the new base for your work.
 3. **Does the branch itself represent useful information?** Some teams use the *branch-per-feature* model where each branch represents a feature (or bugfix, or sub-feature, etc.) In this model the branch helps identify sets of related commits. In case of *branch-per-developer* model the branch itself doesn't convey any additional information (the commit already has the author). There would be no harm in rebasing.
 4. **Might you want to revert the merge for any reason?** Reverting (as in undoing) a rebase is considerably difficult and/or impossible (if the rebase had conflicts) compared to reverting a merge. If you think there is a chance you will want to revert then use merge.
 
-🔗**Source:** [stackoverflow.com](https://stackoverflow.com/questions/804115/when-do-you-use-git-rebase-instead-of-git-merge)
+🔗**来源：** [stackoverflow.com](https://stackoverflow.com/questions/804115/when-do-you-use-git-rebase-instead-of-git-merge)
