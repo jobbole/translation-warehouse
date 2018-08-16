@@ -44,22 +44,33 @@ According to the latest Stack Overflow developer survey, more than 70 percent of
 
 ### Q3: What is the difference between "git pull" and "git fetch"?
 
+### 问题三：“git pull”和“git fetch”之间有什么区别？
+
 > 主题：**Git**
 > 难度：⭐⭐
 
 In the simplest terms, `git pull` does a `git fetch` followed by a `git merge`.
 
+简单来说，`git pull` 是 `git fetch` + `git merge`。
+
 - When you use `pull`, Git tries to automatically do your work for you. **It is context sensitive**, so Git will merge any pulled commits into the branch you are currently working in. `pull` **automatically merges the commits without letting you review them first**. If you don’t closely manage your branches, you may run into frequent conflicts.
 - When you `fetch`, Git gathers any commits from the target branch that do not exist in your current branch and **stores them in your local repository**. However, **it does not merge them with your current branch**. This is particularly useful if you need to keep your repository up to date, but are working on something that might break if you update your files. To integrate the commits into your master branch, you use `merge`.
+
+- 当你使用 `pull`，Git 会试着自动为你完成工作。__它是上下文（工作环境）敏感__，所以 Git 会吧所有拉取的提交合并到你当前处理的分支中。`pull` 则是 __自动合并提交而没有让你复查的过程__。如果你没有细心管理你的分支，你可能会遇到频繁的冲突。
+- 当你 `fetch`，Git 会收集目标分支中的所有不存在的提交，并 __将这些提交存储到本地仓库（repository）中__。但 __Git 不会把这些提交合并到当前分支中__。这种处理逻辑在当你需要保持仓库（repository）更新，在更新文件时又可以处理可能中断的事情时，这将非常实用。而将提交合并到主分支中，则该使用 merge。
 
 🔗**来源：** [stackoverflow.com](https://stackoverflow.com/questions/292357/what-is-the-difference-between-git-pull-and-git-fetch)
 
 ### Q4: How to revert previous commit in git?
 
+### 问题四：如在 Git 恢复先前的提交？
+
 > 主题：**Git**
 > 难度：⭐⭐⭐
 
 Say you have this, where C is your HEAD and (F) is the state of your files.
+
+假设你的情形是这样，其中 C 是你的 HEAD，(F) 是你文件的状态。
 
 ```
    (F)
@@ -70,13 +81,19 @@ A-B-C
 
 - To nuke changes in the commit:
 
+- 要修改提交中的更改：
+
 ```
 git reset --hard HEAD~1
 ```
 
 Now B is the HEAD. Because you used --hard, your files are reset to their state at commit B.
 
+现在 B 是 HEAD，因为你使用了 `--hard`，所以你的文件将重置到提交 B 时的状态。
+
 - To undo the commit but keep your changes:
+
+- 要撤销提交但保留更改：
 
 ```
 git reset HEAD~1
@@ -84,7 +101,11 @@ git reset HEAD~1
 
 Now we tell Git to move the HEAD pointer back one commit (B) and leave the files as they are and `git status` shows the changes you had checked into C.
 
+现在我们告诉 Git 将 HEAD 指针移回（后移）一个提交（B），并保留文件原样，然后你可以 `git status` 来显示你已经检入 C 的更改。
+
 - To undo your commit but leave your files and your index
+
+- 撤销提交但保留文件和索引：
 
 ```
 git reset --soft HEAD~1
@@ -92,18 +113,28 @@ git reset --soft HEAD~1
 
 When you do `git status`, you'll see that the same files are in the index as before.
 
+执行此操作后，`git status`，你讲看到索引中的文件跟以前一致。
+
 🔗**来源：** [stackoverflow.com](https://stackoverflow.com/questions/927358/how-to-undo-the-most-recent-commits-in-git)
 
 ### Q5: What is "git cherry-pick"?
+
+### 问题五：什么是“git cherry-pick”？
 
 > 主题：**Git**
 > 难度：⭐⭐⭐
 
 The command git *cherry-pick* is typically used to introduce particular commits from one branch within a repository onto a different branch. A common use is to forward- or back-port commits from a maintenance branch to a development branch.
 
+命令 `git cherry-pick` 通常用于把特定提交从存储仓库（repository）的一个分支引入到其他分支中。常见的用途是从维护的分支到开发分支进行向前或回滚提交。
+
 This is in contrast with other ways such as merge and rebase which normally apply many commits onto another branch.
 
+这与其他操作（例如：合并（merge）、变基（rebase））形成鲜明对比，后者通常是把许多提交应用到其他分支中。
+
 Consider:
+
+回顾：
 
 ```
 git cherry-pick <commit-hash>
@@ -113,14 +144,22 @@ git cherry-pick <commit-hash>
 
 ### Q6: Explain the advantages of Forking Workflow
 
+### 问题六：解释 Forking 工作流程的优点
+
 > 主题：**Git**
 > 难度：⭐⭐⭐
 
 The **Forking Workflow** is fundamentally different than other popular Git workflows. Instead of using a single server-side repository to act as the “central” codebase, it gives every developer their own server-side repository. The Forking Workflow is most often seen in public open source projects.
 
+__Forking 工作流程__ 与其他流行的 Git 工作流程有着根本的区别。它不是用单个服务端仓库（repository）充当“中央”代码库，而是为每个开发者提供自己的服务端仓库（repository）。Forking 工作流程最常用于公共开源项目中。
+
 The *main advantage* of the Forking Workflow is that contributions can be integrated without the need for everybody to push to a single central repository that leads to a clean project history. Developers push to their own server-side repositories, and only the project maintainer can push to the official repository.
 
+Forking 工作流程的__主要优点__是可以汇集提交贡献，又无需每个开发者提交到一个中央仓库（repository）中，从而实现干净的项目历史记录。开发者可以推送（push）代码到自己的服务端仓库（repository），而只有项目维护人员才能直接推送（push）代码到官方仓库（repository）中。
+
 When developers are ready to publish a local commit, they push the commit to their own public repository—not the official one. Then, they file a pull request with the main repository, which lets the project maintainer know that an update is ready to be integrated.
+
+当开发者准备发布本地提交时，他们的提交会推送到自己的公共仓库（repository）中，而不是官方仓库（repository）。然后他们向主仓库提交请求拉取（pull request），这会告知项目维护人员有可以集成的更新。
 
 🔗**来源：** [atlassian.com](https://www.atlassian.com/git/tutorials/comparing-workflows/forking-workflow)
 
