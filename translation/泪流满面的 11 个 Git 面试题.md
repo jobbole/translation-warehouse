@@ -136,7 +136,7 @@ Consider:
 
 回顾：
 
-```
+```shell
 git cherry-pick <commit-hash>
 ```
 
@@ -165,6 +165,8 @@ When developers are ready to publish a local commit, they push the commit to the
 
 ### Q7: Tell me the difference between HEAD, working tree and index, in Git?
 
+### 问题七：告诉我 Git 中 HEAD、工作树和索引之间的区别？
+
 > 主题：**Git**
 > 难度：⭐⭐⭐
 
@@ -172,24 +174,34 @@ When developers are ready to publish a local commit, they push the commit to the
 - The **index/staging area** is a single, large, binary file in /.git/index, which lists all files in the current branch, their sha1 checksums, time stamps and the file name - it is not another directory with a copy of files in it.
 - **HEAD** is a reference to the last commit in the currently checked-out branch.
 
+- 该__工作树/工作目录/工作控件__是你看到和编辑的（源）文件的目录树。
+- 该__索引/中转区__是个在 `/.git/index`，单一的、庞大的二进制文件，该文件列出了当前分支中所有文件的 SHA1 检验和、时间戳和文件名，它不是个带有文件副本付目录。
+- __HEAD__是当前检出分支的最后一次提交的引用/指针。
+
 🔗**来源：** [stackoverflow.com](https://stackoverflow.com/questions/3689838/whats-the-difference-between-head-working-tree-and-index-in-git)
 
 ### Q8: Could you explain the Gitflow workflow?
+
+### 问题八：你能解释下 Gitflow 工作流程吗？
 
 > 主题：**Git**
 > 难度：⭐⭐⭐
 
 Gitflow workflow employs two parallel *long-running* branches to record the history of the project, `master` and `develop`:
 
+Gitflow 工作流程使用两个并行的、__长期运行__的分支来记录项目的历史记录，分别是 `master` 和 `develop` 分支。
+
 - **Master** - is always ready to be released on LIVE, with everything fully tested and approved (production-ready).
+	- **Hotfix** - Maintenance or “hotfix” branches are used to quickly patch production releases. Hotfix branches are a lot like release branches and feature branches except they're based on `master`instead of `develop`.
 
-  - **Hotfix** - Maintenance or “hotfix” branches are used to quickly patch production releases. Hotfix branches are a lot like release branches and feature branches except they're based on `master`instead of `develop`.
-
--  
+- __Master__，随时准备发布线上版本，其所有内容都是经过全面测试和核准的（生产就绪）。
+	+ __Hotfix__，维护（maintenance）或修复（hotfix）分支是用于给快速给生产版本修复打补丁。修复（hotfix）分支很像发布（release）分支和功能（feature）分支，除非它们是基于 `master` 而不是 `develop` 分支。
 
 - **Develop** - is the branch to which all feature branches are merged and where all tests are performed. Only when everything’s been thoroughly checked and fixed it can be merged to the `master`.
+	- **Feature** - Each new feature should reside in its own branch, which can be pushed to the `develop` branch as their parent one.
 
-  - **Feature** - Each new feature should reside in its own branch, which can be pushed to the `develop` branch as their parent one.
+- __Develop__，是合并所有功能（feature）分支，并执行所有测试的分支。只有当所有内容都经过彻底检查和修复后，才能合并到 `master` 分支。
+	+ __Feature__，每个功能都应留在自己的分支中，可以推送到 `develop` 分支作为功能（feature）分支的父分支。
 
 [![Gitflow workflow](https://res.cloudinary.com/practicaldev/image/fetch/s--pLQxGakq--/c_limit%2Cf_auto%2Cfl_progressive%2Cq_auto%2Cw_880/https://wac-cdn.atlassian.com/dam/jcr:61ccc620-5249-4338-be66-94d563f2843c/05%2520%282%29.svg%3FcdnVersion%3Dji)](https://res.cloudinary.com/practicaldev/image/fetch/s--pLQxGakq--/c_limit%2Cf_auto%2Cfl_progressive%2Cq_auto%2Cw_880/https://wac-cdn.atlassian.com/dam/jcr:61ccc620-5249-4338-be66-94d563f2843c/05%2520%282%29.svg%3FcdnVersion%3Dji)
 
@@ -197,14 +209,20 @@ Gitflow workflow employs two parallel *long-running* branches to record the hist
 
 ### Q9: When should I use "git stash"?
 
+### 问题九：什么时候应使用 “git stash”？
+
 > 主题：**Git**
 > 难度：⭐⭐⭐
 
 The `git stash` command takes your uncommitted changes (both staged and unstaged), saves them away for later use, and then reverts them from your working copy.
 
+`git stash` 命令把你未提交的修改（已暂存（staged）和未暂存的（unstaged））保存以供后续使用，以后就可以从工作副本中进行还原。
+
 Consider:
 
-```
+回顾：
+
+```shell
 $ git status
 On branch master
 Changes to be committed:
@@ -221,7 +239,9 @@ nothing to commit, working tree clean
 
 The one place we could use stashing is if we discover we forgot something in our last commit and have already started working on the next one in the same branch:
 
-```
+我们可以使用贮存（stash）的一个地方是，如果我们发现在上次提交中忘记了某些内容，并且已经开始在同一分支中处理下一个提交了：
+
+```shell
 # Assume the latest commit was already done
 # start working on the next patch, and discovered I was missing something
 
