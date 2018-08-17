@@ -56,7 +56,7 @@ In the simplest terms, `git pull` does a `git fetch` followed by a `git merge`.
 - When you use `pull`, Git tries to automatically do your work for you. **It is context sensitive**, so Git will merge any pulled commits into the branch you are currently working in. `pull` **automatically merges the commits without letting you review them first**. If you don’t closely manage your branches, you may run into frequent conflicts.
 - When you `fetch`, Git gathers any commits from the target branch that do not exist in your current branch and **stores them in your local repository**. However, **it does not merge them with your current branch**. This is particularly useful if you need to keep your repository up to date, but are working on something that might break if you update your files. To integrate the commits into your master branch, you use `merge`.
 
-- 当你使用 `pull`，Git 会试着自动为你完成工作。__它是上下文（工作环境）敏感__，所以 Git 会吧所有拉取的提交合并到你当前处理的分支中。`pull` 则是 __自动合并提交而没有让你复查的过程__。如果你没有细心管理你的分支，你可能会遇到频繁的冲突。
+- 当你使用 `pull`，Git 会试着自动为你完成工作。__它是上下文（工作环境）敏感__，所以 Git 会把所有拉取的提交合并到你当前处理的分支中。`pull` 则是 __自动合并提交而没有让你复查的过程__。如果你没有细心管理你的分支，你可能会遇到频繁的冲突。
 - 当你 `fetch`，Git 会收集目标分支中的所有不存在的提交，并 __将这些提交存储到本地仓库（repository）中__。但 __Git 不会把这些提交合并到当前分支中__。这种处理逻辑在当你需要保持仓库（repository）更新，在更新文件时又可以处理可能中断的事情时，这将非常实用。而将提交合并到主分支中，则该使用 merge。
 
 🔗**来源：** [stackoverflow.com](https://stackoverflow.com/questions/292357/what-is-the-difference-between-git-pull-and-git-fetch)
@@ -262,12 +262,18 @@ $ git stash pop
 
 ### Q10: How to remove a file from git without removing it from your file system?
 
+### 问题十：如何从 git 中删除文件，而不将其从文件系统中删除？
+
 > 主题：**Git**
 > 难度：⭐⭐⭐⭐
 
 If you are not careful during a `git add`, you may end up adding files that you didn’t want to commit. However, `git rm` will remove it from both your staging area (index), as well as your file system (working tree), which may not be what you want.
 
+如果你在 `git add` 过程中误操作，你最终亏添加你不想提交的文件。但是，`git rm` 则会把你的文件从你暂存区（索引）和文件系统（工作树）中删除，这可能不是你想要的。
+
 Instead use `git reset`:
+
+换成 `git reset` 操作：
 
 ```
 git reset filename          # or
@@ -276,16 +282,24 @@ echo filename >> .gitingore # add it to .gitignore to avoid re-adding it
 
 This means that `git reset <paths>` is the opposite of `git add <paths>`.
 
+上面意思是，`git reset <paths>` 是 `git add <paths>` 的逆操作。
+
 🔗**来源：** [codementor.io](https://www.codementor.io/citizen428/git-tutorial-10-common-git-problems-and-how-to-fix-them-aajv0katd)
 
 ### Q11: When do you use "git rebase" instead of "git merge"?
+
+### 问题十一：是么时候使用“git rebase”代替“git merge”？
 
 > 主题：**Git**
 > 难度：⭐⭐⭐⭐⭐
 
 Both of these commands are designed to integrate changes from one branch into another branch - they just do it in very different ways.
 
+这两个命令都是把修改从一个分支集成到另一个分支上，它们只是以非常不同的方式进行。
+
 Consider before merge/rebase:
+
+回顾合并（merge）和变基（rebase）：
 
 ```
 A <- B <- C    [master]
@@ -296,6 +310,8 @@ A <- B <- C    [master]
 
 after `git merge master`:
 
+在 `git merge master` 之后：
+
 ```
 A <- B <- C
 ^         ^
@@ -305,22 +321,38 @@ A <- B <- C
 
 after `git rebase master`:
 
+在 `git rebase master` 之后：
+
 ```
 A <- B <- C <- D <- E
 ```
 
 With rebase you say to use another branch as the new base for your work.
 
+使用变基（rebase）时，意味着使用另一个分支作为集成修改的新基础。
+
 **When to use:**
+
+__何时使用：__
 
 1. If you have any doubt, use merge.
 2. The choice for rebase or merge based on what you want your history to look like.
 
+1. 如果你对修改不够果断，请使用合并（merge）.
+2. 根据你希望的历史记录的样子，而选择使用变基（rebase）或合并（merge）。
+
 **More factors to consider:**
+
+__更多需要考虑的因素：__
 
 1. **Is the branch you are getting changes from shared with other developers outside your team (e.g. open source, public)?** If so, don't rebase. Rebase destroys the branch and those developers will have broken/inconsistent repositories unless they use `git pull --rebase`.
 2. **How skilled is your development team?** Rebase is a destructive operation. That means, if you do not apply it correctly, you could lose committed work and/or break the consistency of other developer's repositories.
 3. **Does the branch itself represent useful information?** Some teams use the *branch-per-feature* model where each branch represents a feature (or bugfix, or sub-feature, etc.) In this model the branch helps identify sets of related commits. In case of *branch-per-developer* model the branch itself doesn't convey any additional information (the commit already has the author). There would be no harm in rebasing.
 4. **Might you want to revert the merge for any reason?** Reverting (as in undoing) a rebase is considerably difficult and/or impossible (if the rebase had conflicts) compared to reverting a merge. If you think there is a chance you will want to revert then use merge.
+
+1. __分支是否与团队外部的开发人员共享修改（如开源、公开项目）？__如果是这样，请不要使用变基（rebase）。变基（rebase）会破坏分支，除非他们使用 `git pull --rebase`，否则这些开发人员将会得到损坏的或不一致的仓库。
+2. __你的开发团队技术是否足够娴熟？__变基（rebase）是一种破坏性操作。这意味着，如果你没有正确使用它，你可能会丢失提交，并且/或者会破坏其他开发者仓库的一致性。
+3. __分支本身是否代表有用的信息？__一些团队使用__功能分支（branch-per-feature）__模式，每个分支代表一个功能（或错误修复，或子功能等）。在此模式中，分支有助于识别相关提交的集合。在每个__开发人员分支（branch-per-developer）__模式中，分支本身不会传达任何其他信息（提交信息已有作者）。则在这种模式下，变基（rebase）不会有任何破坏。
+4. __是否无论如何都要还原合并（merge）？__恢复（如在撤销中）变基（rebase），是相当困难的，并且/或者在变基（rebase）存在冲突时，是不可能完成的。如果你考虑到日后可能需要恢复，请使用合并（merge）。
 
 🔗**来源：** [stackoverflow.com](https://stackoverflow.com/questions/804115/when-do-you-use-git-rebase-instead-of-git-merge)
