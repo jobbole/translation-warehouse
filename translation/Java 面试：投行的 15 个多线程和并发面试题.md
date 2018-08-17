@@ -32,7 +32,7 @@ Anyway, without further ado, here is my list of some of the frequently asked Jav
 
 1) You have thread T1, T2, and T3. How will you ensure that thread T2 is run after T1 and thread T3 after T2?
 
-1） 现在有线程 T1、T2 和 T3。你如何确保 T2 线程在 T1 之后执行，并且 T3 线程在 T2 之后执行？
+1）现在有线程 T1、T2 和 T3。你如何确保 T2 线程在 T1 之后执行，并且 T3 线程在 T2 之后执行？
 
 This thread interview question is mostly asked in the first round or phone screening round of an interview and purpose of this multi-threading question is to check whether the candidate is familiar with the concept of "join" method or not. The answer to this multi-threading question is simple — it can be achieved by using the join method of Thread class.
 
@@ -40,7 +40,7 @@ This thread interview question is mostly asked in the first round or phone scree
 
 2) What is the advantage of the new Lock interface over a synchronized block in Java? You need to implement a high-performance cache, which allows multiple readers, but how will you implement the single writer to keep the integrity?
 
-2） Java 中新的 Lock 接口相对于同步代码块（synchronized block）有什么优势？如果让你实现一个高性能缓存，支持并发读取和单一写入，你如何保证数据完整性。
+2）Java 中新的 Lock 接口相对于同步代码块（synchronized block）有什么优势？如果让你实现一个高性能缓存，支持并发读取和单一写入，你如何保证数据完整性。
 
 The major advantage of lock interfaces on multithreaded and concurrent programming is that they provide two separate locks for reading and writing, which enables you to write high-performance data structures, like ConcurrentHashMap and conditional blocking.
 
@@ -56,7 +56,7 @@ I would strongly suggest reading locks before appearing for any Java multithread
 
 3) What are differences between wait and sleep method in Java?
 
-3） Java 中 wait 和 sleep 方法有什么区别？
+3）Java 中 wait 和 sleep 方法有什么区别？
 
 Let's take a look at another frequently-asked thread interview question in Java. This question will mostly appear in a phone interview. The only major difference is to wait to release the lock or monitor, while sleep doesn't release any lock or monitor while waiting. The wait is used for inter-thread communication, since sleep is used to introduce pause on execution. See my post wait vs sleep in Java for further information.
 
@@ -66,7 +66,7 @@ Let's take a look at another frequently-asked thread interview question in Java.
 
 4) Write code to implement blocking queue in Java?
 
-4） Java 中实现一个阻塞队列？
+4）Java 中实现一个阻塞队列？
 
 This is a relatively tough Java multithreading interview question that serves many purposes. It checks whether a candidate can actually write Java code using thread or not. It sees how good a candidate is on understanding concurrent scenarios, and you can ask a lot of follow-up question based upon his code. If he uses the wait() and notify() method to implement a blocking queue, once the candidate successfully writes it, you can ask him to write it again using new Java 5 concurrent classes, etc.
 
@@ -74,7 +74,7 @@ This is a relatively tough Java multithreading interview question that serves ma
 
 5) Write code to solve the produce consumer problem in Java? (solution)
 
-5） 在 Java 中编写代码解决生产者消费者问题？
+5）在 Java 中编写代码解决生产者消费者问题？
 
 Similar to the above questions on the thread, this question is more classic in nature, but sometimes an interviewer will ask follow up questions, like "How do you solve the producer consumer problem in Java?" Well, it can be solved in multiple ways. I have shared one way to solve the producer-consumer problem using BlockingQueue in Java, so be prepared for a few surprises. Sometimes, they even ask you to implement a solution of dining the philosopher problem, as well.
 
@@ -82,32 +82,61 @@ Similar to the above questions on the thread, this question is more classic in n
 
 6) Write a program that will result in a deadlock. How will you fix deadlock in Java?
 
-6） 写一段死锁代码。你在 Java 中如何解决死锁？
+6）写一段死锁代码。你在 Java 中如何解决死锁？
 
 This is my favorite Java thread interview question, because, even though deadlock is quite common while writing a multithreaded concurrent program, many candidates are not able to write deadlock-free code, and they simply struggle.
 
-这是我最喜欢的 Java 多线程面试题，因为即使死锁在多线程并发编程中十分常见，许多面试者仍然不能写出无死锁的代码
+这是我最喜欢的 Java 多线程面试题，因为即使死锁在多线程并发编程中十分常见，许多面试者仍然抓耳挠腮，不能写出无死锁的代码。
 
 Just ask them if you have N resources and N threads to complete an operation; then, you require all resources.
 
+只需要问他们如果有 N 个资源和 N 个线程去执行某个操作，然后请求所有资源。
+
 Here N can be replaced with two for the simplest case and higher numbers to make the question more intimidating. See How to avoid deadlock in Java for more information on the deadlock.
+
+这里的 N 可以是 2 作为最简单的情况，也可以是个很大的数字让问题变复杂。有关死锁的更多信息可以看这篇文章 [Java 中如何避免死锁](http://javarevisited.blogspot.com/2010/10/what-is-deadlock-in-java-how-to-fix-it.html)
 
 !(https://1.bp.blogspot.com/-HCcRwM1YX58/WpvPZJQ0vBI/AAAAAAAAK8I/2L7IldmbVcc5DkZm6uuLTNDoir8Hky6YACLcBGAs/s400/how%2Bto%2Bavoid%2Bdeadlock%2Bin%2BJava.png)
 
 7) What is an atomic operation? What are atomic operations in Java?
+
+7）什么是原子操作？Java 中有哪些原子操作？
+
 This is a simple Java thread interview question. Another follow-up question would be: do you need to synchronize an atomic operation? You can read more about Java synchronization here.
 
+这是个简单的 Java 线程面试题。另一个紧随其后的问题将是：你需要同步原子操作吗？你可以在这了解更多 [Java 同步](http://javarevisited.blogspot.com/2011/04/synchronization-in-java-synchronized.html)
+
 8) What is a volatile keyword in Java? How do you use it? How is it different from the synchronized method in Java?
+
+8）Java 中 volatile 关键字是什么？你如何使用它？它和 Java 中的同步方法有什么区别？
+
 Thread questions based on a volatile keyword in Java has become more popular after changes made on it for Java 5 and the Java memory model. It's good to prepare for how volatile variables ensures visibility, ordering, and consistency in a concurrent environment.
 
+自从 Java 5 中调整 volatile 关键字和 Java 内存模型后，有关 volatile 关键字的线程问题越来越常见。掌握 volatile 变量在并发环境中如何确保可见性、有序性和一致性非常重要。
+
 9) What is a race condition? How will you find and solve race condition?
+
+9）什么是竞态条件？你如何发现并解决竞态条件？
+
 Another multithreading question in Java appears mostly on senior-level interviews. Most interviewers ask about a recent race condition that you have faced, how to solve it, and sometimes they will write sample code and ask you to detect the race condition. See my post on the race condition in Java for more information. In my opinion, this is one of the best Java thread interview questions and can really test the candidate's experience on solving race conditions or writing code that is free of data race or any other race condition. The best book about topic is "Concurrency practices in Java.'"
 
+这个 Java 多线程问题一般出现在高级面试。多数面试官会问你最近一次遇到的竞态条件，如何解决的，有时他们也会写点简单代码让你发现竞态条件。可以看看我的这篇文章 [Java 中的竞态条件](http://javarevisited.blogspot.sg/2012/02/what-is-race-condition-in.html)。我认为，这是最棒的 Java 线程面试问题之一，而且可以测试出面试者解决竞态条件的经验，或是编写出无数据竞争，或其竞态条件的代码经验。
+
 10) How will you take thread dump in Java? How will you analyze Thread dump?
+
+10）在 Java 中你如何转储线程（thread dump）？如何分析它？
+
 In UNIX, you can use kill -3 and then the thread dump will print the log on windows that you can use "CTRL+Break." While this is a rather simple thread interview question, it can get tricky if they ask you how to analyze it. A thread dump can be useful to analyze deadlock situations, as well.
 
+在 UNIX 中，你可以使用 `kill -3` 然后线程转储日志会打印在屏幕上，可以使用 `CTRL+Break` 查看。这只是一个较简单的线程面试题，狡猾一点的话他们会问你如何分析转储日志。线程转储日志对于分析死锁情况非常有用。
+
 11) Why do we call start() method which in turns calls run() method, why not we directly call run() method?
+
+11）为什么我们调用 `start()` 方法，这个方法将调用 `run()` 方法，为什么我们不直接调用 `run()` 方法？
+
 This is another classic Java multithreading interview question. Originally, I had some doubt when I started programming in the thread. Nowadays, I am mostly asked in phone interviews or the first round of interview questions at mid and junior-level Java interviews.
+
+这是一个基本的 Java 多线程面试题。最初，我刚开始多线程编程时对此还有些困惑。如今我一般在 Java 触及面试的电话面试或一轮面试中遇到。
 
 Here is the answer to this question. When you call the start() method, it creates a new thread and executes code declared in the run()  while directly calling the run() method. This doesn't create any new threads and executes code on the same calling thread. Read my post Difference Between Start and Run Method in Thread for more details.
 
