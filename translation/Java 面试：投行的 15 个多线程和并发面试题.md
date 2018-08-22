@@ -9,15 +9,15 @@ Multithreading and concurrency questions are an essential part of any Java inter
 
 For example, high volume and low latency electronic trading systems, which are used for Direct to Market (DMA) trading, are usually concurrent in nature. Most of the time, they will focus on microsecond latency, which is why a good knowledge of how to effectively minimize latency and improve throughput is important.
 
-举个例子，直接市场准入模式（Direct to Market，DMA）使用高容量低延迟的电子交易系统，通常来说是并发的。大多数时间他们致力于微妙级的延迟，所以掌握如何有效地降低延迟、提高吞吐量非常重要。
+举个例子，直接市场准入模式（Direct to Market，DMA）使用高容量低延迟的电子交易系统，通常来说是并发的。大多数时间他们致力于微秒级的延迟，所以掌握如何有效地降低延迟、提高吞吐量非常重要。
 
 These are some of my favorite thread interview questions about Java. I am not providing an answer to these thread interview questions, but I will give you a hint whenever possible. I will update the post further with detailed answers, like I did for my recent post 10 Singleton interview questions in Java.
 
-我有很多喜欢的 Java 线程面试题。我并不会直接给你答案，而是尽可能给你指点。我会之后补充上详细答案，正如我在其他文章中那样。
+有一些 Java 线程面试题是我特别中意的。我并不会直接给你答案，而是尽可能给你指点。我会之后补充上详细答案，正如我在其他文章中那样。
 
 After the introduction of the concurrency package in JDK 1.5, there were some questions on concurrent utility and concurrent collections, which were increased, e.g. ThreadLocal, BlockingQueue, Counting Semaphore and ConcurrentHashMap become popular.
 
-JDK 1.5 中引入并发包之后，并发工具和并发集合备受欢迎，比如 ThreadLocal、 BlockingQueue、Counting Semaphore 和 ConcurrentHashMap，围绕它们也涌现出一些问题。
+JDK 1.5 中引入并发包之后，并发工具和并发集合备受欢迎，比如 ThreadLocal、 BlockingQueue、Counting Semaphore 和 ConcurrentHashMap，与这些工具相关的面试题也越来越多。
 
 The same is true for Java 8 and Java 9. There were questions on lambda expressions, parallel streams, new fork-join pool, and CompletableFuture, which is on the rise in 2018 and will remain in 2019. Hence, you should be prepared for those topics.
 
