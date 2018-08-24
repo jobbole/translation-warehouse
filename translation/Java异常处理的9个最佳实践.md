@@ -1,20 +1,32 @@
 # 9 Best Practices to Handle Exceptions in Java
 # Java异常处理的9个最佳实践
 
-> Whether you're brand new or an old pro, it's always good to brush up on exception handling practices to make sure you and your team can deal with problems.
->
-> 无论你是新手还是资深程序员，了解异常处理的实践总是一件好事，因为这能确保你与你的团队在遇到问题时能处理得了它。
+[原文链接](https://dzone.com/articles/9-best-practices-to-handle-exceptions-in-java)
 
+> Whether you're brand new or an old pro, it's always good to brush up on exception handling practices to make sure you and your team can deal with problems.
+
+> 无论你是新手还是资深程序员，了解异常处理的实践总是一件好事，因为这能确保你与你的团队在遇到问题时能够处理得了它。
 
 Exception handling in Java isn’t an easy topic. Beginners find it hard to understand and even experienced developers can spend hours discussing how and which exceptions should be thrown or handled.
 
+在Java中处理异常并不是一件易事。新手觉得处理异常难以理解，甚至是资深开发者也会花上好几个小时来讨论是应该抛出抛异常还是处理异常。
+
 That’s why most development teams have their own set of rules on how to use them. And if you’re new to a team, you might be surprised how different these rules can be to the ones you’ve used before.
+
+这就是为何大多数开发团队都拥有一套自己的异常处理规范。如果你初进团队，你也许会发现这些规范和你曾使用的大相径庭。
 
 Nevertheless, there are several best practices that are used by most teams. Here are the 9 most important ones that help you get started or improve your exception handling.
 
+尽管如此，这里还是有一些被大多数团队所遵循的最佳实践方法。以下9个最重要的实践方法能帮助你开始或改进你的异常处理。
+
 ## 1. Clean Up Resources in a Finally Block or Use a Try-With-Resource Statement
 
+## 1.在Finally中清理资源或使用Try-With-Resource语句
+
 It happens quite often that you use a resource in your try block, like an [InputStream](https://docs.oracle.com/javase/8/docs/api/java/io/InputStream.html), which you need to close afterward. A common mistake in these situations is to close the resource at the end of the try block.
+
+在实际开发中会经常遇到在try中使用资源的情况，比如一个[InputStream](https://docs.oracle.com/javase/8/docs/api/java/io/InputStream.html)，在使用后你需要关闭它。在这种情况下，一个常见的错误是在try的尾部关闭了资源。
+
 
 ```java
 public void doNotCloseResourceInTry() {
@@ -35,13 +47,23 @@ public void doNotCloseResourceInTry() {
 
 The problem is that this approach seems to work perfectly fine as long as no exception gets thrown. All statements within the try block will get executed, and the resource gets closed.
 
+这种情况的问题是，只要异常没被抛出，程序就能很好地运行。所有在try中的代码都将被正常执行，资源也会被关闭。
+
 But you added the try block for a reason. You call one or more methods which might throw an exception, or maybe you throw the exception yourself. That means you might not reach the end of the try block. And as a result, you will not close the resources.
+
+但是用try总是有原因的。当你调用一个或多个可能会抛出异常的方法或自己主动抛出异常时，程序可能会无法到达try的尾部。于是在最后，资源将不被关闭。
 
 You should, therefore, put all your clean up code into the finally block or use a try-with-resource statement.
 
+因为，你应该将所有清理资源的代码放进finally中，或使用try-with-resource语句。
+
 ## Use a Finally Block
+## 使用Finally
 
 In contrast to the last few lines of your try block, the finally block gets always executed. That happens either after the successful execution of the try block or after you handled an exception in a catch block. Due to this, you can be sure that you clean up all the opened resources.
+
+与try相比，无论是try中的代码被成功执行，还是在catch中处理了一个异常后，Finally中的代码总会被执行。因此，你可以确保所有已打开的资源都将被关闭。
+
 
 ```java
 public void closeResourceInFinally() {
@@ -65,10 +87,15 @@ public void closeResourceInFinally() {
 ```
 
 ## Java 7’s Try-With-Resource Statement
+## Java7的Try-With-Resource语句
 
 Another option is the try-with-resource statement which I explained in more detail in my [introduction to Java exception handling](https://stackify.com/specify-handle-exceptions-java/?utm_referrer=https%3A%2F%2Fdzone.com%2F#tryWithResource).
 
+你还可以选择try-with-resource语句，在我的这篇[“Java异常处理入门”](https://stackify.com/specify-handle-exceptions-java/?utm_referrer=https%3A%2F%2Fdzone.com%2F#tryWithResource)中有更为详细的介绍。
+
 You can use it if your resource implements the [AutoCloseable](https://docs.oracle.com/javase/8/docs/api/java/lang/AutoCloseable.html) interface. That’s what most Java standard resources do. When you open the resource in the try clause, it will get automatically closed after the try block got executed, or an exception handled.
+
+如果你在资源中实现了[AutoCloseable](https://docs.oracle.com/javase/8/docs/api/java/lang/AutoCloseable.html)接口的话，就可以使用try-with-resource语句了，这也是大多数Java标准资源的做法。如果你在try-with-resource中打开了一个资源，在try中的代码被执行或异常处理后，这个资源将会被自动关闭。
 
 ```java
 public void automaticallyCloseResource() {
@@ -84,12 +111,19 @@ public void automaticallyCloseResource() {
 ```
 
 ## 2. Prefer Specific Exceptions
+## 2. 抛出更具体的异常
 
 The more specific the exception is that you throw, the better. Always keep in mind that a co-worker who doesn’t know your code, or maybe you in a few months, need to call your method and handle the exception.
 
+你抛出的异常约具体、明确越好。时刻牢记这点，特别是如果有一位并不了解你代码的同事，或几个月后的你需要调用自己的方法并处理异常时。
+
 Therefore make sure to provide them as many information as possible. That makes your API easier to understand. And as a result, the caller of your method will be able to handle the exception better or [avoid it with an additional check](https://stackify.com/top-java-software-errors/?utm_referrer=https%3A%2F%2Fdzone.com%2F).
 
+因此，你需要确保提供尽可能多的信息，这会使得你的API更易于理解。这样，调用你方法的人可以更好地处理异常，从而避免额外的诸如此类的[检查](https://stackify.com/top-java-software-errors/?utm_referrer=https%3A%2F%2Fdzone.com%2F)。
+
 So, always try to find the class that fits best to your exceptional event, e.g. throw a [NumberFormatException](https://docs.oracle.com/javase/8/docs/api/java/lang/NumberFormatException.html) instead of an [IllegalArgumentException](https://docs.oracle.com/javase/8/docs/api/java/lang/IllegalArgumentException.html). And avoid throwing an unspecific Exception.
+
+所以，应该找到与你的异常事件最符合的类，比如抛出一个[NumberFormatException](https://docs.oracle.com/javase/8/docs/api/java/lang/NumberFormatException.html) 而不是 [IllegalArgumentException](https://docs.oracle.com/javase/8/docs/api/java/lang/IllegalArgumentException.html)(译者注：例如将参数转换为数值出错时，应该抛出具体的NumberFormatException，而不是笼统的IllegalArgumentException)。请避免抛出一个不具体的异常。
 
 ```java
 public void doNotDoThis() throws Exception {
@@ -101,10 +135,15 @@ public void doThis() throws NumberFormatException {
 ```
 
 ## 3. Document the Exceptions You Specify
+## 3. 记录你所指定的异常
 
 Whenever you [specify an exception](https://stackify.com/specify-handle-exceptions-java/?utm_referrer=https%3A%2F%2Fdzone.com%2F#specify) in your method signature, you should also [document it in your Javadoc](http://blog.joda.org/2012/11/javadoc-coding-standards.html). That has the same goal as the previous best practice: Provide the caller as many information as possible so that he can avoid or handle the exception.
 
+当你在方法签名中[指定一个异常](https://stackify.com/specify-handle-exceptions-java/?utm_referrer=https%3A%2F%2Fdzone.com%2F#specify)时，你也应该在[Javadoc中记录它](http://blog.joda.org/2012/11/javadoc-coding-standards.html)。
+
 So, make sure to add a @throws declaration to your Javadoc and to describe the situations that can cause the exception.
+
+所以，请确保在Javadoc中增加@throws声明，并描述可能会导致异常的情况。
 
 ```java
 /**
@@ -119,15 +158,23 @@ public void doSomething(String input) throws MyBusinessException {
 ```
 
 ## 4. Throw Exceptions With Descriptive Messages
+## 4. 将描述信息与异常一同抛出
 
 The idea behind this best practice is similar to the two previous ones. But this time, you don’t provide the information to the caller of your method. The exception’s message gets read by everyone who has to understand what had happened when the exception was reported in the log file or your monitoring tool.
 
+这个方法背后的思想和前两个是类似的。但这一次，你不必给你的方法调用者提供信息。当异常在日志文件或监视工具中被报告时，任何一个想要了解发生了什么的人都要能理解它。
+
 It should, therefore, describe the problem as precisely as possible and provide the most relevant information to understand the exceptional event.
+
+因此，请尽可能精确地描述异常事件，并提供最相关的信息以令其他人能够理解发生了什么异常。
 
 Don’t get me wrong; you shouldn’t write a paragraph of text. But you should explain the reason for the exception in 1-2 short sentences. That helps your operations team to understand the severity of the problem, and it also makes it easier for you to analyze any service incidents.
 
+别误会我的意思。你没必要去写上一大段的文字，但你应该用一两句简短的话来解释一下异常发生的原因。这能让你的开发团队明白问题的严重性，也能让你更容易地分析服务意外事件。
+
 If you throw a specific exception, its class name will most likely already describe the kind of error. So, you don’t need to provide a lot of additional information. A good example for that is the NumberFormatException. It gets thrown by the constructor of the class java.lang.Long when you provide a String in a wrong format.
 
+如果你抛出了一个特定的异常，它的类名很可能就已经描述了这是什么类型的错误了。所以，你不需要提供很多额外的描述信息。一个很好的例子是，当你提供了一个错误格式的String类型参数时，java.lang.Long构造函数就会抛出NumberFormatException。
 ```java
 try {
     new Long("xyz");
@@ -138,19 +185,31 @@ try {
 
 The name of the NumberFormatException class already tells you the kind of problem. Its message only needs to provide the input string that caused the problem. If the name of the exception class isn’t that expressive, you need to provide the required information in the message.
 
+NumberFormatException的类名已经告诉了你问题的类型。所以异常信息只需要返回导致问题的输入字符串就行了。如果异常类的名字不能表明其含义，那么你还需要在异常信息中提供必要的解释信息。
+
 ```
 17:17:26,386 ERROR TestExceptionHandling:52 - java.lang.NumberFormatException: For input string: "xyz"
 ```
 
 ## 5. Catch the Most Specific Exception First
+## 5. 优先捕获具体的异常
 
 Most IDEs help you with this best practice. They report an unreachable code block when you try to catch the less specific exception first.
 
+大多数IDE都能帮你做到这点。当你尝试优先捕获不那么具体的异常时，IDE会报告给你这是一个不能到达的代码块。
+
 The problem is that only the first catch block that matches the exception gets executed. So, if you catch an IllegalArgumentException first, you will never reach the catch block that should handle the more specific NumberFormatException because it’s a subclass of the IllegalArgumentException.
+
+这个问题的原因是只有第一个匹配到异常的catch块才会被执行。所以，如果你先捕获了一个IllegalArgumentException，你将永远无法到达处理更具体异常NumberFormatException的catch块中，因为NumberFormatException是
+IllegalArgumentException的子类。
 
 Always catch the most specific exception class first and add the less specific catch blocks to the end of your list.
 
+所以，请优先捕获更具体的异常，并将不那么具体的catch块放在后面。
+
 You can see an example of such a try-catch statement in the following code snippet. The first catch block handles all NumberFormatExceptions and the second one all IllegalArgumentExceptions which are not a NumberFormatException.
+
+在下面你可以看到这样的一个try-catch语句示例。第一个catch处理所有的NumberFormatExceptions异常，第二个catch 处理NumberFormatException异常以外的illegalargumentexception异常。
 
 ```java
 public void catchMostSpecificExceptionFirst() {
@@ -165,12 +224,19 @@ public void catchMostSpecificExceptionFirst() {
 ```
 
 ## 6. Don’t Catch Throwable
+## 6. 不要捕获Throwable
 
 [Throwable](https://docs.oracle.com/javase/8/docs/api/java/lang/Throwable.html) is the superclass of all exceptions and errors. You can use it in a catch clause, but you should never do it!
 
+[Throwable](https://docs.oracle.com/javase/8/docs/api/java/lang/Throwable.html)是所有exceptions和errors的父类。虽然你可以在catch子句中使用它，但你应该永远别这样做！
+
 If you use Throwable in a catch clause, it will not only catch all exceptions; it will also catch all errors. Errors are thrown by the JVM to indicate serious problems that are not intended to be handled by an application. Typical examples for that are the [OutOfMemoryError](https://docs.oracle.com/javase/8/docs/api/java/lang/OutOfMemoryError.html) or the [StackOverflowError](https://docs.oracle.com/javase/8/docs/api/java/lang/StackOverflowError.html). Both are caused by situations that are outside of the control of the application and can’t be handled.
 
+如果你在catch子句中使用了Throwable，它将不仅捕获所有异常，还会捕获所有错误。这些错误是由JVM抛出的，用来表明不打算由应用处理的严重错误。[OutOfMemoryError](https://docs.oracle.com/javase/8/docs/api/java/lang/OutOfMemoryError.html) 和 [StackOverflowError](https://docs.oracle.com/javase/8/docs/api/java/lang/StackOverflowError.html)就是典型的例子，这两种情况都是由一些超出应用控制范围的情况导致的，无法处理。
+
 So, better don’t catch a Throwable unless you’re absolutely sure that you’re in an exceptional situation in which you’re able or required to handle an error.
+
+所以，最好不要在catch中使用Throwable，除非你确保自己处于一个可以处理错误，或被要求处理错误的特定的情况下。
 
 ```java
 public void doNotCatchThrowable() {
