@@ -93,11 +93,19 @@ Up to this point, a class was nothing but syntactic sugar and some scoping rules
 
 
 ## Resource Acquisition Is Initialization (RAII)
+## 资源获取即初始化（ Resource Acquisition Is Initialization ）—— RAII
+
 Most modern languages perform garbage collection because it is apparently too hard to keep track of memory. This leads to periodic GC runs which have the potential to ‘stop the world’. Even though the state of the art is improving, GC remains a fraught subject especially in a many-core world.
+
+大多数的现代编程语言都会进行垃圾回收，因为追踪并管理内存显然非常困难。这也使得周期性的垃圾回收具有“使程序停止”的功能。即便现如今的垃圾回收技术有了长足的进步，在多核领域，垃圾回收仍然是让人操心的话题。
 
 Although C and C++ do not do garbage collection, it remains true that it is exceptionally hard to keep track of each and every memory allocation under all (error) conditions. C++ has sophisticated ways to help you and these are built on the primitives called Constructors and Destructors.
 
+C 和 C++ 并不进行垃圾回收，在任何（或发生错误）的场景下，追踪管理每一块分配的内存是非常非常困难的。为了帮助你解决这一问题， C++ 提供了一套复杂又精密的机制 —— 构造函数和析构函数。
+
+
 SmartFP is an example that we’ll beef up in following sections so it becomes actually useful and safe:
+我们将使用 SmartFP （智能文件指针） 这一例子，并在后续的文章中逐步扩展它，使其变得功能强大且安全： 
 
 ```cpp
 struct SmartFP
@@ -114,31 +122,47 @@ struct SmartFP
 	FILE* d_fp;
 };
 ```
+
 Note: a struct is the same as a class, except everything is ‘public’.
+注意：C++ 中的结构体和类是相似的，只不过它默认所有成员都是 public 类型的。
 
 Typical use of SmartFP:
+SmartFP 的一个典型应用：
 
 ```cpp
 void func()
 {
 	SmartFP fp("/etc/passwd", "r");
 	if(!fp.d_fp)
-		// do error things
+		// 异常处理
 
 	char line[512];
 	while(fgets(line, sizeof(line), fp.d_fp)) {
-		// do things with line
+		// 处理每一行
 	}	
-	// note, no fclose
+	// 注意，文件没有关闭
 }
 ```
+
 As written like this, the actual call to fopen() happens when the SmartFP object is instantiated. This calls the constructor, which has the same name as the struct itself: SmartFP.
+
+如果我们这样编写代码的话，当 SmartFP 类型的对象初始化时，`fopen()` 会自动被调用。这就是构造函数，构造函数和结构体同名：SmartFP。
 
 We can then use the FILE* that is stored within the class as usual. Finally, when fp goes out of scope, its destructor SmartFP::~SmartFP() gets called, which will fclose() for us if d_fp was opened successfully in the constructor.
 
+我们可以像平常一样，使用储存在类内部的 `FILE*`。最后，当 `fp` 的作用域结束时，它的析构函数 `SmartFP::~SmartFP()` 会被调用，这会间接调用 `fclose()` 函数，如果`d_fp`在之前的构造函数中正确的打开了文件，此处就会关闭它。
+
 Written like this, the code has two huge advantages: 1) the FILE pointer will never leak 2) we know exactly when it will be closed. Languages with garbage collection also guarantee ‘1’, but struggle or require real work to deliver ‘2’.
 
+这样编写代码有两个极大的好处：
+1. FILE 指针永远不会泄露
+2. 我们可以明确的知道文件何时被关闭。
+
+具有垃圾回收机制的语言，同样可以保证第一点，但是会纠结于第二点，或者说为了做到第二点需要额外的工作。
+
 This technique to use classes or structs with constructors and destructors to own resources is called Resource Acquisition Is Initialization or RAII, and it is used widely. It is quite common for even larger C++ projects to not contain a single call to new or delete (or malloc/free) outside of a constructor/destructor pair. Or at all, in fact.
+
+通过构造函数和析构函数来管理我们的资源，这种使用类或者结构体的技术就叫做：资源获取即初始化（ Resource Acquisition Is Initialization ）或 简称为RAII。这是一种被广泛使用的技术。对于大型 C++ 项目，使用这种方法可以保证不用单独调用 new 或者 delete(或 malloc/free)在构造和析构函数外申请释放内存。
 
 ## Smart pointers
 Memory leaks are the bane of every project. Even with garbage collection it is possible to keep gigabytes of memory in use for a single window displaying chat messages.
