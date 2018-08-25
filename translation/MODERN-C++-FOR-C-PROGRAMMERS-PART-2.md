@@ -165,27 +165,38 @@ This technique to use classes or structs with constructors and destructors to ow
 通过构造函数和析构函数来管理我们的资源，这种使用类或者结构体的技术就叫做：资源获取即初始化（ Resource Acquisition Is Initialization ）或 简称为RAII。这是一种被广泛使用的技术。对于大型 C++ 项目，使用这种方法可以保证不用单独调用 new 或者 delete(或 malloc/free)在构造和析构函数外申请释放内存。
 
 ## Smart pointers
+## 智能指针
+
 Memory leaks are the bane of every project. Even with garbage collection it is possible to keep gigabytes of memory in use for a single window displaying chat messages.
 
+对所有的项目来说，内存泄露都将是一场灾难。即使有了垃圾回收，对于一个对话框消息来说，也有可能占据几个 GB 的内存。
+
 C++ offers a number of so called smart pointers that can help, each with its own (dis)advantages. The most “do what I want” smart pointer is std::shared_ptr and in its most basic form it can be used like this:
+
+C++ 提供了一些被称作智能指针的东西来帮我们解决这个问题，每种智能指针都有其自己的优缺点。束缚最少的智能指针是 `std::shared_ptr` ，其最基本的用法如下：
 
 ```cpp
 void func(Canvas* canvas)
 {
 	std::shared_ptr<Circle> ptr(new Circle(canvas));
-	// or better:
+	// 更好的做法 :
 	auto ptr = std::make_shared<Circle>(canvas)
 }
 ```
 
 The first form shows the C++ way of doing malloc, in this case allocating memory for a Circle instance, and constructing it with the canvas parameter. As noted, most modern C++ projects rarely use “naked new” statements but mostly wrap them in infrastructure that takes care of (de)allocation.
 
+第一种形式展示了 C++ 是如何进行 malloc 的，在这个例子中，首先给 Circle 实例分配了内存，并通过给它的构造函数传入 canvas 参数来对它进行构造。注意，大多数现代 C++ 项目很少使用单独的 new 语句，大多数情况下都会将其封装到用于管理内存申请释放的基础设施中。
+
 The second way is not only less typing but is more efficient as well.
 
+第二种形式不光可以少打一些字母，运行效率也更高。
+
 std::shared_ptr however has more tricks up its sleeve:
+然而，`std::shared_ptr`还可以有很多花式玩儿法：
 
 ```cpp
-// make a vector of shared pointers to Circle instances
+// 创建一个容器，用于存放 Circle 实例的智能指针
 std::vector<std::shared_ptr<Circle> > circles;
 
 void func(Canvas* canvas)
@@ -198,16 +209,19 @@ void func(Canvas* canvas)
 
 This first defines a vector of std::shared_ptrs to Circle, then creates such a shared_ptr and stores it in the circles vector. When func returns, ptr goes out of scope, but since a copy of it is in the vector circles, the Circle object stays alive. std::shared_ptr is therefore a reference counting smart pointer.
 
+首先我们创建一个容器，用于存放 `Circle` 实例的智能指针，然后我们创建一个`shared_ptr`并将其存放到容器中。当函数返回时，指针超过了它的作用于，但是因为它的一个拷贝还存放在容器中，`Circle` 对象仍然存在。`std::shared_ptr` 因此是一个引用计数智能指针。
+
+
 std::shared_ptr has another neat feature which goes like this:
 
-
+`std::shared_ptr` 还有一个简洁的特性，请看：
 
 ```cpp
 void func()
 {
         FILE *fp = fopen("/etc/passwd", "r");
         if(!fp)
-          ; // do error things
+          ; // 错误处理
 
         std::shared_ptr<FILE> ptr(fp, fclose);
 
@@ -218,14 +232,23 @@ void func()
 ```
 Here we create a shared_ptr with a custom deleter called fclose. This means that ptr knows how to clean up after itself if needed, and with one line we’ve created a reference counted FILE handle.
 
+这里我们创建了一个带有自定义删除器（deleter）`fclose` 的 `shared_ptr`。这表明该指针知道在必要时如何释放自己管理的资源，同时我们还创建了一个具有引用计数功能的 FILE 句柄（指针）。
+
 And with this, we can now see why our earlier defined SmartFP is not very safe to use. It is possible to make a copy of it, and once that copy goes out of scope, it will ALSO close the same FILE*. std::shared_ptr saves us from having to think about thse things.
+
+现在我们可以看到，为什么说之前我们定义的 `SmartFP` 指针并不安全。我们可以拷贝`SmartFP` 指针，当它的任意拷贝超出作用域时，都会关闭`FILE*`。`std::shared_ptr` 保证了我们不必担心这样的事情发生。
 
 The downside of std::shared_ptr is that it uses memory for the actual reference count, which also has to be made safe for multi-threaded operations. It also has to store an optional custom deleter.
 
+`std::shared_ptr` 的弊端是它需要占据部分内存来存放引用计数，在多线程条件下，我们需要确保该计数的安全。另外它也必须额外存放一个自定义的删除器。
+
 C++ offers other smart pointers, the most relevant of which is std::unique_ptr. Frequently we do not actually need actual reference counting but only ‘clean up if we go out of scope’. This is what std::unique_ptr offers, with literally zero overhead. There are also facilities for ‘moving’ a std::unique_ptr into storage so it stays in scope. We will get back to this later.
 
+C++ 还提供了其他的智能指针，和前文介绍的智能指针最相关的是 `std::unique_ptr`。通常我们并不需要引用计数器，我们仅仅是希望在变量超出作用域时释放内存。 `std::unique_ptr` 可以提供这种能力而且没有任何额外的开销。**同时，我们可以将 `std::unique_ptr` 移动到储存中，让其驻留在变量域中，这一点我们稍后会讨论**
 
 ## Threads, atomics
+## 线程，原子操作
+
 Every time I used to create a thread with pthread_create in C or older C++, I’d feel bad. Having to cram all the data to launch the thread through a void pointer felt silly and dangerous.
 
 C++ offers a powerful layer on top of the native threading system to make this all easier and safer. In addition, it has ways of easily getting data back from a thread.
