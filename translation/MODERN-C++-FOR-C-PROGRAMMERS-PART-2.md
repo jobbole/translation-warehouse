@@ -302,6 +302,8 @@ Note that as in C, declaring a counter to be used from multiple threads as volat
 
 Much like keeping track of memory allocations, making sure to release locks on all codepaths is hard. As usual, RAII comes to the rescue:
 
+就像追踪内存的申请释放一样，确保锁的正确释放也是非常困难的。和之前一样，RAII可以救我们于水火：
+
 ```cpp
 std::mutex g_pages_mutex;
 std::map<std::string, std::string> g_pages;
@@ -315,13 +317,20 @@ void func()
 
 The guard object above will keep g_pages_mutex locked for a long as needed, but will always release it when func() is done, through an error or not.
 
-
+上述 guard 对象会对`g_pages_mutex`进行加锁操作，但是当func()返回时，它一定会释放锁，不论函数成功或失败。
 
 
 ## Error handling
+## 异常处理
+
 To be honest, error handling is a poorly solved problem in any language. We can riddle our code with checks, and at each check I wonder “what should the program actually DO if this fails”. Options are rarely good - ignore, prompt user, restart program, or log a message in hopes that someone reads it.
 
+说实话，在很多语言里面，都没有能够很好的解决异常处理这一问题。我们可以在代码中塞进各种各样的检查，每个检查处我都要思考“如果检查报错，程序应该怎么处理”。 还有一些可选的做法 —— 不处理，提示用户，重启程序或者记录日志（并期望有人会去读这些日志）。
+
+
 C++ offers exceptions which in any case have some benefits over checking every return code. The good thing about an exception is that, unlike a return code, it is not ignored by default. First let us update SmartFP so it throws exceptions:
+
+C++ 提供了异常机制，在很多情况下对于避免检查每处返回值还是有益处的。异常机制好的一面是，相对于return，它不会默认不处理异常。首先，让我们升级一下我们的 `SmartFP` 类，使其能够抛出异常：
 
 ```cpp
 std::string stringerror()
@@ -344,7 +353,10 @@ struct SmartFP
         FILE* d_fp;
 };
 ```
+
 If we now create a SmartFP and it does not throw an exception, we know it is good to use. And for error reporting, we can catch the exception:
+
+如果我们此时创建 `SmartFP` 并且它没有抛出异常，我们就知道可以放心使用它了。如果我们需要错误报告，我们可以捕获异常：
 
 ```cpp
 void func2()
@@ -374,15 +386,27 @@ catch(std::exception& e) {
 
 This shows an exception being thrown from SmartFP::SmartFP which then falls ‘through’ both func2() and func() to get caught in main(). The good thing about the fallthrough is that an error will always be noticed, unlike a simple return code which could be ignored. The downside however is that the exception may get ‘caught’ very far away from where it was thrown, which can lead to surprises. This does usually lead to good error logging though.
 
+这里显示了一个被 `SmartFP::SmartFP` 抛出的异常，这个异常“穿越”了 func2() 和 func()，然后在 main() 中被捕获。这种不断上抛异常的特性，其好的一方面是所有错误最终都会被关注到，而不像 return 可能会导致异常没有被处理。然而，它不好的一方面是捕获它的地方与抛出它的地方相距甚远，这可能让人感到困惑。这通常需要可以做到很好的日志记录。
+
 Combined with RAII, exceptions are a very powerful technique to safely acquire resources and also deal with errors.
+结合 RAII ，异常机制可以成为非常强大的计数，用于安全的获取资源并处理错误。
 
 Code that can throw exceptions is slightly slower than code that can’t but it barely shows up in profiles. Actually throwing an exception is rather heavy though, so only use it for error conditions.
 
+具有异常处理机制的代码在执行速度上会稍慢一些，但是在性能分析中几乎是不可见的差异。实际上，抛出异常还是一个很“重”的操作，所以请确保仅在异常情况下使用它。
+
 Most debuggers can break on the throwing of an exception, which is a powerful debugging technique. In gdb this is done with catch throw.
+
+大多数的调试器，可以打断异常的抛出，这是一个很强大的调试技术。在 gdb 中是通过捕获异常来实现的。
 
 As noted, no error handling technique is perfect. One thing that seems promising is the std::expected work or boost::expected which creates functions that have both return codes or throw exceptions if you don’t look at them.
 
+注意，没有什么异常处理技术是完美的。 `std::expected` 或 `boost::expected`看上去很有前景，它们可以创建函数返回代码或抛出异常。
+
+
 ## Summarising
+## 总结
+
 In part 2 of ‘C++ for C programmers’, we showed how classes are a concept that is actually well used in C already, except that C++ makes it easier. In addition, C++ classes (and structs) can have constructors and destructors and these are extremely useful to make sure resources are acquired and released when needed.
 
 Based on these primitives, C++ offers smart pointers of varying intelligence and overhead that cover most requirements.
