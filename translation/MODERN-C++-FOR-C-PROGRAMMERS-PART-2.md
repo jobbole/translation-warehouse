@@ -409,12 +409,13 @@ As noted, no error handling technique is perfect. One thing that seems promising
 
 In part 2 of ‘C++ for C programmers’, we showed how classes are a concept that is actually well used in C already, except that C++ makes it easier. In addition, C++ classes (and structs) can have constructors and destructors and these are extremely useful to make sure resources are acquired and released when needed.
 
+在本文中我们向你展示了，类其实是一个早在 C 语言中就有应用的概念，只不过 C++ 让类的使用变得更加简单了。此外，C++ 的类和结构体可以定义构造函数和析构函数，可以在必要时获取和释放资源。
+
 Based on these primitives, C++ offers smart pointers of varying intelligence and overhead that cover most requirements.
+
+基于这些基础功能，C++ 提供了多种智能指针，这些指针智能程度不同，开销也不同，可以满足大多数使用场景。
 
 Furthermore, C++ offers good support for threads, atomics and locking. Finally, exceptions are a powerful way of (always) dealing with errors.
 
-If you have any favorite things you’d like to see discussed or questions, please hit me up on @PowerDNS_Bert or bert.hubert@powerdns.com
+此外，C++ 对线程、原子操作、锁提供了很好的支持。最后，异常处理是一个处理错误的强大的特性。
 
-Part 3 is now available.
-
-NOTE: If you like this stuff, come work with me over at PowerDNS - aspiring C++ programmers welcome!
