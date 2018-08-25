@@ -251,9 +251,14 @@ C++ 还提供了其他的智能指针，和前文介绍的智能指针最相关�
 
 Every time I used to create a thread with pthread_create in C or older C++, I’d feel bad. Having to cram all the data to launch the thread through a void pointer felt silly and dangerous.
 
+每次我通过 `pthread_create` 在 C 或者老版本 C++ 中创建线程的时候，我都感觉很不爽。把一堆数据塞到一个void指针里并启动线程，我觉得又傻又危险。
+
 C++ offers a powerful layer on top of the native threading system to make this all easier and safer. In addition, it has ways of easily getting data back from a thread.
 
+C++ 在原生的线程系统之上提供了一层强大的封装，使之变得既简单又安全。此外，也可以很简单的从线程获取返回的数据。
+
 A small sample:
+一个小例子：
 
 ```cpp
 double factorial(unsigned int limit)
@@ -276,6 +281,7 @@ int main()
 ```
 
 If no return code is required, launching a thread is as easy as:
+如果不需要返回值的话，创建线程是如此的简单：
 
 ```cpp
   std::thread t(factorial, 19);
@@ -284,10 +290,16 @@ If no return code is required, launching a thread is as easy as:
 
 Like C11, C++ offers atomic operations. These are as simple as defining std::atomic<uint64_t> packetcounter. Operations on packetcounter are then atomic, with a wide suite of ways of interrogating or updating packetcounter if specific modes are required to for example build lock free data structures.
 
+像C11，C++ 提供了原子操作。就像定义 `std::atomic<uint64_t> packetcounter` 一样简单，对packetcounter的查询和更新就变成了原子操作了，如果我们需要创建一无锁数据结构的话，这样做很方便。
+
 Note that as in C, declaring a counter to be used from multiple threads as volatile does nothing useful. Full atomics are required, or explicit locking.
 
+注意，和 C 语言一样，在多线程中把一个计数器声明为`volatile`没有任何作用。需要完全原子的操作或者显式地加锁。
 
 ## Locking
+## 锁
+
+
 Much like keeping track of memory allocations, making sure to release locks on all codepaths is hard. As usual, RAII comes to the rescue:
 
 ```cpp
