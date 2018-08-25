@@ -3,6 +3,7 @@ editor: hanxiaomax
 published: false
 title: MODERN C++ FOR C PROGRAMMERS-PART-2
 ---
+
 ## Namespaces
 ## 命名空间
 
@@ -32,7 +33,7 @@ Most advanced C projects already use classes almost exactly like C++. In its sim
 
 Typical modern C code will define a struct that describes something and then have a bunch of functions that accept a pointer to that struct as the first parameter:
 
-一个典型的现代 C 语言代码会定一个一个结构体来描述一个对象，并且定义一系列的函数，其第一个参数的类型就是该结构体的指针类型。
+一个典型的现代 C 语言代码会定义一个结构体来描述一个对象，并且定义一系列的函数，其第一个参数的类型就是该结构体的指针类型。
 
 ```cpp
 struct Circle
@@ -51,7 +52,11 @@ void paintCircle(Circle* circle);
 
 Many C projects will in fact even make (part of) these structs opaque, indicating that there are internals that API users should not see. This is done by forward declaring a struct in the .h, but never defining it. The sqlite3 handle is a great example of this technique.
 
+事实上，很多 C 语言项目甚至会将结构体的一部分设置为“不可见”的，表示这些部分属于内部变量，不应对仅仅期望使用其API的用户可见。使结构体“不可见”的方法是事先在.h文件中声明该结构体，但是不去实际定义它。sqlite3 的 handle 是本技巧的一个绝佳的例子。
+
 A C++ class is laid out just like the struct above, and in fact, if it contains methods (member functions), these internally get called in exactly the same way:
+
+C++ 中的类在布局上和上述结构体很相似，实际上，如果其包含方法（成员函数）的话，**函数调用机制其实是完全一样的**：
 
 ```cpp
 class Circle
@@ -72,11 +77,20 @@ void Circle::paint()
 }
 
 ```
+
 If we look “under water” Circle::position(1, 2) is actually called as Circle::position(Circle* this, int x, int y). There is no more magic (or overhead) to it than that. In addition, the Circle::paint and Circle::position functions have d_x, d_y, d_size and d_canvas in scope.
+
+如果我们透过现象看本质，`Circle::position(1, 2)` 实际上是调用了 `Circle::position(Circle* this, int x, int y)`，没啥特别的地方，也没什么额外的开销。另外，`d_x`, `d_y`, `d_size` 和 `d_canvas` 这些变量在 `Circle::paint` 和 `Circle::position` 的作用域中是可见的。
+
 
 The one difference is that these ‘private member variables’ are not accessible from the outside. This may be useful for example when any change in x needs to be coordinated with the Canvas, and we don’t want users to change x without us knowing it. As noted, many C projects achieve the same opaqueness with tricks - this is just an easier way of doing it.
 
+C++ 的类与 C 语言结构体不同的地方之一，是“私有成员变量”在类的外部无法访问。在一些场景下，这个功能是很有用的。例如，我们希望坐标 x 的改变要与画布同步，因此我们并不希望用户在我们不知情的情况下，从外部改变 x 坐标。正如上文提到的，很多 C 语言项目通过一些技巧实现了变量的私有 —— C++只是简化了这一操作罢了。
+
 Up to this point, a class was nothing but syntactic sugar and some scoping rules. However..
+
+从目前介绍的这些内容来看，C++ 的类其实就是一种语法糖以及一些作用于规则。但是。。。
+
 
 ## Resource Acquisition Is Initialization (RAII)
 Most modern languages perform garbage collection because it is apparently too hard to keep track of memory. This leads to periodic GC runs which have the potential to ‘stop the world’. Even though the state of the art is improving, GC remains a fraught subject especially in a many-core world.
