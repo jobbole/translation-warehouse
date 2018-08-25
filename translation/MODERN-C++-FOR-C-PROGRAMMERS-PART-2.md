@@ -56,7 +56,7 @@ Many C projects will in fact even make (part of) these structs opaque, indicatin
 
 A C++ class is laid out just like the struct above, and in fact, if it contains methods (member functions), these internally get called in exactly the same way:
 
-C++ 中的类在布局上和上述结构体很相似，实际上，如果其包含方法（成员函数）的话，**函数调用机制其实是完全一样的**：
+C++ 中的类在布局上和上述结构体很相似，实际上，如果其包含方法（成员函数）的话，函数调用也是是完全一样的：
 
 ```cpp
 class Circle
@@ -244,7 +244,7 @@ The downside of std::shared_ptr is that it uses memory for the actual reference 
 
 C++ offers other smart pointers, the most relevant of which is std::unique_ptr. Frequently we do not actually need actual reference counting but only ‘clean up if we go out of scope’. This is what std::unique_ptr offers, with literally zero overhead. There are also facilities for ‘moving’ a std::unique_ptr into storage so it stays in scope. We will get back to this later.
 
-C++ 还提供了其他的智能指针，和前文介绍的智能指针最相关的是 `std::unique_ptr`。通常我们并不需要引用计数器，我们仅仅是希望在变量超出作用域时释放内存。 `std::unique_ptr` 可以提供这种能力而且没有任何额外的开销。**同时，我们可以将 `std::unique_ptr` 移动到储存中，让其驻留在变量域中，这一点我们稍后会讨论**
+C++ 还提供了其他的智能指针，和前文介绍的智能指针最相关的是 `std::unique_ptr`。通常我们并不需要引用计数器，我们仅仅是希望在变量超出作用域时释放内存。 `std::unique_ptr` 可以提供这种能力而且没有任何额外的开销。同时，我们可以将 `std::unique_ptr` 移动到储存中，让其驻留在变量域中，这一点我们稍后会讨论。
 
 ## Threads, atomics
 ## 线程，原子操作
@@ -402,7 +402,7 @@ Most debuggers can break on the throwing of an exception, which is a powerful de
 
 As noted, no error handling technique is perfect. One thing that seems promising is the std::expected work or boost::expected which creates functions that have both return codes or throw exceptions if you don’t look at them.
 
-注意，没有什么异常处理技术是完美的。 `std::expected` 或 `boost::expected` 看上去很有前景，**它们可以创建函数返回代码或抛出异常。**
+注意，没有什么异常处理技术是完美的。** `std::expected` 或 `boost::expected` 看上去很有前景，它们创建的函数既返回代码，也可以抛出异常。**
 
 
 ## Summarising
@@ -419,4 +419,3 @@ Based on these primitives, C++ offers smart pointers of varying intelligence and
 Furthermore, C++ offers good support for threads, atomics and locking. Finally, exceptions are a powerful way of (always) dealing with errors.
 
 此外，C++ 对线程、原子操作、锁提供了很好的支持。最后，异常处理是一个处理错误的强大的特性。
-
