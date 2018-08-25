@@ -9,11 +9,11 @@ title: MODERN C++ FOR C PROGRAMMERS-PART-2
 
 Namespaces allow things with identical names to live side by side. This is of immediate relevance to us since C++ defines a lot of functions and classes that might collide with names you are already using in C. Because of this, the C++ libraries live in the std:: namespace, making it far easier to compile your C code as C++.
 
-命名空间保证变量可以拥有唯一到变量名。这和我们嘻嘻相关因为 C++ 定义了很多函数和类，以至于可能会有和 C 语言同名函数产生命名冲突的可能。因此 C++ 标准库被定义在`std::`命名空间中，这使得将你的 C 语言代码看作 C++ 进行编译变得更加简单。
+命名空间保证变量可以拥有唯一的变量名。这和我们息息相关是因为 C++ 定义了很多函数和类，以至于可能会有和 C 语言同名函数产生命名冲突的可能。因此 C++ 标准库被定义在`std::`命名空间中，这使得我们将 C 语言代码看作 C++ 代码进行编译变得更加简单。
 
 To save a lot of typing, it is possible to import the entire std:: namespace with using namespace std, or to select individual names: using std::thread.
 
-为了减少繁琐的输入，我们可以使用 `using namespace std` 直接将 `std::`，或者可以使用单独的名字 `using std::thread`。
+为了减少繁琐的输入，我们可以使用 `using namespace std` 直接将 `std::`导入，或者可以选择单独的名字 `using std::thread`。
 
 C++ does have some keywords itself like this, class, throw, catch and reinterpret_cast that could collide with existing C code.
 
@@ -33,7 +33,7 @@ Most advanced C projects already use classes almost exactly like C++. In its sim
 
 Typical modern C code will define a struct that describes something and then have a bunch of functions that accept a pointer to that struct as the first parameter:
 
-一个典型的现代 C 语言代码会定义一个结构体来描述一个对象，并且定义一系列的函数，其第一个参数的类型就是该结构体的指针类型。
+一个典型的现代 C 语言代码会定义一个结构体来描述一个对象，并且定义一系列的函数，其第一个参数的类型就是该结构体类型的指针。
 
 ```cpp
 struct Circle
@@ -52,7 +52,7 @@ void paintCircle(Circle* circle);
 
 Many C projects will in fact even make (part of) these structs opaque, indicating that there are internals that API users should not see. This is done by forward declaring a struct in the .h, but never defining it. The sqlite3 handle is a great example of this technique.
 
-事实上，很多 C 语言项目甚至会将结构体的一部分设置为“不可见”的，表示这些部分属于内部变量，不应对仅仅期望使用其API的用户可见。使结构体“不可见”的方法是事先在.h文件中声明该结构体，但是不去实际定义它。sqlite3 的 handle 是本技巧的一个绝佳的例子。
+事实上，很多 C 语言项目会将结构体的一部分设置为“不可见”的，表示这些部分属于内部变量，不应对仅仅期望使用其 API 的用户可见。使结构体“不可见”的方法是事先在.h文件中声明该结构体，但是不去实际定义它。sqlite3 的 handle 是本技巧的一个绝佳的例子。
 
 A C++ class is laid out just like the struct above, and in fact, if it contains methods (member functions), these internally get called in exactly the same way:
 
@@ -89,7 +89,7 @@ C++ 的类与 C 语言结构体不同的地方之一，是“私有成员变量�
 
 Up to this point, a class was nothing but syntactic sugar and some scoping rules. However..
 
-从目前介绍的这些内容来看，C++ 的类其实就是一种语法糖以及一些作用于规则。但是。。。
+从目前介绍的这些内容来看，C++ 的类其实就是一种语法糖以及一些作用域规则。但是。。。
 
 
 ## Resource Acquisition Is Initialization (RAII)
@@ -97,7 +97,7 @@ Up to this point, a class was nothing but syntactic sugar and some scoping rules
 
 Most modern languages perform garbage collection because it is apparently too hard to keep track of memory. This leads to periodic GC runs which have the potential to ‘stop the world’. Even though the state of the art is improving, GC remains a fraught subject especially in a many-core world.
 
-大多数的现代编程语言都会进行垃圾回收，因为追踪并管理内存显然非常困难。这也使得周期性的垃圾回收具有“使程序停止”的功能。即便现如今的垃圾回收技术有了长足的进步，在多核领域，垃圾回收仍然是让人操心的话题。
+大多数的现代编程语言都会进行垃圾回收，因为追踪并管理内存显然非常困难。但这也使得周期性的垃圾回收具有“使程序停止”的功能。即便现如今的垃圾回收技术有了长足的进步，在多核领域，垃圾回收仍然是让人操心的话题。
 
 Although C and C++ do not do garbage collection, it remains true that it is exceptionally hard to keep track of each and every memory allocation under all (error) conditions. C++ has sophisticated ways to help you and these are built on the primitives called Constructors and Destructors.
 
@@ -162,18 +162,18 @@ Written like this, the code has two huge advantages: 1) the FILE pointer will ne
 
 This technique to use classes or structs with constructors and destructors to own resources is called Resource Acquisition Is Initialization or RAII, and it is used widely. It is quite common for even larger C++ projects to not contain a single call to new or delete (or malloc/free) outside of a constructor/destructor pair. Or at all, in fact.
 
-通过构造函数和析构函数来管理我们的资源，这种使用类或者结构体的技术就叫做：资源获取即初始化（ Resource Acquisition Is Initialization ）或 简称为RAII。这是一种被广泛使用的技术。对于大型 C++ 项目，使用这种方法可以保证不用单独调用 new 或者 delete(或 malloc/free)在构造和析构函数外申请释放内存。
+通过构造函数和析构函数来管理我们的资源，这种使用类或者结构体的技术就叫做：资源获取即初始化（ Resource Acquisition Is Initialization ）或 简称为RAII。这是一种被广泛使用的技术。对于大型 C++ 项目，使用这种方法可以保证不用单独调用 new 或者 delete (或 malloc/free)在构造和析构函数外申请和释放内存。
 
 ## Smart pointers
 ## 智能指针
 
 Memory leaks are the bane of every project. Even with garbage collection it is possible to keep gigabytes of memory in use for a single window displaying chat messages.
 
-对所有的项目来说，内存泄露都将是一场灾难。即使有了垃圾回收，对于一个对话框消息来说，也有可能占据几个 GB 的内存。
+对所有的项目来说，内存泄露都将是一场灾难。即使有了垃圾回收，对于一个对话框消息来说，也有可能占据大量的内存。
 
 C++ offers a number of so called smart pointers that can help, each with its own (dis)advantages. The most “do what I want” smart pointer is std::shared_ptr and in its most basic form it can be used like this:
 
-C++ 提供了一些被称作智能指针的东西来帮我们解决这个问题，每种智能指针都有其自己的优缺点。束缚最少的智能指针是 `std::shared_ptr` ，其最基本的用法如下：
+C++ 提供了一些被称作智能指针的对象来帮我们解决这个问题，每种智能指针都有其自己的优缺点。束缚最少的智能指针是 `std::shared_ptr` ，其最基本的用法如下：
 
 ```cpp
 void func(Canvas* canvas)
@@ -209,7 +209,7 @@ void func(Canvas* canvas)
 
 This first defines a vector of std::shared_ptrs to Circle, then creates such a shared_ptr and stores it in the circles vector. When func returns, ptr goes out of scope, but since a copy of it is in the vector circles, the Circle object stays alive. std::shared_ptr is therefore a reference counting smart pointer.
 
-首先我们创建一个容器，用于存放 `Circle` 实例的智能指针，然后我们创建一个`shared_ptr`并将其存放到容器中。当函数返回时，指针超过了它的作用于，但是因为它的一个拷贝还存放在容器中，`Circle` 对象仍然存在。`std::shared_ptr` 因此是一个引用计数智能指针。
+首先我们创建一个容器，用于存放 `Circle` 实例的智能指针，然后我们创建一个`shared_ptr`并将其存放到容器中。当函数返回时，指针超过了它的作用域，但是因为它的一个拷贝还存放在容器中，`Circle` 对象仍然存在。`std::shared_ptr` 因此是一个引用计数智能指针。
 
 
 std::shared_ptr has another neat feature which goes like this:
@@ -251,13 +251,14 @@ C++ 还提供了其他的智能指针，和前文介绍的智能指针最相关�
 
 Every time I used to create a thread with pthread_create in C or older C++, I’d feel bad. Having to cram all the data to launch the thread through a void pointer felt silly and dangerous.
 
-每次我通过 `pthread_create` 在 C 或者老版本 C++ 中创建线程的时候，我都感觉很不爽。把一堆数据塞到一个void指针里并启动线程，我觉得又傻又危险。
+每次我通过 `pthread_create` 在 C 或者老版本 C++ 中创建线程的时候，我都感觉很不爽。把一堆数据通过一个void指针传入并启动线程，我觉得又傻又危险。
 
 C++ offers a powerful layer on top of the native threading system to make this all easier and safer. In addition, it has ways of easily getting data back from a thread.
 
-C++ 在原生的线程系统之上提供了一层强大的封装，使之变得既简单又安全。此外，也可以很简单的从线程获取返回的数据。
+C++ 在原生的线程系统之上提供了一层强大的封装，使之变得既简单又安全。此外，也可以很方便地从线程获取返回的数据。
 
 A small sample:
+
 一个小例子：
 
 ```cpp
@@ -290,11 +291,11 @@ If no return code is required, launching a thread is as easy as:
 
 Like C11, C++ offers atomic operations. These are as simple as defining std::atomic<uint64_t> packetcounter. Operations on packetcounter are then atomic, with a wide suite of ways of interrogating or updating packetcounter if specific modes are required to for example build lock free data structures.
 
-像C11，C++ 提供了原子操作。就像定义 `std::atomic<uint64_t> packetcounter` 一样简单，对packetcounter的查询和更新就变成了原子操作了，如果我们需要创建一无锁数据结构的话，这样做很方便。
+和像 C11 一样，C++ 提供了原子操作。就像定义 `std::atomic<uint64_t> packetcounter` 一样简单，对 `packetcounter` 的查询和更新就变成了原子操作，如果我们需要创建一无锁数据结构的话，这样做很方便。
 
 Note that as in C, declaring a counter to be used from multiple threads as volatile does nothing useful. Full atomics are required, or explicit locking.
 
-注意，和 C 语言一样，在多线程中把一个计数器声明为`volatile`没有任何作用。需要完全原子的操作或者显式地加锁。
+注意，和 C 语言一样，在多线程中把一个计数器声明为`volatile`是没有任何作用的。需要完全原子的操作或者显式地加锁。
 
 ## Locking
 ## 锁
@@ -302,7 +303,7 @@ Note that as in C, declaring a counter to be used from multiple threads as volat
 
 Much like keeping track of memory allocations, making sure to release locks on all codepaths is hard. As usual, RAII comes to the rescue:
 
-就像追踪内存的申请释放一样，确保锁的正确释放也是非常困难的。和之前一样，RAII可以救我们于水火：
+就像追踪内存的申请和释放一样，确保锁的正确释放也是非常困难的。和之前一样，RAII 可以救我们于水火：
 
 ```cpp
 std::mutex g_pages_mutex;
@@ -317,7 +318,7 @@ void func()
 
 The guard object above will keep g_pages_mutex locked for a long as needed, but will always release it when func() is done, through an error or not.
 
-上述 guard 对象会对`g_pages_mutex`进行加锁操作，但是当func()返回时，它一定会释放锁，不论函数成功或失败。
+上述 guard 对象会对 `g_pages_mutex` 进行加锁操作，但是当 func() 返回时，它一定会释放锁，不论函数成功或失败。
 
 
 ## Error handling
@@ -325,12 +326,12 @@ The guard object above will keep g_pages_mutex locked for a long as needed, but 
 
 To be honest, error handling is a poorly solved problem in any language. We can riddle our code with checks, and at each check I wonder “what should the program actually DO if this fails”. Options are rarely good - ignore, prompt user, restart program, or log a message in hopes that someone reads it.
 
-说实话，在很多语言里面，都没有能够很好的解决异常处理这一问题。我们可以在代码中塞进各种各样的检查，每个检查处我都要思考“如果检查报错，程序应该怎么处理”。 还有一些可选的做法 —— 不处理，提示用户，重启程序或者记录日志（并期望有人会去读这些日志）。
+说实话，在很多语言里面，都没有能够很好的解决异常处理这一问题。我们可以在代码中塞进各种各样的检查，每个检查处我都要思考“如果检查报错，程序应该怎么处理”。 还有一些可选的做法 —— 不处理、提示用户、重启程序或者记录日志（并期望有人会去读这些日志）。
 
 
 C++ offers exceptions which in any case have some benefits over checking every return code. The good thing about an exception is that, unlike a return code, it is not ignored by default. First let us update SmartFP so it throws exceptions:
 
-C++ 提供了异常机制，在很多情况下对于避免检查每处返回值还是有益处的。异常机制好的一面是，相对于return，它不会默认不处理异常。首先，让我们升级一下我们的 `SmartFP` 类，使其能够抛出异常：
+C++ 提供的异常机制，在很多情况下对于避免检查每处返回值还是有益处的。异常机制好的一面是，相对于 return，它不会默认不处理异常。首先，让我们升级一下我们的 `SmartFP` 类，使其能够抛出异常：
 
 ```cpp
 std::string stringerror()
@@ -356,7 +357,7 @@ struct SmartFP
 
 If we now create a SmartFP and it does not throw an exception, we know it is good to use. And for error reporting, we can catch the exception:
 
-如果我们此时创建 `SmartFP` 并且它没有抛出异常，我们就知道可以放心使用它了。如果我们需要错误报告，我们可以捕获异常：
+如果我们此时创建 `SmartFP` 并且它没有抛出异常，我们就知道可以放心使用它了。如果需要错误报告，我们可以捕获异常：
 
 ```cpp
 void func2()
@@ -386,14 +387,14 @@ catch(std::exception& e) {
 
 This shows an exception being thrown from SmartFP::SmartFP which then falls ‘through’ both func2() and func() to get caught in main(). The good thing about the fallthrough is that an error will always be noticed, unlike a simple return code which could be ignored. The downside however is that the exception may get ‘caught’ very far away from where it was thrown, which can lead to surprises. This does usually lead to good error logging though.
 
-这里显示了一个被 `SmartFP::SmartFP` 抛出的异常，这个异常“穿越”了 func2() 和 func()，然后在 main() 中被捕获。这种不断上抛异常的特性，其好的一方面是所有错误最终都会被关注到，而不像 return 可能会导致异常没有被处理。然而，它不好的一方面是捕获它的地方与抛出它的地方相距甚远，这可能让人感到困惑。这通常需要可以做到很好的日志记录。
+这里显示了一个被 `SmartFP::SmartFP` 抛出的异常，这个异常“穿越”了 `func2()` 和 `func()`，然后在 `main()` 中被捕获。这种不断上抛异常的特性，其好的一方面是所有错误最终都会被关注到，而不像 return 可能会导致异常没有被处理。然而，它不好的一方面是捕获它的地方与抛出它的地方相距甚远，这可能让人感到困惑。这通常需要做到很好的日志记录。
 
 Combined with RAII, exceptions are a very powerful technique to safely acquire resources and also deal with errors.
 结合 RAII ，异常机制可以成为非常强大的计数，用于安全的获取资源并处理错误。
 
 Code that can throw exceptions is slightly slower than code that can’t but it barely shows up in profiles. Actually throwing an exception is rather heavy though, so only use it for error conditions.
 
-具有异常处理机制的代码在执行速度上会稍慢一些，但是在性能分析中几乎是不可见的差异。实际上，抛出异常还是一个很“重”的操作，所以请确保仅在异常情况下使用它。
+具有异常处理机制的代码在执行速度上会稍慢一些，但是在性能分析中几乎是不可见的差异。实际上，抛出异常的确是一个很“重”的操作，所以请确保仅在异常情况下使用它。
 
 Most debuggers can break on the throwing of an exception, which is a powerful debugging technique. In gdb this is done with catch throw.
 
@@ -401,7 +402,7 @@ Most debuggers can break on the throwing of an exception, which is a powerful de
 
 As noted, no error handling technique is perfect. One thing that seems promising is the std::expected work or boost::expected which creates functions that have both return codes or throw exceptions if you don’t look at them.
 
-注意，没有什么异常处理技术是完美的。 `std::expected` 或 `boost::expected`看上去很有前景，它们可以创建函数返回代码或抛出异常。
+注意，没有什么异常处理技术是完美的。 `std::expected` 或 `boost::expected` 看上去很有前景，**它们可以创建函数返回代码或抛出异常。**
 
 
 ## Summarising
