@@ -17,7 +17,7 @@ That’s why most development teams have their own set of rules on how to use th
 
 Nevertheless, there are several best practices that are used by most teams. Here are the 9 most important ones that help you get started or improve your exception handling.
 
-尽管如此，这里还是有一些被大多数团队所遵循的最佳实践方法。以下9个最重要的实践方法能帮助你开始或改进你的异常处理。
+尽管如此，这里还是有一些被大多数团队所遵循的最佳实践准则。以下9个最重要的实践方法能帮助你开始或改进你的异常处理。
 
 ## 1. Clean Up Resources in a Finally Block or Use a Try-With-Resource Statement
 
@@ -249,10 +249,15 @@ public void doNotCatchThrowable() {
 ```
 
 ## 7. Don’t Ignore Exceptions
+## 7. 不要忽略异常
 
 Have you ever analyzed a bug report where only the first part of your use case got executed?
 
+你分析过只有用例的第一部分代码被执行的bug报告吗？
+
 That’s often caused by an ignored exception. The developer was probably pretty sure that it would never be thrown and added a catch block that doesn’t handle or logs it. And when you find this block, you most likely even find one of the famous “This will never happen” comments.
+
+这通常是由于忽略异常而导致的。开发者可能十分确定这个异常不会被抛出，然后添加了一个无法处理或无法记录这个异常的catch。当你找到这个catch时，你很可能会发现这么一句有名的注释： “This will never happen”。
 
 ```java
 public void doNotIgnoreExceptions() {
@@ -266,9 +271,15 @@ public void doNotIgnoreExceptions() {
 
 Well, you might be analyzing a problem in which the impossible happened.
 
+是的，你可能就是在分析一个永远也不会发生的问题。
+
 So, please, never ignore an exception. You don’t know how the code will change in the future. Someone might remove the validation that prevented the exceptional event without recognizing that this creates a problem. Or the code that throws the exception gets changed and now throws multiple exceptions of the same class, and the calling code doesn’t prevent all of them.
 
+所以，请你务必不要忽略异常。你不知道代码在将来会经历怎样的改动。有些人可能会误删异常事件的验证，而完全没意识到这会产出问题。或者抛出异常的代码被修改了，相同的类被抛出了多个异常，而调用它们的代码并不能阻止这些异常发生。
+
 You should at least write a log message telling everyone that the unthinkable just had happened and that someone needs to check it.
+
+你应该至少把日志信息打印出来，告诉那些无意识下错误操作的人需要检查这里。
 
 ```java
 public void logAnException() {
@@ -281,8 +292,11 @@ public void logAnException() {
 ```
 
 ## 8. Don’t Log and Throw
+## 8. 不要同时打印并抛出异常
 
 That is probably the most often ignored best practice in this list. You can find lots of code snippets and even libraries in which an exception gets caught, logged and rethrown.
+
+这可能是本文中最常被忽略的一条实践准则了。你可以在许多代码片段甚至库中发现这个问题，异常被捕获，打印，再被重新抛出。
 
 ```java
 try {
@@ -294,6 +308,8 @@ try {
 ```
 
 It might feel intuitive to log an exception when it occurred and then rethrow it so that the caller can handle it appropriately. But it will write multiple error messages for the same exception.
+
+这样也许会很直观地看到被打印的异常，异常再被重新抛出，调用者也能很好地处理它。但这样会使多个错误信息被同个异常给打印出来。
 
 ```
 17:44:28,945 ERROR TestExceptionHandling:65 - java.lang.NumberFormatException: For input string: "xyz"
@@ -307,7 +323,11 @@ at com.stackify.example.TestExceptionHandling.main(TestExceptionHandling.java:58
 
 The additional messages also don’t add any information. As explained in best practice #4, the exception message should describe the exceptional event. And the stack trace tells you in which class, method, and line the exception was thrown.
 
+额外的信息并不能提供更多的错误细节。如第4条准则中所述，异常信息应该准确描述异常事件。Stack Trace(堆栈追踪)会告诉你异常在哪个类、哪个方法、哪个行中被抛出
+
 If you need to add additional information, you should catch the exception and wrap it in a custom one. But make sure to follow best practice number 9.
+
+如果你需要添加额外的信息，你应该将异常捕获并包装在自定义的的异常中，但要确保遵循下面的第9条实践准则。
 
 ```java
 public void wrapException(String input) throws MyBusinessException {
@@ -319,11 +339,19 @@ public void wrapException(String input) throws MyBusinessException {
 }
 ```
 
+So, only catch an exception if you want to handle it. Otherwise, specify it in the method signature and let the caller take care of it.
+
+所以，只有在你想要处理一个异常的时候才去捕获它。否则，在方法签名处指明这个异常让调用者关注就好了。
+
 ## 9. Wrap the Exception Without Consuming it
+## 9. 包装异常但不要丢弃异常
 
 It’s sometimes better to catch a standard exception and to wrap it into a custom one. A typical example for such an exception is an application or framework specific business exception. That allows you to add additional information and you can also implement a special handling for your exception class.
+有时候将异常包装成一个自定义异常会比捕捉一个标准异常要更好。一个典型的例子是应用或框架的特定业务异常。这允许你添加额外的信息，也能为你的异常类实现一个特定的处理方法。
 
 When you do that, make sure to set the original exception as the cause. The Exception class provides specific constructor methods that accept a Throwable as a parameter. Otherwise, you lose the stack trace and message of the original exception which will make it difficult to analyze the exceptional event that caused your exception.
+
+当你这么做的时候，一定要确保原始的异常设为cause。Exception类提供了一系列的特定构造方法，这些方法可以接受Throwable作为参数。否则，你将会丢失原始异常的stack trace与信息，这会使你分析导致异常的事件变得十分困难。
 
 ```java
 public void wrapException(String input) throws MyBusinessException {
@@ -336,7 +364,12 @@ public void wrapException(String input) throws MyBusinessException {
 ```
 
 ## Summary
+## 总结
 
 As you’ve seen, there are lots of different things you should consider when you throw or catch an exception. Most of them have the goal to improve the readability of your code or the usability of your API.
 
+如你所见，当该决定是抛出还是捕获异常时候，你需要去考虑很多方面。以上的大多数准则都是为了提高你代码与API的可读性与可用性。
+
 Exceptions are most often an error handling mechanism and a communication medium at the same time. You should, therefore, make sure to discuss the best practices and rules you want to apply with your coworkers so that everyone understands the general concepts and uses them in the same way.
+
+异常是不仅是一个错误处理机制，同时也是一个沟通媒介。因此，你应该与你的同事一起讨论哪些是你想要应用的最佳实践与准则，以便所有人都能理解相关的基本概念，并用同样的方式在实际中应用这些准则。
