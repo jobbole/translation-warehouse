@@ -51,7 +51,7 @@ The problem is that this approach seems to work perfectly fine as long as no exc
 
 But you added the try block for a reason. You call one or more methods which might throw an exception, or maybe you throw the exception yourself. That means you might not reach the end of the try block. And as a result, you will not close the resources.
 
-但是用try总是有原因的。当你调用一个或多个可能会抛出异常的方法或自己主动抛出异常时，程序可能会无法到达try的尾部。于是在最后，资源将不被关闭。
+但是，用try总是有原因的。当你调用一个或多个可能会抛出异常的方法或自己主动抛出异常时，程序可能会无法到达try的尾部。于是在最后，资源将不被关闭。
 
 You should, therefore, put all your clean up code into the finally block or use a try-with-resource statement.
 
@@ -119,11 +119,11 @@ The more specific the exception is that you throw, the better. Always keep in mi
 
 Therefore make sure to provide them as many information as possible. That makes your API easier to understand. And as a result, the caller of your method will be able to handle the exception better or [avoid it with an additional check](https://stackify.com/top-java-software-errors/?utm_referrer=https%3A%2F%2Fdzone.com%2F).
 
-因此，你需要确保提供尽可能多的信息，这会使得你的API更易于理解。这样，调用你方法的人可以更好地处理异常，从而避免额外的诸如此类的[检查](https://stackify.com/top-java-software-errors/?utm_referrer=https%3A%2F%2Fdzone.com%2F)。
+因此，你需要确保提供尽可能多的信息，这会使得你的API更易于理解。这样，调用你方法的人可以更好地处理异常，从而避免额外的诸如[此类的检查](https://stackify.com/top-java-software-errors/?utm_referrer=https%3A%2F%2Fdzone.com%2F)。
 
 So, always try to find the class that fits best to your exceptional event, e.g. throw a [NumberFormatException](https://docs.oracle.com/javase/8/docs/api/java/lang/NumberFormatException.html) instead of an [IllegalArgumentException](https://docs.oracle.com/javase/8/docs/api/java/lang/IllegalArgumentException.html). And avoid throwing an unspecific Exception.
 
-所以，应该找到与你的异常事件最符合的类，比如抛出一个[NumberFormatException](https://docs.oracle.com/javase/8/docs/api/java/lang/NumberFormatException.html) 而不是 [IllegalArgumentException](https://docs.oracle.com/javase/8/docs/api/java/lang/IllegalArgumentException.html)(译者注：例如将参数转换为数值出错时，应该抛出具体的NumberFormatException，而不是笼统的IllegalArgumentException)。请避免抛出一个不具体的异常。
+所以，应该找到与你的异常事件最符合的类，比如抛出一个[NumberFormatException](https://docs.oracle.com/javase/8/docs/api/java/lang/NumberFormatException.html) 而不是 [IllegalArgumentException](https://docs.oracle.com/javase/8/docs/api/java/lang/IllegalArgumentException.html)(译者注：将参数转换为数值出错时，应该抛出具体的NumberFormatException，而不是笼统的IllegalArgumentException)。请避免抛出一个不具体的异常。
 
 ```java
 public void doNotDoThis() throws Exception {
@@ -162,7 +162,7 @@ public void doSomething(String input) throws MyBusinessException {
 
 The idea behind this best practice is similar to the two previous ones. But this time, you don’t provide the information to the caller of your method. The exception’s message gets read by everyone who has to understand what had happened when the exception was reported in the log file or your monitoring tool.
 
-这个方法背后的思想和前两个是类似的。但这一次，你不必给你的方法调用者提供信息。当异常在日志文件或监视工具中被报告时，任何一个想要了解发生了什么的人都要能理解它。
+这个方法背后的思想和前两个是类似的。但这一次，你不必给你的方法调用者提供信息。当异常在日志文件或监视工具中被报告时，任何一个想要了解发生了什么的人都要能读懂它。
 
 It should, therefore, describe the problem as precisely as possible and provide the most relevant information to understand the exceptional event.
 
@@ -170,7 +170,7 @@ It should, therefore, describe the problem as precisely as possible and provide 
 
 Don’t get me wrong; you shouldn’t write a paragraph of text. But you should explain the reason for the exception in 1-2 short sentences. That helps your operations team to understand the severity of the problem, and it also makes it easier for you to analyze any service incidents.
 
-别误会我的意思。你没必要去写上一大段的文字，但你应该用一两句简短的话来解释一下异常发生的原因。这能让你的开发团队明白问题的严重性，也能让你更容易地分析服务意外事件。
+别误会我的意思了。你没必要去写上一大段的文字，但你应该用一两句简短的话来解释一下异常发生的原因。这能让你的开发团队明白问题的严重性，也能让你更容易地分析服务意外事件。
 
 If you throw a specific exception, its class name will most likely already describe the kind of error. So, you don’t need to provide a lot of additional information. A good example for that is the NumberFormatException. It gets thrown by the constructor of the class java.lang.Long when you provide a String in a wrong format.
 
@@ -200,12 +200,12 @@ Most IDEs help you with this best practice. They report an unreachable code bloc
 
 The problem is that only the first catch block that matches the exception gets executed. So, if you catch an IllegalArgumentException first, you will never reach the catch block that should handle the more specific NumberFormatException because it’s a subclass of the IllegalArgumentException.
 
-这个问题的原因是只有第一个匹配到异常的catch块才会被执行。所以，如果你先捕获了一个IllegalArgumentException，你将永远无法到达处理更具体异常NumberFormatException的catch块中，因为NumberFormatException是
+这个问题的原因是只有第一个匹配到异常的catch块才会被执行。所以，如果你先catch了一个IllegalArgumentException，你将永远无法到达处理更具体异常NumberFormatException的catch块中，因为NumberFormatException是
 IllegalArgumentException的子类。
 
 Always catch the most specific exception class first and add the less specific catch blocks to the end of your list.
 
-所以，请优先捕获更具体的异常，并将不那么具体的catch块放在后面。
+所以，请优先捕获更具体的异常，并把不那么具体的catch块放在后面。
 
 You can see an example of such a try-catch statement in the following code snippet. The first catch block handles all NumberFormatExceptions and the second one all IllegalArgumentExceptions which are not a NumberFormatException.
 
@@ -236,7 +236,7 @@ If you use Throwable in a catch clause, it will not only catch all exceptions; i
 
 So, better don’t catch a Throwable unless you’re absolutely sure that you’re in an exceptional situation in which you’re able or required to handle an error.
 
-所以，最好不要在catch中使用Throwable，除非你确保自己处于一个可以处理错误，或被要求处理错误的特定的情况下。
+所以，最好不要在catch中使用Throwable，除非你确保自己处于一个能够处理错误，或被要求处理错误的特定情况下。
 
 ```java
 public void doNotCatchThrowable() {
@@ -257,7 +257,7 @@ Have you ever analyzed a bug report where only the first part of your use case g
 
 That’s often caused by an ignored exception. The developer was probably pretty sure that it would never be thrown and added a catch block that doesn’t handle or logs it. And when you find this block, you most likely even find one of the famous “This will never happen” comments.
 
-这通常是由于忽略异常而导致的。开发者可能十分确定这个异常不会被抛出，然后添加了一个无法处理或无法记录这个异常的catch。当你找到这个catch时，你很可能会发现这么一句有名的注释： “This will never happen”。
+这通常是由于忽略异常而导致的。开发者可能十分确定这个异常不会被抛出，然后添加了一个无法处理或无法记录这个异常的catch。当你找到这个catch时，你很可能会发现这么一句著名的注释： “This will never happen”。
 
 ```java
 public void doNotIgnoreExceptions() {
@@ -271,7 +271,7 @@ public void doNotIgnoreExceptions() {
 
 Well, you might be analyzing a problem in which the impossible happened.
 
-是的，你可能就是在分析一个永远也不会发生的问题。
+没错，你可能就是在分析一个永远也不会发生的问题。
 
 So, please, never ignore an exception. You don’t know how the code will change in the future. Someone might remove the validation that prevented the exceptional event without recognizing that this creates a problem. Or the code that throws the exception gets changed and now throws multiple exceptions of the same class, and the calling code doesn’t prevent all of them.
 
@@ -323,7 +323,7 @@ at com.stackify.example.TestExceptionHandling.main(TestExceptionHandling.java:58
 
 The additional messages also don’t add any information. As explained in best practice #4, the exception message should describe the exceptional event. And the stack trace tells you in which class, method, and line the exception was thrown.
 
-额外的信息并不能提供更多的错误细节。如第4条准则中所述，异常信息应该准确描述异常事件。Stack Trace(堆栈追踪)会告诉你异常在哪个类、哪个方法、哪个行中被抛出
+额外的信息并不能提供更多的错误细节。如第4条准则中所述，异常信息应该准确描述异常事件。Stack Trace(堆栈追踪)会告诉你异常在哪个类、哪个方法、哪个行中被抛出。
 
 If you need to add additional information, you should catch the exception and wrap it in a custom one. But make sure to follow best practice number 9.
 
@@ -344,14 +344,14 @@ So, only catch an exception if you want to handle it. Otherwise, specify it in t
 所以，只有在你想要处理一个异常的时候才去捕获它。否则，在方法签名处指明这个异常让调用者关注就好了。
 
 ## 9. Wrap the Exception Without Consuming it
-## 9. 包装异常但不要丢弃异常
+## 9. 包装异常但不要丢弃原始异常
 
 It’s sometimes better to catch a standard exception and to wrap it into a custom one. A typical example for such an exception is an application or framework specific business exception. That allows you to add additional information and you can also implement a special handling for your exception class.
 有时候将异常包装成一个自定义异常会比捕捉一个标准异常要更好。一个典型的例子是应用或框架的特定业务异常。这允许你添加额外的信息，也能为你的异常类实现一个特定的处理方法。
 
 When you do that, make sure to set the original exception as the cause. The Exception class provides specific constructor methods that accept a Throwable as a parameter. Otherwise, you lose the stack trace and message of the original exception which will make it difficult to analyze the exceptional event that caused your exception.
 
-当你这么做的时候，一定要确保原始的异常设为cause。Exception类提供了一系列的特定构造方法，这些方法可以接受Throwable作为参数。否则，你将会丢失原始异常的stack trace与信息，这会使你分析导致异常的事件变得十分困难。
+当你这么做的时候，一定要确保原始的异常设为cause。Exception类提供了一系列的特定构造方法，这些方法可以接受Throwable作为参数(注：如`Exception(String message, Throwable cause)`)。否则，你将会丢失原始异常的stack trace与信息，这会使你分析导致异常的事件变得十分困难。
 
 ```java
 public void wrapException(String input) throws MyBusinessException {
@@ -368,7 +368,7 @@ public void wrapException(String input) throws MyBusinessException {
 
 As you’ve seen, there are lots of different things you should consider when you throw or catch an exception. Most of them have the goal to improve the readability of your code or the usability of your API.
 
-如你所见，当该决定是抛出还是捕获异常时候，你需要去考虑很多方面。以上的大多数准则都是为了提高你代码与API的可读性与可用性。
+如你所见，当决定该抛出还是捕获异常时候，你需要去考虑很多方面。以上的大多数实践准则都是为了提高你代码和API的可读性与可用性。
 
 Exceptions are most often an error handling mechanism and a communication medium at the same time. You should, therefore, make sure to discuss the best practices and rules you want to apply with your coworkers so that everyone understands the general concepts and uses them in the same way.
 
