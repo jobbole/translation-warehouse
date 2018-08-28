@@ -135,7 +135,7 @@ public void doThis() throws NumberFormatException {
 ```
 
 ## 3. Document the Exceptions You Specify
-## 3. 在文档中记录你使用的异常
+## 3. 为你的异常编写文档
 
 Whenever you [specify an exception](https://stackify.com/specify-handle-exceptions-java/?utm_referrer=https%3A%2F%2Fdzone.com%2F#specify) in your method signature, you should also [document it in your Javadoc](http://blog.joda.org/2012/11/javadoc-coding-standards.html). That has the same goal as the previous best practice: Provide the caller as many information as possible so that he can avoid or handle the exception.
 
