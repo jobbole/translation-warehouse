@@ -43,7 +43,7 @@ As shown above, we have to add a finally block to deal with the closing of resou
 
 As a side note, if exceptions are thrown here in both try block and finally block, the one thrown from finally block will suppress the other.
 
-顺便提一下，假如 try 和 finally 语句块都抛出异常，finally 语句块抛出的异常会屏蔽另一个。
+顺便提一下，假如 try 和 finally 语句块都抛出异常，finally 语句块抛出的异常会屏蔽对方。
 
 ## Resource Handling With try-with-resources in Java 7/8
 ## Java 7/8 中通过 try-with-resources 处理资源
@@ -69,7 +69,7 @@ In this example, you can see that the improved concisness of the code contribute
 
 If exceptions are thrown here, in both the try-with-resources block and try block, the one thrown from try block will suppress the other. If required, we can retrieve the suppressed exceptions by calling the Throwable.getSuppressed method from the exception thrown by the try block.
 
-如果在 try-with-resources 和 try 语句块中抛出异常，从 try 中抛出的异常将会屏蔽另一个。假如有需要，可从 try 语句块抛出的异常中，通过调用  Throwable.getSuppressed 方法找回屏蔽的异常。
+如果在 try-with-resources 和 try 语句块中抛出异常，从 try 中抛出的异常将会屏蔽对方。假如有需要，可从 try 语句块抛出的异常中，通过调用  Throwable.getSuppressed 方法找回屏蔽的异常。
 
 
 Also, a try-with-resources statement can have catch and finally blocks. Any catch or finally block is run after the resources declared have been closed.
@@ -131,7 +131,7 @@ try-with-resources 有助于自动资源管理，不需要编写显示的 finall
 
 - In Java 9, we can even use pre-created resources, given that the resources referenced are declared as a final or are effective final.
 
-- Java 9 中甚至能使用预先创建的资源，只要所引用的资源声明为 final 或者 是 effective final。
+- Java 9 中甚至能使用预先创建的资源，只要所引用的资源声明为 final 或者是 effective final。
 
 - AutoCloseable or Closeable interfaces do behind the scenes magic — they work in tandem with try-with-resources statements.
 
