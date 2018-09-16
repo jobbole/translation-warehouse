@@ -1,5 +1,5 @@
 # Java Code Bytes: Be Resourceful With Try-With-Resources
-#  Java 代码字节：足智多谋的 Try-With-Resources 
+# Java 代码字节：足智多谋的 Try-With-Resources 
 
 It is very common that, while implementing a business case in Java, we have to deal with resources. In this context, a resource (such as a file or socket handle) is encapsulated in an object that we must close after they are used in order to release the resource. Traditionally, the onus was on the developer to close all the resources they created to avoid dependency collisions, generally in the following finally block. Failing to do so is not a compilation error, but it can easily lead to a leakage of resource. Though modern static code analysis tools are smart enough to give you a hint, not everyone uses them, and also, those alerts can be easily overlooked.
 
@@ -81,7 +81,7 @@ try-with-resources 语句中也可以写 catch 和 finally 语句块。任何 ca
 
 A more concise version is introduced in Java 9. If we already have a resource declared as a final or effective final, we can use them in try-with-resources without creating any new variables. This allows us to take advantage of automatic resource management. The same block of code above, now implemented with more concise try-with-resources, will look like: 
 
-Java 9 中引入了更加简洁的版本。如果已经把资源声明为 final 或 effective final，则在 try-with-resources 中无需创建任何新的变量，可直接使用。这使得能够利用自动资源管理。现通过更简洁的 try-with-resources 语句来实现与上面相同的代码块，如下所示：
+Java 9 中引入了更加简练的版本。如果已经把资源声明为 final 或 effective final，则在 try-with-resources 中无需创建任何新的变量，可直接使用。这使得能够利用自动资源管理。现通过更简洁的 try-with-resources 语句来实现与上面相同的代码块，如下所示：
 
 ```
 // Code is simplified and kept relevant to focus on the topic in hand.
@@ -89,7 +89,7 @@ Java 9 中引入了更加简洁的版本。如果已经把资源声明为 final 
 public static int getAccountStatusCodeFromDataStore_tryWithResourcesJava9(String accountId) throws SQLException {
   String accountStatusCodeQuery = getAccountStatusCodeQuery(accountId);
   // declared explicitly final
-  // 声明显示 final 
+  // 显示地声明 final 
   final Statement statement = createStatementFromConnection();
   // effective final
   ResultSet resultSet = statement.executeQuery(accountStatusCodeQuery);
@@ -115,11 +115,11 @@ However, if we are dealing with a resource that doesn't implement either of Auto
 ## 关键要点
 try-with-resources facilitates automatic resource management with no need to write an explicit finally block to deal with closing of resources. Here is the summary of the key takeaways about try-with-resources.   
 
-try-with-resources 有助于自动资源管理，不需要编写显示的 finally 语句块来处理关闭资源。以下是对 try-with-resources 关键点的总结：
+try-with-resources 有助于自动资源管理，不需要编写显示的 finally 语句块来处理关闭资源。下面是对 try-with-resources 关键点的总结：
 
 - It helps in achieving more concise and legible code.
 
-- 有助于实现简洁清晰的代码。
+- 有助于实现简练清晰的代码。
 
 - We can deal with multiple resources in the try-with-resources statement.
 
@@ -127,11 +127,11 @@ try-with-resources 有助于自动资源管理，不需要编写显示的 finall
 
 - In Java 7/8, these resources must be declared in try-with-resources statement. The resources declared this way are implicitly final.
 
-- 在 Java 7/8 ，try-with-resources 语句中必须声明要关闭的资源。这种声明资源的方式属于隐式 final。
+- 在 Java 7/8 ，try-with-resources 语句中必须声明要关闭的资源。通过这种方式声明的资源属于隐式 final。
 
 - In Java 9, we can even use pre-created resources, given that the resources referenced are declared as a final or are effective final.
 
-- Java 9 中甚至能使用预先创建的资源，只要所引用的资源声明为 final 或者 effective final。
+- Java 9 中甚至能使用预先创建的资源，只要所引用的资源声明为 final 或者 是 effective final。
 
 - AutoCloseable or Closeable interfaces do behind the scenes magic — they work in tandem with try-with-resources statements.
 
