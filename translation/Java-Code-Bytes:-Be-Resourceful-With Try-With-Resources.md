@@ -19,7 +19,7 @@ Let's take a business case implementation where we need to fetch a given account
 
 ```
 // Code is simplified and kept relevant to focus on the topic in hand.
-// 代码已简化，只保留跟手头话题相关的。
+// 代码已简化，只保留跟眼下话题相关的。
 public static int getAccountStatusCodeFromDataStore_traditional(String accountId) throws SQLException {
   String accountStatusCodeQuery = getAccountStatusCodeQuery(accountId);
   Statement statement = null;
@@ -53,7 +53,7 @@ The same block of code above is now implemented with try-with-resources, which w
 
 ```
 // Code is simplified and kept relevant to focus on the topic in hand.
-// 代码已简化，只保留跟手头话题相关的。
+// 代码已简化，只保留跟眼下话题相关的。
 public static int getAccountStatusCodeFromDataStore_tryWithResourcesJava7(String accountId) throws SQLException {
   String accountStatusCodeQuery = getAccountStatusCodeQuery(accountId);
   try (Statement statement = createStatementFromConnection();
@@ -85,7 +85,7 @@ Java 9 中引入了更加简练的版本。如果已经把资源声明为 final 
 
 ```
 // Code is simplified and kept relevant to focus on the topic in hand.
-// 代码已简化，只保留跟手头话题相关的。
+// 代码已简化，只保留跟眼下话题相关的。
 public static int getAccountStatusCodeFromDataStore_tryWithResourcesJava9(String accountId) throws SQLException {
   String accountStatusCodeQuery = getAccountStatusCodeQuery(accountId);
   // declared explicitly final
