@@ -11,7 +11,7 @@ Java 7 中首次引入了一种新的处理（关闭）资源的方式——try-
 
 Let's take a business case implementation where we need to fetch a given account's status code from a database. We will first see how it is done in the traditional way and, then, with more resourceful try-with-resources. Later, we will also see a more concise version of it, which was introduced in Java 9.
 
-来一起看一个业务实例的实现，其需要从数据库中获取指定账户的状态码。首先可以看到它是如何以传统方式实现，紧接着是足智多谋的 try-with-resources 如何实现。最后，还将看到 Java 9 引入的更加简洁的版本。
+我们来一起看一个业务实例的实现，其需要从数据库中获取指定账户的状态码。首先可以看到它是如何以传统方式实现，紧接着是足智多谋的 try-with-resources 如何实现。最后，还将看到 Java 9 引入的更加简洁的版本。
 
 ## Resource Handling in the Traditional Way (pre-Java 7)  
 
