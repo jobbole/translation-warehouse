@@ -3,23 +3,23 @@
 
 It is very common that, while implementing a business case in Java, we have to deal with resources. In this context, a resource (such as a file or socket handle) is encapsulated in an object that we must close after they are used in order to release the resource. Traditionally, the onus was on the developer to close all the resources they created to avoid dependency collisions, generally in the following finally block. Failing to do so is not a compilation error, but it can easily lead to a leakage of resource. Though modern static code analysis tools are smart enough to give you a hint, not everyone uses them, and also, those alerts can be easily overlooked.
 
-当通过 Java 实现业务实例时，对资源进行处理是司空见惯的。一般情况下，资源（如文件或 socket 句柄）封装在对象中，使用后必须关闭才能释放资源。通常开发人员有责任关闭自己所创建的资源，以避免资源冲突，一般都会放在 finally 语句块中处理。不这样做其实也不会产生编译错误，但很容易导致资源泄露。虽然现在静态代码检查工具足够聪明，也可以做出提示。但不是每个人都使用工具，而且很容易忽略这些警告。
+当通过 Java 实现业务实例时，对资源进行处理是司空见惯的。一般情况下，资源（如文件或 socket 句柄）封装在对象中，使用后必须关闭才能释放资源。通常开发人员有责任关闭自己所创建的资源，以避免资源冲突，一般都会放在 finally 语句块中处理。不这样做其实也不会产生编译错误，但很容易导致资源泄露。虽然现在静态代码检查工具足够聪明，也可以做出提示。但不是每个人都使用工具，而且这些警告也容易被忽略。
 
 try-with-resources was first introduced in Java 7 and is a new way to handle (closing of) resources; it makes it easier dealing with resources by automatically taking care of the closing of resources in the correct order, which was used within a try-catch block.
 
-try-with-resources 是 Java 7 中首次引入了一种新的处理（关闭）资源方式。它使得在 try-catch 语句块中的资源能按照正确顺序自动关闭，更加容易地处理资源。
+Java 7 中首次引入了一种新的处理（关闭）资源的方式——try-with-resources。它使得在 try-catch 语句块中的资源能按照正确顺序自动关闭，更加容易地处理资源。
 
 Let's take a business case implementation where we need to fetch a given account's status code from a database. We will first see how it is done in the traditional way and, then, with more resourceful try-with-resources. Later, we will also see a more concise version of it, which was introduced in Java 9.
 
-来一起看一个业务实例的实现，其需要从数据库中获取指定账户的状态码。首先可以看到它是如何以传统方式实现，紧接着是足智多谋的 try-with-resources 如何实现。最后，还将看到 Java 9 引入的更加简洁版本。
+来一起看一个业务实例的实现，其需要从数据库中获取指定账户的状态码。首先可以看到它是如何以传统方式实现，紧接着是足智多谋的 try-with-resources 如何实现。最后，还将看到 Java 9 引入的更加简洁的版本。
 
 ## Resource Handling in the Traditional Way (pre-Java 7)  
 
 ## 传统的方式处理资源（Java 7 之前）
 
-```
+```java
 // Code is simplified and kept relevant to focus on the topic in hand.
-// 代码已简化，只保留跟眼下话题相关的。
+// 代码已简化，只保留跟眼下话题相关的内容。
 public static int getAccountStatusCodeFromDataStore_traditional(String accountId) throws SQLException {
   String accountStatusCodeQuery = getAccountStatusCodeQuery(accountId);
   Statement statement = null;
@@ -39,7 +39,7 @@ public static int getAccountStatusCodeFromDataStore_traditional(String accountId
 
 As shown above, we have to add a finally block to deal with the closing of resource. We have to explicitly check for null before we call the close operation. Also, we have to maintain the logical order for the closing of resources. The code here is verbose; and, I have seen many cases where developers tend to forget to add the finally block for closing resource, which will lead to resource leaks.
 
-如上所示，必须增加 finally 语句块来处理资源关闭。在调用 close 方法之前，须显示地检查 null 值，并且同时要保证关闭资源的逻辑顺序。代码不但变得冗长，而且曾经遇到过许多开发人员会忘记编写 finally 语句块来关闭资源，导致资源泄露的情况。
+如上所示，我们必须增加 finally 语句块来处理资源关闭。在调用 close 方法之前，须显示地检查 null 值，并且同时要保证关闭资源的逻辑顺序。代码不但变得冗长，而且我们曾经遇到过许多开发人员会忘记编写 finally 语句块来关闭资源，导致资源泄露的情况。
 
 As a side note, if exceptions are thrown here in both try block and finally block, the one thrown from finally block will suppress the other.
 
@@ -51,9 +51,9 @@ The same block of code above is now implemented with try-with-resources, which w
 
 现通过 try-with-resources 实现与上面相同的代码块，如下所示：
 
-```
+```java
 // Code is simplified and kept relevant to focus on the topic in hand.
-// 代码已简化，只保留跟眼下话题相关的。
+// 代码已简化，只保留跟眼下话题相关的内容。
 public static int getAccountStatusCodeFromDataStore_tryWithResourcesJava7(String accountId) throws SQLException {
   String accountStatusCodeQuery = getAccountStatusCodeQuery(accountId);
   try (Statement statement = createStatementFromConnection();
@@ -83,9 +83,9 @@ A more concise version is introduced in Java 9. If we already have a resource de
 
 Java 9 中引入了更加简练的版本。如果已经把资源声明为 final 或 effective final，则在 try-with-resources 中无需创建任何新的变量，可直接使用。这使得能够利用自动资源管理。现通过更简洁的 try-with-resources 语句来实现与上面相同的代码块，如下所示：
 
-```
+```java
 // Code is simplified and kept relevant to focus on the topic in hand.
-// 代码已简化，只保留跟眼下话题相关的。
+// 代码已简化，只保留跟眼下话题相关的内容。
 public static int getAccountStatusCodeFromDataStore_tryWithResourcesJava9(String accountId) throws SQLException {
   String accountStatusCodeQuery = getAccountStatusCodeQuery(accountId);
   // declared explicitly final
