@@ -30,7 +30,7 @@ This can be a bit abstract so let’s imagine that those messages were delivered
 
 Also instead of talking about servers, clients and hackers, we will talk about Alice, Bob and Mallory. If this isn’t your first time trying to understand cryptographic concepts you will recognize those names, because they are widely used in technical literature.
 
-我们将讨论 Alice、Bob 和 Mallory。如果你不是第一次尝试理解密码概念，你可以认出这些名字，因为它们被广泛用于技术文献中。
+本文中我们并不会使用，服务器，客户端和黑客这样的术语，取而代之的是，我们会依次使用人名 Alice、 Bob 和 Mallory来代替它们。如果你不是第一次尝试理解密码概念，你可以认出这些名字，因为它们被广泛用于技术文献中。
 
 ## **A first naive communication**
 ## **一次简单的通讯**
