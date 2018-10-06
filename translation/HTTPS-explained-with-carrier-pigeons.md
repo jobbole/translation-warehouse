@@ -11,7 +11,7 @@ title: 通过信鸽来解释HTTPS
 
 Cryptography can be a hard subject to understand. It’s full of mathematical proofs. But unless you are actually developing cryptographic systems, much of that complexity is not necessary to understand what is going on at a high level.
 
-密码学可能是一个难以理解的主题。它充满了数学证明。除非你真的需要开发密码系统，否则，只是为了理解高层次的事物的话，你不必深入大部分复杂的事物。
+密码学可能是一个难以理解的主题。它充满了数学证明。除非你真的需要开发密码系统，否则，如果你只想从宏观的角度了解密码学，你并不需要理解这些复杂的内容。
 
 If you opened this article hoping to create the next HTTPS protocol, I’m sorry to say that pigeons won’t be enough. Otherwise, brew some coffee and enjoy the article.
 
