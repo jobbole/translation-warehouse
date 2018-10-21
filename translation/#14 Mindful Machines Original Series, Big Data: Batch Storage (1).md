@@ -24,7 +24,7 @@ Some good background reading for understanding distributed storage includes [CAP
 
 为了更好的了解分布式存储，请参阅 [CAP 定理](https://en.wikipedia.org/wiki/CAP_theorem)及其[局限性](https://martin.kleppmann.com/2015/05/11/please-stop-calling-databases-cp-or-ap.html%20)
 
-![]({{site.baseurl}}/https://static1.squarespace.com/static/565272dee4b02fdfadbb3d38/t/5abd436f575d1f4c80636747/1522353024477/bigdatabatchstorage2.png?format=750w)
+![bigdatabatchstorage2.png]({{site.baseurl}}/translation/imgs/bigdatabatchstorage2.png)
 
 # RDBM
 # 关系数据库管理系统
