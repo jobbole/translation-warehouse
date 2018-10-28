@@ -1,5 +1,5 @@
 # Mindful Machines Original Series, Big Data: Batch Storage
-# 正念机器原创系列之大数据：批量存储
+# Mindful Machines 原创系列之大数据：批量存储
 
 
 
@@ -13,7 +13,7 @@ This is the first part of the Mindful Machines series on
 Big Data, focused on Batch Storage (aka: Big Data Cheat Sheet: Data Storage). In follow on posts we’ll cover [Batch Processing](https://mindfulmachines.io/blog/2018/4/24/series-big-data-batch-processing), Stream Processing, NoSQL and Infrastructure.
 
 
-这是《正念机器系列之大数据》的第一部分。主要聚焦于批量存储（又名：《大数据备忘录：数据存储》）。在后续文章中，我们将涉及[批处理](https://mindfulmachines.io/blog/2018/4/24/series-big-data-batch-processing)、流处理、 NoSQL 和基础架构。
+这是《Mindful Machines 系列之大数据》的第一部分。主要聚焦于批量存储（又名：《大数据备忘录：数据存储》）。在后续文章中，我们将涉及[批处理](https://mindfulmachines.io/blog/2018/4/24/series-big-data-batch-processing)、流处理、 NoSQL 和基础架构。
 
 
 You’ve got a lot of data coming in you and you want to store it somewhere for future analysis? Where do you put it all? In this post we go over the myriad of options out there and how they stack against each other. This isn’t a complete list of available technologies but rather the highlight reel that, among other things, explicitly avoids enterprise solutions although does cover PaaS.
@@ -51,13 +51,13 @@ Overall:
    - 行级更新和插入
    - 需要结构化数据。一些数据库也支持自由格式的 JSON 字段
    - 可扩展至大数据规模
-      - 纵向上：现代机器可以相当大，所以即使一台机器也能存储显著的数据。
-      - 横向上：能支持分片（Sharding）。虽然需要额外的手动设置和潜在的客户端逻辑更改。
+      - 纵向上：现代机器的存储空间可以相当大，所以即使一台机器也能存储显著的数据
+      - 横向上：能支持分片（Sharding）。虽然需要额外的手动设置和潜在的客户端逻辑更改
    - 进行扩展时，你需要进行权衡（例如：跨分区查询还是复杂查询）
       - 就扩展而言，计算与存储系统密切相关
-      - 复杂的多主集群或自动故障转移设置可能会导致系统中存在单点故障。
+      - 复杂的多主集群或自动故障转移设置可能会导致系统中存在单点故障
    - 被 [Uber](https://eng.uber.com/mysql-migration) 和 [Facebook](https://code.facebook.com/posts/190251048047090/myrocks-a-space-and-write-optimized-mysql-database) 采用，进行大数据处理
-   - 如果你真的需要扩展规模，还有更好的专用技术可以选择。
+   - 如果你真的需要扩展规模，还有更好的专用技术可以选择
 
 
 
@@ -128,10 +128,10 @@ Overall:
 [Amazon Aurora](https://aws.amazon.com/rds/aurora): 兼容 MySQL 和 PostageSQL 的 AWS 全托管数据库
    - 专有的 PaaS
    - 存储空间自动切无缝分配
-   - 数据在所有可使用区域复制。
+   - 数据在所有可使用区域复制
    - 声称对比于开源版，通过与 SSD 存储层的紧密耦合[提高了性能](https://www.percona.com/blog/2016/05/26/aws-aurora-benchmarking-part-2)。
       - 比PostgreSQL[更好的](https://www.chooseacloud.com/postgresql)性能
-   - 在开源版本的支持方面存在落后。Auro 对 MySQL 5.7 的支持在 MySQL 5.7 之后 2 年出现。
+   - 在开源版本的支持方面存在落后。Auro 对 MySQL 5.7 的支持在 MySQL 5.7 之后 2 年出现
    - 不支持除只读副本外的集群
 
 
@@ -186,13 +186,13 @@ Overall:
       - 数据在集群中以完整副本或纠删编码的形式存储多份
       - 多个主节点支持无缝故障转移
    - 以目录形式存储文件，但未设计成可挂载的文件系统
-   - 其他多个项目强有力的支持 HDFS，包括 HBASE、SCAK、HIVE、Hadoop MapReduce、Presto 和 Flink。
+   - 其他多个项目强有力的支持 HDFS，包括 HBASE、SCAK、HIVE、Hadoop MapReduce、Presto 和 Flink
    - 即使使用现代工具（[Hortonworks](https://hortonworks.com/products/data-platforms/hdp)，[Cloudera](https://www.cloudera.com/products/open-source/apache-hadoop.html)），运行自己的集群仍然需要大量的操作知识
       - 存在 PaaS 版（[Amazon EMR](https://aws.amazon.com/emr)， [Azure HDInsight](https://azure.microsoft.com/en-us/services/hdinsight)， [Google Dataproc](https://cloud.google.com/dataproc)），并且 PaaS 版可以减少所需的操作知识。
    - 没有针对存储大量较小的文件（<64  MB）例如图像，进行优化
       - 你可以把它们组合在一起形成，例如，SequenceFiles
    - 基于[谷歌文件系统](https://static.googleusercontent.com/media/research.google.com/en//archive/gfs-sosp2003.pdf)相关论文
-   - 如果您正在运行自己的硬件或对性能有要求，那么这是一个可靠的选择.。否则，像 S3 这样的云存储是更好的选择。
+   - 如果您正在运行自己的硬件或对性能有要求，那么这是一个可靠的选择.。否则，像 S3 这样的云存储是更好的选择
    - [Hortonworks](https://hortonworks.com) 及 [Cloudera](https://www.cloudera.com) 提供的商业支持
 
 
@@ -210,13 +210,13 @@ Overall:
    
 [Amazon S3](https://aws.amazon.com/s3)：一个由 Amazon 提供的全托管对象/文件存储平台
    - 专有的 PaaS
-   - 分布式，高可用性（99.99%）和容错性（11 9）
+   - 分布式，高可用性（99.99%）和容错性（99.999999999%）
    - 完全托管，无需自行配置或人工扩展
    - 可以模拟一个文件系统，包括在“目录”中列出对象/文件（技术上，仅使用键的前缀）
-   - 可以认为是 HDFS 的替代方案，因为许多项目能够查询存储在 S3 中的数据（包括 MapReduce、Spark、Fl.、Presto 等）。
+   - 可以认为是 HDFS 的替代方案，因为许多项目能够查询存储在 S3 中的数据（包括 MapReduce、Spark、Fl.、Presto 等）
       - 如果使用Amazon EMR，HBase 可以使用 S3 作为存储后端
    - 列表操作比较缓慢，并且仅在最终结果才能保持一致。（例如：可能返回过期数据）
-      - Hadoop 的最新发布版本中包括了实验性的[元数据缓存](https://hadoop.apache.org/docs/r3.0.0)支持来解决这个问题。
+      - Hadoop 的最新发布版本中包括了实验性的[元数据缓存](https://hadoop.apache.org/docs/r3.0.0)支持来解决这个问题
    - 相对低的成本和较少的操作开销
    - 如果你是 Amazon 生态系统的用户，那么这是一个存储批量数据的可靠选择
 
@@ -234,10 +234,10 @@ Overall:
    
 [Azure Blob Storage](https://azure.microsoft.com/en-us/services/storage/blobs)：由 Azure 提供的类似于 S3 的对象/文件存储平台
    - 专有的 PaaS
-   - 分布式的、高度可用的（99.99%）以及容错的（根据复制配置的不同，可达到 11 9 或者更高）
+   - 分布式的、高度可用的（99.99%）以及容错的（根据复制配置的不同，可达到 99.999999999% 或者更高）
    - 完全托管，无需配置或人工扩展
-   - 不同于 S3，可在列表操作时保持强一致性。
-   - 可以认为是 HDFS 的替代方案，因为许多项目能够查询存储在 S3 中的数据（包括 MapReduce、Spark、Fl.、Presto 等）。
+   - 不同于 S3，可在列表操作时保持强一致性
+   - 可以认为是 HDFS 的替代方案，因为许多项目能够查询存储在 S3 中的数据（包括 MapReduce、Spark、Fl.、Presto 等）
       - HBase 可以用 Azure Blob Storage 作为原生后端
    - 相对低的成本和较少的操作开销
    - 如果你是 Azure 生态系统的用户，那么这是一个存储批量数据的可靠选择
@@ -255,10 +255,10 @@ Overall:
    
 [Google Cloud Storage](https://cloud.google.com/storage): 由 Google 提供的类似于 S3 的对象/文件存储平台
    - 专有的 PaaS
-   - 分布式的、高度可用的（99.9% 到 99.95%）以及容错的（11 9）
+   - 分布式的、高度可用的（99.9% 到 99.95%）以及容错的（99.999999999%）
    - 完全托管，无需配置或人工扩展
-   - 不同于S3，可在列表操作时保持强一致性。
-   - 可以认为是 HDFS 的替代方案，因为许多项目能够查询存储在 S3 中的数据（包括 MapReduce、Spark、Fl.、Presto 等）。
+   - 不同于S3，可在列表操作时保持强一致性
+   - 可以认为是 HDFS 的替代方案，因为许多项目能够查询存储在 S3 中的数据（包括 MapReduce、Spark、Fl.、Presto 等）
       - 不支持 HBase，Google 更希望你使用 BigTable 的 HBase 接口
    - 相对低的成本和较少的操作开销
    - 如果你是 Google 生态系统的用户，那么这是一个存储批量数据的可靠选择
@@ -280,7 +280,7 @@ Overall:
    
 总体：
    - 高效存储结构化数据
-   - 除了批量读取和写入外，还允许进行关键字级别的写入和读取。
+   - 除了批量读取和写入外，还允许进行关键字级别的写入和读取
    - 可以了解数据处理系统（Spark，MapReduce 等）从而使计算能力的扩展独立于存储能力
    - 可以用作常规的 NoSQL 数据库
 
@@ -310,7 +310,7 @@ Overall:
       - 通过严格[测试](https://www.datastax.com/dev/blog/testing-apache-cassandra-with-jepsen)，支持每个查询一致性的可调，从而避免错误
    - 通过有限的 SQL 语法进行查询（不支持 Join）
    - 需要模式（Schema）已预先定义的结构化数据
-   - 无需外部依赖（如 ZooKeeper），这使得部署相对容易。
+   - 无需外部依赖（如 ZooKeeper），这使得部署相对容易
    - 总体性能良好，尤其注重批量写入的性能
    - 支持二级索引
    - 被 [Uber](https://eng.uber.com/michelangelo/%20) 和 [Netflix](https://medium.com/netflix-techblog/scaling-time-series-data-storage-part-i-ec2b6d44ba39%20) 使用
@@ -391,7 +391,7 @@ Overall:
    - 无需预先为每个表格定义模式（Schema），只需定义索引键
    - 与 Cassandra 一样继承自[Dynamo](https://www.allthingsdistributed.com/files/amazon-dynamo-sosp2007.pdf)，因此拥有许多相似之处
    - 支持 MapReduce 和 Spark 对 DynamoDB 表进行操作
-   - 支持二级索引。
+   - 支持二级索引
 
 
  
@@ -440,11 +440,11 @@ Overall:
    - 提供 SQL 查询的有限子集（仅限于大到小表连接）
    - 集群可独立于存储无缝缩放
    - 利用 S3 或 HDFS 等“深度”存储，避免节点失效时的数据丢失
-   - 基础构架设置复杂，涉及多种类型的节点和分布式存储（S3、HDFS 等）。
+   - 基础构架设置复杂，涉及多种类型的节点和分布式存储（S3、HDFS 等）
       - 增加操作开销的数个外部依赖关系（S3/HDFS，ZooKeor，RDBM）
    - 适用于处理时间序列数据
    - 被 [Airbnb、eBay、Netflix、沃尔玛等](http://druid.io/druid-powered.html)使用
-   - 对于专门的分析/OLAP系统，这是一个可靠的选择。否则，可以选择其他更为灵活，开销更小的解决方案。（以较慢的查询为代价）
+   - 对于专门的分析/OLAP系统，这是一个可靠的选择。否则，可以选择其他更为灵活，开销更小的解决方案（以较慢的查询为代价）
 
 
 
@@ -478,9 +478,9 @@ Overall:
    - 专有的 PaaS 
    - 支持所有 SQL 语法，可进行一般的分析存储
    - 加载/卸载数据需要时间（有可能数小时）
-   - 没有实时摄取，只有批处理，虽然可用微型批次模拟实时。
+   - 没有实时摄取，只有批处理，虽然可用微型批次模拟实时
    - 需要明确地调整集群的上行/下限（调整期间，不支持数据写入）
-      - 存储和计算是紧密联系在一起的。
+      - 存储和计算是紧密联系在一起的
    - 缺少复杂的数据类型，如数组、结构、映射或本地JSON
 
 [Google BigQuery](https://cloud.google.com/bigquery): A fully-managed data warehouse solution that let’s you efficiently store and query data using a SQL syntax. 
@@ -494,7 +494,7 @@ Overall:
    - 专有的 PaaS
    - 支持所有 SQL 语法，可进行一般的分析存储
    - 支持数据实时摄取
-   - 与 Redshift 不同的是，它采取无服务器的方式。你不需要自己管理、缩放集群以及支付集群费用。
+   - 与 Redshift 不同的是，它采取无服务器的方式。你不需要自己管理、缩放集群以及支付集群费用
    - 支持复杂数据类型（数组、结构）但不支持原生JSON
 
 
@@ -510,7 +510,7 @@ Overall:
 [Azure SQL Data Warehouse](https://azure.microsoft.com/en-us/services/sql-data-warehouse)
    - 专有的 PaaS
    - 支持所有 SQL 语法，可进行一般的分析存储
-   - 没有实时摄取，只有批处理，虽然微批次可以模拟实时。
+   - 没有实时摄取，只有批处理，虽然微批次可以模拟实时
    - 计算节点可不依赖于存储节点独立扩展
       - 计算资源在不使用的情况下可以暂停从而节省费用
       - 利用 Azure Blob Storage 存储数据
