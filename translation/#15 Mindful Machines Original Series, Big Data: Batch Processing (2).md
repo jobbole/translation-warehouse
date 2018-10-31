@@ -387,6 +387,20 @@ These are full featured Data Warehouses that tie together the data storage and d
     *   Significantly [higher performance](https://blog.cloudflare.com/how-cloudflare-analyzes-1m-dns-queries-per-second/#comment-3302778860) than Druid for some workloads
     *   Less scalable than Druid or other approaches
     *   Leverages Zookeeper but can run a single node cluster without it
+
+
+-   **ClickHouse：** 为低延迟分析性查询和简单性而设计的列式数据仓库
+    -   开源
+    -   用 C++ 编写
+    -   2016 年由 [Yandex](https://yandex.com/) 开放源码
+    -   不支持自定义 UDFs
+    -   对某些工作的[性能明显高于](https://blog.cloudflare.com/how-cloudflare-analyzes-1m-dns-queries-per-second/#comment-3302778860)
+        Druid
+    -   可扩展性不如 Druid 或其他解决方案
+    -   使用 Zookeeper， 同时也可以在不用 Zookeeper 的情况下运行单节点集群
+
+
+
 *   **[Amazon Redshift](https://aws.amazon.com/redshift/):** A fully-managed data warehouse solution that lets you efficiently store and query data using a SQL syntax.
     *   Proprietary PaaS
     *   General purpose analytical store that support full SQL syntax
@@ -396,6 +410,22 @@ These are full featured Data Warehouses that tie together the data storage and d
     *   Need to explicitly scale the cluster up/down (with write downtime for the duration)
     *   *   Storage and computing are tied together
     *   Lack of complex data types such as arrays, structs, maps or native json
+
+
+
+-   **Amazon Redshift:** 全托管的数据仓库解决方案，可以使用 SQL
+    语法高效地存储和查询数据。
+    -   专有的 PaaS
+    -   支持所有 SQL 语法，可进行一般的分析存储
+    -   为使用 Python 编写自定义 UDFs 提供有限的支持
+    -   加载、卸载数据需要时间（有可能数小时）
+    -   没有实时摄取，只有批处理，虽然可用微型批次模拟实时
+    -   需要明确地调整集群的上行/下限（调整期间，不支持数据写入）
+        -   存储和计算是紧密联系在一起的
+    -   缺少复杂的数据类型，如数组、结构、映射或本地 JSON
+
+
+
 *   **[Google BigQuery](https://cloud.google.com/bigquery/):** A fully-managed data warehouse solution that lets you efficiently store and query data using a SQL syntax.
     *   Proprietary PaaS
     *   General purpose analytical store that support full SQL syntax
@@ -404,6 +434,22 @@ These are full featured Data Warehouses that tie together the data storage and d
     *   [Fastest queries than Redshift but more expensive](https://blog.fivetran.com/warehouse-benchmark-dce9f4c529c1)
     *   Unlike Redshift it is serverless and you do not need to manage, scale or pay for a cluster yourself
     *   Supports complex data types (arrays, structs) but not native json
+
+
+-   **Google BigQuery:** 全托管的数据仓库解决方案，可以使用 SQL
+    语法高效地存储和查询数据。
+    -   专有的 PaaS
+    -   支持所有 SQL 语法，可进行一般的分析存储
+    -   支持数据实时摄取
+    -   为使用 Javascript 编写自定义 UDFs 提供有限的支持
+    -   [查询速度比 Redshift
+        快，但更贵](https://blog.fivetran.com/warehouse-benchmark-dce9f4c529c1)
+    -   与 Redshift
+        不同的是，它采取无服务器的方式。你不需要自己管理、缩放集群以及支付集群费用。
+    -   支持复杂的数据类型（数组、结构）但不支持原生 JSON
+
+
+
 *   **[Azure SQL Data Warehouse:](https://azure.microsoft.com/en-us/services/sql-data-warehouse/)** A fully-managed data warehouse solution that lets you scale computing independently of storage
     *   Proprietary PaaS
     *   General purpose analytical store that support full SQL syntax
@@ -413,9 +459,30 @@ These are full featured Data Warehouses that tie together the data storage and d
     *   Computing nodes can be scaled independently of storage
     *   Lack of complex data types such as arrays, structs, maps or native json
 
+
+
+-   **Azure SQL Data
+    Warehouse：** 完全托管的数据仓库解决方案，计算能力可以不依赖于存储空间而独立扩展
+
+    -   专有的 PaaS
+    -   支持所有 SQL 语法，可进行一般的分析存储
+    -   没有实时摄取，只有批处理，虽然可用微型批次模拟实时
+    -   不支持自定义 UDFs（除非使用 SQL 编写）
+    -   [与 Redshift
+        相比，性能可能不是最好的](http://sql10.blogspot.com/2017/02/sql-server-vs-azure-data-warehouse-vs.html)
+    -   计算节点可不依赖于存储节点独立扩展
+    -   缺少复杂的数据类型，如数组、结构、映射或本地 JSON
+
+
+
 ## RDBM
 
+## 关系数据库管理系统
+
 The traditional SQL database may seem an odd choice however, in addition to simply scaling vertically, with [sharding](https://en.wikipedia.org/wiki/Shard_(database_architecture)) and read-replicas it can scale across multiple nodes. In the following points I’m focusing more on these databases as analytical data stores (relatively few large queries) rather than traditional databases (massive numbers of relatively small queries).
+
+传统的 SQL
+数据库看上去可能不是个常规的选择。但是，除了简单的纵向扩展，它还可以通过[分片](https://en.wikipedia.org/wiki/Shard_(database_architecture))（sharding）和只读副本（read-replicas）进行跨节点扩展在后文中，我会更多的将这些数据库作为分析型数据库（相对少量的大型查询），而不是传统数据库（大量的小型查询）来分析。
 
 *   **Overall**
     *   Powerful [ACID](https://en.wikipedia.org/wiki/ACID) guarantees
@@ -429,11 +496,38 @@ The traditional SQL database may seem an odd choice however, in addition to simp
         *   Multi-master or automatic failover setups can be tricky to get right so often a single point of failure exists
     *   Used by [Uber](https://eng.uber.com/mysql-migration/) and [Facebook](https://code.facebook.com/posts/190251048047090/myrocks-a-space-and-write-optimized-mysql-database/) to handle massive amounts of data
     *   There are better purpose built technologies if you truly ne ed to scale big
+
+-   **总体**
+    -   强有力的 [ACID](https://en.wikipedia.org/wiki/ACID)
+        保证（译者注：Atomicity 原子性、Consistency 一致性、Isolation
+        隔离性、Durability 耐久性）
+    -   行级更新和插入
+    -   需要结构化数据。一些数据库也支持自由格式的 JSON 字段
+    -   可扩展至大数据规模
+        -   纵向上：现代机器的存储空间可以相当大，所以即使一台机器也能存储显著的数据
+        -   横向上：能支持分片（Sharding）。虽然需要额外的手动设置和潜在的客户端逻辑更改
+    -   进行扩展时，你需要进行权衡（例如：跨分区查询还是复杂查询）
+        -   就扩展而言，计算与存储系统密切相关
+        -   复杂的多主集群或自动故障转移设置可能会导致系统中存在单点故障
+    -   被 [Uber](https://eng.uber.com/mysql-migration/) 和
+        [Facebook](https://code.facebook.com/posts/190251048047090/myrocks-a-space-and-write-optimized-mysql-database/)
+        采用，进行大数据处理
+    -   如果你真的需要扩展规模，还有更好的专用技术可以选择
+
+
 *   **[MySQL](https://www.mysql.com/)**
     *   Open source; PaaS and enterprise versions exist
     *   Support for JSON data types
     *   Recent support for window functions
     *   Commercial support by [Oracle](https://www.mysql.com/products/) (who owns MySQL), PaaS support by [AWS](https://aws.amazon.com/rds/)
+
+-   **MySQL**
+    -   开源；存在 PaaS 和企业版
+    -   支持 JSON 数据类型
+    -   新增对窗口函数的支持
+    -   [Oracle](https://www.mysql.com/products/)（MySQL
+        的拥有者）的商业支持，[AWS](https://aws.amazon.com/rds/) 的 PaaS 支持
+
 *   **[MariaDB](https://mariadb.org/)**
     *   Open source
     *   Originally a fork of MySQL
@@ -441,6 +535,17 @@ The traditional SQL database may seem an odd choice however, in addition to simp
     *   No JSON data type but native functions for working with JSON
     *   Support for a [columnar](https://mariadb.com/products/technology/columnstore) storage engine which significantly speeds up analytical workloads
     *   Commercial support by [MariaDB](https://mariadb.com/), PaaS support by [AWS](https://aws.amazon.com/rds/)
+
+-   **MariaDB**
+    -   开源
+    -   最初是 MySQL 的一个分支
+    -   支持窗口函数
+    -   无 JSON 数据格式，但有处理 JSON 的原生函数
+    -   支持[列式](https://mariadb.com/products/technology/columnstore)存储引擎，显著提升分析速度
+    -   [MariaDB](https://mariadb.com/)
+        的商业支持，[AWS](https://aws.amazon.com/rds/) 的 PaaS 支持
+
+
 *   **[PostgreSQL](https://www.postgresql.org/)**
     *   Open source;PaaS and enterprise versions exist
     *   Support for JSON data types
@@ -448,6 +553,16 @@ The traditional SQL database may seem an odd choice however, in addition to simp
     *   Better parallel single query optimizations than MySQL
     *   Third party support for [columnar](https://github.com/citusdata/cstore_fdw) storage engine which significantly speeds up analytical workloads
     *   Support for sharding via [PL/Proxy](https://plproxy.github.io/)
+
+-   **PostgreSQL**
+    -   开源；存在 PaaS 和企业版
+    -   支持 JSON 数据类型
+    -   拥有多个公司的商业支持
+    -   比 MySQL 更好的并行单一查询优化
+    -   第三方对[列式](https://github.com/citusdata/cstore_fdw)存储引擎的支持，大大加快了分析速度
+    -   支持通过 [PL 或者代理](https://plproxy.github.io/)进行分片（sharding）
+
+
 *   **[Amazon Aurora:](https://aws.amazon.com/rds/aurora/)** Fully managed MySQL and PostgeSQL compatible databases on AWS
     *   Proprietary PaaS
     *   Automatically and seamlessly allocates storage
@@ -456,3 +571,16 @@ The traditional SQL database may seem an odd choice however, in addition to simp
         *   PostgreSQL performance may be [lower](https://www.chooseacloud.com/postgresql) on Aurora
     *   Lags behind open source in version support, Aurora MySQL 5.7 support came out over 2 years after MySQL 5.7
     *   Does not support clustering beyond read replicas
+    
+-   **Amazon Aurora：** 兼容 MySQL 和 PostageSQL 的 AWS 全托管数据库
+    -   专有的 PaaS
+    -   存储空间自动且无缝分配
+    -   数据在所有可使用区域复制
+    -   声称对比于开源版，通过与 SSD
+        存储层的紧密耦合[提高了性能](https://www.percona.com/blog/2016/05/26/aws-aurora-benchmarking-part-2/)
+        -   比 PostgreSQL [更好的](https://www.chooseacloud.com/postgresql)性能
+    -   在开源版本的支持方面存在落后。Auro 对 MySQL 5.7 的支持在 MySQL 5.7 之后
+        2 年出现
+    -   不支持除只读副本外的集群
+   
+    
