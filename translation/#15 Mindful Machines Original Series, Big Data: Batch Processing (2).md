@@ -1,19 +1,44 @@
 # Mindful Machines Original Series, Big Data: Batch Processing
 
+# Mindful Machines 原创系列之大数据：批处理
+
+
 APRIL 24, 2018 BY MARCIN MEJRAN
+
+2018.4.24 Marcin Mejran
+
 
 This is the second part of the Mindful Machines series on Big Data (aka: Big Data Cheat Sheet), in the [previous post](https://mindfulmachines.io/blog/2018/4/10/series-big-data-batch-storage) we covered Batch Storage, in following posts we’ll cover Stream Processing, NoSQL and Infrastructure.
 
+这是《Mindful Machines 系列之大数据》的第二部分（又名：《大数据备忘录》）。在[上一篇](https://mindfulmachines.io/blog/2018/4/10/series-big-data-batch-storage)文章中我们讨论了批量存储，在后续的文章中，我们将讨论流处理、NoSQL 和基础架构。
+
+
 Your historical data is overflowing and you want to do something with it? What do you choose to process it? Presto? Spark? Redshift? MapReduce? In this post we go over the myriad of options out there and how they stack against each other. This isn’t a complete list of available technologies but rather the highlight reel that, among other things, explicitly avoids enterprise solutions although does cover PaaS.
+
+你准备如何处理泛滥成灾的历史数据？你选择用什么来处理它？Presto？Spark？Redshift？MapReduce？在这篇文章中，我们将讨论各种数据处理方案，以及他们之间的联系。下文并非为了提供一个所有可行技术的完整清单，而是讨论一些技术亮点。尽管涉及 PaaS ，但本文会特别避免讨论企业级解决方案。
+
+
 
 ## Programmatic Batch Processing
 
+## 程序化的批处理
+
 These systems provide a programmatic (Java, Scala, Python, etc.) interface for querying data stored in batch storage systems (HDFS, S3, Cassandra, HBase, etc.).
+
+这些系统为存储在批量存储系统（HDFS，S3，Cassandra，HBase 等）中的数据提供了程序化（Java，Scala，Python 等）的数据查询接口。
 
 *   **Overall**
     *   Provide a flexible interface for querying data
     *   Schemas need to be managed manually or loaded from files
     *   Modern system provide high level APIs that allow for whole query optimizations
+    
+-   **总体**
+
+    -   提供灵活的数据查询接口
+    -   模式（Schema）需要人工管理或从文件中加载
+    -   现代系统提供了支持整体查询优化的高级 API
+
+
 *   **[Apache Hadoop MapReduce](https://hortonworks.com/apache/mapreduce/):** A cornerstone of the Big Data ecosystem which provides a way to efficiently process petabytes of data
     *   Open source but PaaS and enterprise versions exist
     *   Written in Java
@@ -25,11 +50,41 @@ These systems provide a programmatic (Java, Scala, Python, etc.) interface for q
     *   Requires a Hadoop (YARN) cluster which introduces operational overhead
         *   PaaS versions exist ([Amazon EMR](https://aws.amazon.com/emr/), [Azure HDInsight](https://azure.microsoft.com/en-us/services/hdinsight/), [Google Dataproc](https://cloud.google.com/dataproc/)) and can lower operational knowledge needed
     *   Commercial support provided by [Hortonworks](https://hortonworks.com/) and [Cloudera](https://www.cloudera.com/)
+    
+    
+    
+-   **[Apache Hadoop MapReduce](https://hortonworks.com/apache/mapreduce/)：** 大数据生态系统的基石，它提供了一种高效处理拍字节级别数据的方法
+    -   开源；存在 PaaS 和企业版
+    -   用 Java 编写
+    -   发布于 2006 年
+    -   脱胎于 Google 的 [MapReduce 论文](https://static.googleusercontent.com/media/research.google.com/en//archive/mapreduce-osdi04.pdf)
+    -   与传统的集群计算方法相比，为大批量数据的跨机器查询提供了高效且易于实现的方法
+    -   编写原始的 Java MapReduce 代码相对复杂
+    -   自 [2014](http://www.datacenterknowledge.com/archives/2014/06/25/google-dumps-mapreduce-favor-new-hyper-scale-analytics-system) 年以来，Google 就不再使用 MapReduce 作为大数据处理的主要模型。开源世界中，新的技术正在取代 MapReduce（参见其他条目）。
+    -   需要使用 Hadoop（YARN） 集群。 这增加了操作开销
+        -   存在 PaaS 版（[Amazon EMR](https://aws.amazon.com/emr/)， [Azure HDInsight](https://azure.microsoft.com/en-us/services/hdinsight/)， [Google Dataproc](https://cloud.google.com/dataproc/)），并且 PaaS 版可以减少所需的操作知识
+    -   [Hortonworks](https://hortonworks.com/) 和 [Cloudera](https://www.cloudera.com/) 提供商业支持
+
+
+
 *   **[Cascading](https://www.cascading.org/projects/cascading/)/[scalding](https://github.com/twitter/scalding):** Java/Scala, respectively, frameworks that abstract away the complexity of writing MapReduce code
     *   Open source
     *   Written in Java/Scala
     *   Significantly lowers the overhead of writing MapReduce code
     *   Can leverage [Tez](https://hortonworks.com/apache/tez/) or [Flink](https://flink.apache.org/) to significantly improve [performance](http://scalding.io/2015/05/scalding-cascading-tez-%E2%99%A5/)
+    
+    
+-   **[Cascading](https://www.cascading.org/projects/cascading/)/[scalding](https://github.com/twitter/scalding)：** 分别使用
+    Java、Scala 编写的程序框架，以帮助用户从复杂的 MapReduce 编程中抽离出来
+    -   开源
+    -   用 Java、Scala 编写
+    -   显著降低编写 MapReduce 代码的开销
+    -   可以利用 [Tez](https://hortonworks.com/apache/tez/) 或
+        [FLink](https://flink.apache.org/)
+        显著提高[性能](http://scalding.io/2015/05/scalding-cascading-tez-%E2%99%A5/)
+    
+    
+    
 *   **[Apache Spark](https://spark.apache.org/):** A highly popular cluster computing framework based on in memory storage of intermediate data
     *   Open source but PaaS and SaaS versions exist
     *   Written in Scala
@@ -42,6 +97,27 @@ These systems provide a programmatic (Java, Scala, Python, etc.) interface for q
     *   PaaS solutions provided by [Amazon EMR](https://aws.amazon.com/emr/), [Azure HDInsight](https://azure.microsoft.com/en-us/services/hdinsight/) and [Google Dataproc](https://cloud.google.com/dataproc/)
     *   SaaS solution provided by [Databricks Unified Analytics Platform](https://databricks.com/product/unified-analytics-platform)
     *   Commercial support provided by [Hortonworks](https://hortonworks.com/) and [Cloudera](https://www.cloudera.com/)
+
+
+-   **Apache Spark：** 一种高度流行的将中间数据储存在内存中的集群计算框架
+    -   开源；存在 PaaS 和 SaaS 版本
+    -   用 Scala 编写
+    -   始于 2009 年，在 2010 年
+        发表的[论文](http://people.csail.mit.edu/matei/papers/2010/hotcloud_spark.pdf)中被介绍
+    -   一大亮点是为 Python、Scala、Java、R 和 SQL 提供了基本统一的
+        API，使得原生代码可以和优化的内置命令混合使用
+    -   在批处理引擎之上，提供对流式范式（streaming paradigm）的支持
+    -   内置机器学习库（[MLLib 和
+        ML](https://spark.apache.org/docs/latest/ml-guide.html)）
+    -   包含重要的，需要调谐的配置，以获得良好的[性能](https://databricks.com/blog/2017/07/12/benchmarking-big-data-sql-platforms-in-the-cloud.html)
+    -   Spark 最大的代码贡献者和商业支持者（Databricks）宣传他们的私有 PaaS
+        版比开源版要快得多。 这对它们产生了倾斜的激励机制。
+    -  [Amazon EMR](https://aws.amazon.com/emr/)， [Azure HDInsight](https://azure.microsoft.com/en-us/services/hdinsight/)， [Google Dataproc](https://cloud.google.com/dataproc/) 提供 PaaS 解决方案
+    -   [Databricks Unified Analytics Platform](https://databricks.com/product/unified-analytics-platform) 提供 SaaS 解决方案
+    -   [Hortonworks](https://hortonworks.com/) 和 [Cloudera](https://www.cloudera.com/) 提供商业支持
+
+
+
 *   **[Apache Flink](https://flink.apache.org/):** Cluster computing framework that aims to provide improvements compared to Spark
     *   Open source but PaaS versions exist
     *   Written in Java and Scala
@@ -53,14 +129,44 @@ These systems provide a programmatic (Java, Scala, Python, etc.) interface for q
     *   Newer project that shows a lot of promise but Spark has added significant performance and feature improvement in newer versions that likely more than closed the gap
     *   PaaS solutions provided by [Amazon EMR](https://aws.amazon.com/emr/) and [Google Dataproc](https://cloud.google.com/dataproc/)
 
+
+-   **Apache Flink：** 集群计算框架，旨在提供比 Spark 更好的服务
+    -   开源；存在 PaaS 版本
+    -   用 Java 和 Scala 编写
+    -   发布于 2013 年
+    -   为 Python、Scala、Java 和 SQL 提供 API
+    -   在流处理引擎之上提供对批处理范式（batch paradigm）的支持
+    -   配置开销小于 Spark
+    -   提供内置的机器学习库—[FlinkML](https://ci.apache.org/projects/flink/flink-docs-release-1.4/dev/libs/ml/index.html)，
+        但其广泛性和[性能](https://link.springer.com/article/10.1186/s41044-016-0020-2)都不如
+        Spark 的机器学习库
+    -   是一个比较新的项目，并且看上去前景很好。但是 Spark
+        在新版本中的性能提升和功能改进不仅弥补了两者的差距，还有超越的趋势
+    -   [Amazon EMR](https://aws.amazon.com/emr/) 和 [Google
+        Dataproc](https://cloud.google.com/dataproc/) 提供 PaaS 解决方案
+
+
 ## SQL Batch Processing
 
+## SQL 批处理
+
 These frameworks provide a SQL interface for querying data stored in HDFS or other blob storage systems (S3, etc.) in a distributed fashion.
+
+这些框架提供了一个 SQL 接口，用于查询以分布式方式存储在 HDFS 或其他 blob（译者注：二进制大对象） 存储系统（S3 等）中的数据。
 
 *   **Overall**
     *   Provide a centralized schema repository
     *   Allow for whole query optimizations but restrict you to only using SQL and potentially custom UDFs
     *   Most require a traditional SQL server to host table metadata
+
+
+-   **总体**
+    -   提供集中式模式仓库
+    -   支持整体查询优化，但仅限于使用 SQL 和潜在的自定义 UDFs
+    -   大多数都需要传统的 SQL Server 来承载表元数据
+
+
+
 *   **[Apache Hive](https://hive.apache.org/):** A SQL layer originally on top of HAdoop MapReduce and now on top of YARN
     *   Open source but PaaS versions exist
     *   Written in Java
@@ -71,6 +177,27 @@ These frameworks provide a SQL interface for querying data stored in HDFS or oth
         *   As a result newer versions stack up quite well [performance](https://www.youtube.com/watch?v=dS1Ke-_hJV0) [wise](https://www.slideshare.net/ssuser6bb12d/hive-presto-and-spark-on-tpcds-benchmark) against Presto and Spark
     *   PaaS solutions provided by [Amazon EMR](https://aws.amazon.com/emr/), [Azure HDInsight](https://azure.microsoft.com/en-us/services/hdinsight/) and [Google Dataproc](https://cloud.google.com/dataproc/)
     *   Commercial support provided by [Hortonworks](https://hortonworks.com/) and [Cloudera](https://www.cloudera.com/)
+
+
+-   **Apache Hive：** 最初是 Hadoop MapReduce 之上的一个 SQL 层，如今在 YARN 之上
+    -   开源；存在 PaaS 版本
+    -   用 Java 编写
+    -   Facebook 于 2009 年发布
+    -   使用 Java 编写自定义 UDFs 可能很难且非常耗时
+    -   更适用于复杂的分析性查询
+    -   最新版本部分程度上绕过了 MapReduce
+        并在单个节点（[LLAP](https://cwiki.apache.org/confluence/display/Hive/LLAP)）上运行守护进程，以进一步优化性能。
+        -   因此，新版本的[性能](https://www.youtube.com/watch?v=dS1Ke-_hJV0)与
+            Presto 和 Spark
+            [相当](https://www.slideshare.net/ssuser6bb12d/hive-presto-and-spark-on-tpcds-benchmark)
+    -   [Amazon EMR](https://aws.amazon.com/emr/)、[Azure
+        HDInsight](https://azure.microsoft.com/en-us/services/hdinsight/) 和
+        [Google Dataproc](https://cloud.google.com/dataproc/) 提供 PaaS 解决方案
+    -   [Hortonworks](https://hortonworks.com/) 和
+        [Cloudera](https://www.cloudera.com/) 提供商业支持
+
+
+
 *   **[Apache Spark SQL](https://spark.apache.org/sql/):** A SQL computing layer that is built on top of Spark
     *   Open source
     *   Written in Scala
@@ -81,6 +208,24 @@ These frameworks provide a SQL interface for querying data stored in HDFS or oth
     *   Requires a Spark cluster which can be difficult to tune
     *   PaaS solutions provided by [Amazon EMR](https://aws.amazon.com/emr/), [Azure HDInsight](https://azure.microsoft.com/en-us/services/hdinsight/) and [Google Dataproc](https://cloud.google.com/dataproc/)
     *   Commercial support provided by [Hortonworks](https://hortonworks.com/) and [Cloudera](https://www.cloudera.com/)
+
+
+-   **Apache Spark SQL：** 建立在 Spark 之上的 SQL 计算层
+    -   开源
+    -   用 Scala 编写
+    -   最早以 Shark 为名，出现于 2010 年
+    -   需要使用 Spark 集群
+    -   更适用于复杂的分析性查询
+    -   使用 Scala、Python、Java 或 R 编写自定义 UDFs 非常简单
+    -   需要使用 Spark 集群，有时可能很难调谐
+    -   [Amazon EMR](https://aws.amazon.com/emr/)、[Azure
+        HDInsight](https://azure.microsoft.com/en-us/services/hdinsight/) 和
+        [Google Dataproc](https://cloud.google.com/dataproc/)提供 PaaS 解决方案
+    -   [Hortonworks](https://hortonworks.com/) 和
+        [Cloudera](https://www.cloudera.com/)提供商业支持
+
+
+
 *   **[Apache Flink SQL](https://flink.apache.org/):**  A SQL computing layer that is built on top of Flink
     *   Open source
     *   Written in Java
@@ -89,6 +234,20 @@ These frameworks provide a SQL interface for querying data stored in HDFS or oth
     *   Custom UDFs are easy to write in Scala or Java
     *   Performance compared to Spark is hard to get numbers for
     *   PaaS solutions provided by [Amazon EMR](https://aws.amazon.com/emr/) and [Google Dataproc](https://cloud.google.com/dataproc/)
+
+
+-   **Apache Flink SQL：** 一个建立在 Flink 之上的 SQL 计算层
+    -   开源
+    -   用 Java 编写
+    -   发布于 2016 年
+    -   需要 Flink 集群
+    -   使用 Scala 或 Java 编写自定义 UDFs 非常简单
+    -   性能与 Spark 不相上下
+    -   [Amazon EMR](https://aws.amazon.com/emr/) 和 [Google
+        Dataproc](https://cloud.google.com/dataproc/) 提供 PaaS 解决方案
+
+
+
 *   **[Presto](https://prestodb.io/):** A SQL computing layer optimized for massive datasets
     *   Open source
     *   Written in Java
@@ -100,6 +259,28 @@ These frameworks provide a SQL interface for querying data stored in HDFS or oth
     *   Performance improvements compared to [Spark](http://tech.marksblogg.com/billion-nyc-taxi-rides-ec2-versus-emr.html) although results may differ on [Databrick’s SaaS Spark](https://databricks.com/blog/2017/07/12/benchmarking-big-data-sql-platforms-in-the-cloud.html)
     *   Used by Facebook to query their 300PB data warehouse
     *   PaaS version in [Amazon Athena](https://aws.amazon.com/athena/)
+
+
+-   **Presto:** 针对海量数据集打造的 SQL 计算层
+    -   开源
+    -   用 Java 编写
+    -   Facebook 于 2013 年发布
+    -   更适用于大量较小的 OLAP 查询
+    -   支持使用 Java 编写自定义 UDFs
+    -   需要调谐以获得良好的性能
+    -   性能与
+        [Redshift](https://engineering.grab.com/scaling-like-a-boss-with-presto)
+        相当
+    -   性能比
+        [Spark](http://tech.marksblogg.com/billion-nyc-taxi-rides-ec2-versus-emr.html)
+        有进一步优化。与 [Databricks 公司的 SaaS 版
+        Spark](https://databricks.com/blog/2017/07/12/benchmarking-big-data-sql-platforms-in-the-cloud.html)
+        相比，结果可能不同。
+    -   被 Facebook 用于查询其 300 PB 的数据仓库
+    -   [Amazon Athena](https://aws.amazon.com/athena/) 提供 PaaS 版本
+
+
+
 *   **[Apache Impala:](https://impala.apache.org/)** A SQL computing layer released by Cloudera based on Google’s Dremel
     *   Open source
     *   Released in 2012 by Cloudera
@@ -108,6 +289,20 @@ These frameworks provide a SQL interface for querying data stored in HDFS or oth
     *   Based on the [Dremel](https://static.googleusercontent.com/media/research.google.com/en//pubs/archive/36632.pdf) paper by Google
     *   More optimized for many smaller OLAP queries
     *   Commercial support provided by [Cloudera](https://www.cloudera.com/)
+
+
+-   **Apache Impala：** 由 Cloudera 发布的，基于 Google Dremel 技术的 SQL 计算层
+    -   开源
+    -   2012 年由 Cloudera 发布
+    -   用 C++ 编写
+    -   支持使用 C++ 和 Java 编写自定义 UDFs（但 Java 较慢）
+    -   基于 Google 的
+        [Dremel](https://static.googleusercontent.com/media/research.google.com/en/pubs/archive/36632.pdf)
+        论文
+    -   更适用于大量较小的 OLAP 查询
+    -   [Cloudera](https://www.cloudera.com/) 提供商业支持
+
+
 *   **[Amazon Redshift Spectrum:](https://aws.amazon.com/redshift/spectrum/)** A computing engine version of Redshift
     *   Proprietary PaaS
     *   Unlike Redshift can scale computing independently of storage and access arbitrary file formats stored in S3
@@ -115,9 +310,26 @@ These frameworks provide a SQL interface for querying data stored in HDFS or oth
     *   Can leverage Redshift for table metadata
     *   Required a running Redshift cluster
 
+
+
+-   **Amazon Redshift Spectrum：** Redshift 的计算引擎版
+    -   专有的 PaaS
+    -   与 Redshift 不同的是，计算能力可以独立于存储能力而扩展。并支持读取存储于
+        S3 上任意格式的文件
+    -   为使用 Python 编写自定义 UDFs 提供有限的支持
+    -   可以利用 Redshift 管理表元数据
+    -   需要使用运行中的 Redshift 集群
+
+
+
 ## Data Warehouse
 
+## 数据仓库
+
 These are full featured Data Warehouses that tie together the data storage and data processing into a single entity.
+
+数据仓库集数据存储与数据处理于一体
+
 
 *   **Overall**
     *   Low latency and high throughput query performance but not necessarily faster than other modern batch processing solutions
@@ -125,6 +337,16 @@ These are full featured Data Warehouses that tie together the data storage and d
     *   Limits on flexibility (data types, UDFs, data processing approaches, etc.)
     *   Lock-in if used as primary data store
     *   Computing tied to storage system in terms of sc aling
+
+
+-   **总体**
+    -   低延迟和高吞吐量的查询性能，但不一定比其他现代批处理解决方案更快
+    -   列式数据存储
+    -   灵活度有一定局限（数据类型，UDFs，数据处理方法等）
+    -   如果用作主数据仓库，会被套牢
+    -   就扩展而言，计算与存储系统密切相关
+    
+
 *   **[Druid](http://druid.io/):** Columnar data store designed to provide low-latency analytical queries
     *   Open source
     *   Written in Java
@@ -139,6 +361,24 @@ These are full featured Data Warehouses that tie together the data storage and d
         *   Number of external dependencies (S3/HDFS, ZooKeeper, RDBM) which increases operational overhead
     *   Well suited for time series data
     *   Used by [Airbnb, eBay, Netflix, Walmart and others](http://druid.io/druid-powered.html)
+
+-   **Druid：** 为提供低延迟分析性查询设计的列式数据仓库
+    -   开源
+    -   用 Java 编写
+    -   2012 年开始开源
+    -   提供亚秒级分析性查询、OLAP 查询
+    -   支持实时数据摄取，而不仅是批量摄取
+    -   提供有限的 SQL 查询子集（仅限于大到小表连接）
+    -   支持使用 Java 编写自定义 UDFs，但这很复杂
+    -   集群可独立于存储无缝缩放
+    -   利用 S3 或 HDFS 等“深度”存储，避免节点失效时的数据丢失
+    -   基础构架设置复杂，涉及多种类型的节点和分布式存储（S3、HDFS 等）
+        -   数个外部依赖关系（S3/HDFS，ZooKeor，RDBM）增加了操作开销
+    -   适用于处理时间序列数据
+    -   被
+        [Airbnb、eBay、Netflix、沃尔玛](http://druid.io/druid-powered.html)等使用
+
+
 *    **[ClickHouse](https://clickhouse.yandex/):** Columnar data store designed to provide low-latency analytical queries and simplicity
     *   Open Source
     *   Written in C++
