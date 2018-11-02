@@ -17,7 +17,7 @@ Your historical data is overflowing and you want to do something with it? What d
 
 你准备如何处理泛滥成灾的历史数据？你选择用什么来处理它？Presto？Spark？Redshift？MapReduce？在这篇文章中，我们将讨论各种数据处理方案，以及他们之间的联系。下文并非为了提供一个所有可行技术的完整清单，而是讨论一些技术亮点。尽管涉及 PaaS ，但本文会特别避免讨论企业级解决方案。
 
-
+![](https://static1.squarespace.com/static/565272dee4b02fdfadbb3d38/t/5adf1fcf6d2a730adc0567a2/1524572116964/bigdatabatchprocessing2.png?format=1000w)
 
 ## Programmatic Batch Processing
 
@@ -99,11 +99,10 @@ These systems provide a programmatic (Java, Scala, Python, etc.) interface for q
     *   Commercial support provided by [Hortonworks](https://hortonworks.com/) and [Cloudera](https://www.cloudera.com/)
 
 
--   **Apache Spark：** 一种高度流行的将中间数据储存在内存中的集群计算框架
+-   **[Apache Spark](https://spark.apache.org/)：** 一种高度流行的将中间数据储存在内存中的集群计算框架
     -   开源；存在 PaaS 和 SaaS 版本
     -   用 Scala 编写
-    -   始于 2009 年，在 2010 年
-        发表的[论文](http://people.csail.mit.edu/matei/papers/2010/hotcloud_spark.pdf)中被介绍
+    -   始于 2009 年，在 2010 年发表的[论文](http://people.csail.mit.edu/matei/papers/2010/hotcloud_spark.pdf)中被介绍
     -   一大亮点是为 Python、Scala、Java、R 和 SQL 提供了基本统一的
         API，使得原生代码可以和优化的内置命令混合使用
     -   在批处理引擎之上，提供对流式范式（streaming paradigm）的支持
@@ -111,7 +110,7 @@ These systems provide a programmatic (Java, Scala, Python, etc.) interface for q
         ML](https://spark.apache.org/docs/latest/ml-guide.html)）
     -   包含重要的，需要调谐的配置，以获得良好的[性能](https://databricks.com/blog/2017/07/12/benchmarking-big-data-sql-platforms-in-the-cloud.html)
     -   Spark 最大的代码贡献者和商业支持者（Databricks）宣传他们的私有 PaaS
-        版比开源版要快得多。 这对它们产生了倾斜的激励机制。
+        版比开源版要[快](https://databricks.com/blog/2017/07/12/benchmarking-big-data-sql-platforms-in-the-cloud.html)得多。 这对它们产生了倾斜的激励机制。
     -  [Amazon EMR](https://aws.amazon.com/emr/)， [Azure HDInsight](https://azure.microsoft.com/en-us/services/hdinsight/)， [Google Dataproc](https://cloud.google.com/dataproc/) 提供 PaaS 解决方案
     -   [Databricks Unified Analytics Platform](https://databricks.com/product/unified-analytics-platform) 提供 SaaS 解决方案
     -   [Hortonworks](https://hortonworks.com/) 和 [Cloudera](https://www.cloudera.com/) 提供商业支持
@@ -130,7 +129,7 @@ These systems provide a programmatic (Java, Scala, Python, etc.) interface for q
     *   PaaS solutions provided by [Amazon EMR](https://aws.amazon.com/emr/) and [Google Dataproc](https://cloud.google.com/dataproc/)
 
 
--   **Apache Flink：** 集群计算框架，旨在提供比 Spark 更好的服务
+-   **[Apache Flink](https://flink.apache.org/)：** 集群计算框架，旨在提供比 Spark 更好的服务
     -   开源；存在 PaaS 版本
     -   用 Java 和 Scala 编写
     -   发布于 2013 年
@@ -179,7 +178,7 @@ These frameworks provide a SQL interface for querying data stored in HDFS or oth
     *   Commercial support provided by [Hortonworks](https://hortonworks.com/) and [Cloudera](https://www.cloudera.com/)
 
 
--   **Apache Hive：** 最初是 Hadoop MapReduce 之上的一个 SQL 层，如今在 YARN 之上
+-   **[Apache Hive](https://hive.apache.org/)：** 最初是 Hadoop MapReduce 之上的一个 SQL 层，如今在 YARN 之上
     -   开源；存在 PaaS 版本
     -   用 Java 编写
     -   Facebook 于 2009 年发布
@@ -210,7 +209,7 @@ These frameworks provide a SQL interface for querying data stored in HDFS or oth
     *   Commercial support provided by [Hortonworks](https://hortonworks.com/) and [Cloudera](https://www.cloudera.com/)
 
 
--   **Apache Spark SQL：** 建立在 Spark 之上的 SQL 计算层
+-   **[Apache Spark SQL](https://spark.apache.org/sql/)：** 建立在 Spark 之上的 SQL 计算层
     -   开源
     -   用 Scala 编写
     -   最早以 Shark 为名，出现于 2010 年
@@ -220,9 +219,9 @@ These frameworks provide a SQL interface for querying data stored in HDFS or oth
     -   需要使用 Spark 集群，有时可能很难调谐
     -   [Amazon EMR](https://aws.amazon.com/emr/)、[Azure
         HDInsight](https://azure.microsoft.com/en-us/services/hdinsight/) 和
-        [Google Dataproc](https://cloud.google.com/dataproc/)提供 PaaS 解决方案
+        [Google Dataproc](https://cloud.google.com/dataproc/) 提供 PaaS 解决方案
     -   [Hortonworks](https://hortonworks.com/) 和
-        [Cloudera](https://www.cloudera.com/)提供商业支持
+        [Cloudera](https://www.cloudera.com/) 提供商业支持
 
 
 
@@ -236,7 +235,7 @@ These frameworks provide a SQL interface for querying data stored in HDFS or oth
     *   PaaS solutions provided by [Amazon EMR](https://aws.amazon.com/emr/) and [Google Dataproc](https://cloud.google.com/dataproc/)
 
 
--   **Apache Flink SQL：** 一个建立在 Flink 之上的 SQL 计算层
+-   **[Apache Flink SQL](https://flink.apache.org/)：** 一个建立在 Flink 之上的 SQL 计算层
     -   开源
     -   用 Java 编写
     -   发布于 2016 年
@@ -261,7 +260,7 @@ These frameworks provide a SQL interface for querying data stored in HDFS or oth
     *   PaaS version in [Amazon Athena](https://aws.amazon.com/athena/)
 
 
--   **Presto:** 针对海量数据集打造的 SQL 计算层
+-   **[Presto](https://prestodb.io/):** 针对海量数据集打造的 SQL 计算层
     -   开源
     -   用 Java 编写
     -   Facebook 于 2013 年发布
@@ -291,7 +290,7 @@ These frameworks provide a SQL interface for querying data stored in HDFS or oth
     *   Commercial support provided by [Cloudera](https://www.cloudera.com/)
 
 
--   **Apache Impala：** 由 Cloudera 发布的，基于 Google Dremel 技术的 SQL 计算层
+-   **[Apache Impala:](https://impala.apache.org/)** 由 Cloudera 发布的，基于 Google Dremel 技术的 SQL 计算层
     -   开源
     -   2012 年由 Cloudera 发布
     -   用 C++ 编写
@@ -312,7 +311,7 @@ These frameworks provide a SQL interface for querying data stored in HDFS or oth
 
 
 
--   **Amazon Redshift Spectrum：** Redshift 的计算引擎版
+-   **[Amazon Redshift Spectrum:](https://aws.amazon.com/redshift/spectrum/)** Redshift 的计算引擎版
     -   专有的 PaaS
     -   与 Redshift 不同的是，计算能力可以独立于存储能力而扩展。并支持读取存储于
         S3 上任意格式的文件
@@ -362,7 +361,7 @@ These are full featured Data Warehouses that tie together the data storage and d
     *   Well suited for time series data
     *   Used by [Airbnb, eBay, Netflix, Walmart and others](http://druid.io/druid-powered.html)
 
--   **Druid：** 为提供低延迟分析性查询设计的列式数据仓库
+-   **[Druid](http://druid.io/)：** 为提供低延迟分析性查询设计的列式数据仓库
     -   开源
     -   用 Java 编写
     -   2012 年开始开源
@@ -389,7 +388,7 @@ These are full featured Data Warehouses that tie together the data storage and d
     *   Leverages Zookeeper but can run a single node cluster without it
 
 
--   **ClickHouse：** 为低延迟分析性查询和简单性而设计的列式数据仓库
+-   **[ClickHouse](https://clickhouse.yandex/)：** 为低延迟分析性查询和简单性而设计的列式数据仓库
     -   开源
     -   用 C++ 编写
     -   2016 年由 [Yandex](https://yandex.com/) 开放源码
@@ -413,7 +412,7 @@ These are full featured Data Warehouses that tie together the data storage and d
 
 
 
--   **Amazon Redshift:** 全托管的数据仓库解决方案，可以使用 SQL
+-   **[Amazon Redshift](https://aws.amazon.com/redshift/):** 全托管的数据仓库解决方案，可以使用 SQL
     语法高效地存储和查询数据。
     -   专有的 PaaS
     -   支持所有 SQL 语法，可进行一般的分析存储
@@ -436,7 +435,7 @@ These are full featured Data Warehouses that tie together the data storage and d
     *   Supports complex data types (arrays, structs) but not native json
 
 
--   **Google BigQuery:** 全托管的数据仓库解决方案，可以使用 SQL
+-   **[Google BigQuery](https://cloud.google.com/bigquery/):** 全托管的数据仓库解决方案，可以使用 SQL
     语法高效地存储和查询数据。
     -   专有的 PaaS
     -   支持所有 SQL 语法，可进行一般的分析存储
@@ -461,9 +460,7 @@ These are full featured Data Warehouses that tie together the data storage and d
 
 
 
--   **Azure SQL Data
-    Warehouse：** 完全托管的数据仓库解决方案，计算能力可以不依赖于存储空间而独立扩展
-
+-   **[Azure SQL Data Warehouse:](https://azure.microsoft.com/en-us/services/sql-data-warehouse/)：** 完全托管的数据仓库解决方案，计算能力可以不依赖于存储空间而独立扩展
     -   专有的 PaaS
     -   支持所有 SQL 语法，可进行一般的分析存储
     -   没有实时摄取，只有批处理，虽然可用微型批次模拟实时
@@ -521,7 +518,7 @@ The traditional SQL database may seem an odd choice however, in addition to simp
     *   Recent support for window functions
     *   Commercial support by [Oracle](https://www.mysql.com/products/) (who owns MySQL), PaaS support by [AWS](https://aws.amazon.com/rds/)
 
--   **MySQL**
+-   **[MySQL](https://www.mysql.com/)**
     -   开源；存在 PaaS 和企业版
     -   支持 JSON 数据类型
     -   新增对窗口函数的支持
@@ -536,7 +533,7 @@ The traditional SQL database may seem an odd choice however, in addition to simp
     *   Support for a [columnar](https://mariadb.com/products/technology/columnstore) storage engine which significantly speeds up analytical workloads
     *   Commercial support by [MariaDB](https://mariadb.com/), PaaS support by [AWS](https://aws.amazon.com/rds/)
 
--   **MariaDB**
+-   **[MariaDB](https://mariadb.org/)**
     -   开源
     -   最初是 MySQL 的一个分支
     -   支持窗口函数
@@ -554,7 +551,7 @@ The traditional SQL database may seem an odd choice however, in addition to simp
     *   Third party support for [columnar](https://github.com/citusdata/cstore_fdw) storage engine which significantly speeds up analytical workloads
     *   Support for sharding via [PL/Proxy](https://plproxy.github.io/)
 
--   **PostgreSQL**
+-   **[PostgreSQL](https://www.postgresql.org/)**
     -   开源；存在 PaaS 和企业版
     -   支持 JSON 数据类型
     -   拥有多个公司的商业支持
@@ -572,7 +569,7 @@ The traditional SQL database may seem an odd choice however, in addition to simp
     *   Lags behind open source in version support, Aurora MySQL 5.7 support came out over 2 years after MySQL 5.7
     *   Does not support clustering beyond read replicas
     
--   **Amazon Aurora：** 兼容 MySQL 和 PostageSQL 的 AWS 全托管数据库
+-   **[Amazon Aurora](https://aws.amazon.com/rds/aurora/)：** 兼容 MySQL 和 PostageSQL 的 AWS 全托管数据库
     -   专有的 PaaS
     -   存储空间自动且无缝分配
     -   数据在所有可使用区域复制
