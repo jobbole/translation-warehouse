@@ -1,16 +1,22 @@
 # git log – the Good Parts
 
+# git log 的好处
+
 If you’re managing a complex git codebase with multiple developers, then you may well be using a tool like GitHub or BitBucket to delve into the history and figure out branch and merge issues.
+
+如果你正在与多个开发人员一起管理复杂的 git 代码库，那么你可能正在使用 GitHub 或 BitBucket 等工具来深入研究历史提交记录并找出分支和合并的问题。
 
 These GUIs are great for providing a nice user interface for managing pull requests and simple histories and the like, but when the workflow SHTF there’s no substitute for using `git log` and its relatively little-known flags to really dig into the situation.
 
-You’re going to run through this with me so that I know you’ve got it. Type the commands **in bold** to follow.
-
-This is based on material from my book [Learn Git the Hard Way](https://leanpub.com/learngitthehardway), a free sample available [here](https://leanpub.com/learngitthehardway).
+GUI 工具为管理拉取请求和简单历史记录等提供良好的用户界面，但当你的工作流面临灭顶之灾时，`git log` 就显得无可比拟了，它的一些鲜为人知的参数选项可以让你真切地了解实际情况。
 
 ## An Example Git Repository
 
+## 一个 Git 仓库示例
+
 Run this to download a fairly typical git repository that I work on:
+
+执行以下命令来下载接下来讲述的典型 Git 仓库：
 
 ```shell
 $ git clone https://github.com/ianmiell/cookbook-openshift3-frozen
@@ -19,11 +25,13 @@ $ cd cookbook-openshift3-frozen
 
 *NB this is a copy of the original repo, ‘frozen’ here to provide stable output.* 
 
- 
+_注意：这是原始仓库的副本，这里的“frozen”是为了提供稳定的输出版本。_
 
 ## `git log`
 
 `git log` is the vanilla log command you are probably already familiar with:
+
+`git log` 可能是你再也熟悉不过的日志命令了：
 
 ```shell
 $ git log
@@ -49,11 +57,17 @@ latest
 
 It outputs 5+ lines per commit, with date, author commit message and id. It goes in reverse time order, which makes sense for most cases, as you are mostly interested in what happened recently.
 
-*NOTE: output can vary depending on version, aliases,**and whether you are outputting to a terminal!My version here was 2.7.4.*
+它为每次提交输出 5+ 行的内容，包括日期、作者提交信息和 id。它按照时间逆序排列，这对于大多数情况都是合理的，因为你对最近发生的提交最感兴趣。
+
+*NOTE: output can vary depending on version, aliases, and whether you are outputting to a terminal!My version here was 2.7.4.*
+
+_注意：输出的内容可能因为版本、别名以及使用的终端会是否有所不同！我的 git 版本是 2.7.4。_
 
 ## `--oneline`
 
 Most of the time I don’t care about the author or the date, so in order that I can see more per screen, I use `--oneline` to only show the commit id and comment per-commit.
+
+大多数时候，我不关心作者或日期，所以为了能在屏幕上显示更多内容，我会使用 `--oneline` 参数，来只显示每个提交的提交 id 和提交注释。
 
 ```shell
 $ git log --oneline
@@ -63,13 +77,15 @@ ecab26a JENKINSFILE: Upgrade from 1.3 only
 bf36cf5 Merge branch 'master' of github.com:IshentRas/cookbook-openshift3
 ```
 
-## 
-
 ## `--decorate`
 
 You might want more information than that, though, like which branch was that commit on? Where are the tags?
 
+但你可能需要更多信息，例如提交的分支、便签。
+
 The `--decorate` flag provides this.
+
+使用 `--decorate` 标志可以做到这一点。
 
 ```shell
 $ git log --oneline --decorate
@@ -80,7 +96,11 @@ ecab26a (HEAD -> master, origin/master, origin/HEAD) JENKINSFILE: Upgrade from 1
 
 More recent versions of git put this in the terminal by default, so things are improving for my fingers.
 
+最新版本的 git 默认把它加在终端中，可以手动优化它。
+
 (Remember that your version might do `--decorate` by default fir `git log` when output goes to the terminal instead of a file).
+
+（记住，当输出对终端而不文件时，你的版本的 `--decorate` 可能默认执行了 `git log`。）
 
 ## `--all`
 
@@ -99,13 +119,21 @@ e1ee997 Merge branch 'development'
 
 Can you see what it does? If you can’t, compare it to `--oneline` above and dig around to figure it out.
 
+发现它的作用吗？如果没有，可以仔细对比上面使用 `--oneline` 的输出结果。
+
 That’s great, but what would be great is a visual representation of all those branches…
+
+这很好，但最强的是对所有分支的可视化……
 
 ## `--graph`
 
 `--graph` gives you that visual representation, but in the terminal. While it might not look as slick as some git GUIs, it does have the benefit of being consistently viewed anywhere, and much more configurable to your specific needs.
 
+`--graph` 可能提供可视化显示，但在终端中，它可能看起来不像某些 git GUI 那样灵巧，但它确实对在各处查看日志提高很大的便利，并且可以根据你的特定需求进行更多的配置。
+
 And when you’re trying to piece together what happened on a 15-team project that doesn’t rebase, it can be essential…
+
+当你试图合并一个 15 人团队没有变基的提交时，它可能至关重要……
 
 ```shell
 $ git log --oneline --decorate --all --graph
@@ -130,11 +158,19 @@ $ git log --oneline --decorate --all --graph
 
 **DON’T PANIC!**
 
+__不要惊慌__
+
 The above can be hard for the newcomer to parse, and there is little out there to guide you, but a few tips here can make it much easier to read.
+
+上面内容对于新手来说的确晦涩难懂，并且没有可以指引你的东西，但这里一些提示可能帮助你更易于阅读。
 
 The `*` indicates that there is a commit on the line, and the details of the commit (here the commit id, and first line of the comment) are on the right hand side.
 
+线上的 `*` 表示一个提交，在右侧显示了提交细节（这里包括提交 id 和提交注释的第一行）。
+
 The lines and position of the `*` indicate the lineage (or parentage) of each change. So, to take these three lines for example:
+
+线条和 `*` 表示每个变化的系谱（或亲子关系）。所以，以这三行为例：
 
 ```shell
 | * bf36cf5 Merge branch 'master' of github.com:IshentRas/cookbook-openshift3
@@ -144,25 +180,21 @@ The lines and position of the `*` indicate the lineage (or parentage) of each ch
 
 The green pipes indicate that while the two changes listed here were going on, another branch had a gap between its two changes (9816651 and d21351c).
 
+绿色的管道表示此处列出两个正在进行的更改，但另外一个分支在其两个更改（9816651 和 d21351c）之间存在差异。
+
 The blue line takes you to one parent of the bf36cf5 merge (what’s the commit id of the blue parent?), and the pink one goes to the other parent commit (313c03a).
+
+蓝线将告诉你 bf36cf5 合并的父级关系（蓝色父级的提交 id 是什么），粉色的线转向父级的另外一个提交（313c03a）。
 
 It’s worth taking a bit of time to figure out what’s going on here, as it will pay dividends in a crisis later…
 
-------
-
-**\*If you like this post, you’ll like my book Learn Git the Hard Way***
-
-**\*It covers all this and much more in a similar style.***
-
-[![learngitthehardway](https://zwischenzugs.files.wordpress.com/2018/03/learngitthehardway.png?w=188&h=300)](https://leanpub.com/learngitthehardway)
-
-------
-
-### 
+指的花些时间来弄清楚这里发生的事情，因为这里欠的债以后也是要还的……
 
 ## `--simplify-by-decoration`
 
 If you’re looking at the whole history of a project and want to get a feel for its shape before diving in, you may want to see only the significant points of change (ie the lines affected by `-–decorate` above).
+
+
 
 These remove any commit that wasn’t tagged, branched (ie there’s no reference). The root commit is always there too.
 
