@@ -53,7 +53,7 @@ These systems provide a programmatic (Java, Scala, Python, etc.) interface for q
     
     
     
--   **[Apache Hadoop MapReduce](https://hortonworks.com/apache/mapreduce/)：** 大数据生态系统的基石，它提供了一种高效处理拍字节级别数据的方法
+-   **[Apache Hadoop MapReduce](https://hortonworks.com/apache/mapreduce/)：** 大数据生态系统的基石，它提供了一种高效处理拍字节(petabytes)级别数据的方法
     -   开源；存在 PaaS 和企业版
     -   用 Java 编写
     -   发布于 2006 年
@@ -479,7 +479,7 @@ These are full featured Data Warehouses that tie together the data storage and d
 The traditional SQL database may seem an odd choice however, in addition to simply scaling vertically, with [sharding](https://en.wikipedia.org/wiki/Shard_(database_architecture)) and read-replicas it can scale across multiple nodes. In the following points I’m focusing more on these databases as analytical data stores (relatively few large queries) rather than traditional databases (massive numbers of relatively small queries).
 
 传统的 SQL
-数据库看上去可能不是个常规的选择。但是，除了简单的纵向扩展，它还可以通过[分片](https://en.wikipedia.org/wiki/Shard_(database_architecture))（sharding）和只读副本（read-replicas）进行跨节点扩展在后文中，我会更多的将这些数据库作为分析型数据库（相对少量的大型查询），而不是传统数据库（大量的小型查询）来分析。
+数据库看上去可能不是个常规的选择。但是，除了简单的纵向扩展，它还可以通过[分片](https://en.wikipedia.org/wiki/Shard_(database_architecture))（sharding）和只读副本（read-replicas）进行跨节点扩展在。后文中，我会更多地将这些数据库作为分析型数据库（相对少量的大型查询），而不是传统数据库（大量的小型查询）来分析。
 
 *   **Overall**
     *   Powerful [ACID](https://en.wikipedia.org/wiki/ACID) guarantees
