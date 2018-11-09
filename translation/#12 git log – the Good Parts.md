@@ -8,7 +8,7 @@ If you’re managing a complex git codebase with multiple developers, then you m
 
 These GUIs are great for providing a nice user interface for managing pull requests and simple histories and the like, but when the workflow SHTF there’s no substitute for using `git log` and its relatively little-known flags to really dig into the situation.
 
-GUI 工具为管理拉取请求和简单历史记录等提供良好的用户界面，但当你的工作流面临灭顶之灾时，`git log` 就显得无可比拟了，它的一些鲜为人知的参数选项可以让你真切地了解实际情况。
+GUI 工具为管理拉取请求和简单历史记录等提供良好的用户界面，但当你的工作流面临灭顶之灾时，`git log` 就显得无可比拟了，它的一些鲜为人知的参数选项可以让你真正地了解实际情况。
 
 ## An Example Git Repository
 
@@ -57,7 +57,7 @@ latest
 
 It outputs 5+ lines per commit, with date, author commit message and id. It goes in reverse time order, which makes sense for most cases, as you are mostly interested in what happened recently.
 
-它为每次提交输出 5+ 行的内容，包括日期、作者提交信息和 id。它按照时间逆序排列，这对于大多数情况都是合理的，因为你对最近发生的提交最感兴趣。
+每个提交会输出 5+ 行的内容，包括日期、作者提交信息和 id。它按照时间逆序排列，这对于大多数情况都是合理的，因为你对最近发生的提交最感兴趣。
 
 *NOTE: output can vary depending on version, aliases, and whether you are outputting to a terminal!My version here was 2.7.4.*
 
@@ -67,7 +67,7 @@ _注意：输出的内容可能因为版本、别名以及使用的终端会是�
 
 Most of the time I don’t care about the author or the date, so in order that I can see more per screen, I use `--oneline` to only show the commit id and comment per-commit.
 
-大多数时候，我不关心作者或日期，所以为了能在屏幕上显示更多内容，我会使用 `--oneline` 参数，来只显示每个提交的提交 id 和提交注释。
+大多数时候，我不关心作者或日期，所以为了能在屏幕上显示更多内容，我会使用 `--oneline` 参数，来只显示每个提交的 id 和注释。
 
 ```shell
 $ git log --oneline
@@ -96,11 +96,11 @@ ecab26a (HEAD -> master, origin/master, origin/HEAD) JENKINSFILE: Upgrade from 1
 
 More recent versions of git put this in the terminal by default, so things are improving for my fingers.
 
-最新版本的 git 默认把它加在终端中，可以手动优化它。
+最新版本的 git 默认把它加在终端中，你可以手动优化它。
 
 (Remember that your version might do `--decorate` by default fir `git log` when output goes to the terminal instead of a file).
 
-（记住，当输出对终端而不文件时，你的版本的 `--decorate` 可能默认执行了 `git log`。）
+（记住，当你是输出到终端而不文件时，你版本的 `--decorate` 可能默认执行了 `git log`。）
 
 ## `--all`
 
@@ -119,21 +119,21 @@ e1ee997 Merge branch 'development'
 
 Can you see what it does? If you can’t, compare it to `--oneline` above and dig around to figure it out.
 
-发现它的作用吗？如果没有，可以仔细对比上面使用 `--oneline` 的输出结果。
+发现它的作用没？如果没有，可以仔细对比上面使用 `--oneline` 的输出结果。
 
 That’s great, but what would be great is a visual representation of all those branches…
 
-这很好，但最强的是对所有分支的可视化……
+这很好，但最强的功能是对所有的分支可视化……
 
 ## `--graph`
 
 `--graph` gives you that visual representation, but in the terminal. While it might not look as slick as some git GUIs, it does have the benefit of being consistently viewed anywhere, and much more configurable to your specific needs.
 
-`--graph` 可能提供可视化显示，但在终端中，它可能看起来不像某些 git GUI 那样灵巧，但它确实对在各处查看日志提高很大的便利，并且可以根据你的特定需求进行更多的配置。
+`--graph` 可以提供可视化显示，但在终端中，它可能看起来不像某些 git GUI 那样灵巧，但它确实对想要浏览各处提交日志提供了很大的便利，并且可以根据你的特定需求进行更多的配置。
 
 And when you’re trying to piece together what happened on a 15-team project that doesn’t rebase, it can be essential…
 
-当你试图合并一个 15 人团队没有变基的提交时，它可能至关重要……
+当你试图拼凑一个 15 人团队没有变基的提交历史时，它可能至关重要……
 
 ```shell
 $ git log --oneline --decorate --all --graph
@@ -162,15 +162,15 @@ __不要惊慌__
 
 The above can be hard for the newcomer to parse, and there is little out there to guide you, but a few tips here can make it much easier to read.
 
-上面内容对于新手来说的确晦涩难懂，并且没有可以指引你的东西，但这里一些提示可能帮助你更易于阅读。
+上面内容对于新手来说的确是晦涩难懂，并且没有可以指引你的东西，但这里一些技巧可能帮助你更易于阅读。
 
 The `*` indicates that there is a commit on the line, and the details of the commit (here the commit id, and first line of the comment) are on the right hand side.
 
-线上的 `*` 表示一个提交，在右侧显示了提交细节（这里包括提交 id 和提交注释的第一行）。
+线上的 `*` 表示一个提交，在右侧则显示了该提交的细节（这里包含提交 id 和提交注释首行）。
 
 The lines and position of the `*` indicate the lineage (or parentage) of each change. So, to take these three lines for example:
 
-线条和 `*` 表示每个变化的系谱（或亲子关系）。所以，以这三行为例：
+线条和 `*` 表示每个变化的系谱（或亲子关系）。以这三行为例：
 
 ```shell
 | * bf36cf5 Merge branch 'master' of github.com:IshentRas/cookbook-openshift3
@@ -180,23 +180,25 @@ The lines and position of the `*` indicate the lineage (or parentage) of each ch
 
 The green pipes indicate that while the two changes listed here were going on, another branch had a gap between its two changes (9816651 and d21351c).
 
-绿色的管道表示此处列出两个正在进行的更改，但另外一个分支在其两个更改（9816651 和 d21351c）之间存在差异。
+绿色的线条表示此处列出两个正在进行的更改，在另外一个分支中，两个更改（9816651 和 d21351c）存在差异。
 
 The blue line takes you to one parent of the bf36cf5 merge (what’s the commit id of the blue parent?), and the pink one goes to the other parent commit (313c03a).
 
-蓝线将告诉你 bf36cf5 合并的父级关系（蓝色父级的提交 id 是什么），粉色的线转向父级的另外一个提交（313c03a）。
+蓝线将告诉你 bf36cf5 合并的父级关系（蓝线父级的提交 id 是什么），粉色的线转向父级的另外一个提交（313c03a）。
 
 It’s worth taking a bit of time to figure out what’s going on here, as it will pay dividends in a crisis later…
 
-指的花些时间来弄清楚这里发生的事情，因为这里欠的债以后也是要还的……
+值得花些时间来弄清楚这里发生的事情，因为这里欠的债以后也是要还的……
 
 ## `--simplify-by-decoration`
 
 If you’re looking at the whole history of a project and want to get a feel for its shape before diving in, you may want to see only the significant points of change (ie the lines affected by `-–decorate` above).
 
-
+如果你正在查看项目的整个历史记录，并希望在深入了解之前有个大概的认识，或许你只是想看到一些关键的变更点（即上述没有受到 `-–decorate` 影响的线条）。
 
 These remove any commit that wasn’t tagged, branched (ie there’s no reference). The root commit is always there too.
+
+这里移除了任意没有标记、分支（即没有受到影响）的提交的输出。这些根提交也始终存在。
 
 ```shell
 $ git log --oneline --decorate --all --graph --simplify-by-decoration
@@ -211,11 +213,19 @@ $ git log --oneline --decorate --all --graph --simplify-by-decoration
 
 Try tagging a specific commit not listed above, and then re-run the command.
 
+尝试标记上面未列出的某些特定提交，然后重新运行该命令。
+
 ## File Info
+
+## 文件信息
 
 Using `--oneline` can be a bit sparse, so `--stat` can give you useful information about what changed.
 
+使用 `--oneline` 可能觉得信息太少，所以 `--stat` 选项可以给你提供有关变更内容的有用信息。
+
 The number indicates the numbers of lines that were changed, with insertions represented by a `+` sign, and deletions by a `-`. There’s no concept of a ‘change’ to a line as such: the old line is deleted, and then the new one added even if only one character changed.
+
+数字表示已更改的行数，插入由 `+` 表示，删除由 `-` 表示。这里对行内的“更改”没有支持，例如，删除旧行，这时即使只更改了一个字符也会认为是添加新行。
 
 ```shell
 $ git log --oneline --decorate --all --graph --stat
@@ -230,11 +240,19 @@ $ git log --oneline --decorate --all --graph --stat
 
 If you find `--stat` hard to remember, then an alternative is to use `--name-only`, but with that you lose the information about numbers of changes to files.
 
+如果你觉得 `--stat` 很难记，你可以使用 `--name-only`，但随之而来的是你缺失了有关文件更改次数的信息。
+
 ## Regex on Commits
+
+## 对提交使用正则表达式
 
 This one’s also *really* handy. The `-G` flag allows you to search for all commits and only return commits and their files whose changes include that regexp.
 
+这个也很_相当_方便。使用 `-G` 标志可以让你在搜索所有提交时，仅返回符合正则表达式的提交。
+
 This one, for example, looks for changes that contain the text `chef-client`
+
+例如，这个查找包含文字 `chef-client`：
 
 ```shell
 $ git log -G 'chef-client' --graph --oneline --stat
@@ -256,10 +274,16 @@ $ git log -G 'chef-client' --graph --oneline --stat
 
 If you’ve ever spent ages searching through `git log --patch` output looking for a specific change this is a godsend…
 
+如果你花了多年的时间搜索 `git log --patch` 寻找输出的特定变化，你会发现一个新世界……
+
 The eccentrically-named `--pickaxe-all` gives you information about *all* files that changed in the commit, rather than just the ones that matched the regexp in the commit.
+
+命名反常的 `--pickaxe-all` 选项可以提供提交中_所有_更改文件的信息，而不是仅仅与提交中与正则表达式匹配的文件。
 
 ```shell
 $ git log -G 'chef-client' --graph --oneline --stat --pickaxe-all
 ```
 
 Try it out!
+
+试试吧！
