@@ -1,6 +1,6 @@
 # git log – the Good Parts
 
-# git log 的好处
+# 巧用 git log
 
 If you’re managing a complex git codebase with multiple developers, then you may well be using a tool like GitHub or BitBucket to delve into the history and figure out branch and merge issues.
 
@@ -8,7 +8,7 @@ If you’re managing a complex git codebase with multiple developers, then you m
 
 These GUIs are great for providing a nice user interface for managing pull requests and simple histories and the like, but when the workflow SHTF there’s no substitute for using `git log` and its relatively little-known flags to really dig into the situation.
 
-GUI 工具为管理拉取请求和简单历史记录等提供良好的用户界面，但当你的工作流面临灭顶之灾时，`git log` 就显得无可比拟了，它的一些鲜为人知的参数选项可以让你真正地了解实际情况。
+GUI 工具为拉取请求和简单历史记录管理等提供良好的用户界面，但当你的工作流面临灭顶之灾时，`git log` 就显得无可比拟了，它的一些鲜为人知的参数选项可以让你真正地了解实际情况。
 
 ## An Example Git Repository
 
@@ -100,7 +100,7 @@ More recent versions of git put this in the terminal by default, so things are i
 
 (Remember that your version might do `--decorate` by default fir `git log` when output goes to the terminal instead of a file).
 
-（记住，当你是输出到终端而不文件时，你版本的 `--decorate` 可能默认执行了 `git log`。）
+（记住，当你是输出到终端而不文件时，你使用版本的 `--decorate` 可能默认执行了 `git log`。）
 
 ## `--all`
 
@@ -198,7 +198,7 @@ If you’re looking at the whole history of a project and want to get a feel for
 
 These remove any commit that wasn’t tagged, branched (ie there’s no reference). The root commit is always there too.
 
-这里移除了任意没有标记、分支（即没有受到影响）的提交的输出。这些根提交也始终存在。
+这里移除了所有没有标记、分支（即没有受到影响）的提交的输出。这些根提交也始终存在。
 
 ```shell
 $ git log --oneline --decorate --all --graph --simplify-by-decoration
@@ -221,7 +221,7 @@ Try tagging a specific commit not listed above, and then re-run the command.
 
 Using `--oneline` can be a bit sparse, so `--stat` can give you useful information about what changed.
 
-使用 `--oneline` 可能觉得信息太少，所以 `--stat` 选项可以给你提供有关变更内容的有用信息。
+使用 `--oneline` 可能觉得信息太少，所以 `--stat` 选项可以给你提供更多有关变更内容的有用信息。
 
 The number indicates the numbers of lines that were changed, with insertions represented by a `+` sign, and deletions by a `-`. There’s no concept of a ‘change’ to a line as such: the old line is deleted, and then the new one added even if only one character changed.
 
@@ -274,7 +274,7 @@ $ git log -G 'chef-client' --graph --oneline --stat
 
 If you’ve ever spent ages searching through `git log --patch` output looking for a specific change this is a godsend…
 
-如果你花了多年的时间搜索 `git log --patch` 寻找输出的特定变化，你会发现一个新世界……
+如果你常年使用 `git log --patch` 输出来搜寻特定的变更，那么使用该技巧你将发现一个新世界……
 
 The eccentrically-named `--pickaxe-all` gives you information about *all* files that changed in the commit, rather than just the ones that matched the regexp in the commit.
 
@@ -286,4 +286,4 @@ $ git log -G 'chef-client' --graph --oneline --stat --pickaxe-all
 
 Try it out!
 
-试试吧！
+来试试吧！
