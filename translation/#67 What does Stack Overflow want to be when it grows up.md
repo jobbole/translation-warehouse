@@ -5,7 +5,7 @@ https://blog.codinghorror.com/what-does-stack-overflow-want-to-be-when-it-grows-
 
 I sometimes get asked by regular people in the actual real world what it is that I do for a living, and here's my 15 second answer:
 
-现实生活中常常有人为我，我的工作是什么，对此我有一个15秒的回答：
+现实生活中常常有人问我，我的工作是什么，对此我有一个15秒的回答：
 
 
 > We built a sort of Wikipedia website for computer programmers to post questions and answers. It's called [Stack Overflow](https://stackoverflow.com/).
@@ -32,6 +32,7 @@ What I do care about, though, is whether Stack Overflow is useful to working pro
 我真正在乎的是，Stack Overflow对程序开发者们是不是有帮助。对此，让我们看看如今最伟大的开发者之一，也是[我的偶像](https://blog.codinghorror.com/you-dont-need-millions-of-dollars/)的John Carmack怎么说。
 
 ![Stack Overflow为提升开发者的效率事业差不多贡献了好几亿美元](https://d2mxuefqeaa7sj.cloudfront.net/s_C8591C5627C21D2C099CE3885D4246D7CFCC30D73E98C53D54E39F0983BC11D8_1541195322340_image.png)
+*Stack Overflow为提升开发者的效率事业差不多贡献了好几亿美元*
 
 
 I won't lie, September 17th, 2013 was a [pretty good day](https://www.youtube.com/watch?v=O_05qJTeNNI). `I literally got chills when I read that, and not just because I always read the word "billions" in Carl Sagan's voice. It was also pleasantly the opposite of pretty much every other day I'm on Twitter, scrolling through an oppressive, endless litany of shared human suffering and people screaming at each other. Which reminds me, I should check my Twitter and see who else is wrong on the Internet today.`
@@ -68,7 +69,7 @@ But success stories are boring. The world is filled with people that [basically 
 
 
 ![当你在凝视深渊的时候，深渊也正在凝视着你 - Friedrich Nietzsche](https://preview.redd.it/7gmrgaa156q01.jpg?width=960&crop=smart&auto=webp&s=639835f90d02f0118d640c722e30cbd96b32c38c)
-
+*当你在凝视深渊的时候，深渊也正在凝视着你 - Friedrich Nietzsche*
 
 Thus, what I'd like to do right now is peer into that glorious abyss for a bit and introspect about the challenges I see facing Stack Overflow for the next 10 years. Before I begin, I do want to be absolutely crystal clear about a few things:
 
@@ -77,7 +78,7 @@ Thus, what I'd like to do right now is peer into that glorious abyss for a bit a
 
 1. I have not worked at Stack Overflow in any capacity whatsoever [since February 2012](https://blog.codinghorror.com/farewell-stack-exchange/) and I've had zero day to day operational input since that date, more or less by choice. Do I have opinions about how things should be done? Uh, have you met me? Do I email people every now and then about said opinions? I might, but I honestly do try to keep it to an absolute minimum, and I think my email archive track record here is reasonable.
 
-[从2012年2月](https://blog.codinghorror.com/farewell-stack-exchange/)开始，我就没有在Stack Overflow的任何领域工作了，也没有对其运营有过任何意见建议。你问我对如何运作Stack Overflow竟然能没有意见建议？额，那你可能不认识我。你问我难道我不会时不时给员工发邮件告诉他们我的想法？我也许会吧，但是绝对是极少数情况，我有合理数量的归档邮件记录。
+[从2012年2月](https://blog.codinghorror.com/farewell-stack-exchange/)开始，我就没有在Stack Overflow的任何领域工作了，也没有对其运营有过任何意见建议。你问我对如何运作Stack Overflow竟然能没有意见建议？额，那你可能不认识我。你问我难道我不会时不时给员工发邮件告诉他们我的想法？我也许会吧，但是我为数不多的归档邮件可以证明，这个事情很少发生。
 
 
 2. The people working at Stack are amazing and most of them (including much of the Stack Overflow community, while I'm at it) could articulate the mission better — and perhaps a tad less crankily — than I could by the time I left. Would I trust them with my life? No. But I'd trust them with Joel's life!
@@ -118,11 +119,12 @@ The most common complaints I see about Stack Overflow are usually the result of 
 
 
 ![我希望更多的人能明白，Stack Overflow并不是一个“回答我的问题”的地方，它是“让我们合作建立一个对未来的开发者们有益的地方”。也许Stack Overflow应该更加努力去帮助用户理解这件事。](https://d2mxuefqeaa7sj.cloudfront.net/s_C8591C5627C21D2C099CE3885D4246D7CFCC30D73E98C53D54E39F0983BC11D8_1541370256957_image.png)
+*我希望更多的人能明白，Stack Overflow并不是一个“回答我的问题”的地方，它是“让我们合作建立一个对未来的开发者们有益的地方”。也许Stack Overflow应该更加努力去帮助用户理解这件事。*
 
 
 I'm continually amazed at the number of people, even on Hacker News today, who don't realize that every single question and answer is editable on Stack Overflow, even as a completely anonymous user who isn't logged in. Which makes sense, right, because Stack Overflow is a wiki, and that's how wikis work. Anyone can edit them. Go ahead, try it right now if you don't believe me — press the "improve this answer" or "improve this question" button on anything that can be improved, and make it so.
 
-如今很多用户，甚至Hacker New，都不知道Stack Overflow上有个功能，那就是每一个问题都是可以修改的，即使是没有登录的匿名用户也可以修改。对此我深表惊讶。这个功能不奇怪，对吧，因为Stack Overflow就是一种维基百科，这也是维基百科的运行模式，任何人都可以修改任何内容。不信的话，现在就去试试吧，找一个你认为可以提高的问题或者回答，点击“改善这个回答”或者“改善这个问题”，然后写下你的改良版。
+如今很多用户，甚至Hacker News，都不知道Stack Overflow上有个功能，那就是每一个问题都是可以修改的，即使是没有登录的匿名用户也可以修改。对此我深表惊讶。这个功能不奇怪，对吧，因为Stack Overflow就是一种维基百科，这也是维基百科的运行模式，任何人都可以修改任何内容。不信的话，现在就去试试吧，找一个你认为可以提高的问题或者回答，点击“改善这个回答”或者“改善这个问题”，然后写下你的改良版。
 
 
 ![](https://blog.codinghorror.com/content/images/2018/10/stack-overflow-edit-question.png)
@@ -230,6 +232,8 @@ Stack Overflow确实是个相当明确的竞争性系统，它的一大标志就
 
 
 ![- 你好Randall。医生说你能听到我说话，虽然你看起来像植物人。我是来告诉你，别着急慢慢康复。因为Ross接替了你的工作，并且做的非常好。他甚至找到了你代码里的瓶颈，还说他改过的代码变快了两倍。 - 这不可能！！！！！我现在就回办公室！](https://blog.codinghorror.com/content/images/2018/10/geek-hero-motivating-programmers.png)
+*- 你好Randall。医生说你能听到我说话，虽然你看起来像植物人。我是来告诉你，别着急慢慢康复。因为Ross接替了你的工作，并且做的非常好。他甚至找到了你代码里的瓶颈，还说他改过的代码变快了两倍。*<br />
+*- 这不可能！！！！！我现在就回办公室！*
 
 This is manifested in the public reputation system on Stack Overflow, the [incredible power of a number printed next to someone's name](https://blog.codinghorror.com/for-a-bit-of-colored-ribbon/), writ large. All reputation in Stack Overflow comes from the recognition of your peers, never the "system".
 
@@ -237,9 +241,9 @@ Stack Overflow的竞争性质体现在了它的公开名誉系统上，就是[�
 
 ![](https://blog.codinghorror.com/content/images/2018/10/stack-overflow-top-rep-by-year.png)
 
-Once your question is asked, or your answer is posted, it can then be `poked, prodded,` edited, flagged, closed, opened, upvoted, downvoted, folded and `spindled` by your peers. The intent is for Stack Overflow to be a system of peer review and friendly competition, like a code review from a coworker you've never met at a different division of the company. It's also completely fair for a fellow programmer to question the premise of your question, as long as it's done in a nice way. For example, [do you really want to use that regular expression to match HTML](https://stackoverflow.com/questions/1732348/regex-match-open-tags-except-xhtml-self-contained-tags)?
+Once your question is asked, or your answer is posted, it can then be poked, prodded, edited, flagged, closed, opened, upvoted, downvoted, folded and spindled by your peers. The intent is for Stack Overflow to be a system of peer review and friendly competition, like a code review from a coworker you've never met at a different division of the company. It's also completely fair for a fellow programmer to question the premise of your question, as long as it's done in a nice way. For example, [do you really want to use that regular expression to match HTML](https://stackoverflow.com/questions/1732348/regex-match-open-tags-except-xhtml-self-contained-tags)?
 
-每当你提出问题或者提交回答时，你的问题或回答都可以被其他用户poked，prodded，编辑，标记，关闭，打开，赞，踩，收起或者spindled。这样做的目的是让Stack Overflow成为一个同行评审和友好竞争的系统，就像在公司里，你的代码被你从没见过的另一个部门的人来评审。有人以友好的方式去质疑你所提问题的提论，也是完全合理的，比如，[你真的相用这个正则表达式去匹配HTML吗](https://stackoverflow.com/questions/1732348/regex-match-open-tags-except-xhtml-self-contained-tags)？
+每当你提出问题或者提交回答时，你的问题或回答都可以被其他用户指指点点，他们可以编辑，标记，关闭，打开，赞，踩或者收起。这样做的目的是让Stack Overflow成为一个同行评审和友好竞争的系统，就像在公司里，你的代码被你从没见过的另一个部门的人来评审。有人以友好的方式去质疑你所提问题的提论，也是完全合理的，比如，[你真的想用这个正则表达式去匹配HTML吗](https://stackoverflow.com/questions/1732348/regex-match-open-tags-except-xhtml-self-contained-tags)？
 
 I fully acknowledge that competitive peer review systems aren't for everyone, and thus the overall process of having peers review your question may not always feel great, depending on your circumstances and background in the field — particularly when combined with the substantial tensions around utility and duplicates Stack Overflow already absorbed from its wiki elements. Kind of a double whammy there.
 
