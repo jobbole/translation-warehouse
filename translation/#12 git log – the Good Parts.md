@@ -61,7 +61,7 @@ It outputs 5+ lines per commit, with date, author commit message and id. It goes
 
 *NOTE: output can vary depending on version, aliases, and whether you are outputting to a terminal!My version here was 2.7.4.*
 
-_注意：输出的内容可能因为版本、别名以及使用的终端会是否有所不同！我的 git 版本是 2.7.4。_
+_注意：输出的内容可能因为版本、别名以及使用的终端的不同而有所不同！我的 git 版本是 2.7.4。_
 
 ## `--oneline`
 
