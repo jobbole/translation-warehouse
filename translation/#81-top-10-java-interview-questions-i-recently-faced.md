@@ -3,22 +3,22 @@ editor: AtlantisLee
 published: false
 title: '#81-Top 10 Java Interview Questions I Recently Faced'
 ---
-Need help getting ready for your next Java interview? Check out this post on the top 10 Java interview questions to make sure you're prepared!
-
 Recently, I participate in a few Java-based interviews to keep me fresh. Suddenly, I had an idea that I would like to share my experiences with you all. I hope I can help by sharing the top 10 Java interview questions that I faced in the recent months.
-
+最近，我参加了一些 Java 面试以保持新鲜感。我突然萌生了一个想法，就是向大家分享我的经历。我希望通过分享最近几个月我在 Java 面试中遇到的十大问题，能为大家提供帮助。
 ## Top 10 Java Interview Questions I Recently Faced
-
+## 
 In this presentation, I tried to collect you the most interesting and common questions. Furthermore, I will provide you with the correct answers. 
-
+在这篇文章中，我试图收录最有趣和最常见的问题。此外，我将为您提供正确的答案。
 So, let’s take a look at these questions.
 
 ### 1. Evaluate Yourself on a Scale of 10 — How Good Are you in Java?
+以满分10分来评估自己——你有多擅长 Java？
 This is a very tricky one if you are not exactly sure about yourself or your level of proficiency in Java. If that sounds familiar, you should shoot a bit lower. After this, you will probably get questions according to the level you've admitted to. Hence, if you, for example, said 10 and cannot answer a fairly difficult question, it will be a drawback. 
-
+如果你并不完全确信你自己或是你对 Java 的熟练程度，那么这会是一个非常棘手的问题。如果有这种情况，你应该把打分调低一点。之后，你大概会得到与你承认的水平相对应的问题。因此，假如你给自己满分，却不能回答一个有点难的问题，那将会是一个不利之处。
 ### 2. Explain the Differences Between Java 7 and 8.
+阐述Java 7和Java 8的区别
 To be honest, there are a lot of differences. Here, if you can list the most significant ones, it should be enough. You should explain the new features in Java 8. For the full list, visit the original website here: [Java 8 JDK](https://www.oracle.com/technetwork/java/javase/8-whats-new-2157071.html).
-
+说实话，两者有很多不同。如果你能列出最重要的，应该就足够了。你应该解释 Java 8 中的新功能。要获得完整清单，请访问官网：Java 8 JDK。
 The most important ones that you should know are:
 
 - **Lambda expressions**, a new language feature, has been introduced in this release. Lambda expressions enable you to treat functionality as a method argument or code as data. Lambda expressions let you express instances of single-method interfaces (referred to as functional interfaces) more compactly.
