@@ -1,12 +1,12 @@
-by Zoltan Raffai     ·  Aug. 27, 18 · Java Zone · Presentation
+by Zoltan Raffai     ·  Aug. 27, 18 · Java Zone · Presentation     
 
 Recently, I participate in a few Java-based interviews to keep me fresh. Suddenly, I had an idea that I would like to share my experiences with you all. I hope I can help by sharing the top 10 Java interview questions that I faced in the recent months.
 
-最近，我参加了一些 Java 面试以保持新鲜感。我突然萌生了一个想法，就是向大家分享我的经历。我会在此分享最近几个月我在 Java 面试中遇到最多的10个问题，希望能帮助到大家。
+最近，我参加了一些 Java 面试以保持新鲜感。我突然萌生了一个想法，就是向大家分享我的经历。我会在此分享最近几个月我在 Java 面试中遇到最多的十个问题，希望能帮助到大家。
 
 ## [Top 10 Java Interview Questions I Recently Faced](https://dzone.com/articles/top-10-java-interview-questions-that-i-recently-fa)
 
-## 常被问到的10个Java面试题
+## 常被问到的十个 Java 面试题
 
 In this presentation, I tried to collect you the most interesting and common questions. Furthermore, I will provide you with the correct answers. 
 
@@ -18,7 +18,7 @@ So, let’s take a look at these questions.
 
 ### 1. Evaluate Yourself on a Scale of 10 — How Good Are you in Java?
 
-### 以满分10分来评估自己————你有多擅长 Java？   
+### 以满分十分来评估自己————你有多擅长 Java？   
 
 This is a very tricky one if you are not exactly sure about yourself or your level of proficiency in Java. If that sounds familiar, you should shoot a bit lower. After this, you will probably get questions according to the level you've admitted to. Hence, if you, for example, said 10 and cannot answer a fairly difficult question, it will be a drawback. 
 
@@ -26,7 +26,7 @@ This is a very tricky one if you are not exactly sure about yourself or your lev
 
 ### 2. Explain the Differences Between Java 7 and 8.
 
-### 阐述Java 7和Java 8的区别。   
+### 阐述 Java 7 和 Java 8 的区别。   
 
 To be honest, there are a lot of differences. Here, if you can list the most significant ones, it should be enough. You should explain the new features in Java 8. For the full list, visit the original website here: [Java 8 JDK](https://www.oracle.com/technetwork/java/javase/8-whats-new-2157071.html).
 
@@ -36,24 +36,19 @@ The most important ones that you should know are:
 
 你应该知道以下几个重点：
 
-- **Lambda expressions**, a new language feature, has been introduced in this release. Lambda expressions enable you to treat functionality as a method argument or code as data. Lambda expressions let you express instances of single-method interfaces (referred to as functional interfaces) more compactly.
-
+- **Lambda expressions**, a new language feature, has been introduced in this release. Lambda expressions enable you to treat functionality as a method argument or code as data. Lambda expressions let you express instances of single-method interfaces (referred to as functional interfaces) more compactly.   
  **lambda 表达式**，Java 8版本引入的一个新特性。~~lambda 表达式允许你将功能当作方法参数或将代码当作数据~~。lambda 表达式还能让你以更简洁的方式表示只有一个方法的接口 (称为函数式接口) 的实例。
 
-- **Method references** provide easy-to-read lambda expressions for methods that already have a name.
-
+- **Method references** provide easy-to-read lambda expressions for methods that already have a name.   
  **方法引用**为已命名方法提供了易于阅读的 lambda 表达式。
 
-- **Default methods** enable new functionality to be added to the interfaces of libraries and ensure binary compatibility with code written for older versions of those interfaces.
-
+- **Default methods** enable new functionality to be added to the interfaces of libraries and ensure binary compatibility with code written for older versions of those interfaces.   
  **默认方法**支持将新功能添加到类库中的接口，并确保与基于这些接口的旧版本的代码的二进制兼容性。
 
-- **Repeating annotations** provide the ability to apply the same annotation type more than once to the same declaration or type use.
-
+- **Repeating annotations** provide the ability to apply the same annotation type more than once to the same declaration or type use.  
  **重复注解**支持在同一声明或类型上多次应用同一注解类型。
 
-- **Type annotations** provide the ability to apply an annotation anywhere a type is used and not just on a declaration. Used with a pluggable type system, this feature enables improved type checking of your code.
-
+- **Type annotations** provide the ability to apply an annotation anywhere a type is used and not just on a declaration. Used with a pluggable type system, this feature enables improved type checking of your code.    
  **类型注解**支持在任何使用类型的地方应用注解，而不仅限于声明。~~此特性与可插入型系统一起使用时~~，可增强对代码的类型检查。
 
 ### 3. Which Type of Collections Do you Know About?
@@ -115,7 +110,7 @@ Returns a string representation of the object.
 
 The `notify`, `notifyAll`, and `wait` methods of `Object` all play a part in synchronizing the activities of independently running threads in a program, which is discussed in a later lesson and won’t be covered here. There are five of these methods:
 
-`Object`类的`notify`,`notifyAll`和`wait`方法都在同步程序中独立运行线程的活动方面发挥了作用，这将在后面的课程中讨论，在此不做介绍。其中有五种方法:
+`Object`类的`notify`，`notifyAll`和`wait`方法都在同步程序中独立运行线程的活动方面发挥了作用，这将在后面的课程中讨论，在此不做介绍。其中有五种方法:
 
 - `public final void notify()`
 - `public final void notifyAll()`
@@ -148,7 +143,7 @@ The `notify`, `notifyAll`, and `wait` methods of `Object` all play a part in syn
 
 ### 6. What Is the Difference Between Final, Finally, and Finalize?
 
-### final，finally，和finalize三者之间有什么不同？
+### final，finally，和 finalize 三者之间有什么不同？
 
 This question is my favorite one.
 
@@ -175,7 +170,7 @@ The diamond problem reflects why we are not allowed to do multiple inheritances 
 
 We refer to this problem as the _diamond problem_. It gets its name from the above image, which describes the caveat.
 
-我们把这个问题称为_菱形继承问题_。上图对它作了说明，它也得名于此。
+我们把这个问题称为 _菱形继承问题_ 。上图对它作了说明，它也得名于此。
 
 ### 8. How Can You Make a Class Immutable?
 
@@ -212,7 +207,7 @@ A singleton is a class that allows only a single instance of itself to be create
 
 This is the **number one question** you have to know if you work in Java EE or Spring. You can check out my article explaining this further here: [What is a Dependency Injection?](https://www.zoltanraffai.com/blog/different-dependency-injection-techniques/)
 
-这是你必须知道的首要问题, 无论你是使用 Java EE 还是 Spring 框架。你可以看看我的文章，其中进一步地解释了这一点: [什么是依赖注入？](https://www.zoltanraffai.com/blog/different-dependency-injection-techniques/)
+这是你必须知道的**首要问题**, 无论你是使用 Java EE 还是 Spring 框架。你可以看看我的文章，其中进一步地解释了这一点: [什么是依赖注入？](https://www.zoltanraffai.com/blog/different-dependency-injection-techniques/)
 
 ### Summary
 
@@ -220,7 +215,7 @@ This is the **number one question** you have to know if you work in Java EE or S
 
 In this article, we talked about the top 10 Java interview questions, which are, I think, the most important nowadays based on my experiences. If you know about these, I’m sure that you will have a big advantage during your recruitment process.
 
-在本文中,我们讨论了最常见的10个 Java 面试题——在我看来这是根据我的经验总结出的时下最重要的问题。如果你了解这些问题，我相信你能在面试中获得很大的优势。
+在本文中,我们讨论了最常见的十个 Java 面试题——在我看来这是根据我的经验总结出的时下最重要的问题。如果你了解这些问题，我相信你能在面试中获得很大的优势。
 
 Hope I could help you! If you have similar experiences in this topic, or you have some success stories, don’t hesitate to share them in the comments below.
 
