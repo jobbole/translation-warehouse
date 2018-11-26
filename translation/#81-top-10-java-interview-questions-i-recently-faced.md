@@ -1,8 +1,10 @@
+by Zoltan Raffai     ·  Aug. 27, 18 · Java Zone · Presentation
+
 Recently, I participate in a few Java-based interviews to keep me fresh. Suddenly, I had an idea that I would like to share my experiences with you all. I hope I can help by sharing the top 10 Java interview questions that I faced in the recent months.
 
-最近，我参加了一些 Java 面试以保持新鲜感。我突然萌生了一个想法，就是向大家分享我的经历。我会在此分享最近几个月我在 Java 面试中遇到的十大问题，希望以此能为大家提供帮助。
+最近，我参加了一些 Java 面试以保持新鲜感。我突然萌生了一个想法，就是向大家分享我的经历。我会在此分享最近几个月我在 Java 面试中遇到最多的10个问题，希望能帮助到大家。
 
-## Top 10 Java Interview Questions I Recently Faced
+## [Top 10 Java Interview Questions I Recently Faced](https://dzone.com/articles/top-10-java-interview-questions-that-i-recently-fa)
 
 ## 常被问到的10个Java面试题
 
@@ -28,7 +30,7 @@ This is a very tricky one if you are not exactly sure about yourself or your lev
 
 To be honest, there are a lot of differences. Here, if you can list the most significant ones, it should be enough. You should explain the new features in Java 8. For the full list, visit the original website here: [Java 8 JDK](https://www.oracle.com/technetwork/java/javase/8-whats-new-2157071.html).
 
-说实话，两者有很多不同。如果你能列出最重要的，应该就足够了。你应该解释 Java 8 中的新功能。要获得完整清单，请访问官网：Java 8 JDK。
+实话说，两者有很多不同。如果你能列出最重要的，应该就足够了。你应该解释 Java 8 中的新功能。想要获得完整清单，请访问官网：[Java 8 JDK](https://www.oracle.com/technetwork/java/javase/8-whats-new-2157071.html)。
 
 The most important ones that you should know are:
 
@@ -36,7 +38,7 @@ The most important ones that you should know are:
 
 - **Lambda expressions**, a new language feature, has been introduced in this release. Lambda expressions enable you to treat functionality as a method argument or code as data. Lambda expressions let you express instances of single-method interfaces (referred to as functional interfaces) more compactly.
 
- **lambda 表达式**，Java 8版本引入的一个新特性。lambda 表达式允许你将功能当作方法参数或将代码当作数据。lambda 表达式还能让你以更简洁的方式表示只有一个方法的接口 (称为函数式接口) 的实例。
+ **lambda 表达式**，Java 8版本引入的一个新特性。~~lambda 表达式允许你将功能当作方法参数或将代码当作数据~~。lambda 表达式还能让你以更简洁的方式表示只有一个方法的接口 (称为函数式接口) 的实例。
 
 - **Method references** provide easy-to-read lambda expressions for methods that already have a name.
 
@@ -44,7 +46,7 @@ The most important ones that you should know are:
 
 - **Default methods** enable new functionality to be added to the interfaces of libraries and ensure binary compatibility with code written for older versions of those interfaces.
 
- **默认方法**允许将新功能添加到类库的接口中，并确保与基于这些接口的旧版本的代码的二进制兼容性。
+ **默认方法**支持将新功能添加到类库中的接口，并确保与基于这些接口的旧版本的代码的二进制兼容性。
 
 - **Repeating annotations** provide the ability to apply the same annotation type more than once to the same declaration or type use.
 
@@ -52,7 +54,7 @@ The most important ones that you should know are:
 
 - **Type annotations** provide the ability to apply an annotation anywhere a type is used and not just on a declaration. Used with a pluggable type system, this feature enables improved type checking of your code.
 
- **类型注解**支持在任何使用类型的地方应用注解，而不仅限于声明。此特性与可插入型系统一起使用时，可增强对代码的类型检查。
+ **类型注解**支持在任何使用类型的地方应用注解，而不仅限于声明。~~此特性与可插入型系统一起使用时~~，可增强对代码的类型检查。
 
 ### 3. Which Type of Collections Do you Know About?
 
@@ -69,11 +71,11 @@ Here you should know about the most important ones:
 
 After this, you will probably get some questions about when you should use this specific one, what are the benefits over the other one, how it stores data, and what data structure is working behind the scenes.
 
-之后, 你可能会被问到这样一些问题，即何时应该使用此种特定类型，它比其他的好在哪里，它是怎么存储数据的以及隐匿在其后的数据结构是什么。
+之后，你可能会被问到这样一些问题，比如何时应该使用此种特定类型，它比其他的好在哪里，它是怎么存储数据的以及隐匿在其后的数据结构是什么。
 
 Here, the best way is to learn about these collection types as much as possible, because the variety of questions is almost inexhaustible.
 
-最好的方法是尽可能多地了解这些集合类型, 因为这类问题几乎是无穷尽的。
+最好的方法是尽可能多地了解这些集合类型，因为这类问题几乎是无穷尽的。
 
 ### 4. What Methods Does the Object Class Have?
 
@@ -85,41 +87,35 @@ This a very common question asked to determine how familiar you are with the bas
 
 The `Object` class, in the `java.lang` package, sits at the top of the class hierarchy tree. Every class is a descendant, direct or indirect, of the `Object` class. Every class you use or write inherits the instance methods of `Object`. You need not use any of these methods, but, if you choose to do so, you may need to override them with code that is specific to your class. The methods inherited from `Object` that are discussed in this section are:
 
-在 `java.lang` 包中，Object 类位于类层次结构的顶端。每个类都是 Object 类直接或间接的子类。你使用或编写的每个类都继承了 Object 类的实例方法。你并不需要使用这些方法中的任何一种，但是，如果你选择这样做，则可能需要用你的类的特定代码来重写这些方法。以下是本节所讨论的从Object类中继承的方法:
+在`java.lang`包中，`Object`类位于类层次结构的顶端。每个类都是`Object`类直接或间接的子类。你使用或编写的每个类都继承了`Object`类中的实例方法。你并不需要使用这些方法中的任何一种，但是，如果你选择这样做，则可能需要用你的类的特定代码来重写这些方法。以下是本节所讨论的从`Object`类中继承的方法:
 
 - `protected Object clone() throws CloneNotSupportedException`  
-Creates and returns a copy of this object.
-
+Creates and returns a copy of this object.  
 创建并返回此对象的副本。
 
-- `public boolean equals(Object obj)`   
-Indicates whether some other object is “equal to” this one.
-
+- `public boolean equals(Object obj)`  
+Indicates whether some other object is “equal to” this one.   
 判断另一对象与此对象是否“相等”。
 
-- `protected void finalize() throws Throwable`  
-Called by the garbage collector on an object when garbage collection determines that there are no more references to the object.
-
+- `protected void finalize() throws Throwable`    
+Called by the garbage collector on an object when garbage collection determines that there are no more references to the object.        
 当垃圾回收机制确定该对象不再被调用时，垃圾回收器会调用此方法。
 
 - `public final Class getClass()`  
-Returns the runtime class of an object.
-
+Returns the runtime class of an object.   
 返回此对象的运行时类。
 
 - `public int hashCode()`  
-Returns a hash code value for the object.
-
+Returns a hash code value for the object.   
 返回此对象的散列码值。
 
 - `public String toString()`  
-Returns a string representation of the object.
-
+Returns a string representation of the object.  
 返回此对象的字符串表示形式。
 
 The `notify`, `notifyAll`, and `wait` methods of `Object` all play a part in synchronizing the activities of independently running threads in a program, which is discussed in a later lesson and won’t be covered here. There are five of these methods:
 
-Object 类的notify、notifyAll和wait方法都在同步程序中独立运行线程的活动方面发挥了作用，这将在后面的课程中讨论，在此不做介绍。其中有五种方法:
+`Object`类的`notify`,`notifyAll`和`wait`方法都在同步程序中独立运行线程的活动方面发挥了作用，这将在后面的课程中讨论，在此不做介绍。其中有五种方法:
 
 - `public final void notify()`
 - `public final void notifyAll()`
@@ -131,25 +127,20 @@ Object 类的notify、notifyAll和wait方法都在同步程序中独立运行线
 
 ### 为什么String对象是不可变的？
 
-1. [String pool](https://www.journaldev.com/797/what-is-java-string-pool) is possible only because String is immutable in Java. This way, Java Runtime saves a lot of Java heap space, because different String variables can refer to the same String variable in the pool. If String is not immutable, then String interning would not have been possible, because if any variable would have changed the value, it would have been reflected in other variables.
-
+1. [String pool](https://www.journaldev.com/797/what-is-java-string-pool) is possible only because String is immutable in Java. This way, Java Runtime saves a lot of Java heap space, because different String variables can refer to the same String variable in the pool. If String is not immutable, then String interning would not have been possible, because if any variable would have changed the value, it would have been reflected in other variables.    
 [字符串池](https://www.journaldev.com/797/what-is-java-string-pool)之所以可能，就是因为字符串在 java 中是不可变的。由此Java 运行时环境节省了大量堆空间，因为不同的 String 变量可以引用池中的同一 String 变量。如果 String 不是不可变的, 则 String 内部操作将是不可能的，因为一旦任一变量更改所引用的String对象的值，它也会反映在其他变量中。
 
-2. If String is not immutable, then it would cause a severe security threat to the application. For example, database usernames and passwords are passed as String to get the database connection, in-[socket programming](https://www.journaldev.com/741/java-socket-programming-server-client) host, and port details passed as String. Since String is immutable, it's value can’t be changed. Otherwise, any hacker could change the referenced value to cause security issues in the application.
+2. If String is not immutable, then it would cause a severe security threat to the application. For example, database usernames and passwords are passed as String to get the database connection, in-[socket programming](https://www.journaldev.com/741/java-socket-programming-server-client) host, and port details passed as String. Since String is immutable, it's value can’t be changed. Otherwise, any hacker could change the referenced value to cause security issues in the application.      
+如果字符串不是不可变的，那么它可能会对应用程序造成严重的安全威胁。例如，数据库用户名和密码都作为 String 传递以获取数据库连接，[Socket编程](https://www.journaldev.com/741/java-socket-programming-server-client)的主机和端口信息也是如此。由于字符串是不可变的，因此其值不能被更改。否则，任何黑客都可以篡改其引用的值，这会导致应用程序中的安全问题。
 
-如果字符串不是不可变的，那么它将对应用程序造成严重的安全威胁。例如，数据库用户名和密码都作为 String对象传递以获取数据库连接，套接字编程主机和端口信息也是如此。由于字符串是不可变的，因此其值不能更改。否则，任何黑客都可以更改其引用的值，这回导致应用程序中的安全问题。
+3. Since String is immutable, it is safe for [multithreading](https://www.journaldev.com/1079/multithreading-in-java), and a single String instance can be shared across different threads. This avoids the usage of synchronization for thread safety; Strings are implicitly thread safe.       
+由于 String 是不可变的，因此它对与[多线程处理](https://www.journaldev.com/1079/multithreading-in-java)来说是安全的，并且可以在不同的线程之间共享单个 String 实例。这避免了为线程安全使用同步；字符串是隐式线程安全的。
 
-3. Since String is immutable, it is safe for [multithreading](https://www.journaldev.com/1079/multithreading-in-java), and a single String instance can be shared across different threads. This avoids the usage of synchronization for thread safety; Strings are implicitly thread safe.
+4. Strings are used in the [Java classloader](https://www.journaldev.com/349/java-classloader), and immutability provides security that the correct class is getting loaded by the `Classloader`. For example, think of an instance where you are trying to load the `java.sql.Connection`  class but the referenced value is changed to `myhacked.Connection` class and can do unwanted things to your database.  
+字符串被用在 Java 类加载器中，其不可变性为[类加载器](https://www.journaldev.com/349/java-classloader)加载正确的类提供了安全性。否则的话，请考虑这样一个危险的情况，在你尝试加载`java.sql.Connection`类时，你引用的值却被更改为`myhacked.Connection`，并且它能对数据库执行你不需要的操作。
 
-由于 String 是不可变的，因此它对与多线程处理来说是安全的，并且可以在不同的线程之间共享单个 String 实例。这避免了为了线程安全使用同步；字符串是隐式线程安全的。
-
-4. Strings are used in the [Java classloader](https://www.journaldev.com/349/java-classloader), and immutability provides security that the correct class is getting loaded by the `Classloader`. For example, think of an instance where you are trying to load the `java.sql.Connection`  class but the referenced value is changed to `myhacked.Connection` class and can do unwanted things to your database.
-
-字符串被用在 Java 类加载器中，其不可变性确保了类加载器加载正确的类的安全性。例如, 请考虑这样一个危险的情况，在你尝试加载 `java.sql.Connection` 类时，你引用的值却被更改为`myhacked.Connection`，并且它能对数据库执行你不需要的操作。
-
-5. Since String is immutable, its hashcode is cached at the time of creation, and it doesn’t need to be calculated again. This makes it a great candidate for a key in a map, and it’s processing is fast than other `HashMap` key objects. This is why String is the most-used object of `HashMap` keys.
-
-由于 String 是不可变的，因此它被创建时其散列码就被缓存，不需要再次计算。这使得它成为映射中键的理想对象，并且它的处理速度比其他 HashMap 键类型快。这就是为什么 String 是 HashMap 键中最常用的对象。
+5. Since String is immutable, its hashcode is cached at the time of creation, and it doesn’t need to be calculated again. This makes it a great candidate for a key in a map, and it’s processing is fast than other `HashMap` key objects. This is why String is the most-used object of `HashMap` keys.     
+由于 String 是不可变的，因此在它被创建时其散列码就被缓存，不需要再次计算。这使得它成为映射中键的理想对象，它的处理速度比其他`HashMap`键类型快。这就是为什么 String 是`HashMap`中最常用的键类型。
 
 [Why is String immutable in Java?](https://www.journaldev.com/802/string-immutable-final-java) Click here to learn more.
 
@@ -163,16 +154,14 @@ This question is my favorite one.
 
 这是我最喜欢的问题。
 
-- The final keyword is used in several contexts to define an entity that can only be assigned once.
-final关键字用于在多个语境下定义只能分配一次的实体。
+- The `final` keyword is used in several contexts to define an entity that can only be assigned once.   
+`final`关键字用于在多个语境下定义只能分配一次的实体。
 
-- **The Java** `finally` **block** is a block that is used to execute important code, such as closing connection, stream, etc. The Java `finally` block is always executed, whether the exception is handled or not. Java `finally` block follows the `try` or `catch` block.
+- **The Java** `finally` **block** is a block that is used to execute important code, such as closing connection, stream, etc. The Java `finally` block is always executed, whether the exception is handled or not. Java `finally` block follows the `try` or `catch` block.    
+**`finally`代码块**是用于执行重要代码 (如关闭连接、流等) 的代码块。无论是否处理异常，`finally`代码块总会被执行。`finally`代码块紧随`try`代码块或`catch`代码块。
 
-finally代码块是用于执行重要代码 (如关闭连接、流等) 的块。无论是否处理异常，finally代码块总会被执行。finally代码块紧随try代码块或catch代码块。
-
-- This is a **method** that the `GarbageCollector` always calls just **before** the deletion/destroying the object, which is eligible for Garbage Collection to perform **clean-up activity**.
-
-这是在删除或销毁对象前垃圾回收器总会调用的方法，该方法使得垃圾回收机制能够执行清理活动。
+- This is a **method** that the `GarbageCollector` always calls just **before** the deletion/destroying the object, which is eligible for Garbage Collection to perform **clean-up activity**.    
+这是在删除或销毁对象**之前**垃圾回收器总会调用的方法，该方法使得垃圾回收机制能够执行**清理活动**。
 
 ### 7. What Is the Diamond Problem?
 
@@ -180,7 +169,7 @@ finally代码块是用于执行重要代码 (如关闭连接、流等) 的块。
 
 The diamond problem reflects why we are not allowed to do multiple inheritances in Java. If there are two class that have a shared superclass with a specific method, it is overridden in both subclasses. Then, if you decide to inherit from that two `subClasses` , then if you would like to call that method, the language can’t decide which one you would like to call.
 
-菱形继承问题反映了为什么在 Java 中不允许我们实现多继承。如果有两个类共同继承一个有特定方法的超类，那么该方法会被两个子类重写。然后，如果您决定同时继承这两个子类，那么当您想调用该重写方法，编译器不能识别你要调用哪个子类的方法。
+菱形继承问题反映了为什么在 Java 中我们不被允许实现多继承。如果有两个类共同继承一个有特定方法的超类，那么该方法会被两个子类重写。然后，如果你决定同时继承这两个子类，那么在你调用该重写方法时，编译器不能识别你要调用哪个子类的方法。
 
 ![blockchain](https://i2.wp.com/www.zoltanraffai.com/blog/wp-content/uploads/2018/08/diamond-problem-multiple-inheritance.png?w=570&ssl=1)
 
@@ -196,29 +185,18 @@ I think this is a quite difficult question. You need to do several modifications
 
 我认为这是一个相当困难的问题。您需要对类进行多次修改，以实现不可变性:
 
-1. Declare the class as final so it can’t be extended.
-
-将类声明为final，使其无法被继承。
-
-1. Make all fields private so that direct access is not allowed.
-
-所有域都用private修饰，不允许直接访问。
-
-1. Don’t provide setter methods for variables.
-
-不提供变量的 setter 方法。
-
-1. Make all**mutable fields final** so that it’s value can be assigned only once.
-
-所有可变域都用final修饰, 使它的值只能分配一次。
-
-1. Initialize all the fields via a constructor performing a deep copy.
-
+1. Declare the class as final so it can’t be extended.   
+将类声明为`final`，使其无法被继承。
+1. Make all fields private so that direct access is not allowed.   
+所有域都用`private`修饰，不允许直接访问。
+1. Don’t provide setter methods for variables.  
+不提供变量的`setter`方法。
+1. Make all **mutable fields final** so that it’s value can be assigned only once.  
+所有**可变域**都用`final`修饰, 使它的值只能分配一次。
+1. Initialize all the fields via a constructor performing a deep copy.  
 通过构造函数执行深克隆初始化所有域。
-
-1. Perform cloning of objects in the getter methods to return a copy rather than returning the actual object reference.
-
-对 getter 方法获取的对象执行克隆以返回副本，而不是返回实际的对象引用。
+1. Perform cloning of objects in the getter methods to return a copy rather than returning the actual object reference.  
+对`getter`方法获取的对象执行克隆以返回副本，而不是返回实际的对象引用。
 
 ### 9. What Does Singleton Mean?
 
@@ -226,7 +204,7 @@ I think this is a quite difficult question. You need to do several modifications
 
 A singleton is a class that allows only a single instance of itself to be created and gives access to that created instance. It contains static variables that can accommodate unique and private instances of itself. It is used in scenarios when a user wants to restrict instantiation of a class to only one object. This is helpful usually when a single object is required to coordinate actions across a system.
 
-单例模式是指一个类仅允许创建其自身的一个实例，并提供对该实例的访问权限。它包含静态变量，可以容纳其自身的唯一和私有实例。它被应用于这种场景————用户希望类的实例被约束为一个对象。在需要单个对象来协调整个系统时，它会很有帮助。
+单例模式是指一个类仅允许创建其自身的一个实例，并提供对该实例的访问权限。它包含静态变量，可以容纳其自身的唯一和私有实例。它被应用于这种场景——用户希望类的实例被约束为一个对象。在需要单个对象来协调整个系统时，它会很有帮助。
 
 ### 10. What Is a Dependency Injection?
 
@@ -242,13 +220,12 @@ This is the **number one question** you have to know if you work in Java EE or S
 
 In this article, we talked about the top 10 Java interview questions, which are, I think, the most important nowadays based on my experiences. If you know about these, I’m sure that you will have a big advantage during your recruitment process.
 
-在本文中, 我们讨论了最常见的10个 Java 面试题————在我看来这是根据我的经验总结出的时下最重要的问题。如果你了解这些问题，我相信你能在面试中获得很大的优势。
+在本文中,我们讨论了最常见的10个 Java 面试题——在我看来这是根据我的经验总结出的时下最重要的问题。如果你了解这些问题，我相信你能在面试中获得很大的优势。
 
 Hope I could help you! If you have similar experiences in this topic, or you have some success stories, don’t hesitate to share them in the comments below.
 
-希望我可以帮助到！如果你有关于这个话题的类似经验，或者有一些成功的故事，不要犹豫，在下面的评论区中分享它们。
+希望我可以帮助到你！如果你有关于这个话题的类似经验，或者有一些成功的故事，不要犹豫，在下面的评论区中分享它们。
 
 Cheers!
 
 再见！
-
