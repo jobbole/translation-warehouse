@@ -219,16 +219,31 @@ SEE ALSO: Structs in Java: How to handle them like a pro
 
 Now, there is a lot to digest here. In fact, the code may appear rather obscure at first glance, if you have never dived into Generics before. Let’s break it down.
 
+这里有很多东西需要消化。事实上，如果您以前从未深入研究过泛型，那么代码第一眼看上去可能相当晦涩。让我们分解一下。
+
 The first thing we do is create a generic functional interface. Pay attention to the details. We have four generic type parameters — Ob, X,Y,Z.
 
+我们做的第一件事是创建一个通用的函数接口。注意细节。我们有四个泛型类型参数：Ob、X、Y、Z。
+
 Ob — The Class whose constructor we want to reference
+
+要引用其构造函数的类。
+
 X,Y,Z — The arguments to the constructor of said class.
+
+该类的构造函数的参数。
 
 If we substitute the generic method placeholders, the Abstract method could look like this: SomeClass func (String make, String model, int year). Notice that because we made the interface generic, we can specify any return type or type of class we desire. This allows to unlock the true potential of constructor references.
 
+如果我们替换泛型方法占位符，抽象方法可能是这样的: `SomeClass func (String make, String model, int year)`。注意，由于我们使接口具有了泛型，所以可以指定任何返回类型或我们希望返回的类实例。这允许释放构造函数引用的真正潜力。
+
 The next two portions are relatively straightforward — We essentially create what is the same class, one generic, and one non-generic to demonstrate their interoperability with the factory method we will later define in the public class. Notice that the Constructors of these classes are compatible with the method signature of FuncInt.func().
 
+接下来的两个部分相对简单，我们创建了相同的类，一个泛型类和一个非泛型类，以演示它们与我们稍后将在公共类中定义的工厂方法的互操作性。注意，这些类的构造函数与FuncInt.func()的方法签名是兼容的。
+
 Enter into the public class of the file. This method is where the magic happens.
+
+进入文件的公共类。这种方法就是神奇之处。
 
 [图片]
 
@@ -236,22 +251,40 @@ constructor references
 
 We label the method as static, so we can do without an instance of ConstRefGen and, after all, it’s a factory method. Notice that the factory method has the same generic type parameters as the functional interface. Notice that the return type of the method is Ob which will be whichever class we decide. X,Y,Z , are, of course, the method arguments of a method in Ob. Notice that the function takes an instance of the FuncInt as an argument (with the Class Type and the method arguments as type paramaters) as well as the arguments of the method of the class of type Ob.
 
+我们将该方法标记为静态的，所以我们可以不使用ConstRefGen实例，毕竟它是一个工厂方法。注意，factory方法具有与函数接口相同的泛型类型参数。注意，方法的返回类型是Ob，它将是我们决定的任何类。当然，X、Y、Z是Ob中方法的方法参数。请注意，该函数以FuncInt的一个实例作为参数(类类型和方法参数作为类型参数)，同时也接受Ob类型的类的方法的参数。
+
 SEE ALSO: Reactor.js: A lightweight library for reactive programming
 
 另请参阅：[Reactor.js: A lightweight library for reactive programming（Reactor.js：用于响应式编程的轻量级库）](https://jaxenter.com/reactor-js-library-reactive-programming-148585.html)
 
 Inside the body of the method it calls the method reference and feeds it the arguments passed in factory().
 
+在方法体中，它调用方法引用并将在factory()中传递的参数提供给它。
+
 Our first task — create a method reference that complies with FuncInt<>
+
+我们的第一个任务——创建一个符合FuncInt<>的方法引用
 
 Here we refer to the constructors of Automobile and Plane respectively.
 
+这里我们分别指汽车和飞机的构造。
+
 Our next task — Create an object with a method reference.
+
+我们的下一个任务——创建一个带有方法引用的对象。
 
 To do this, we call factory() and we feed it the Constructor Reference it needs as well as the arguments for the constructor in question as defined by factory ().
 
+为此，我们调用factory()并将它需要的构造函数引用以及factory()定义的有关构造函数的参数提供给它。
+
 factory() can agnostically create constructor references to various methods because it is generic. Because the Plane & Automobile constructors match the method signature of FuncInt.func() they will work with as a method reference with FuncInt.func(). factory() returns an instance of the class in question by calling obj.func(x,y,z) which is a constructor method reference that when evaluated will give you an instance of the class that was specified as an argument to it.
+
+factory()可以不确定地创建对各种方法的构造函数引用，因为它是通用的。因为平面和汽车构造函数匹配function .func()的方法签名，所以它们将作为function .func()的方法引用使用。factory()通过调用object .func(x,y,z)返回有问题的类的一个实例，这是一个构造函数方法引用，当求值时，它将为您提供指定为其参数的类的一个实例。
 
 Wrestle with this one for a while — It’s a VERY useful addition to Java ;)
 
+斟酌这个问题一段时间，会发现它是Java的一个非常有用的补充
+
 This article was originally published on The Java Report.
+
+本文最初发表在Java报告上。
