@@ -18,7 +18,7 @@ If you didn’t already know, Java Constructors are, themselves, special methods
 
 “They provide an easy way to refer to a method without executing it.” ( Java, The Complete Reference 9th Ed, by Herbert Schildt)
 
-「它们提供了一种无需执行就可以引用方法的简单方法。」
+「它们提供了一种无需执行就可以引用方法的简单方式。」
 
 >以上引自《Java 8 编程参考官方教程（第 9 版）》，作者：Herbert Schildt
 
@@ -26,7 +26,7 @@ If you didn’t already know, Java Constructors are, themselves, special methods
 
 Method references can refer to both static and instance methods and can be generic. Method References are instances of a functional interface. While Lambda Expressions allow you to create method implementations on the fly, often times one ends up calling another method inside the lambda expression to fulfill what we want done. A more direct way to do this is to use a method reference. This is useful in circumstances where you already have a method that fulfills the implementation of the Functional Interface.
 
-方法引用可以引用静态方法和实例方法，也可以是通用的。方法引用是函数接口的实例。虽然Lambda表达式允许您动态创建方法实现，但通常情况下，一个方法最终会调用Lambda表达式中的另一个方法来完成我们想要完成的工作。更直接的方法是使用方法引用。当您已经有一个方法来实现这个功能接口时，这是非常有用的。
+方法引用可以引用静态方法和实例方法，也可以是通用的。方法引用是函数接口的实例。虽然Lambda表达式允许你动态创建方法实现，但通常情况下，一个方法最终会调用Lambda表达式中的另一个方法来完成我们想要完成的工作。更直接的方法是使用方法引用。当你已经有一个方法来实现这个函数式接口时，这是非常有用的。
 
 Let’s look at an example with static & instance methods.
 
@@ -51,7 +51,7 @@ class Answer {
 }
 ```
 
-译注：静态方法的测试用例如下
+译注：以上代码的测试用例如下，因静态方法与实例方法结果相同，仅以静态方法为例。
 ```
 Answer.ans_math_static("9 > 11 ?", false);
 Answer.ans_math_static("987.6 < 1.1 ?", false);
@@ -60,7 +60,9 @@ Answer.ans_math_static("T/F: Is Chengdu in Sichuan?", true);
 Answer.ans_math_static("-1 % 0.2=0 ?", false);
 Answer.ans_math_static("T/F: Does Dwyne Wade play for the Knicks?", false);
 ```
-得到原文的输出结果：
+
+得到与原文举例的输出结果：
+
 ```
 "9 > 11 ?"	 = 	FALSE
 "987.6 < 1.1 ?"	 = 	FALSE
@@ -76,7 +78,7 @@ SEE ALSO: All about var: How Local-Variable Type Inference can clear up Java ver
 
 The steps for making use of method references are essentially:
 
-使用方法引用的步骤主要有：
+使用方法引用的主要步骤有：
 
 1. Define a Functional Interface
 
@@ -90,19 +92,21 @@ The steps for making use of method references are essentially:
 
 使用对步骤2中定义的方法的方法引用实例化函数接口的实例。`(x:: y)`
 
+译注：使用`(x:: y)`举例更加能说明问题。
+
 4. Use Functional Interface instance: Instance.AbstractMethod();
 
-使用函数式接口实例`:instance . abstractmethod ();`
+使用函数式接口实例：`Instance.AbstractMethod();`
 
 This gives a way to create plug-able instances of methods. Lambda Expression and Method References bring a Functional Aspect to Java Programming.
 
-这提供了一种创建方法的可插拔实例的方法。Lambda表达式和方法引用为Java编程带来了一个功能方面。
+这提供了一种创建方法的可插拔实例的方式。~~Lambda表达式和方法引用为Java编程带来了一个功能方面。~~
 
 SEE ALSO: How well do you actually understand annotations in Java?
 
 另请参阅：[How well do you actually understand annotations in Java?（你到底有多了解Java的注释?）](https://jaxenter.com/understand-annotations-java-148001.html)
 
-### Constructor method references（构造函数方法引用）
+### Constructor method references（构造函数的方法引用）
 
 Let’s get down to the meat and potatoes.
 
@@ -110,7 +114,7 @@ Let’s get down to the meat and potatoes.
 
 Constructors are methods just like any other. Right? Wrong. They’re a bit special — they’re object initialization methods. Nevertheless, they are a still a method, and there is nothing stopping us from making Constructor Method References like any other method reference.
 
-构造函数和其他方法一样是方法。对吧？错。它们有点特殊，它们是对象初始化方法。尽管如此，它们仍然是一个方法，没有什么能阻止我们像其他方法引用一样创建构造函数方法引用。
+构造函数和其他方法一样是方法。对吧？错。它们有点特殊，它们是对象初始化方法。尽管如此，它们仍然是一个方法，没有什么能阻止我们像其他方法引用一样创建构造函数的方法引用。
 
 ```java
 //step #1 - Create a funnctional interface.
@@ -140,7 +144,7 @@ class Automobile {
 }
 
 //Step #3 - Class making use of method reference
-public class MainTest {
+public class ConstrRef {
 
     static void createInstance() {
     }
@@ -175,41 +179,115 @@ This Automobile is a2006 BMW 530i.
 
 The first thing that should be obvious to the user is that this basic example is not that useful. It is a rather roundabout way to create an instance of an object. Practically speaking, you almost certainly wouldn’t go through all this trouble to create an instance of an Automobile, but for conceptual completeness, it is included here.
 
-用户应该清楚的第一件事是，这个基本示例没有那么有用。这是一种相当迂回的创建对象实例的方法。实际上，您几乎可以肯定不会经历所有这些麻烦来创建一个汽车实例，但是为了概念的完整性，这里包含了它。
+用户应该清楚的第一件事是这个基本示例没有那么有用。这是一种相当迂回的创建对象实例的方法。实际上，几乎可以肯定，你不会经历所有这些麻烦来创建一个Automobile实例，但是为了概念的完整性，~~这里包含了它。~~
 
 The steps for making use of constructor method references are essentially:
 
-使用构造函数方法引用的步骤主要有：
+使用构造函数的方法引用的主要步骤有：
 
-- Define a Functional Interface with an abstract method whose return type is the same as the Object with which you intend to make a Constructor Reference
+1. Define a Functional Interface with an abstract method whose return type is the same as the Object with which you intend to make a Constructor Reference
 
-使用一个抽象方法定义一个函数式接口，该方法的返回类型与您打算使用该对象进行构造函数引用的对象相同
+定义一个只有抽象方法的函数式接口，该方法的返回类型与你打算使用该对象进行构造函数引用的对象相同
 
-- Create a class with a constructor that matches the Functional Interface’s abstract method
+2. Create a class with a constructor that matches the Functional Interface’s abstract method
 
 创建一个类，该类的构造函数与函数式接口的抽象方法匹配
 
-- Instantiate an instance of the Functional Interface with a method reference to the constructor defined in step #2. (x :: y )
+3. Instantiate an instance of the Functional Interface with a method reference to the constructor defined in step #2. (x :: y )
 
-使用对步骤#2中定义的构造函数的方法引用实例化函数接口的实例。`(x:: y)`
+使用对步骤 #2 中定义的构造函数的方法引用，实例化函数接口的实例。`(x:: y)`
 
-- Instantiate an instance of the class in step#2 using the constructor reference such that MyClass x = ConstructorReference.AbstractMethod (x, y, z…)
+4. Instantiate an instance of the class in step#2 using the constructor reference such that MyClass x = ConstructorReference.AbstractMethod (x, y, z…)
 
 在步骤#2中使用构造函数引用实例化类的实例，例如 `MyClass x = ConstructorReference.AbstractMethod (x, y, z…)`
 
 > Where Constructor References become useful is when they are used in tandem with Generics. By using a generic factory method one can create various types of objects.
 
-> 构造函数引用变得有用的地方是它们与泛型一起使用的时候。通过使用泛型工厂方法，可以创建各种类型的对象。
+> 构造函数引用与泛型一起使用的时候变得很有用。通过使用泛型工厂方法，可以创建各种类型的对象。
 
 Let’s have a peek.
 
 让我们看一看。
 
-[图片]
+```java
+//step #1 - Create a funnctional interface.
+interface FuncInt<Ob, X, Y, Z> {
+    //contains one and only abstract method
+    Ob func(X make, Y model, Z year);
+}
 
-[图片]
+//step #2 - Create a Generic class providing a constructor compatible with FunInt.func()'s definition
+class Automobile<X, Y, Z> {
 
-[图片]
+    //Automobile Member Variables
+    private X make;
+    private Y model;
+    private Z year;
+
+    //Automobile Constructor
+    public Automobile(X make, Y model, Z year) {
+        this.make = make;
+        this.model = model;
+        this.year = year;
+    }
+
+    protected void what() {
+        System.out.println("This Automobile is a " + year + " " + make + " " + model + ".");
+    }
+}
+
+//step #3 - Create a Non-Generic class providing a constructor compatible with FunInt.func()'s definition
+class Plane {
+
+    //Automobile Member Variables
+    private String make;
+    private String model;
+    private int year;
+
+    //Plane Constructor
+    public Plane(String make, String model, int year) {
+        this.make = make;
+        this.model = model;
+        this.year = year;//Automatic unboxing
+    }
+
+    protected void what() {
+        System.out.println("This Plane is a " + year + " " + make + " " + model + ".");
+    }
+}
+
+//Step #3 - Class making use of method reference with generics
+public class ConstrRefGen {
+
+    //Here is where the magic happens
+    static <Ob, X, Y, Z> Ob factory(FuncInt<Ob, X, Y, Z> obj, X p1, Y p2, Z p3) {
+        return obj.func(p1, p2, p3);
+    }
+
+    public static void main(String[] args) {
+        System.out.println();
+
+        //Example #1
+        FuncInt<Automobile<String, String, Integer>, String, String, Integer> auto_cons = Automobile<String, String, Integer>::new;
+        Automobile<String, String, Integer> honda = factory(auto_cons, "Honda", "Accord", 2006);
+        honda.what();
+
+        //Example #2
+        FuncInt<Plane, String, String, Integer> plane_cons = Plane::new;
+        Plane cessna = factory(plane_cons, "Cessna", "Skyhawk", 172);
+        cessna.what();
+
+        System.out.println();
+    }
+}
+```
+
+输出结果
+
+```
+This Automobile is a 2006 Honda Accord.
+This Plane is a 172 Cessna Skyhawk.
+```
 
 SEE ALSO: Structs in Java: How to handle them like a pro
 
@@ -219,7 +297,7 @@ SEE ALSO: Structs in Java: How to handle them like a pro
 
 Now, there is a lot to digest here. In fact, the code may appear rather obscure at first glance, if you have never dived into Generics before. Let’s break it down.
 
-这里有很多东西需要消化。事实上，如果您以前从未深入研究过泛型，那么代码第一眼看上去可能相当晦涩。让我们分解一下。
+这里有很多东西需要消化。事实上，如果你以前从未深入研究过泛型，那么代码第一眼看上去可能相当晦涩。让我们分解一下。
 
 The first thing we do is create a generic functional interface. Pay attention to the details. We have four generic type parameters — Ob, X,Y,Z.
 
@@ -245,9 +323,12 @@ Enter into the public class of the file. This method is where the magic happens.
 
 进入文件的公共类。这种方法就是神奇之处。
 
-[图片]
-
-constructor references
+```java
+//Here is where the magic happens
+static <Ob, X, Y, Z> Ob factory(FuncInt<Ob, X, Y, Z> obj, X p1, Y p2, Z p3) {
+    return obj.func(p1, p2, p3);
+}
+```
 
 We label the method as static, so we can do without an instance of ConstRefGen and, after all, it’s a factory method. Notice that the factory method has the same generic type parameters as the functional interface. Notice that the return type of the method is Ob which will be whichever class we decide. X,Y,Z , are, of course, the method arguments of a method in Ob. Notice that the function takes an instance of the FuncInt as an argument (with the Class Type and the method arguments as type paramaters) as well as the arguments of the method of the class of type Ob.
 
@@ -279,7 +360,7 @@ To do this, we call factory() and we feed it the Constructor Reference it needs 
 
 factory() can agnostically create constructor references to various methods because it is generic. Because the Plane & Automobile constructors match the method signature of FuncInt.func() they will work with as a method reference with FuncInt.func(). factory() returns an instance of the class in question by calling obj.func(x,y,z) which is a constructor method reference that when evaluated will give you an instance of the class that was specified as an argument to it.
 
-factory()可以不确定地创建对各种方法的构造函数引用，因为它是通用的。因为平面和汽车构造函数匹配function .func()的方法签名，所以它们将作为function .func()的方法引用使用。factory()通过调用object .func(x,y,z)返回有问题的类的一个实例，这是一个构造函数方法引用，当求值时，它将为您提供指定为其参数的类的一个实例。
+factory()可以不确定地创建对各种方法的构造函数引用，因为它是通用的。因为平面和汽车构造函数匹配function .func()的方法签名，所以它们将作为function .func()的方法引用使用。factory()通过调用object .func(x,y,z)返回有问题的类的一个实例，这是一个构造函数方法引用，当求值时，它将为你提供指定为其参数的类的一个实例。
 
 Wrestle with this one for a while — It’s a VERY useful addition to Java ;)
 
