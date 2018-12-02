@@ -37,7 +37,7 @@ The most important ones that you should know are:
 你应该知道以下几个重点：
 
 - **Lambda expressions**, a new language feature, has been introduced in this release. Lambda expressions enable you to treat functionality as a method argument or code as data. Lambda expressions let you express instances of single-method interfaces (referred to as functional interfaces) more compactly.   
- **lambda 表达式**，Java 8版本引入的一个新特性。~~lambda 表达式允许你将功能当作方法参数或将代码当作数据~~。lambda 表达式还能让你以更简洁的方式表示只有一个方法的接口 (称为函数式接口) 的实例。
+ **lambda 表达式**，Java 8 版本引入的一个新特性。~~lambda 表达式允许你将功能当作方法参数或将代码当作数据~~。lambda 表达式还能让你以更简洁的方式表示只有一个方法的接口 (称为函数式接口) 的实例。
 
 - **Method references** provide easy-to-read lambda expressions for methods that already have a name.   
  **方法引用**为已命名方法提供了易于阅读的 lambda 表达式。
@@ -74,7 +74,7 @@ Here, the best way is to learn about these collection types as much as possible,
 
 ### 4. What Methods Does the Object Class Have?
 
-### Object类包含哪些方法？
+### Object 类包含哪些方法？
 
 This a very common question asked to determine how familiar you are with the basics. These are the methods that every object has:
 
@@ -90,7 +90,7 @@ Creates and returns a copy of this object.
 
 - `public boolean equals(Object obj)`  
 Indicates whether some other object is “equal to” this one.   
-判断另一对象与此对象是否“相等”。
+判断另一对象与此对象是否「相等」。
 
 - `protected void finalize() throws Throwable`    
 Called by the garbage collector on an object when garbage collection determines that there are no more references to the object.        
@@ -120,13 +120,13 @@ The `notify`, `notifyAll`, and `wait` methods of `Object` all play a part in syn
 
 ### 5. Why Is the String Object Immutable in Java?
 
-### 为什么String对象是不可变的？
+### 为什么 String 对象是不可变的？
 
 1. [String pool](https://www.journaldev.com/797/what-is-java-string-pool) is possible only because String is immutable in Java. This way, Java Runtime saves a lot of Java heap space, because different String variables can refer to the same String variable in the pool. If String is not immutable, then String interning would not have been possible, because if any variable would have changed the value, it would have been reflected in other variables.    
-[字符串池](https://www.journaldev.com/797/what-is-java-string-pool)之所以可能，就是因为字符串在 java 中是不可变的。由此Java 运行时环境节省了大量堆空间，因为不同的 String 变量可以引用池中的同一 String 变量。如果 String 不是不可变的, 则 String 内部操作将是不可能的，因为一旦任一变量更改所引用的String对象的值，它也会反映在其他变量中。
+[字符串池](https://www.journaldev.com/797/what-is-java-string-pool)之所以可能，就是因为字符串在 java 中是不可变的。由此 Java 运行时环境节省了大量堆空间，因为不同的 String 变量可以引用池中的同一 String 变量。如果 String 不是不可变的, 则 String 内部操作将是不可能的，因为一旦任一变量更改所引用的String对象的值，它也会反映在其他变量中。
 
 2. If String is not immutable, then it would cause a severe security threat to the application. For example, database usernames and passwords are passed as String to get the database connection, in-[socket programming](https://www.journaldev.com/741/java-socket-programming-server-client) host, and port details passed as String. Since String is immutable, it's value can’t be changed. Otherwise, any hacker could change the referenced value to cause security issues in the application.      
-如果字符串不是不可变的，那么它可能会对应用程序造成严重的安全威胁。例如，数据库用户名和密码都作为 String 传递以获取数据库连接，[Socket编程](https://www.journaldev.com/741/java-socket-programming-server-client)的主机和端口信息也是如此。由于字符串是不可变的，因此其值不能被更改。否则，任何黑客都可以篡改其引用的值，这会导致应用程序中的安全问题。
+如果字符串不是不可变的，那么它可能会对应用程序造成严重的安全威胁。例如，数据库用户名和密码都作为 String 传递以获取数据库连接，[Socket 编程](https://www.journaldev.com/741/java-socket-programming-server-client)的主机和端口信息也是如此。由于字符串是不可变的，因此其值不能被更改。否则，任何黑客都可以篡改其引用的值，这会导致应用程序中的安全问题。
 
 3. Since String is immutable, it is safe for [multithreading](https://www.journaldev.com/1079/multithreading-in-java), and a single String instance can be shared across different threads. This avoids the usage of synchronization for thread safety; Strings are implicitly thread safe.       
 由于 String 是不可变的，因此它对与[多线程处理](https://www.journaldev.com/1079/multithreading-in-java)来说是安全的，并且可以在不同的线程之间共享单个 String 实例。这避免了为线程安全使用同步；字符串是隐式线程安全的。
@@ -139,7 +139,7 @@ The `notify`, `notifyAll`, and `wait` methods of `Object` all play a part in syn
 
 [Why is String immutable in Java?](https://www.journaldev.com/802/string-immutable-final-java) Click here to learn more.
 
-[为什么Java中的字符串不可变？](https://www.journaldev.com/802/string-immutable-final-java)点击这里了解更多。
+[为什么 Java 中的字符串不可变？](https://www.journaldev.com/802/string-immutable-final-java)点击这里了解更多。
 
 ### 6. What Is the Difference Between Final, Finally, and Finalize?
 
@@ -156,7 +156,7 @@ This question is my favorite one.
 **`finally`代码块**是用于执行重要代码 (如关闭连接、流等) 的代码块。无论是否处理异常，`finally`代码块总会被执行。`finally`代码块紧随`try`代码块或`catch`代码块。
 
 - This is a **method** that the `GarbageCollector` always calls just **before** the deletion/destroying the object, which is eligible for Garbage Collection to perform **clean-up activity**.    
-这是在删除或销毁对象**之前**垃圾回收器总会调用的方法，该方法使得垃圾回收机制能够执行**清理活动**。
+这是在删除或销毁对象**之前**垃圾回收器总会调用的**方法**，该方法使得垃圾回收机制能够执行**清理活动**。
 
 ### 7. What Is the Diamond Problem?
 
