@@ -37,7 +37,7 @@ The most important ones that you should know are:
 你应该知道以下几个重点：
 
 - **Lambda expressions**, a new language feature, has been introduced in this release. Lambda expressions enable you to treat functionality as a method argument or code as data. Lambda expressions let you express instances of single-method interfaces (referred to as functional interfaces) more compactly.   
- **lambda 表达式**，Java 8 版本引入的一个新特性。~~lambda 表达式允许你将功能当作方法参数或将代码当作数据~~。lambda 表达式还能让你以更简洁的方式表示只有一个方法的接口 (称为函数式接口) 的实例。
+ **lambda 表达式**，Java 8 版本引入的一个新特性。lambda 表达式允许你将功能当作方法参数或将代码当作数据。lambda 表达式还能让你以更简洁的方式表示只有一个方法的接口 (称为函数式接口) 的实例。
 
 - **Method references** provide easy-to-read lambda expressions for methods that already have a name.   
  **方法引用**为已命名方法提供了易于阅读的 lambda 表达式。
@@ -49,7 +49,7 @@ The most important ones that you should know are:
  **重复注解**支持在同一声明或类型上多次应用同一注解类型。
 
 - **Type annotations** provide the ability to apply an annotation anywhere a type is used and not just on a declaration. Used with a pluggable type system, this feature enables improved type checking of your code.    
- **类型注解**支持在任何使用类型的地方应用注解，而不仅限于声明。~~此特性与可插入型系统一起使用时~~，可增强对代码的类型检查。
+ **类型注解**支持在任何使用类型的地方应用注解，而不仅限于声明。此特性与可插入型系统一起使用时，可增强对代码的类型检查。
 
 ### 3. Which Type of Collections Do you Know About?
 
@@ -123,7 +123,7 @@ The `notify`, `notifyAll`, and `wait` methods of `Object` all play a part in syn
 ### 为什么 String 对象是不可变的？
 
 1. [String pool](https://www.journaldev.com/797/what-is-java-string-pool) is possible only because String is immutable in Java. This way, Java Runtime saves a lot of Java heap space, because different String variables can refer to the same String variable in the pool. If String is not immutable, then String interning would not have been possible, because if any variable would have changed the value, it would have been reflected in other variables.    
-[字符串池](https://www.journaldev.com/797/what-is-java-string-pool)之所以可能，就是因为字符串在 java 中是不可变的。由此 Java 运行时环境节省了大量堆空间，因为不同的 String 变量可以引用池中的同一 String 变量。如果 String 不是不可变的, 则 String 内部操作将是不可能的，因为一旦任一变量更改所引用的String对象的值，它也会反映在其他变量中。
+[字符串池](https://www.journaldev.com/797/what-is-java-string-pool)之所以可能，就是因为字符串在 Java 中是不可变的。由此 Java 运行时环境节省了大量堆空间，因为不同的 String 变量可以引用池中的同一 String 变量。如果 String 不是不可变的, 则字符串驻留（[String interning](https://www.journaldev.com/797/what-is-java-string-pool)）将是不可能的，因为一旦任一变量更改所引用的String对象的值，它也会反映在其他变量中。
 
 2. If String is not immutable, then it would cause a severe security threat to the application. For example, database usernames and passwords are passed as String to get the database connection, in-[socket programming](https://www.journaldev.com/741/java-socket-programming-server-client) host, and port details passed as String. Since String is immutable, it's value can’t be changed. Otherwise, any hacker could change the referenced value to cause security issues in the application.      
 如果字符串不是不可变的，那么它可能会对应用程序造成严重的安全威胁。例如，数据库用户名和密码都作为 String 传递以获取数据库连接，[Socket 编程](https://www.journaldev.com/741/java-socket-programming-server-client)的主机和端口信息也是如此。由于字符串是不可变的，因此其值不能被更改。否则，任何黑客都可以篡改其引用的值，这会导致应用程序中的安全问题。
