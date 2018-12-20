@@ -1,4 +1,4 @@
-## 5 Tips to Write Better Conditionals in JavaScript（用 JavaScript 写出更好条件语句的 5 个技巧）
+## 5 Tips to Write Better Conditionals in JavaScript（优化 JavaScript 条件语句的5个技巧）
 
 > 转译自：https://scotch.io/tutorials/5-tips-to-write-better-conditionals-in-javascript
 
@@ -23,7 +23,7 @@ function test(fruit) {
 
 At first glance, the above example looks good. However, what if we get more red fruits, say cherry and cranberries? Are we going to extend the statement with more || ?
 
-乍一看，上面的例子看起来不错。然而，如果我们得到更多的红色水果，比如樱桃和小红莓呢？我们要用更多的 || 来扩展这个表述吗？
+乍一看，上面的例子看起来不错。然而，如果还有更多红颜色的水果需要判断呢，比如樱桃和小红莓，我们要用更多的 || 来扩展这个表述吗？
 
 We can rewrite the conditional above by using Array.includes (Array.includes)(https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/includes)
 
@@ -165,7 +165,7 @@ For me, I would just leave it as the previous version (condition 2 with nested).
 
 - inverting condition may incur more thinking process (increase cognitive load)
 
-反转条件可能会导致更多的思考过程（增加认知负荷）
+反转条件可能会导致更多的思考过程（增加认知负担）
 
 Therefore, always aims for Less Nesting and Return Early but don't overdo it. There is an article & StackOverflow discussion that talks further on this topic if you interested:
 
@@ -239,7 +239,7 @@ test({ name: 'apple', color: 'red' }); // apple
 
 Look at the example above, we want to print the fruit name if it's available or we will print unknown. We can avoid the conditional fruit && fruit.name checking with default function parameter & destructing.
 
-看看上面的例子，我们想打印水果名，如果它是可用的，或者我们将打印 unknown。我们可以避免使用与默认函数参数和解构对条件 fruit && fruit.name 进行检查。
+请看上面的示例，如果 `fruit.name` 是可用的，我们将打印该水果名称，否则我们将打印 `unknown`。我们可以避免使用与默认函数参数和解构对条件 `fruit && fruit.name` 进行检查。
 
 ```
 // destructing - get name property only
@@ -439,7 +439,7 @@ function test() {
 
 Much cleaner now right? In a similar way, if we want to test if any of the fruit is red, we can use `Array.some` to achieve it in one line.
 
-现在干净多了，对吧？类似地，如果我们想测试任何一个水果是红色的，我们可以使用 `Array.some` 来实现它在一行。
+现在干净多了，对吧？类似地，如果我们想用一行代码来判断任何一个水果是否为红色，我们可以使用 `Array.some`。
 
 ```
 const fruits = [
