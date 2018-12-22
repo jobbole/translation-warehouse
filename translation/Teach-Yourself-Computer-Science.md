@@ -67,7 +67,7 @@ Most undergraduate CS programs start with an “introduction” to computer prog
 
 Our standard recommendation for this content is the classic Structure and Interpretation of Computer Programs, which is available online for free both as a book, and as a set of MIT video lectures. While those lectures are great, our video suggestion is actually Brian Harvey’s SICP lectures (for the 61A course at Berkeley) instead. These are more refined and better targeted at new students than are the MIT lectures.
 
-对于这种介绍的内容的我们给出的标准建议是经典的计算机程序的结构与解释，在网络上能找到很多这样的资料，它们可能是电子书或者是MIT的一系列讲座视频。这些讲座都很不错，但是我们的视频推荐的实际上是伯克利的一门课程：Brian Harvey’s SICP lectures ，这个系列的课程比起MIT的讲座更精炼而且对于入门者更具有针对性。
+对于这种介绍的内容的我们给出的标准建议是经典的计算机程序的结构与解释，在网络上能找到很多这样的资料，它们可能是[电子书](https://mitpress.mit.edu/sites/default/files/sicp/full-text/book/book.html)或者是MIT的一系列讲座[视频](http://ocw.mit.edu/courses/electrical-engineering-and-computer-science/6-001-structure-and-interpretation-of-computer-programs-spring-2005/video-lectures/)。这些讲座都很不错，但是我们的视频推荐的实际上是伯克利的一门课程：[Brian Harvey’s SICP lectures](https://archive.org/details/ucberkeley-webcast-PL3E89002AA9B9879E?sort=titleSorter) ，这个系列的课程比起MIT的讲座更精炼而且对于入门者更具有针对性。
 
 We recommend working through at least the first three chapters of SICP and doing the exercises. For additional practice, work through a set of small programming problems like those on exercism.
 
@@ -77,7 +77,7 @@ We recommend working through at least the first three chapters of SICP and doing
 
 For those who find SICP too challenging, we recommend How to Design Programs. For those who find it too easy, we recommend Concepts, Techniques, and Models of Computer Programming.
  
-如果你觉得SICP太难，我们推荐*How to Design Programs*.这本书。如果你觉得它太简单，我们推荐*Concepts, Techniques, and Models of Computer Programming* 这本书。
+如果你觉得SICP太难，我们推荐*[How to Design Programs](http://www.htdp.org/)*.这本书。如果你觉得它太简单，我们推荐*[Concepts, Techniques, and Models of Computer Programming](https://smile.amazon.com/Concepts-Techniques-Models-Computer-Programming/dp/0262220695/)* 这本书。
 
 ### Computer Architecture 
 ### 计算机体系结构
@@ -309,3 +309,6 @@ No matter the choice of textbook or other secondary resources, study of distribu
 
 尽管有参考书或者其它的资源，但学习分布式系统是绝对要读论文的。链接中有一个很好的[清单](http://dsrg.pdos.csail.mit.edu/papers/)，而且我们十分推荐你从[Papers We Love](http://paperswelove.org/) 上面下载论文到本地学习。
   
+## Frequently asked questions
+## 常见问题
+
