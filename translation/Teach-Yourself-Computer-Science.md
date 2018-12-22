@@ -73,7 +73,7 @@ We recommend working through at least the first three chapters of SICP and doing
 
 我们推荐观看完至少前三章节的SICP（计算机程序的结构与解释）并且做完相应训练。额外地，可以在 exercism 进行一些编程问题训练。
 
-![](https://mitpress.mit.edu/sites/default/files/sicp/full-text/book/book.html)
+![image](https://teachyourselfcs.com/sicp.jpg)
 
 For those who find SICP too challenging, we recommend How to Design Programs. For those who find it too easy, we recommend Concepts, Techniques, and Models of Computer Programming.
  
@@ -95,6 +95,8 @@ Computer Architecture—sometimes called “computer systems” or “computer o
 The Elements of Computing Systems, also known as “Nand2Tetris” is an ambitious book attempting to give you a cohesive understanding of how everything in a computer works. Each chapter involves building a small piece of the overall system, from writing elementary logic gates in HDL, through a CPU and assembler, all the way to an application the size of a Tetris game.
  
 *The Elements of Computing Systems*，也被称为“从与非门到俄罗斯方块”。这是一本让你对于计算机中的每一个零件是怎么工作的有一个整体的理解的雄心勃勃的书。每个章节涉及到建立整体系统中一个小的部分，从写基本的逻辑门到HDL，到CPU和汇编语言，一直到完成一个俄罗斯方块应用程序。
+
+![elements-computing-systems](https://teachyourselfcs.com/elements-computing-systems.jpg)
 
 We recommend reading through the first six chapters of the book and completing the associated projects. This will develop your understanding of the relationship between the architecture of the machine and the software that runs on it.
  
@@ -127,6 +129,9 @@ There are hundreds of books available, but our favorite is The Algorithm Design
 
 这个领域有很多优秀的书籍，但是我们最喜欢的是Steven Skiena的*The Algorithm Design Manual* 。他显然喜欢这东西而且也迫不及待地想帮助你学习数据结构和算法。这是令人耳目一新的变化，我们认为这本书相对于被更多人所推荐的Cormen, Leiserson, Rivest & Stein 或者 Sedgewick 的书来说更好。后两本书有些太过于引经据典，对于想通过阅读来解决问题的人来说并不是一个好的选择。
 
+![skiena](https://teachyourselfcs.com/skiena.jpg)
+
+
 For those who prefer video lectures, Skiena generously provides his online. We also really like Tim Roughgarden’s course, available from Stanford’s MOOC platform Lagunita, or on Coursera. Whether you prefer Skiena’s or Roughgarden’s lecture style will be a matter of personal preference.
 
 对于那些更喜欢讲座视频的人来说，我们推荐Skiena的[讲座](http://www3.cs.stonybrook.edu/~algorith/video-lectures/). 我们也喜欢Tim Roughgarden的课程，在斯坦福的MOOC平台或者[Coursera](https://www.coursera.org/specializations/algorithms)上面可以获得。你喜欢 Skiena 还是 Roughgarden 的讲课风格就是你的个人喜好问题了。
@@ -138,6 +143,8 @@ For practice, our preferred approach is for students to solve problems on Leetc
 Finally, we strongly recommend How to Solve It as an excellent and unique guide to general problem solving; it’s as applicable to computer science as it is to mathematics.
 
 最后，我们强烈推荐《怎样解题》这本书，它针对如何解题进行了精彩绝伦和独特的讲解，既适用于数学也适用于电脑科学。
+
+![polya](https://teachyourselfcs.com/polya.jpg)
 
 ### Mathematics for Computer Science ###
 ### 计算机科学领域的数学
@@ -177,6 +184,9 @@ Operating Systems: Three Easy Pieces is a good alternative that’s freely ava
 
 《Operating Systems: Three Easy Pieces》这本书是一本比较好的可供选择的线上免费读物。我们特别喜欢书的结构和它经典的练习题。
 
+![ostep](https://teachyourselfcs.com/ostep.jpeg)
+
+
 After OSTEP, we encourage you to explore the design decisions of specific operating systems, through “{OS name} Internals” style books such as Lion's commentary on Unix, The Design and Implementation of the FreeBSD Operating System, and Mac OS X Internals.
 
 读完这本书，我们推荐你去探索一种特定的操作系统的设计方式，比如那些书名中有系统名字的书籍，比如Lion‘s commentary on Unix, The Design and Implementation of the FreeBSD Operating System, 还有 Mac OS X Internals.
@@ -188,6 +198,10 @@ A great way to consolidate your understanding of operating systems is to read th
 ### Computer Networking ###
 ### 计算机网络
 
+>You can’t gaze in the crystal ball and see the future. What the Internet is going to be in the future is what society makes it.
+
+>— Bob Kahn
+
 Given that so much of software engineering is on web servers and clients, one of the most immediately valuable areas of computer science is computer networking. Our self-taught students who methodically study networking find that they finally understand terms, concepts and protocols they’d been surrounded by for years.
 
 考虑到很多软件项目都是基于web服务器和客户端的，计算机网络变成计算机科学中一门有实用价值的学科。系统学习过该课程的自学学生发现他们终于理解了围绕了伴随它们很多年的术语，概念，协议等等。
@@ -195,6 +209,8 @@ Given that so much of software engineering is on web servers and clients, one of
 Our favorite book on the topic is Computer Networking: A Top-Down Approach. The small projects and exercises in the book are well worth doing, and we particularly like the “Wireshark labs”, which they have generously provided online.
 
 关于这个主题我们最推荐的书是：《计算机网络——自顶向下方法》。书中的小工程和实验都很好，值得一做。我们非常喜欢它们提供的[Wireshark labs](http://www-net.cs.umass.edu/wireshark-labs/)。
+
+![](https://teachyourselfcs.com/top-down.jpg)
 
 For those who prefer video lectures, we suggest Stanford’s Introduction to Computer Networking course available on their MOOC platform Lagunita.
 
@@ -223,6 +239,9 @@ Readings in Database Systems, better known as the databases “Red Book”, is 
 
 *[Readings in Database Systems](http://www.redbook.io/)*这本书，又被称为数据库红皮书、是一本Peter Bailis、Joe Hellerstein和Michael Stonebraker编辑地论文集。对于那些理解了CS 186内容的人来说，红皮书是你的不二之选。
 
+![](https://teachyourselfcs.com/redbook.jpg)
+
+
 If you insist on using an introductory textbook, we suggest Database Management Systemsby Ramakrishnan and Gehrke. For more advanced students, Jim Gray’s classic Transaction Processing: Concepts and Techniques is worthwhile, but we don’t encourage using this as a first resource.
 
 如果你坚持要使用一本引导性的教科书，我们推荐Ramakrishnan 和Gehrke的[*Database Management Systems*](https://smile.amazon.com/Database-Management-Systems-Raghu-Ramakrishnan/dp/0072465638/)，对于更优秀的学生，Jim Gray的传统课程[*Transaction Processing: Concepts and Techniques*](https://www.amazon.com/Transaction-Processing-Concepts-Techniques-Management/dp/1558601902)值得一看，但是我们不建议把它当成入门书。
@@ -235,8 +254,15 @@ Finally, data modeling is a neglected and poorly taught aspect of working with d
 
 最后，数据模型是一个数据库使用中被忽略和没有被重点学习的方面。我们对于这个课题建议的书籍是：[*Data and Reality: A Timeless Perspective on Perceiving and Managing Information in Our Imprecise World*](https://www.amazon.com/Data-Reality-Perspective-Perceiving-Information/dp/1935504215)
 
+![](https://teachyourselfcs.com/data-reality.jpg)
+
 ### Languages and Compilers ###
 ### 语言和编译器
+
+>Don’t be a boilerplate programmer. Instead, build tools for users and other programmers. Take historical note of textile and steel industries: do you want to build machines and tools, or do you want to operate those machines?
+
+>— Ras Bodik at the start of his compilers course
+
 
 Most programmers learn languages, whereas most computer scientists learn about languages. This gives the computer scientist a distinct advantage over the programmer, even in the domain of programming! Their knowledge generalizes; they are able to understand the operation of a new language more deeply and quickly than those who have merely learned specific languages.
 
@@ -246,6 +272,8 @@ The canonical introductory text is Compilers: Principles, Techniques & Tools, c
 
 经典的教科书《编译器：原理、技术与工具》通常又被称为“龙书”。不幸的是，这本书并不适合自学者，它比较适合教师从中选出1-2个章节并在课堂上讲授。这本书是有必要看的，你可以挑选里面的主题，最好再有个师傅指导你。
 
+![](https://teachyourselfcs.com/dragon.jpg)
+
 If you choose to use the Dragon Book for self-study, we recommend following a video lecture series for structure, then dipping into the Dragon Book as needed for more depth. Our recommended online course is Alex Aiken’s, available from Stanford’s MOOC platform Lagunita.
 
 如果你选择在自学中使用龙书，我们推荐你一系列门视频讲座，然后再沉浸在对于龙书的研究中。我们推荐的在线课程是：Alex Aiken 的[讲座](https://lagunita.stanford.edu/courses/Engineering/Compilers/Fall2014/about)，你可以在斯坦福大学的幕课平台上观看。
@@ -253,6 +281,8 @@ If you choose to use the Dragon Book for self-study, we recommend following a vi
 As a potential alternative to the Dragon Book we suggest Language Implementation Patterns by Terence Parr. It is written more directly for the practicing software engineer who intends to work on small language projects like DSLs, which may make it more practical for your purposes. Of course, it sacrifices some valuable theory to do so.
  
 也有可以替代龙书的教材：Terence Parr写的[*Language Implementation Patterns*](https://smile.amazon.com/Language-Implementation-Patterns-Domain-Specific-Programming/dp/193435645X/)，它更适合那些工作中使用类似特定领域语言的小众语言的有经验的编程者，它显得更加实用。当然，为了达到这个目的它也删去了一些有价值的理论。
+
+![](https://teachyourselfcs.com/parr.jpg)
 
 For project work, we suggest writing a compiler either for a simple teaching language like COOL, or for a subset of a language that interests you. Those who find such a project daunting could start with Make a Lisp, which steps you through the project.
 
@@ -269,6 +299,7 @@ Our suggested textbook for self-study is Maarten van Steen and Andrew Tanenbaum�
 
 我们建议的自学教科书是Maarten van Steen和Andrew Tanenbaum的[*Distributed Systems, 3rd Edition*](https://www.distributed-systems.net/index.php/books/distributed-systems-3rd-edition-2017/) 针对于之前的版本做了很大的改进，而且作者慷慨地把书放在了网上共享。由于分布式计算是一门变化很快的领域，所以没有教科书可以很好的涵盖所有的内容。但是Maarten van Steen的书是我们读过的所有书中最好的书。
 
+![](https://teachyourselfcs.com/distsys.png)
 
 A good course for which some videos are online is MIT’s 6.824 (a graduate course), but unfortunately the audio quality in the recordings is poor, and it’s not clear if the recordings were authorized.
 
