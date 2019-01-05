@@ -4,7 +4,11 @@
 
 > Looking for a few bad habits to drop? Let's take a look at null, functional programming, and getters and setters to see how you can improve your coding.
 
+前言：想改掉一些坏习惯吗？让我们从 null、函数式编程以及 getter 和 setter 着手，看看如何改善代码。
+
 From returning null values to overusing getters and setters, there are idioms that we as Java developers are accustom to making, even when unwarranted. While they may be appropriate in some occasions, they are usually forces of habit or fallbacks that we make to get the system working. In this article, we will go through three things that are common among Java developers, both novice and advanced, and explore how they can get us into trouble. It should be noted that these are not hard-and-fast rules that should always be adhered to, regardless of the circumstances. At times, there may be a good reason to use these patterns to solve a problem, but on the whole, they should be used a lot less than they are now. To start us off, we will begin with one of the most prolific, but double-edged keywords in Java: Null.
+
+作为 Java 开发人员，我们会使用一些习惯用法，典型的例子：返回 null 值、过度使用 getter 和 setter，即使在没有依据的情况下也是如此。虽然在某些情况下，它们可能是适当的，但通常是我们为使系统正常工作而形成的习惯或权宜之计。在本文中，我们将介绍 Java 开发（包括新手和高级开发人员）中常见的三种情况，并探究它们是如何给我们带来麻烦的。应该指出的是，这些并不是无论何时都应该始终遵守的硬性规则。有时候，可能有一个很好的理由来使用这些模式解决问题，但是总的来说，还是应该减少这些用法。首先，我们将从 Null 这个关键字开始，它也是 Java 中使用最频繁、但也是最具两面性特性的关键字之一。
 
 ### 1. Returning Null
 Null has been the best friend and worst enemy of developers for decades and null in Java is no different. In high-performance applications, null can be a solid means of reducing the number of objects and signaling that a method does not have a value to return. In contrast to throwing an exception, which has to capture the entire stack trace when it is created, null serves as a quick and low-overhead way to signal clients that no value can be obtained.
