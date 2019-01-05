@@ -8,14 +8,20 @@
 
 From returning null values to overusing getters and setters, there are idioms that we as Java developers are accustom to making, even when unwarranted. While they may be appropriate in some occasions, they are usually forces of habit or fallbacks that we make to get the system working. In this article, we will go through three things that are common among Java developers, both novice and advanced, and explore how they can get us into trouble. It should be noted that these are not hard-and-fast rules that should always be adhered to, regardless of the circumstances. At times, there may be a good reason to use these patterns to solve a problem, but on the whole, they should be used a lot less than they are now. To start us off, we will begin with one of the most prolific, but double-edged keywords in Java: Null.
 
-作为 Java 开发人员，我们会使用一些习惯用法，典型的例子：返回 null 值、过度使用 getter 和 setter，即使在没有依据的情况下也是如此。虽然在某些情况下，它们可能是适当的，但通常是我们为使系统正常工作而形成的习惯或权宜之计。在本文中，我们将介绍 Java 开发（包括新手和高级开发人员）中常见的三种情况，并探究它们是如何给我们带来麻烦的。应该指出的是，这些并不是无论何时都应该始终遵守的硬性规则。有时候，可能有一个很好的理由来使用这些模式解决问题，但是总的来说，还是应该减少这些用法。首先，我们将从 Null 这个关键字开始，它也是 Java 中使用最频繁、但也是最具两面性特性的关键字之一。
+作为 Java 开发人员，我们会使用一些习惯用法，典型的例子：返回 null 值、过度使用 getter 和 setter，即使在没有依据的情况下也是如此。虽然在某些情况下，使用它们可能是适当的，但通常是我们为使系统正常工作而形成的习惯或权宜之计。在本文中，我们将介绍 Java 开发（包括新手和高级开发人员）中常见的三种情况，并探究它们是如何给我们带来麻烦的。应该指出的是，这些并不是无论何时都应该始终遵守的硬性规则。有时候，可能有一个很好的理由来使用这些模式解决问题，但是总的来说，还是应该减少这些用法。首先，我们将从 Null 这个关键字开始，它也是 Java 中使用最频繁、但也是最具两面性特性的关键字之一。
 
-### 1. Returning Null
+### 1. Returning Null（返回 Null）
 Null has been the best friend and worst enemy of developers for decades and null in Java is no different. In high-performance applications, null can be a solid means of reducing the number of objects and signaling that a method does not have a value to return. In contrast to throwing an exception, which has to capture the entire stack trace when it is created, null serves as a quick and low-overhead way to signal clients that no value can be obtained.
+
+null 一直是开发者最好的朋友，也是最大的敌人，这在 Java 中也不例外。在高性能应用中，null 是一种减少对象数量的可靠方法，它表明方法没有要返回的值。与抛出异常（创建异常时必须捕获整个堆栈跟踪）不同，null 是一种快速且低开销的方法，用于通知客户机不能获取任何值。
 
 Outside the context of high-performance systems, null can wreak havoc in an application by creating more tedious checks for null return values and causing NullPointerExceptions when dereferencing a null object. In most applications, nulls are returned for three primary reasons: (1) to denote no elements could be found for a list, (2) to signal that no valid value could be found, even if an error did not occur, or (3) to denote a special case return value.
 
+在高性能系统的环境之外，null 可以通过创建更繁琐的 null 返回值检查来破坏应用程序，并在非关联化 null 对象时导致 NullPointerExceptions 异常。在大多数应用程序中，返回null有三个主要原因：（1）表示列表中找不到元素；（2）表示即使没有发生错误，也找不到有效值;（3）表示特殊情况下的返回值。
+
 Barring any performance reasons, each of these cases has a much better solution which does not use null and force developers to handle null cases. Whatsmore, clients of these methods are not left scratching their heads wondering if the method will return a null in some edge case. In each case, we will devise a cleaner approach that does not involve returning a null value.
+
+除非有任何性能方面的原因，否则每一种情况都有更好的解决方案，它们不使用null，并且强制开发人员处理出现 null 的情况。更重要的是，这些方法的客户端不会为该方法是否会在某些边缘情况下返回 null 而伤脑筋。在每种情况下，我们将设计一种不返回 null 值的简洁方法。
 
 #### No Elements
 When returning lists or other collections, it can be common to see a null collection returned in order to signal that elements for that collection could not be found. For example, we could create a service that manages users in a database that resembles the following (some method and class definitions have been left out for brevity):
