@@ -103,8 +103,10 @@ Doing so not only reduces the special-case handling that clients must perform, b
 
 这样做不仅减少了客户端必须执行的特殊情况处理，而且还减少了接口中的不一致性（例如，我们有时返回一个 list 对象，而不是其他对象）。
 
-#### Optional Value
+#### Optional Value（可选值）
 Many times, null values are returned when we wish to inform a client that an optional value is not present, but no error has occurred. For example, getting a parameter from a web address. In some cases, the parameter may be present, but in other cases, it may not. The lack of this parameter does not necessarily denote an error, but rather, it denotes that the user did not want the functionality that is included when the parameter is provided (such as sorting). We can handle this by returning null if no parameter is present or the value of the parameter if one is supplied (some methods have been removed for brevity):
+
+很多时候，我们希望在没有发生错误时通知客户端不存在可选值，此时返回 null。例如，从 web 地址获取参数。在某些情况下，参数可能存在，但在其他情况下，它可能不存在。缺少此参数并不一定表示错误，而是表示用户不希望提供该参数时包含的功能（例如排序）。如果没有参数，则返回 null；如果提供了参数，则返回参数值（为了简洁起见，删除了一些方法）：
 
 ```Java
 public class UserListUrl {
@@ -135,7 +137,11 @@ else {
 
 When no parameter is supplied, a null is returned and a client must handle this case, but nowhere in the signature of the getSortingValue method does it state that the sorting value is optional. For us to know that this method is optional and may return a null if no parameter is present, we would have to read the documentation associated with the method (if any were provided).
 
+当没有提供参数时，返回 null，客户端必须处理这种情况，但是在 getSortingValue 方法的签名中，没有任何地方声明排序值是可选的。要知道这个方法是可选的，如果没有参数，可能返回null，我们必须阅读与该方法相关的文档（如果提供了文档）。
+
 Instead, we can make the optionality explicit returning an Optional object. As we will see, the client still has to handle the case when no parameter is present, but now that requirement is made explicit. Whatsmore, the Optional class provides more mechanisms to handle a missing parameter than a simple null check. For example, we can simply check for the presence of the parameter using the query method (a state-testing method) provided by Optional:
+
+相反，我们可以使可选性显式地返回一个 Optional 对象。正如我们将看到的，当没有参数存在时，客户端仍然需要处理这种情况，但是现在这个需求已经明确了。更重要的是，Optional 类提供了比简单的 null 检查更多的机制来处理丢失的参数。例如，我们可以使用 Optional 类提供的查询方法（一种状态测试方法）简单地检查参数是否存在:
 
 ```Java
 public class UserListUrl {
@@ -166,6 +172,8 @@ else {
 
 This is nearly identical to that of the null-check case, but we have made the optionality of the parameter explicit (i.e. the client cannot access the parameter without calling get(), which will throw a NoSuchElementException if the optional is empty). If we were not interested in returning the list of users based on the optional parameter in the web address, but rather, consuming the parameter in some manner, we could use the ifPresentOrElse method to do so:
 
+这与「空检查」的情况几乎相同，但是我们已经明确了参数的可选性（即客户机在不调用get()的情况下无法访问参数，如果可选参数为空，则会抛出NoSuchElementException）。如果我们不希望根据 web 地址中的可选参数返回用户列表，而是以某种方式使用该参数，我们可以使用 ifPresentOrElse 方法来这样做：
+
 ```Java
 sortingParam.ifPresentOrElse(
     param -> System.out.println("Parameter is :" + param),
@@ -175,13 +183,19 @@ sortingParam.ifPresentOrElse(
 
 This greatly reduces the noise required for null checking. If we wished to disregard the parameter if no parameter is supplied, we could do so using the ifPresent method:
 
+这极大降低了「空检查」的影响。如果我们希望在没有提供参数时忽略参数，可以使用 ifPresent 方法:
+
 ```Java
 sortingParam.ifPresent(param -> System.out.println("Parameter is :" + param));
 ```
 
 In either case, using an Optional object, rather than returning null, explicitly forces clients to handle the case that a return value may not be present and provides many more avenues for handling this optional value. Taking this into account, we can devise the following rule:
 
+在这两种情况下，使用 Optional 对象要优于返回 null 以及显式地强制客户端处理返回值可能不存在的情况，为处理这个可选值提供了更多的途径。考虑到这一点，我们可以制定以下规则：
+
 **If a return value is optional, ensure clients handle this case by returning an  Optional  that contains a value if one is found and is empty if no value can be found**
+
+如果返回值是可选的，则通过返回一个可选的值来确保客户端处理这种情况，该可选的值在找到值时包含一个值，在找不到值时为空
 
 ### Special-Case Value
 The last common use case is that of a special case, where a normal value cannot be obtained and a client should handle a corner case different than the others. For example, suppose we have a command factory from which clients periodically request commands to complete. If no command is ready to be completed, the client should wait 1 second before asking again. We can accomplish this by returning a null command, which clients must handle, as illustrated in the example below (some methods are not shown for brevity):
