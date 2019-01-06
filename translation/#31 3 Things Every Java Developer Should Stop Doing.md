@@ -23,8 +23,10 @@ Barring any performance reasons, each of these cases has a much better solution 
 
 除非有任何性能方面的原因，否则每一种情况都有更好的解决方案，它们不使用null，并且强制开发人员处理出现 null 的情况。更重要的是，这些方法的客户端不会为该方法是否会在某些边缘情况下返回 null 而伤脑筋。在每种情况下，我们将设计一种不返回 null 值的简洁方法。
 
-#### No Elements
+#### No Elements（集合中没有元素的情况）
 When returning lists or other collections, it can be common to see a null collection returned in order to signal that elements for that collection could not be found. For example, we could create a service that manages users in a database that resembles the following (some method and class definitions have been left out for brevity):
+
+在返回列表或其他集合时，通常会看到返回空集合，以表明无法找到该集合的元素。例如，我们可以创建一个服务来管理数据库中的用户，该服务类似于以下内容（为了简洁起见，省略了一些方法和类定义）：
 
 ```Java
 public class UserService {
@@ -50,6 +52,8 @@ if (users != null) {
 
 Since we have elected to return a null value in the case of no users, we are forcing our client to handle this case before iterating over the list of users. If instead, we returned an empty list to denote no users were found, the client can remove the null check entirely and loop through the users as normal. If there are no users, the loop will be skipped implicitly without having to manually handle that case; in essence, looping through the list of users functions as we intend for both an empty and populated list without having to manually handle one case or the other:
 
+因为我们选择在没有用户的情况下返回 null 值，所以我们在遍历用户列表之前强制客户端处理这种情况。如果我们返回一个空列表来表示没有找到用户，那么客户机可以完全删除空检查并像往常一样遍历用户。如果没有用户，则隐式跳过循环，而不必手动处理这种情况；从本质上说，循环遍历用户列表的功能就像我们为空列表和填充列表所做的那样，而不需要手动处理任何一种情况:
+
 ```Java
 public class UserService {
     public List<User> getUsers() {
@@ -72,6 +76,8 @@ for (User user: users) {
 
 In the case above, we have elected to return an immutable, empty list. This is an acceptable solution, so long as we document that the list is immutable and should not be modified (doing so may throw an exception). If the list must be mutable, we can return an empty, mutable list, as in the following example:
 
+在上面的例子中，我们返回的是一个不可变的空列表。这是一个可接受的解决方案，只要我们记录该列表是不可变的并且不应该被修改（这样做可能会抛出异常）。如果列表必须是可变的，我们可以返回一个空的可变列表，如下例所示：
+
 ```Java
 public List<User> getUsers() {
     User[] usersFromDb = getUsersFromDatabase();
@@ -87,9 +93,15 @@ public List<User> getUsers() {
 
 In general, the following rule should be adhered to when signaling that no elements could be found:
 
+一般来说，在发出找不到元素的信号时，应遵守以下规则：
+
 **Return an empty collection (or list, set, queue, etc.) to denote that no elements can be found**
 
+返回一个空集合（或 list、set、queue 等等）表明找不到元素。
+
 Doing so not only reduces the special-case handling that clients must perform, but it also reduces the inconsistencies in our interface (i.e. we return a list object sometimes and not others).
+
+这样做不仅减少了客户端必须执行的特殊情况处理，而且还减少了接口中的不一致性（例如，我们有时返回一个 list 对象，而不是其他对象）。
 
 #### Optional Value
 Many times, null values are returned when we wish to inform a client that an optional value is not present, but no error has occurred. For example, getting a parameter from a web address. In some cases, the parameter may be present, but in other cases, it may not. The lack of this parameter does not necessarily denote an error, but rather, it denotes that the user did not want the functionality that is included when the parameter is provided (such as sorting). We can handle this by returning null if no parameter is present or the value of the parameter if one is supplied (some methods have been removed for brevity):
