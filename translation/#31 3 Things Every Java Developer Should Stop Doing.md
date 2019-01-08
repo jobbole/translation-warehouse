@@ -197,8 +197,10 @@ In either case, using an Optional object, rather than returning null, explicitly
 
 如果返回值是可选的，则通过返回一个可选的值来确保客户端处理这种情况，该可选的值在找到值时包含一个值，在找不到值时为空
 
-### Special-Case Value
+### Special-Case Value（特殊情况值）
 The last common use case is that of a special case, where a normal value cannot be obtained and a client should handle a corner case different than the others. For example, suppose we have a command factory from which clients periodically request commands to complete. If no command is ready to be completed, the client should wait 1 second before asking again. We can accomplish this by returning a null command, which clients must handle, as illustrated in the example below (some methods are not shown for brevity):
+
+最后一个常见用例是特殊用例，在这种情况下无法获得正常值，客户端应该处理与其他用例不同的极端情况。例如，假设我们有一个命令工厂，客户端定期从命令工厂请求命令。如果没有命令可以获得，客户端应该等待 1 秒钟再请求。我们可以通过返回一个空命令来实现这一点，客户端必须处理这个空命令，如下面的例子所示（为了简洁起见，没有显示一些方法）：
 
 ```Java
 public interface Command {
@@ -243,6 +245,8 @@ while (true) {
 
 Since the CommandFactory can return null commands, clients are obligated to check if the command received is null and if it is, sleep for 1 second. This creates a set of conditional logic that clients must handle on their own. We can reduce this overhead by creating a null-object (sometimes called a special-case object). A null-object encapsulates the logic that would have been executed in the null scenario (namely, sleeping for 1 second) into an object that is returned in the null case. For our command example, this means creating a SleepCommand that sleeps when executed:
 
+由于 CommandFactory 可以返回空命令，客户端有义务检查接收到的命令是否为空，如果为空，则休眠1秒。这将创建一组必须由客户端自行处理的条件逻辑。我们可以通过创建一个「空对象」（有时称为特殊情况对象）来减少这种开销。「空对象」将在 null 场景中执行的逻辑（休眠 1 秒）封装到 null 情况下返回的对象中。对于我们的命令示例，这意味着创建一个在执行时休眠的 SleepCommand：
+
 ```Java
 public class SleepCommand implements Command {
     @Override
@@ -272,6 +276,8 @@ while (true) {
 
 As with the case of returning empty collections, creating a null-object allows clients to implicitly handle special cases as if they were the normal case. This is not always possible, though; there may be instances where the decision for dealing with a special case must be made by the client. This can be handled by allowing the client to supply a default value, as is done with the Optional class. In the case of Optional, clients can obtain the contained value or a default using the orElse method:
 
+与返回空集合的情况一样，创建「空对象」允许客户端隐式处理特殊情况，就像它们是正常情况一样。但这并不总是可行的；在某些情况下，处理特殊情况的决定必须由客户做出。这可以通过允许客户端提供默认值来处理，就像使用 Optional 类一样。在 Optional 的情况下，客户端可以使用 orElse 方法获取包含的值或默认值：
+
 ```Java
 UserListUrl url = new UserListUrl("http://localhost/api/v2/users");
 Optional<String> sortingParam = url.getSortingValue();
@@ -279,6 +285,8 @@ String sort = sortingParam.orElse("ASC");
 ```
 
 If there is a supplied sorting parameter (i.e. if the Optional contains a value), this value will be returned. If no value exists, "ASC" will be returned by default. The Optional class also allows a client to create a default value when needed, in case the default creation process is expensive (i.e. the default will be created only when needed):
+
+如果有一个提供的排序参数（例如，如果 Optional 包含一个值），这个值将被返回。如果不存在值，默认情况下将返回「ASC」。Optional 类还允许客户端在需要时创建默认值，以防默认创建过程开销较大（即只在需要时创建默认值）:
 
 ```Java
 UserListUrl url = new UserListUrl("http://localhost/api/v2/users");
@@ -290,7 +298,11 @@ String sort = sortingParam.orElseGet(() -> {
 
 Using a combination of null-objects and default values, we can devise the following rule:
 
+结合「空对象」和默认值的用法，我们可以设计以下规则：
+
 **When possible, handle null cases with a null-object or allow clients to supply a default value**
+
+如果可能，使用「空对象」处理使用 null 关键字的情况，或者允许客户端提供默认值
 
 ### 2. Defaulting to Functional Programming
 Since streams and lambdas were introduced in Java Development Kit (JDK) 8, there has been a push to migrate towards functional programming, and rightly so. Before lambdas and streams, performing simple functional tasks were cumbersome and resulted in severely unreadable code. For example, filtering a collection in the traditional style resulted in code that resembled the following:
