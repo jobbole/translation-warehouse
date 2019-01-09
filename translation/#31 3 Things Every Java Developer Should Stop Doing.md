@@ -304,8 +304,10 @@ Using a combination of null-objects and default values, we can devise the follow
 
 如果可能，使用「空对象」处理使用 null 关键字的情况，或者允许客户端提供默认值
 
-### 2. Defaulting to Functional Programming
+### 2. Defaulting to Functional Programming（默认使用函数式编程）
 Since streams and lambdas were introduced in Java Development Kit (JDK) 8, there has been a push to migrate towards functional programming, and rightly so. Before lambdas and streams, performing simple functional tasks were cumbersome and resulted in severely unreadable code. For example, filtering a collection in the traditional style resulted in code that resembled the following:
+
+自从在 JDK 8 中引入了 stream 和 lambda 表达式之后，就出现了向函数式编程迁移的趋势，这理当如此。在 lambda 表达式和 stream 出现之前，执行简单的功能任务是非常麻烦的，并且会导致代码可读性的严重下降。例如，以下代码用传统方式过滤一个集合：
 
 ```Java
 public class Foo {
@@ -327,11 +329,15 @@ while(iterator.hasNext()) {
 
 While this code is compact, it does not tell us in an obvious way that we are trying to remove elements of a collection if some criterion is satisfied. Instead, it tells us that we are iterating over a collection while there are more elements in the collection and removing each element if its value is greater than 10 (we can surmise that filtering is occurring, but it obscured in the verbosity of the code). We can shrink this logic down to one statement using functional programming:
 
+虽然这段代码很紧凑，但它并没有以一种明显的方式告诉我们，当满足某个条件时，我们将尝试删除集合的元素。相反，它告诉我们，当集合中有更多的元素时将遍历集合，并将删除值大于 10 的元素（我们可以假设正在进行筛选，但是删除元素的部分被代码的冗长所掩盖）。我们可以使用函数式编程将这个逻辑压缩为一条语句：
+
 ```Java
 foos.removeIf(foo -> foo.getValue() > 10);
 ```
 
 Not only is this statement much more concise than its iterative alternative, it also tells us exactly what it is trying to do. We can even make it more readable if we name the predicate and pass it to the removeIf method:
+
+这个语句不仅比迭代方式更简洁，而且准确的告诉我们它的行为。如果我们为 predicate 命名并将其传递给 removeIf 方法，甚至可以使其更具可读性：
 
 ```Java
 Predicate<Foo> valueGreaterThan10 = foo -> foo.getValue() > 10;
@@ -339,6 +345,8 @@ foos.removeIf(valueGreaterThan10);
 ```
 
 The final line of this snippet reads like a sentence in English, informing us exactly of what the statement is doing. With code that looks so compact and readable, it is tempting to try and use functional programming in every situation where iteration is required, but this is a naive philosophy. Not every situation lends itself to functional programming. For example, if we tried to print the cross product of the set of suits and ranks in a deck of cards (every combination of suits and ranks), we could create the following (see Effective Java, 3rd Edition for a more detailed listing of this example):
+
+这段代码的最后一行读起来像一个英语句子，准确地告诉我们语句在做什么。对于看起来如此紧凑和极具可读性的代码，在任何需要迭代的情况下尝试使用函数式编程是很让人向往的，但这是一种天真的想法。并不是每种情况都适合函数式编程。例如，如果我们尝试在一副牌中打印一组花色和等级的排列组合（花色和等级的每一种组合），我们可以创建以下内容（参见 Effective Java，第三版，获得这个示例的详细内容）：
 
 ```Java
 public static enum Suit {
@@ -357,6 +365,8 @@ suits.stream()
 
 While this is not over-complicated to read, it is not the most straightforward implementation we could devise. It is pretty clear that we are trying to force streams into a realm where traditional iteration is much more favorable. If we used traditional iteration, we could have simplified the cross product of suits and ranks to the following:
 
+虽然读起来并不复杂，但这种实现并不是最简单的。很明显，我们正试图强行使用 stream，而此时使用传统迭代明显更有利。如果我们使用传统的迭代方法，我们可以将 花色和等级的排列组合简化为：
+
 ```Java
 for (Suit suit: suits) {
     for (Rank rank: ranks) {
@@ -366,6 +376,8 @@ for (Suit suit: suits) {
 ```
 
 This style, although much less flashy, is much more straightforward. We can quickly see that we are attempting to iterate over each suit and rank and pair each rank with each suit. The tediousness of functional programming becomes much more acute the larger the stream expression becomes. Take for example the following code snippet created by Joshua Bloch in Effective Java, 3rd Edition (pp. 205, Item 45) to find all the anagrams over a specified length contained in a dictionary at the path supplied by the user:
+
+这种风格虽然不那么浮华，但却直截了当得多。我们可以很快地理解，我们试图遍历每个花色和等级，并将每个等级与每个花色配对。流表达式越大，函数式编程的乏味性就越明显。以 Joshua Bloch 在《Effective Java, 3rd Edition》第 205 页，第 45 项中创建的以下代码片段为例，在用户提供的路径上查找字典中包含的指定长度内的所有词组：
 
 ```js
 public class Anagrams {
@@ -389,9 +401,15 @@ public class Anagrams {
 
 Even the most seasoned stream adherents would probably balk at this implementation. It is unclear as to the intention of the code and would take a decent amount of thinking to uncover what the above stream manipulations are trying to accomplish. This does not mean that streams are complicated or that they are too wordy, but they are not always the best choice. As we saw above, using the removeIf reduced a complicated group of statements into a single, easily-comprehensible statement. Therefore, we should not try to replace every instance of traditional iteration with streams or even lambdas. Instead, we should abide by the following rule when deciding whether to functional programming or use the traditional route:
 
+即使是经验最丰富的 stream 簇拥者也可能会对这个实现感到迷茫。短时间内很难理解代码的意图，需要大量的思考才能发现上面的 stream 操作试图实现什么。这并不意味着 stream 一定很复杂或太冗长，只是因为它们不总是最好的选择。正如我们在上面看到的，使用 removeIf 可以将一组复杂的语句简化为一个易于理解的语句。因此，我们不应该试图用 stream 甚至 lambda 表达式替换传统迭代的每个使用场景。相反，在决定是使用函数式编程还是使用传统路线时，我们应该遵循以下规则：
+
 **Functional programming and traditional iteration both have their benefits and disadvantages: Use whichever results in the simplest and most readable code**
 
+函数式编程和传统的迭代都有其优点和缺点：应该以最简单和最易读为准来选择
+
 Although it may be tempting to use the flashiest, most up-to-date features of Java in every possible scenario, this is not always the best route. Sometimes, the old-school features work best.
+
+尽管在每个可能的场景中使用 Java 最炫、最新的特性可能很让人向往，但这并不总是最好的方法。有时候，老式的功能效果反而最好。
 
 ### 3. Creating Indiscriminate Getters and Setters
 One of the first things that novice programmers are taught is to encapsulate the data associated with a class in private fields and expose them through public methods. In practice, this results in creating getters to access the private data of a class and setters to modify the private data of a class:
