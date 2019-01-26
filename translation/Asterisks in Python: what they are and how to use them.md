@@ -76,7 +76,7 @@ Even if you think you’re familiar with all of these ways of using `*` and `**`
 
 ## Asterisks for unpacking into function call
 
-## 星号用于解压到函数调用
+## 星号用于将可迭代对象拆分并分别作为函数参数
 
 When calling a function, the `*` operator can be used to unpack an iterable into the arguments in the function call:
 
@@ -96,7 +96,7 @@ That `print(*fruits)` line is passing all of the items in the `fruits` list into
 
 The `*` operator isn’t just syntactic sugar here. This ability of sending in all items in a particular iterable as separate arguments wouldn’t be possible without `*`, unless the list was a fixed length.
 
-` * `运算符在这里远不止是糖衣语法而已。要想用一个特定的迭代器将所有项作为独立的参数传输，若不使用` * `是不可能做到的，除非列表的长度是固定的。
+` * `运算符在这里远不止是语法糖而已。要想用一个特定的迭代器将所有项作为独立的参数传输，若不使用` * `是不可能做到的，除非列表的长度是固定的。
 
 Here’s another example:
 
@@ -112,7 +112,7 @@ def transpose_list(list_of_lists):
 
 Here we’re accepting a list of lists and returning a “transposed” list of lists.
 
-这里我们接受一个列表列表并返回一个“转置”列表列表。
+这里我们接受一个二维列表并返回一个“转置”的二维列表。
 
 ```
 >>> transpose_list([[1, 4, 7], [2, 5, 8], [3, 6, 9]])
@@ -131,7 +131,7 @@ The `**` operator does something similar, but with keyword arguments. The `**` o
 
 From my experience, using `**` to unpack keyword arguments into a function call isn’t particularly common. The place I see this most is when practicing inheritance: calls to `super()` often include both `*` and `**`.
 
-根据我的经验，使用` ** `将关键字参数解压缩到函数调用中并不常见。我最常看到它的地方是在练习继承时：对` uper() `的调用通常包括` * `和` ** `。
+根据我的经验，使用` ** `将关键字参数解压缩到函数调用中并不常见。我最常看到它的地方是在实现继承时：对` uper() `的调用通常包括` * `和` ** `。
 
 Both `*` and `**` can be used multiple times in function calls, as of Python 3.5.
 
@@ -249,7 +249,8 @@ The above function can be used like this:
 
 ```
 >>> fruits = {'lemon': 'yellow', 'orange': 'orange', 'tomato': 'red'} 
->>> get_multiple('lemon', 'tomato', 'squash', dictionary=fruits, default='unknown') ['yellow', 'red', 'unknown'] 
+>>> get_multiple('lemon', 'tomato', 'squash', dictionary=fruits, default='unknown'）
+['yellow', 'red', 'unknown'] 
 ```
 
 The arguments `dictionary` and `default` come after `*keys`, which means they can *only* be specified as [keyword arguments](https://treyhunner.com/2018/04/keyword-arguments-in-python/). If we try to specify them positionally we’ll get an error:
@@ -291,7 +292,7 @@ def with_previous(iterable, *, fillvalue=None):
 
 This function accepts an `iterable` argument, which can be specified positionally (as the first argument) or by its name and a `fillvalue` argument which is a keyword-only argument. This means we can call `with_previous` like this:
 
-这个函数接受一个` 迭代器`参数，可以按照位置来指定此参数（作为第一个参数），也可以通过它的名称和一个填充值参数来指定，这个填充值参数只使用关键字。这意味着我们可以像下面这样调用 with_previous：
+这个函数接受一个` 迭代器`参数，可以按照位置或名字来指定此参数（作为第一个参数），以及关键字参数`fillvalue`，这个填充值参数只使用关键字。这意味着我们可以像下面这样调用 with_previous：
 
 ```
 >>> list(with_previous([2, 1, 3], fillvalue=0)) 
@@ -366,7 +367,7 @@ If you’re wondering “where could I use this in my own code”, take a look a
 
 Usually when I teach `*` I note that you can only use one `*` expression in a single multiple assignment call. That’s technically incorrect because it’s possible to use two in a nested unpacking (I talk about nested unpacking in my tuple unpacking article):
 
-通常当我教` * `的时候，我注意到大家只能多次任务调用中单独地使用一个` * `表达式。这在技术上来说是不正确的，因为可以在嵌套解包中使用两个` * `（我在元组解包文章中讨论了嵌套解包）：
+通常当我教` * `的时候，我告诉大家只能在多重赋值语句中使用一个` * `表达式。实际来说这是不正确的，因为可以在嵌套解包中使用两个` * `（我在元组解包文章中讨论了嵌套解包）：
 
 ```
 >>> fruits = ['lemon', 'pear', 'watermelon', 'tomato'] 
@@ -494,7 +495,8 @@ Or copy/merge dictionaries while overriding particular values:
 或者在复制/合并字典的同时重写特定的值：
 
 ```
->>> event_info = {'year': '2020', 'month': '01', 'day': '7', 'group': 'Python Meetup'} >>> new_info = {**event_info, 'day': "14"}
+>>> event_info = {'year': '2020', 'month': '01', 'day': '7', 'group': 'Python Meetup'} 
+>>> new_info = {**event_info, 'day': "14"}
 >>> new_info
 {'year': '2020', 'month': '01', 'day': '14', 'group': 'Python Meetup'} 
 ```
@@ -509,7 +511,7 @@ Python 的 `*` 和 `**` 运算符不仅仅是语法糖。 `*` 和 `**` 运算符
 
 After reading about all the features of `*` and `**`, you might be wondering what the names for these odd operators are. Unfortunately, they don’t really have succinct names. I’ve heard `*` called the “packing” and “unpacking” operator. I’ve also heard it called “splat” (from the Ruby world) and I’ve heard it called simply “star”.
 
-在阅读了`*` 和 `**` 运算符的所有特性之后，您可能想知道这些奇怪操作符的名称。不幸的是，它们的名字并不简练。我听说过`*` 被称为“打包”和“拆包”操作员。我还听说过其被称为“splat”(来自 Ruby 世界)，也听说过被简单地称为“star”。
+在阅读了`*` 和 `**` 运算符的所有特性之后，您可能想知道这些奇怪操作符的名称。不幸的是，它们的名字并不简练。我听说过`*` 被称为“打包”和“拆包“运算符。我还听说过其被称为“splat”(来自 Ruby 世界)，也听说过被简单地称为“star”。
 
 I tend to call these operators “star” and “double star” or “star star”. That doesn’t distinguish them from their infix relatives (multiplication and exponentiation), but context usually makes it obvious whether we’re talking about prefix or infix operators.
 
