@@ -1,4 +1,4 @@
-## 3 Things Every Java Developer Should Stop Doing
+## 3 Things Every Java Developer Should Stop Doing（Java 开发者应该停止的 3 种不良习惯）
 
 > 转译自：https://dzone.com/articles/3-things-every-java-developer-should-stop-doing
 
@@ -8,16 +8,16 @@
 
 From returning null values to overusing getters and setters, there are idioms that we as Java developers are accustom to making, even when unwarranted. While they may be appropriate in some occasions, they are usually forces of habit or fallbacks that we make to get the system working. In this article, we will go through three things that are common among Java developers, both novice and advanced, and explore how they can get us into trouble. It should be noted that these are not hard-and-fast rules that should always be adhered to, regardless of the circumstances. At times, there may be a good reason to use these patterns to solve a problem, but on the whole, they should be used a lot less than they are now. To start us off, we will begin with one of the most prolific, but double-edged keywords in Java: Null.
 
-作为 Java 开发人员，我们会使用一些习惯用法，典型的例子，如：返回 null 值、滥用 getter 和 setter，即使在没有依据的情况下也是如此。虽然在某些情况下，使用它们可能是适当的，但通常是我们为使系统正常工作而形成的习惯或权宜之计。在本文中，我们将介绍 Java 开发（包括新手和高级开发人员）中常见的三种情况，并探究它们是如何给我们带来麻烦的。应该指出的是，文中总结的规则并不是无论何时都应该始终遵守的硬性要求。有时候，可能有一个很好的理由来使用这些模式解决问题，但是总的来说，还是应该减少这些用法。首先，我们将从 Null 这个关键字开始，它也是 Java 中使用最频繁、但也是最具两面性特性的关键字之一。
+作为 Java 开发人员，我们会使用一些习惯用法，典型的例子，如：返回 null 值、滥用 getter 和 setter，即使在没有必要的情况下也是如此。虽然在某些情况下，这些用法可能是适当的，但通常是习惯使然，或者是我们为了让系统正常工作的权宜之计。在本文中，我们将讨论在 Java 初学者甚至高级开发人员中都常见的三种情况，并探究它们是如何给我们带来麻烦的。应该指出的是，文中总结的规则并不是无论何时都应该始终遵守的硬性要求。有时候，可能有一个很好的理由来使用这些模式解决问题，但是总的来说，还是应该相对的减少这些用法。首先，我们将从 Null 这个关键字开始讨论，它也是 Java 中使用最频繁、但也是最具两面性的关键字之一。
 
 ### 1. Returning Null（返回 Null）
 Null has been the best friend and worst enemy of developers for decades and null in Java is no different. In high-performance applications, null can be a solid means of reducing the number of objects and signaling that a method does not have a value to return. In contrast to throwing an exception, which has to capture the entire stack trace when it is created, null serves as a quick and low-overhead way to signal clients that no value can be obtained.
 
-null 一直是开发者最好的朋友，也是最大的敌人，这在 Java 中也不例外。在高性能应用中，使用 null 是一种减少对象数量的可靠方法，它表明方法没有要返回的值。与抛出异常（创建异常时必须捕获整个堆栈跟踪）不同，使用 null 是一种快速且低开销的方法，用于通知客户机不能获取任何值。
+null 一直是开发者最好的朋友，也是最大的敌人，这在 Java 中也不例外。在高性能应用中，使用 null 是一种减少对象数量的可靠方法，它表明方法没有要返回的值。与抛出异常不同，如果要通知客户端不能获取任何值，使用 null 是一种快速且低开销的方法，它不需要捕获整个堆栈跟踪。
 
 Outside the context of high-performance systems, null can wreak havoc in an application by creating more tedious checks for null return values and causing NullPointerExceptions when dereferencing a null object. In most applications, nulls are returned for three primary reasons: (1) to denote no elements could be found for a list, (2) to signal that no valid value could be found, even if an error did not occur, or (3) to denote a special case return value.
 
-在高性能系统的环境之外，null 可以通过创建更繁琐的 null 返回值检查来破坏应用程序，并在非关联化 null 对象时导致 NullPointerExceptions 异常。在大多数应用程序中，返回 null 有三个主要原因：（1）表示列表中找不到元素；（2）表示即使没有发生错误，也找不到有效值;（3）表示特殊情况下的返回值。
+在高性能系统的环境之外，null 的存在会导致创建更繁琐的 null 返回值检查，从而破坏应用程序，并在解引用空对象时导致 NullPointerExceptions。在大多数应用程序中，返回 null 有三个主要原因：（1）表示列表中找不到元素；（2）表示即使没有发生错误，也找不到有效值;（3）表示特殊情况下的返回值。
 
 Barring any performance reasons, each of these cases has a much better solution which does not use null and force developers to handle null cases. Whatsmore, clients of these methods are not left scratching their heads wondering if the method will return a null in some edge case. In each case, we will devise a cleaner approach that does not involve returning a null value.
 
@@ -52,7 +52,7 @@ if (users != null) {
 
 Since we have elected to return a null value in the case of no users, we are forcing our client to handle this case before iterating over the list of users. If instead, we returned an empty list to denote no users were found, the client can remove the null check entirely and loop through the users as normal. If there are no users, the loop will be skipped implicitly without having to manually handle that case; in essence, looping through the list of users functions as we intend for both an empty and populated list without having to manually handle one case or the other:
 
-因为我们选择在没有用户的情况下返回 null 值，所以我们在遍历用户列表之前强制客户端处理这种情况。如果我们返回一个空列表来表示没有找到用户，那么客户端可以完全删除空检查并像往常一样遍历用户。如果没有用户，则隐式跳过循环，而不必手动处理这种情况；从本质上说，循环遍历用户列表的功能就像我们为空列表和填充列表所做的那样，而不需要手动处理任何一种情况：
+因为我们选择在没有用户的情况下返回 null 值，所以我们迫使客户端在遍历用户列表之前先处理这种情况。如果我们返回一个空列表来表示没有找到用户，那么客户端可以完全删除空检查并像往常一样遍历用户。如果没有用户，则隐式跳过循环，而不必手动处理这种情况；从本质上说，循环遍历用户列表的功能就像我们为空列表和填充列表所做的那样，而不需要手动处理任何一种情况：
 
 ```Java
 public class UserService {
@@ -93,7 +93,7 @@ public List<User> getUsers() {
 
 In general, the following rule should be adhered to when signaling that no elements could be found:
 
-一般来说，在发出找不到元素的信号时，应遵守以下规则：
+一般来说，当没有发现任何元素的时候，应遵守以下规则：
 
 **Return an empty collection (or list, set, queue, etc.) to denote that no elements can be found**
 
@@ -101,12 +101,12 @@ In general, the following rule should be adhered to when signaling that no eleme
 
 Doing so not only reduces the special-case handling that clients must perform, but it also reduces the inconsistencies in our interface (i.e. we return a list object sometimes and not others).
 
-这样做不仅减少了客户端必须执行的特殊情况处理，而且还减少了接口中的不一致性（例如，我们有时返回一个 list 对象，而不是其他对象）。
+这样做不仅减少了客户端必须执行的特殊情况处理，而且还减少了接口中的不一致性（例如，我们常常返回一个 list 对象，而不是其他对象）。
 
 #### Optional Value（可选值）
 Many times, null values are returned when we wish to inform a client that an optional value is not present, but no error has occurred. For example, getting a parameter from a web address. In some cases, the parameter may be present, but in other cases, it may not. The lack of this parameter does not necessarily denote an error, but rather, it denotes that the user did not want the functionality that is included when the parameter is provided (such as sorting). We can handle this by returning null if no parameter is present or the value of the parameter if one is supplied (some methods have been removed for brevity):
 
-很多时候，我们希望在没有发生错误时通知客户端不存在可选值，此时返回 null。例如，从 web 地址获取参数。在某些情况下，参数可能存在，但在其他情况下，它可能不存在。缺少此参数并不一定表示错误，而是表示用户不希望提供该参数时包含的功能（例如排序）。如果没有参数，则返回 null；如果提供了参数，则返回参数值（为了简洁起见，删除了一些方法）：
+很多时候，我们希望在没有发生错误时通知客户端不存在可选值，此时返回 null。例如，从 web 地址获取参数。在某些情况下，参数可能存在，但在其他情况下，它可能不存在。缺少此参数并不一定表示错误，而是表示用户不需要提供该参数时包含的功能（例如排序）。如果没有参数，则返回 null；如果提供了参数，则返回参数值（为了简洁起见，删除了一些方法）：
 
 ```Java
 public class UserListUrl {
@@ -137,7 +137,7 @@ else {
 
 When no parameter is supplied, a null is returned and a client must handle this case, but nowhere in the signature of the getSortingValue method does it state that the sorting value is optional. For us to know that this method is optional and may return a null if no parameter is present, we would have to read the documentation associated with the method (if any were provided).
 
-当没有提供参数时，返回 null，客户端必须处理这种情况，但是在 getSortingValue 方法的签名中，没有任何地方声明排序值是可选的。如果要知道这个方法是可选的，如果没有参数，可能返回null，我们必须阅读与该方法相关的文档（如果提供了文档）。
+当没有提供参数时，返回 null，客户端必须处理这种情况，但是在 getSortingValue 方法的签名中，没有任何地方声明排序值是可选的。如果方法的参数是可选的，并且在没有参数时，可能返回 null，要知道这个事实，我们必须阅读与该方法相关的文档（如果提供了文档）。
 
 Instead, we can make the optionality explicit returning an Optional object. As we will see, the client still has to handle the case when no parameter is present, but now that requirement is made explicit. Whatsmore, the Optional class provides more mechanisms to handle a missing parameter than a simple null check. For example, we can simply check for the presence of the parameter using the query method (a state-testing method) provided by Optional:
 
@@ -195,7 +195,7 @@ In either case, using an Optional object, rather than returning null, explicitly
 
 **If a return value is optional, ensure clients handle this case by returning an Optional that contains a value if one is found and is empty if no value can be found**
 
-如果返回值是可选的，则通过返回一个 Optional 来确保客户端处理这种情况，该可选的值在找到值时包含一个值，在找不到值时为空
+**如果返回值是可选的，则通过返回一个 Optional 来确保客户端处理这种情况，该可选的值在找到值时包含一个值，在找不到值时为空**
 
 ### Special-Case Value（特殊情况值）
 The last common use case is that of a special case, where a normal value cannot be obtained and a client should handle a corner case different than the others. For example, suppose we have a command factory from which clients periodically request commands to complete. If no command is ready to be completed, the client should wait 1 second before asking again. We can accomplish this by returning a null command, which clients must handle, as illustrated in the example below (some methods are not shown for brevity):
@@ -307,7 +307,7 @@ Using a combination of null-objects and default values, we can devise the follow
 ### 2. Defaulting to Functional Programming（默认使用函数式编程）
 Since streams and lambdas were introduced in Java Development Kit (JDK) 8, there has been a push to migrate towards functional programming, and rightly so. Before lambdas and streams, performing simple functional tasks were cumbersome and resulted in severely unreadable code. For example, filtering a collection in the traditional style resulted in code that resembled the following:
 
-自从在 JDK 8 中引入了 stream 和 lambda 表达式之后，就出现了向函数式编程迁移的趋势，这理当如此。在 lambda 表达式和 stream 出现之前，执行简单的功能任务是非常麻烦的，并且会导致代码可读性的严重下降。例如，以下代码用传统方式过滤一个集合：
+自从在 JDK 8 中引入了 stream 和 lambda 表达式之后，就出现了向函数式编程迁移的趋势，这理当如此。在 lambda 表达式和 stream 出现之前，执行函数式任务是非常麻烦的，并且会导致代码可读性的严重下降。例如，如下代码用传统方式过滤一个集合：
 
 ```Java
 public class Foo {
@@ -346,7 +346,7 @@ foos.removeIf(valueGreaterThan10);
 
 The final line of this snippet reads like a sentence in English, informing us exactly of what the statement is doing. With code that looks so compact and readable, it is tempting to try and use functional programming in every situation where iteration is required, but this is a naive philosophy. Not every situation lends itself to functional programming. For example, if we tried to print the cross product of the set of suits and ranks in a deck of cards (every combination of suits and ranks), we could create the following (see Effective Java, 3rd Edition for a more detailed listing of this example):
 
-这段代码的最后一行读起来像一个英语句子，准确地告诉我们语句在做什么。对于看起来如此紧凑和极具可读性的代码，在任何需要迭代的情况下尝试使用函数式编程是很让人向往的，但这是一种天真的想法。并不是每种情况都适合函数式编程。例如，如果我们尝试在一副牌中打印一组花色和等级的排列组合（花色和等级的每一种组合），我们可以创建以下内容（参见 Effective Java，第三版，获得这个示例的详细内容）：
+这段代码的最后一行读起来像一个英语句子，准确地告诉我们语句在做什么。对于看起来如此紧凑和极具可读性的代码，在任何需要迭代的情况下尝试使用函数式编程是很让人向往的，但这是一种天真的想法。并不是每种情况都适合函数式编程。例如，如果我们尝试在一副牌中打印一组花色和牌面大小的排列组合（花色和牌面大小的每一种组合），我们可以创建以下内容（参见《Effective Java, 3rd Edition》获得这个示例的详细内容）：
 
 ```Java
 public static enum Suit {
@@ -377,7 +377,7 @@ for (Suit suit: suits) {
 
 This style, although much less flashy, is much more straightforward. We can quickly see that we are attempting to iterate over each suit and rank and pair each rank with each suit. The tediousness of functional programming becomes much more acute the larger the stream expression becomes. Take for example the following code snippet created by Joshua Bloch in Effective Java, 3rd Edition (pp. 205, Item 45) to find all the anagrams over a specified length contained in a dictionary at the path supplied by the user:
 
-这种风格虽然不那么浮华，但却直截了当得多。我们可以很快地理解，我们试图遍历每个花色和等级，并将每个等级与每个花色配对。流表达式越大，函数式编程的乏味性就越明显。以 Joshua Bloch 在《Effective Java, 3rd Edition》第 205 页，第 45 项中创建的以下代码片段为例，在用户提供的路径上查找字典中包含的指定长度内的所有词组：
+这种风格虽然不那么浮华，但却直截了当得多。我们可以很快地理解，我们试图遍历每个花色和等级，并将每个等级与每个花色配对。stream 表达式越大，函数式编程的乏味性就越明显。以 Joshua Bloch 在《Effective Java, 3rd Edition》第 205 页，第 45 项中创建的以下代码片段为例，在用户提供的路径上查找字典中包含的指定长度内的所有词组：
 
 ```js
 public class Anagrams {
@@ -401,11 +401,11 @@ public class Anagrams {
 
 Even the most seasoned stream adherents would probably balk at this implementation. It is unclear as to the intention of the code and would take a decent amount of thinking to uncover what the above stream manipulations are trying to accomplish. This does not mean that streams are complicated or that they are too wordy, but they are not always the best choice. As we saw above, using the removeIf reduced a complicated group of statements into a single, easily-comprehensible statement. Therefore, we should not try to replace every instance of traditional iteration with streams or even lambdas. Instead, we should abide by the following rule when deciding whether to functional programming or use the traditional route:
 
-即使是经验最丰富的 stream 使用者也可能会对这个实现感到迷茫。短时间内很难理解代码的意图，需要大量的思考才能发现上面的 stream 操作试图实现什么。这并不意味着 stream 一定很复杂或太冗长，只是因为它们不总是最好的选择。正如我们在上面看到的，使用 removeIf 可以将一组复杂的语句简化为一个易于理解的语句。因此，我们不应该试图用 stream 甚至 lambda 表达式替换传统迭代的每个使用场景。相反，在决定是使用函数式编程还是使用传统路线时，我们应该遵循以下规则：
+即使是经验最丰富的 stream 使用者也可能会对这个实现感到迷茫。短时间内很难理解代码的意图，需要大量的思考才能发现上面的 stream 操作试图实现什么。这并不意味着 stream 一定很复杂或太冗长，只是因为它们不总是最好的选择。正如我们在上面看到的，使用 removeIf 可以将一组复杂的语句简化为一个易于理解的语句。因此，我们不应该试图用 stream 甚至 lambda 表达式替换传统迭代的每个使用场景。相反，在决定是使用函数式编程还是使用传统方式时，我们应该遵循以下规则：
 
 **Functional programming and traditional iteration both have their benefits and disadvantages: Use whichever results in the simplest and most readable code**
 
-函数式编程和传统的迭代都有其优点和缺点：应该以简易性和可读性为准来选择
+**函数式编程和传统的迭代都有其优点和缺点：应该以简易性和可读性为准来选择**
 
 Although it may be tempting to use the flashiest, most up-to-date features of Java in every possible scenario, this is not always the best route. Sometimes, the old-school features work best.
 
@@ -414,7 +414,7 @@ Although it may be tempting to use the flashiest, most up-to-date features of Ja
 ### 3. Creating Indiscriminate Getters and Setters（滥用 getter 和 setter）
 One of the first things that novice programmers are taught is to encapsulate the data associated with a class in private fields and expose them through public methods. In practice, this results in creating getters to access the private data of a class and setters to modify the private data of a class:
 
-新手程序员学到的第一件事是将与类相关的数据封装在私有字段中，并通过公共方法公开它们。在实际使用时，通过创建 getter 来访问类的私有数据，创建 setter 来修改类的私有数据：
+新手程序员学到的第一件事是将与类相关的数据封装在私有字段中，并通过公共方法暴露它们。在实际使用时，通过创建 getter 来访问类的私有数据，创建 setter 来修改类的私有数据：
 
 ```Java
 public class Foo {
@@ -430,7 +430,7 @@ public class Foo {
 
 While this is a great practice for newer programmers to learn, it is not a practice that should go unrefined into intermediate or advanced programming. What normally occurs in practice is that every private field is given a pair of getters and setters, exposing the internals of the class to external entities. This can cause some serious issues, especially if the private fields are mutable. This is not only a problem with setters but even when only a getter is present. Take for example the following class, which exposes its only field using a getter:
 
-虽然这对于新程序员来说是一个很好的学习实践，但这种做法不能未经思索就应用在中级或高级编程。在实际中通常发生的情况是，每个私有字段都有一对 getter 和 setter 将类的内部内容公开给外部实体。这会导致一些严重的问题，特别是在私有字段是可变的情况下。这不仅是 setter 的问题，甚至在只有 getter 时也是如此。以下面的类为例，该类使用 getter 公开其唯一的字段：
+虽然这对于新程序员来说是一个很好的学习实践，但这种做法不能未经思索就应用在中级或高级编程。在实际中通常发生的情况是，每个私有字段都有一对 getter 和 setter 将类的内部内容暴露给外部实体。这会导致一些严重的问题，特别是在私有字段是可变的情况下。这不仅是 setter 的问题，甚至在只有 getter 时也是如此。以下面的类为例，该类使用 getter 公开其唯一的字段：
 
 ```Java
 public class Bar {
@@ -457,7 +457,7 @@ bar.getFoo().setValue(-1);
 
 In this case, we have changed the underlying value of the Foo object without informing the Bar object. This can cause some serious problems if the value that we provided the Foo object breaks an invariant of the Bar object. For example, if we had an invariant that stated the value of Foo could not be negative, then the above snippet silently breaks this invariant without notifying the Bar object. When the Bar object goes to use the value of its Foo object, things may go south very quickly, especially if the Bar object assumed that the invariant held since it did not expose a setter to directly reassign the Foo object it held. This can even cause failure to a system if data is severely altered, as in the following example of an array being inadvertently exposed:
 
-在本例中，我们更改了 Foo 对象的基础值，而没有通知 Bar 对象。如果我们提供的 Foo 对象的值破坏了 Bar 对象的一个不变量，这可能会导致一些严重的问题。举个例子，如果我们有一个不变量，它表示 Foo 的值不可能是负的，那么上面的代码片段将在不通知 Bar 对象的情况下静默修改这个不变量。当 Bar 对象使用它的 Foo 对象值时，事情可能会迅速向不好的方向发展，尤其是如果 Bar 对象假设这是不变的，因为它没有暴露 setter 直接重新分配它所保存的 Foo 对象。如果数据被严重更改，这甚至会导致系统失败，如下面例子所示，数组的底层数据在无意中暴露：
+在本例中，我们更改了 Foo 对象的底层值，而没有通知 Bar 对象。如果我们提供的 Foo 对象的值破坏了 Bar 对象的一个不变量，这可能会导致一些严重的问题。举个例子，如果我们有一个不变量，它表示 Foo 的值不可能是负的，那么上面的代码片段将在不通知 Bar 对象的情况下静默修改这个不变量。当 Bar 对象使用它的 Foo 对象值时，事情可能会迅速向不好的方向发展，尤其是如果 Bar 对象假设这是不变的，因为它没有暴露 setter 直接重新分配它所保存的 Foo 对象。如果数据被严重更改，这甚至会导致系统失败，如下面例子所示，数组的底层数据在无意中暴露：
 
 ```Java
 public class ArrayReader {
@@ -497,7 +497,7 @@ reader.read();
 
 Executing this code would cause a NullPointerException because the array associated with the ArrayReader object is null when it tries to iterate over the array. What is disturbing about this NullPointerException is that it can occur long after the change to the ArrayReader was made and maybe even in an entirely different context (such as in a different part of the code or maybe even in a different thread), making the task of tracking down the problem very difficult.
 
-执行此代码将导致 NullPointerException 异常，因为当 ArrayReader 的实例对象试图遍历数组时，与该对象关联的数组为 null。这个 NullPointerException 异常的令人不安之处在于，它可能在对 ArrayReader 进行更改很久之后才发生，甚至可能发生在完全不同的上下文中（例如在代码的不同部分中，甚至在不同的线程中），这使得调试变得非常困难。
+执行此代码将导致 NullPointerException，因为当 ArrayReader 的实例对象试图遍历数组时，与该对象关联的数组为 null。这个 NullPointerException 的令人不安之处在于，它可能在对 ArrayReader 进行更改很久之后才发生，甚至可能发生在完全不同的场景中（例如在代码的不同部分中，甚至在不同的线程中），这使得调试变得非常困难。
 
 The astute reader may also notice that we could have made the private ArrayReader field final since we did not expose a way to reassign it after it has been set through the constructor. Although it might seem that this would make the ArrayReader constant, ensuring that the ArrayReader object we return cannot be changed, this is not the case. Instead, adding final to a field only ensures that the field itself is not reassigned (i.e. we cannot create a setter for that field). It does not stop the state of the object itself from being changed. If we tried to add final to the getter method, this is futile as well, since final modifier on a method only means that the method cannot be overridden by subclasses.
 
@@ -517,7 +517,7 @@ reader.read();    // NullPointerException thrown
 
 Even with these three changes (the final modifier on the field, the final modifier on the getter, and the defensive copy of the ArrayReader supplied to the constructor), we still have not solved the problem. The problem is not found in how we are exposing the underlying data of our class, but in the fact that we are doing it in the first place. For us to solve this issue, we have to stop exposing the internal data of our class and instead provide a method to change the underlying data, while still adhering to the class invariants. The following code solves this problem, while at the same time introducing a defensive copy of the supplied ArrayReader and marking the ArrayReader field final, as should be the case since there is no setter:
 
-即使有了这三个更改（字段上增加 final 修饰符、getter 上增加 final 修饰符以及提供给构造函数的 ArrayReader 的防御性副本），我们仍然没有解决问题。问题不在于我们公开底层数据的方式，而是因为我们是在一开始就是错的。要解决这个问题，我们必须停止公开类的内部数据，而是提供一种方法来更改底层数据，同时仍然遵循类不变量。下面的代码解决了这个问题，同时引入了提供的 ArrayReader 的防御性副本，并将 ArrayReader 字段标记为 final，因为没有 setter，所以应该是这样：
+即使有了这三个更改（字段上增加 final 修饰符、getter 上增加 final 修饰符以及提供给构造函数的 ArrayReader 的防御性副本），我们仍然没有解决问题。问题不在于我们暴露底层数据的方式，而是因为我们是在一开始就是错的。要解决这个问题，我们必须停止公开类的内部数据，而是提供一种方法来更改底层数据，同时仍然遵循类不变量。下面的代码解决了这个问题，同时引入了提供的 ArrayReader 的防御性副本，并将 ArrayReader 字段标记为 final，因为没有 setter，所以应该是这样：
 
 **译注：原文的如下代码有一处错误，Reader 类中的 setArrayReaderArray 方法返回值类型应为 void，该方法是为了取代 setter，不应产生返回值。**
 
@@ -559,7 +559,7 @@ If we look at the flawed reader, a NullPointerException is still thrown, but it 
 
 We can take this principle one step further and state that it is a good idea to make the fields of a class completely inaccessible if there is no pressing need to allow for the state of a class to be changed. For example, we could make the Reader class fully encapsulated by removing any methods that modify its state after creation:
 
-我们可以进一步利用这一原则。如果不迫切需要更改类的状态，那么让类的字段完全不可访问是一个好主意。例如，我们可以通过删除所有能够修改 Reader 类实例对象状态的方法，实现 Reader 类的完全封装：
+我们可以进一步利用这一原则。如果不迫切需要更改类的状态，那么让类的字段完全不可访问是一个好主意。例如，我们可以删除所有能够修改 Reader 类实例对象状态的方法，实现 Reader 类的完全封装：
 
 ```Java
 public class Reader {
@@ -646,7 +646,7 @@ This leaves us with the following principle:
 
 **Make classes immutable, unless there is a pressing need to change the state of a class. All fields of an immutable class should be marked as private and final to ensure that no reassignments are performed on the fields and no indirect access should be provided to the internal state of the fields**
 
-使类不可变，除非迫切需要更改类的状态。不可变类的所有字段都应该标记为 private 和 final，以确保不会对字段执行重新赋值，也不会对字段的内部状态提供间接访问
+**使类不可变，除非迫切需要更改类的状态。不可变类的所有字段都应该标记为 private 和 final，以确保不会对字段执行重新赋值，也不会对字段的内部状态提供间接访问**
 
 Immutability also brings with it some very important advantages, such as the ability of the class to be easily used in a multi-threaded context (i.e. two threads can share the object without fear that one thread will alter the state of the object while the other thread is accessing that state). In general, there are many more instances that we can create immutable classes than we realize at first: Many times, we add getters or setters out of habit.
 
@@ -655,4 +655,4 @@ Immutability also brings with it some very important advantages, such as the abi
 ### Conclusion（结论）
 Many of the applications we create end up working, but in a large number of them, we introduce sneaky problems that tend to creep up at the worst possible times. In some of those cases, we do things out of convenience, or even out of habit, and pay little mind to whether these idioms are practical (or safe) in the context we use them. In this article, we delved into three of the most common of these practices, such null return values, affinity for functional programming, and careless getters and setters, along with some pragmatic alternatives. While the rules in this article should not be taken as absolute, they do provide some insight into the uncommon dangers of common practices and may help in fending off laborious errors in the future.
 
-我们创建的许多应用程序最终都能正常工作，但是在大量应用程序中，我们无意引入的一些问题可能只会在最极端的情况下出现。在某些情况下，我们做事情是出于方便，甚至是出于习惯，而很少注意这些习惯在我们使用的上下文中是否实用（或安全）。在本文中，我们深入研究了在实际应用中最常见的三种问题，如：空返回值、函数式编程的魅力、粗心的 getter 和 setter，以及一些实用的替代方法。虽然本文中的规则不是绝对的，但是它们确实为一些在实际应用中遇到的罕见问题提供了见解，并且在将来可能会有助于避免产生一些需要费力解决的错误。
+我们创建的许多应用程序最终都能正常工作，但是在大量应用程序中，我们无意引入的一些问题可能只会在最极端的情况下出现。在某些情况下，我们做事情是出于方便，甚至是出于习惯，而很少注意这些习惯在我们使用的场景中是否实用（或安全）。在本文中，我们深入研究了在实际应用中最常见的三种问题，如：空返回值、函数式编程的魅力、草率的 getter 和 setter，以及一些实用的替代方法。虽然本文中的规则不是绝对的，但是它们确实为一些在实际应用中遇到的罕见问题提供了见解，并可能有助于在今后避开一些费劲的问题。
