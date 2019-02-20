@@ -555,7 +555,7 @@ flawedReader.setArrayReaderArray(null);    // NullPointerException thrown
 
 If we look at the flawed reader, a NullPointerException is still thrown, but it is thrown immediately when the invariant (that a non-null array is used when reading) is broken, not at some later time. This ensures that the invariant fails-fast, which makes debugging and finding the root of the problem much easier.
 
-如果我们查看这个有缺陷的读取器，它仍然会抛出 NullPointerException 异常，但在不变量（读取时使用非空数组）被破坏时，会立即抛出该异常，而不是在稍后的某个时间。这确保了不变式失败的速度很快，这使得调试和找到问题的根源变得容易得多。
+如果我们查看这个有缺陷的读取器，它仍然会抛出 NullPointerException，但在不变量（读取时使用非空数组）被破坏时，会立即抛出该异常，而不是在稍后的某个时间。这确保了不变量的快速失效，这使得调试和找到问题的根源变得容易得多。
 
 We can take this principle one step further and state that it is a good idea to make the fields of a class completely inaccessible if there is no pressing need to allow for the state of a class to be changed. For example, we could make the Reader class fully encapsulated by removing any methods that modify its state after creation:
 
