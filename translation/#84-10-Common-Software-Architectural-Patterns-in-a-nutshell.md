@@ -34,7 +34,7 @@ In this article, I will be briefly explaining the following 10 common architectu
 2. 客户端 - 服务端模式(cs模式)
 3. 主从模式
 4. 管道过滤器模式
-5. 代理人模式
+5. 代理模式
 6. 点对点模式
 7. 事件总线模式
 8. 模型 - 视图 - 控制器模式(MVC模式)
@@ -47,7 +47,7 @@ In this article, I will be briefly explaining the following 10 common architectu
 
 
 This pattern can be used to structure programs that can be decomposed into groups of subtasks, each of which is at a particular level of abstraction. Each layer provides services to the next higher layer.
-这种模式
+这种模式可用于构建能分解成子任务组的程序，每个子任务处在特定的抽象级别中。每一层为更高一层提供服务。
 
 The most commonly found 4 layers of a general information system are as follows.
 以下是最常见的通用信息系统中的4个层次。
@@ -70,7 +70,7 @@ The most commonly found 4 layers of a general information system are as follows.
 - 通用桌面应用
 - 电子商务web应用
 
-![Layered pattern](https://cdn-images-1.medium.com/max/800/1*jMWk_JqqyyloVPhTs_Zd1A.png)
+![分层模式](https://cdn-images-1.medium.com/max/800/1*jMWk_JqqyyloVPhTs_Zd1A.png)
 
 ## 2. Client-server pattern
 ## 2. 客户端-服务端模式
@@ -85,7 +85,7 @@ This pattern consists of two parties: a server and multiple clients. The server 
 **用法**
 - 在线应用，例如电子邮件、文件共享和存储。
 
-![Client-server pattern](https://cdn-images-1.medium.com/max/800/1*4xX_WQQuD2u0PMK5bcWFkQ.png)
+![客户端-服务端模式](https://cdn-images-1.medium.com/max/800/1*4xX_WQQuD2u0PMK5bcWFkQ.png)
 
 ## 3. Master-slave pattern
 ## 3. 主从模式
@@ -101,5 +101,40 @@ This pattern consists of two parties; master and slaves. The master component di
 - 主服务器是权威来源，从属数据库与其进行同步。
 - 在计算机系统中，外围设备连接到总线中（主驱动和从驱动）。
 
-![Master-slave pattern](https://cdn-images-1.medium.com/max/800/1*lsK9QntZl2d5oLojwRGXDg.png)
+![主从模式](https://cdn-images-1.medium.com/max/800/1*lsK9QntZl2d5oLojwRGXDg.png)
 
+## 4. Pipe-filter pattern
+## 4. 管道过滤模式
+
+This pattern can be used to structure systems which produce and process a stream of data. Each processing step is enclosed within a filter component. Data to be processed is passed through pipes. These pipes can be used for buffering or for synchronization purposes.
+该模式可用于构建生成和处理数据流的系统。每个处理步骤包含在一个过滤组件中。待处理的数据通过管道传递。这些管道可用于数据缓存或同步。
+
+**Usage**
+- Compilers. The consecutive filters perform lexical analysis, parsing, semantic analysis, and code generation.
+- Workflows in bioinformatics.
+
+**用法**
+- 编译器。连续的过滤器执行词法分析，解析，语意分析，和代码生成。
+- 生物信息学中的工作流。
+
+![管道过滤模式](https://cdn-images-1.medium.com/max/800/1*qikehZcDhhl_wWsqeI_nvg.png)
+
+
+## 5. Broker pattern
+## 5. 代理模式
+
+This pattern is used to structure distributed systems with decoupled components. These components can interact with each other by remote service invocations. A broker component is responsible for the coordination of communication among components.
+
+该模式用于构建伴有解耦组件的分布式系统。这些组件通过远程服务调用来和彼此互动。代理人组件负责协调组件之间的通信。
+
+Servers publish their capabilities (services and characteristics) to a broker. Clients request a service from the broker, and the broker then redirects the client to a suitable service from its registry.
+
+服务器将其功能（服务和特性）发布到代理。客户端从代理请求服务，代理根据注册表把客户重定向给合适的服务。
+
+**Usage**
+- Message broker software such as [Apache ActiveMQ](https://en.wikipedia.org/wiki/Apache_ActiveMQ), [Apache Kafka](https://en.wikipedia.org/wiki/Apache_Kafka), [RabbitMQ](https://en.wikipedia.org/wiki/RabbitMQ) and [JBoss Messaging](https://en.wikipedia.org/wiki/JBoss_Messaging).
+
+**用法**
+- 消息代理服务，例如[Apache ActiveMQ](https://en.wikipedia.org/wiki/Apache_ActiveMQ), [Apache Kafka](https://en.wikipedia.org/wiki/Apache_Kafka)，[RabbitMQ](https://en.wikipedia.org/wiki/RabbitMQ)和[JBoss Messaging](https://en.wikipedia.org/wiki/JBoss_Messaging)。
+
+![代理模式](https://cdn-images-1.medium.com/max/800/1*1qRQZjLRAd0yY_T9p2OgBw.png)
