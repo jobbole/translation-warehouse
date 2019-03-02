@@ -91,7 +91,7 @@ This pattern consists of two parties: a server and multiple clients. The server 
 ## 3. 主从模式
 
 This pattern consists of two parties; master and slaves. The master component distributes the work among identical slave components, and computes a final result from the results which the slaves return.
-该模式包含两部分；主和从。主组件分配工作给完全相同的从组件，并根据从从组件中返回的结果计算最终结果.
+该模式包含两部分；主和从。主组件分配工作给完全相同的从属组件，并根据从 从属组件 中返回的结果计算最终结果.
 
 **Usage**
 - In database replication, the master database is regarded as the authoritative source, and the slave databases are synchronized to it.
@@ -99,7 +99,7 @@ This pattern consists of two parties; master and slaves. The master component di
 
 **用法**
 - 主服务器是权威来源，从属数据库与其进行同步。
-- 在计算机系统中，外围设备连接到总线中（主驱动和从驱动）。
+- 在计算机系统中，外围设备连接到总线中（主驱动和从属驱动）。
 
 ![主从模式](https://cdn-images-1.medium.com/max/800/1*lsK9QntZl2d5oLojwRGXDg.png)
 
@@ -227,5 +227,48 @@ All the components have access to the blackboard. Components may produce new dat
 - 蛋白质结构识别
 - 海纳信号解析
 
-!(黑板模式)[https://cdn-images-1.medium.com/max/800/1*ArbMx7A21I47llvwUTiSDg.png]
+![黑板模式](https://cdn-images-1.medium.com/max/800/1*ArbMx7A21I47llvwUTiSDg.png)
 
+## 10. Interpreter pattern
+## 10. 解释器模式
+
+This pattern is used for designing a component that interprets programs written in a dedicated language. It mainly specifies how to evaluate lines of programs, known as sentences or expressions written in a particular language. The basic idea is to have a class for each symbol of the language.
+
+该模式用于设计 用来解释专用语言写成的程序 的组件。它主要指评估程序的行，即用特定语言编写的语句或表达式。基本想法是语言的每个符号都有一个类。
+
+**Usage**
+- Database query languages such as SQL.
+- Languages used to describe communication protocols.
+
+**用法**
+- 数据库查询语言，例如SQL。
+- 计算机语言用来描述通讯协议。
+
+![解释器模式](https://cdn-images-1.medium.com/max/1600/1*DrC3T5R4SsdcQY6aXLCRZA.png)
+
+## Comparison of Architectural Patterns
+## 架构模式的优劣比较
+
+The table given below summarizes the pros and cons of each architectural pattern.
+下面的图表总结了各种架构模式的优劣。
+
+![各种架构模式](https://cdn-images-1.medium.com/max/2000/1*Z9dKeyf6yi0nFMaUZF1P3Q.png)
+
+| 名字 | 优势 | 劣势 |
+| - | - | - |
+| 分层模式 | 低层级能被不同的高层级调用。我们可以清晰地定义层级，所以层级化更容易标准化。当在层级没改动时不会影响到其他层级 | 不是普遍适用的。在某种情况下，某些层级可能会被跳过。|
+| 客户端-服务端模式 | 能很好地对客户端请求的服务进行建模 | 请求被分到服务端的不同的线程中处理。因为不同的客户端有不同的展示形式，进程间通讯会导致开销|  
+| 主从模式 | 准确性 - 服务被代理到具有不同实现的从属组件中执行 | 从属组件彼此隔离：之间没有共享状态。主从通讯的延迟在某些场景下是个问题，例如实时系统。这种模式只可以被用来解决能被分解的问题。|
+| 管道过滤模式 | 并行处理。当输出和输出都是流数据，过滤器一旦收到数据便开始计算。易于增加过滤器，系统扩展性好。过滤器可以复用。可以通过已有过滤器的重新组合来构建不同的管道 | 效率会被最慢的过滤处理器所限制。把数据从一个过滤器转移到另一个中时，存在数据转换的开销。 |
+| 代理模式 | 允许对象动态变化，增加、减少和迁移，并且对象分布对开发者是透明的。 | 需要服务描述标准化。 |
+| 点对点模式 | 支持分布式计算。对于任意失败节点的高健壮性。取决于资源和计算效率的高拓展性。| 由于各个节点是自愿合作的，服务质量无法保证。安全性很难保证。性能取决于节点数量。|
+| 事件总线模式 | 易于新增发布者、订阅者和连接。该模式对于高分布式应用很奏效。| 该模式的可拓展性可能是个问题，因为所有消息都通过同一个事件总线传输。|
+| 模型-视图-控制器模式 | 相同的模型可以轻松拥有多个视图，可以在运行时建立连接和断开连接。 | 复杂度增加。可能导致用户操作的许多不必要的更新。|
+| 黑板模式 | 易于新增应用。易于扩展数据空间的结构。 |  很难修改数据空间的结构，因为会影响所有应用。可能需要同步和访问控制。| 
+| 解释器模式 | 有可能实现高度动态行为。有利于终端用户的可编程性。提高灵活性，因为易于替换解释代码。| 因为解释语言的执行速度一般比编译语言慢，所以性能可能是个问题。| 
+
+
+疑问：
+- inter-process communication causes overhead as different clients have different representations.
+- highly robust in the failure of any given node. highly scalable in terms of resouces and computing power.
+- interpreter: highly dynamic behavior is possible
