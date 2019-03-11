@@ -2,6 +2,7 @@
 # 简述10大通用软件架构模式
 
 Ever wondered how large enterprise scale systems are designed? Before major software development starts, we have to choose a suitable architecture that will provide us with the desired functionality and quality attributes. Hence, we should understand different architectures, before applying them to our design.
+
 大型的企业级系统是如何设计的呢？想必大家都曾经有过这样的疑惑。大型软件开发前，我们必须选择一种合适的架构，它既要提供我们想要的功能，质量也要过关。因此，在应用不同的架构之前，我们有必要熟悉一下这些架构。
 
 ## What is an Architectural Pattern?
@@ -46,9 +47,11 @@ In this article, I will be briefly explaining the following 10 common architectu
 
 
 This pattern can be used to structure programs that can be decomposed into groups of subtasks, each of which is at a particular level of abstraction. Each layer provides services to the next higher layer.
+
 这种模式可用于构建能分解成多组子任务的程序，每个子任务处在特定的抽象级别中。每一层为更高一层提供服务。
 
 The most commonly found 4 layers of a general information system are as follows.
+
 以下是最常见的通用信息系统中的4个层次。
 
 - Presentation layer (also known as UI layer)
@@ -75,6 +78,7 @@ The most commonly found 4 layers of a general information system are as follows.
 ## 2. 客户端-服务端模式
 
 This pattern consists of two parties: a server and multiple clients. The server component will provide services to multiple client components. Clients request services from the server and the server provides relevant services to those clients. Furthermore, the server continues to listen to client requests.
+
 该模式包含一个服务端和多个客户端。服务端组件给多个客户端组件提供服务。客户端向服务端请求服务，服务端提供相关的服务。此外，服务端会持续监听客户端的请求。
 
 
@@ -90,6 +94,7 @@ This pattern consists of two parties: a server and multiple clients. The server 
 ## 3. 主从模式
 
 This pattern consists of two parties; master and slaves. The master component distributes the work among identical slave components, and computes a final result from the results which the slaves return.
+
 该模式包含两部分；主和从。主组件给相同的从属组件分配工作，并根据从 从属组件 中返回的结果计算最终结果.
 
 **Usage**
@@ -106,6 +111,7 @@ This pattern consists of two parties; master and slaves. The master component di
 ## 4. 管道过滤模式
 
 This pattern can be used to structure systems which produce and process a stream of data. Each processing step is enclosed within a filter component. Data to be processed is passed through pipes. These pipes can be used for buffering or for synchronization purposes.
+
 该模式可用于构建生成和处理数据流的系统。每个处理步骤包含在一个过滤组件中。待处理的数据通过管道传递。这些管道可用于数据缓存或同步。
 
 **Usage**
@@ -202,6 +208,7 @@ This is done to separate internal representations of information from the ways i
 ## 9. 黑板模式
 
 This pattern is useful for problems for which no deterministic solution strategies are known. The blackboard pattern consists of 3 main components.
+
 该模式可用于没有已知确定性解决方案策略的问题。黑板模式由3个主要组件组成。
 
 - blackboard — a structured global memory containing objects from the solution space
@@ -249,6 +256,7 @@ This pattern is used for designing a component that interprets programs written 
 ## 架构模式的优劣比较
 
 The table given below summarizes the pros and cons of each architectural pattern.
+
 下面的图表总结了各种架构模式的优劣。
 
 ![各种架构模式](https://cdn-images-1.medium.com/max/2000/1*Z9dKeyf6yi0nFMaUZF1P3Q.png)
@@ -265,4 +273,3 @@ The table given below summarizes the pros and cons of each architectural pattern
 | 模型-视图-控制器模式 | 相同的模型可以轻松拥有多个视图，可以在运行时建立连接和断开连接。 | 复杂度增加。可能导致用户操作的许多不必要的更新。|
 | 黑板模式 | 易于新增应用。易于扩展数据空间的结构。 |  很难修改数据空间的结构，因为会影响所有应用。可能需要同步和访问控制。| 
 | 解释器模式 | 有可能实现高度动态行为。有利于终端用户的可编程性。提高灵活性，因为易于替换解释代码。| 因为解释语言的执行速度一般比编译语言慢，所以性能可能是个问题。| 
-
