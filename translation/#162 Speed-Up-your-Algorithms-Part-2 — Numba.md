@@ -1,4 +1,3 @@
-
 ## Speed Up your Algorithms Part 2— Numba
 
 ## 加速你的算法第2部分 -  Numba
@@ -28,12 +27,9 @@ And these goes with **Jupyter Notebooks** available here:
 
 [[Github-SpeedUpYourAlgorithms](https://github.com/PuneetGrov3r/MediumPosts/tree/master/SpeedUpYourAlgorithms)] and **[**[**Kaggle**](https://www.kaggle.com/puneetgrover/kernels)**]**
 
-==这种图片标注怎么翻译比较好==
 
 
 这是我写的该系列文章中的第二篇。所有的文章如下：
-
-==应该是第二篇，作者误写成 third==
 
 1. [加速您的算法第1部分 -  PyTorch](https://towardsdatascience.com/speed-up-your-algorithms-part-1-pytorch-56d8a4ae7051)
 2. [加速您的算法第2部分 -  Numba](https://towardsdatascience.com/speed-up-your-algorithms-part-2-numba-293e554c5cc1)
@@ -44,9 +40,7 @@ And these goes with **Jupyter Notebooks** available here:
 
 [[Github-SpeedUpYourAlgorithms](https://github.com/PuneetGrov3r/MediumPosts/tree/master/SpeedUpYourAlgorithms)] and **[**[**Kaggle**](https://www.kaggle.com/puneetgrover/kernels)**]**
 
-
 ------
-
 
 ### Index
 
@@ -62,7 +56,6 @@ And these goes with **Jupyter Notebooks** available here:
 NOTE:
 This post goes with Jupyter Notebook available in my Repo on Github: [SpeedUpYourAlgorithms-Numba](https://nbviewer.jupyter.org/github/PuneetGrov3r/MediumPosts/blob/master/SpeedUpYourAlgorithms/2%29%20Numba.ipynb)
 
-
 ### 目录
 
 1. 介绍
@@ -77,9 +70,7 @@ This post goes with Jupyter Notebook available in my Repo on Github: [SpeedUpYou
 注意：
 这篇文章的  Jupyter Notebook 代码在我的 Github 上：[SpeedUpYourAlgorithms-Numba](https://nbviewer.jupyter.org/github/PuneetGrov3r/MediumPosts/blob/master/SpeedUpYourAlgorithms/2%29%20Numba.ipynb)
 
-
 ------
-
 
 ### 1. Introduction
 
@@ -93,18 +84,15 @@ With the help of Numba you can speed up all of your calculation focused and comp
 
 Numba 是 python 的即时（Just-in-time）编译器，即当您调用 python 函数时，您的全部或部分代码就会被转换为“即时”执行的机器码，它将以您的本地机器码速度运行！它由 Anaconda 公司赞助，并得到了许多其他组织的支持。
 
-在 Numba 的帮助下，您可以加速所有计算负载比较大的 python 函数（例如循环）。它还支持 numpy 库！所以，您也可以在您的计算中使用 numpy，并加快整体计算，因为 python 中的循环非常慢。 您还可以使用 python 标准库中的 math 库的许多函数，如 `sqrt` 等。有关所有兼容函数的完整列表，请查看 [此处](http://numba.pydata.org/numba-doc/0.17.0/reference/pysupported.html)。
-
+在 Numba 的帮助下，您可以加速所有计算负载比较大的 python 函数（例如循环）。它还支持 numpy 库！所以，您也可以在您的计算中使用 numpy，并加快整体计算，因为 python 中的循环非常慢。 您还可以使用 python 标准库中的 math 库的许多函数，如 `sqrt` 等。有关所有兼容函数的完整列表，请查看 [此处](http://numba.pydata.org/numba-doc/0.17.0/reference/pysupported.html)。
 
 ------
-
 
 ### 2. Why Numba?
 
 ![IMG](https://cdn-images-1.medium.com/max/880/1*7wHgolEzegBX41BW0cxVYQ.jpeg)
 
 [[Source](http://rebloggy.com/post/snake-crown-zeus-ball-python-python-i-cant-believe-he-let-me-do-this-snakes-in-h/30972529459)]
-
 
 So, why numba? When there are many other compilers like [cython](http://cython.org/), or any other similar compilers or something like [pypy](http://doc.pypy.org/en/latest/faq.html#what-is-pypy).
 
@@ -152,9 +140,7 @@ def function(x):
 
 这仍然看起来像一个原生 python 代码，不是吗？
 
-
 ------
-
 
 ### 3. How does numba work?
 
@@ -176,13 +162,11 @@ First, Python function is taken, optimized and is converted into numba’s inter
 
 You can [generate](http://numba.pydata.org/numba-doc/latest/user/jit.html#jit) code at runtime or import time on CPU (default) or [GPU](http://numba.pydata.org/numba-doc/latest/cuda/index.html), as you prefer it.
 
-
 ### 3. 如何使用 Numba？
 
 ![IMG](https://cdn-images-1.medium.com/max/880/0*bJ6XIUE05phjWZgz)
 
 “question mark neon signage” by [Emily Morter](https://unsplash.com/@emilymorter?utm_source=medium&utm_medium=referral) on [Unsplash](https://unsplash.com/?utm_source=medium&utm_medium=referral)
-
 
 Numba 使用 [LLVM 编译器基础结构](http://llvm.org/) 将原生 python 代码转换成优化的机器码。使用 numba 运行代码的速度可与 C/C++ 或 Fortran 中的类似代码相媲美。
 
@@ -192,13 +176,11 @@ Numba 使用 [LLVM 编译器基础结构](http://llvm.org/) 将原生 python 代
 
 [图片来源](https://github.com/ContinuumIO/gtc2017-numba/blob/master/1%20-%20Numba%20Basics.ipynb)
 
-首先，Python 函数被传入，优化并转换为 numba 的中间表达，然后在类型推断（type inference）之后，就像 numpy 的类型推断（所以 python float 是一个 float64），它被转换为 LLVM 可解释代码。 然后将此代码提供给 LLVM 的即时编译器以生成机器码。
+首先，Python 函数被传入，优化并转换为 numba 的中间表达，然后在类型推断（type inference）之后，就像 numpy 的类型推断（所以 python float 是一个 float64），它被转换为 LLVM 可解释代码。 然后将此代码提供给 LLVM 的即时编译器以生成机器码。
 
 您可以根据需要在运行时或导入时 [生成](http://numba.pydata.org/numba-doc/latest/user/jit.html#jit) 机器码，导入需要在 CPU（默认）或 [GPU](http://numba.pydata.org/numba-doc/latest/cuda/index.html) 上进行。
 
-
 ------
-
 
 ### 4. Using basic numba functionalities (Just @jit it!)
 
@@ -220,7 +202,6 @@ def function(a, b):
     return result
 ```
 
-
 ### 4. 使用 numba 的基本功能（只需要加上 @jit ！）
 
 ![IMG](https://cdn-images-1.medium.com/max/880/0*4IukKwm5RO0PWjmZ)
@@ -229,7 +210,7 @@ Photo by [Charles Etoroma](https://unsplash.com/@charlesetoroma?utm_source=mediu
 
 > *小菜一碟！*
 
-为了获得最佳性能，numba 实际上建议在您的 jit 装饰器中加上 `nopython=True` 参数，加上后就不会使用 Python 解释器了。或者您也可以使用 `@njit`。如果您加上 `nopython=True` 的装饰器失败并报错，您可以用简单的 `@jit` 装饰器来编译您的部分代码，==循环它可以编译==（这句有没有更好的翻译方式？），并将它们转换为函数，编译成机器码并将其余部分代码提供给 python 解释器。
+为了获得最佳性能，numba 实际上建议在您的 jit 装饰器中加上 `nopython=True` 参数，加上后就不会使用 Python 解释器了。或者您也可以使用 `@njit`。如果您加上 `nopython=True` 的装饰器失败并报错，您可以用简单的 `@jit` 装饰器来编译您的部分代码，对于它能够编译的代码，将它们转换为函数，并编译成机器码。然后将其余部分代码提供给 python 解释器。
 
 所以，您只需要这样做：
 
@@ -241,9 +222,7 @@ def function(a, b):
     return result
 ```
 
-
 ------
-
 
 When using `@jit` make sure your code has something numba can compile, like a compute intensive loop, maybe with libraries (numpy) and functions it support. Otherwise it won’t be able to compile anything and your code will be slower than what it would have been without using numba, because of the numba internal code checking overhead.
 
@@ -267,14 +246,13 @@ def function(a, b):
     return result
 ```
 
-
 当使用 `@jit` 时，请确保您的代码有 numba 可以编译的内容，比如包含库（numpy）和它支持的函数的计算密集型循环。否则它将不会编译任何东西，并且您的代码将比没有使用 numba 时更慢，因为存在 numba 内部代码检查的额外开销。
 
-还有更好的一点是，numba 会对首次作为机器码使用后的函数进行缓存。 因此，在第一次使用之后它将更快，因为它不需要再次编译这些代码，如果您使用的是和之前相同的参数类型。
+还有更好的一点是，numba 会对首次作为机器码使用后的函数进行缓存。 因此，在第一次使用之后它将更快，因为它不需要再次编译这些代码，如果您使用的是和之前相同的参数类型。
 
 如果您的代码是 [可并行化](http://numba.pydata.org/numba-doc/latest/user/parallel.html#numba-parallel) 的，您也可以传递 `parallel=True` 作为参数，但它必须与 `nopython=True` 一起使用，目前这只适用于CPU。
 
-您还可以指定希望函数具有的函数签名，但是这样就不会对您提供的任何其他类型的参数进行编译。 例如：
+您还可以指定希望函数具有的函数签名，但是这样就不会对您提供的任何其他类型的参数进行编译。 例如：
 
 ```python
 from numba import jit, int32
@@ -290,9 +268,7 @@ def function(a, b):
     return result
 ```
 
-
 ------
-
 
 Now your function will only take two int32’s and return an int32. By this you can have more control over your functions. You can even pass [multiple](http://numba.pydata.org/numba-doc/latest/reference/jit-compilation.html#numba.jit) functional signatures if you want.
 
@@ -316,7 +292,7 @@ It also produces generic code for your CPU’s architectural family.
 
 
 
-现在您的函数只能接收两个 int32 类型的参数并返回一个 int32 类型的值。 通过这种方式，您可以更好地控制您的函数。 如果需要，您甚至可以传递多个函数签名。
+现在您的函数只能接收两个 int32 类型的参数并返回一个 int32 类型的值。 通过这种方式，您可以更好地控制您的函数。 如果需要，您甚至可以传递多个函数签名。
 
 ![IMG](https://cdn-images-1.medium.com/max/880/1*aU6HSr8OGNilxhTR2A25XQ.png)
 
@@ -324,21 +300,19 @@ It also produces generic code for your CPU’s architectural family.
 
 1. [@vectorize](http://numba.pydata.org/numba-doc/latest/user/vectorize.html)：允许将标量参数作为 numpy 的 ufuncs 使用，
 2. [@guvectorize](http://numba.pydata.org/numba-doc/latest/user/vectorize.html#guvectorize)：生成 NumPy 广义上的 `ufunc`s，
-3. [@stencil](http://numba.pydata.org/numba-doc/latest/user/stencil.html#numba-stencil)：==声明一个函数作为类似模板运算的内核==（这句翻译的不是很好），
+3. [@stencil](http://numba.pydata.org/numba-doc/latest/user/stencil.html#numba-stencil)：定义一个函数使其成为 stencil 类型操作的核函数
 4. [@jitclass](http://numba.pydata.org/numba-doc/latest/user/jitclass.html#jitclass)：用于 jit 类，
 5. [@cfunc](http://numba.pydata.org/numba-doc/latest/user/cfunc.html#cfunc)：声明一个函数用于本地回调（被C/C++等调用），
-6. [@overload](http://numba.pydata.org/numba-doc/latest/extending/high-level.html#high-level-extending)：注册您自己的函数实现，以便在 `nopython` 模式下使用，例如： `@overload（scipy.special.j0）`。
+6. [@overload](http://numba.pydata.org/numba-doc/latest/extending/high-level.html#high-level-extending)：注册您自己的函数实现，以便在 `nopython` 模式下使用，例如： `@overload（scipy.special.j0）`。
 
-Numba 还有 **Ahead of time**（[AOT](https://numba.pydata.org/numba-doc/dev/user/pycc.html)）编译，它生成不依赖于 Numba 的已编译扩展模块。 但：
+Numba 还有 **Ahead of time**（[AOT](https://numba.pydata.org/numba-doc/dev/user/pycc.html)）编译，它生成不依赖于 Numba 的已编译扩展模块。 但：
 
 1. 它只允许常规函数（ufuncs 就不行），
-2. 您必须指定函数签名。 ==您可以为不同的名称指定一个函数签名==（这句不知道怎么翻译）。
+2. 您必须指定函数签名。并且您只能指定一种签名，如果需要指定多个签名，需要使用不同的名字。
 
 它还根据您的CPU架构系列生成通用代码。
 
-
 ------
-
 
 ### 5. The @vectorize wrapper
 
@@ -370,16 +344,13 @@ Vectorizing with `target = "parallel"` or `"cuda"` will generally run faster tha
 
 This great video has an example of speeding up Navier Stokes equation for computational fluid dynamics with Numba:
 
-<iframe data-width="854" data-height="480" width="700" height="393" data-src="/media/0ceb1e71614e04899a02c536e39458ed?postId=293e554c5cc1" data-media-id="0ceb1e71614e04899a02c536e39458ed" data-thumbnail="https://i.embed.ly/1/image?url=https%3A%2F%2Fi.ytimg.com%2Fvi%2F1AwG0T4gaO0%2Fhqdefault.jpg&amp;key=a19fcc184b9711e1b4764040d3dc5c07" class="progressiveMedia-iframe js-progressiveMedia-iframe" allowfullscreen="" frameborder="0" src="https://towardsdatascience.com/media/0ceb1e71614e04899a02c536e39458ed?postId=293e554c5cc1" style="display: block; position: absolute; margin: auto; max-width: 100%; box-sizing: border-box; transform: translateZ(0px); top: 0px; left: 0px; width: 700px; height: 393.395px;"></iframe>
-
-
 ### 5. @vectorize 装饰器
 
 ![IMG](https://cdn-images-1.medium.com/max/880/0*E9-BCxGFbXYIegax)
 
 “gray solar panel lot” by [American Public Power Association](https://unsplash.com/@publicpowerorg?utm_source=medium&utm_medium=referral) on [Unsplash](https://unsplash.com/?utm_source=medium&utm_medium=referral)
 
-通过使用 @vectorize 装饰器，您可以对仅能对标量操作的函数进行转换，例如，如果您使用的是仅适用于标量的 python 的 `math` 库，则转换后就可以用于数组。 这提供了类似于 numpy 数组运算（ufuncs）的速度。 例如：
+通过使用 @vectorize 装饰器，您可以对仅能对标量操作的函数进行转换，例如，如果您使用的是仅适用于标量的 python 的 `math` 库，则转换后就可以用于数组。 这提供了类似于 numpy 数组运算（ufuncs）的速度。 例如：
 
 ```python
 @vectorize
@@ -388,7 +359,7 @@ def func(a, b):
     return result
 ```
 
-您还可以将 `target` 参数传递给此装饰器，该装饰器使 target 参数等于 `parallel` 用于并行化代码，等于 `cuda` 用于在 cuda\GPU 上运行代码。
+您还可以将 `target` 参数传递给此装饰器，该装饰器使 target 参数为 `parallel` 时用于并行化代码，为 `cuda` 时用于在 cuda\GPU 上运行代码。
 
 ```python
 @vectorize(target="parallel")
@@ -397,19 +368,13 @@ def func(a, b):
     return result
 ```
 
-使 `target=“parallel”` 或 `“cuda”` 进行矢量化通常比 numpy 实现的代码运行得更快，只要您的代码具有足够的计算密度或者数组足够大。如果不是，==那么它带来的为不同线程制作线程和分割元素的时间的额外开销==（making threads and splitting elements不知道该怎么翻译），这可能比整个过程的实际运算时间更长。因此，运算量应该足够大，才能获得加速。
+使 `target=“parallel”` 或 `“cuda”` 进行矢量化通常比 numpy 实现的代码运行得更快，只要您的代码具有足够的计算密度或者数组足够大。如果不是，那么由于创建线程以及将元素分配到不同线程需要额外的开销，因此可能耗时更长。所以运算量应该足够大，才能获得明显的加速。
 
 ![IMG](https://cdn-images-1.medium.com/max/880/1*B-pN5BguZzGeoFX706QTAA.png)
 
 这个视频讲述了一个用 Numba 加速用于计算流体动力学的Navier Stokes方程的例子：
 
-==这里应该是个视频，但是我的chrome没显示出来==
-
-<iframe data-width="854" data-height="480" width="700" height="393" data-src="/media/0ceb1e71614e04899a02c536e39458ed?postId=293e554c5cc1" data-media-id="0ceb1e71614e04899a02c536e39458ed" data-thumbnail="https://i.embed.ly/1/image?url=https%3A%2F%2Fi.ytimg.com%2Fvi%2F1AwG0T4gaO0%2Fhqdefault.jpg&amp;key=a19fcc184b9711e1b4764040d3dc5c07" class="progressiveMedia-iframe js-progressiveMedia-iframe" allowfullscreen="" frameborder="0" src="https://towardsdatascience.com/media/0ceb1e71614e04899a02c536e39458ed?postId=293e554c5cc1" style="display: block; position: absolute; margin: auto; max-width: 100%; box-sizing: border-box; transform: translateZ(0px); top: 0px; left: 0px; width: 700px; height: 393.395px;"></iframe>
-
-
 ------
-
 
 ### 6. Running your functions on GPU
 
@@ -437,14 +402,13 @@ def func(a, result):
     # (Your answer is stored in 'result')
 ```
 
-
 ### 6. 在GPU上运行函数
 
 ![IMG](https://cdn-images-1.medium.com/max/880/0*EpVwxeU9OQgi2pb4)
 
 “time-lapsed of street lights” by [Marc Sendra martorell](https://unsplash.com/@marcsm?utm_source=medium&utm_medium=referral) on [Unsplash](https://unsplash.com/?utm_source=medium&utm_medium=referral)
 
-您也可以像装饰器一样传递 @jit 来运行 cuda/GPU 上的函数。 为此您必须从 `numba` 库中导入 `cuda`。 但是要在 GPU 上运行代码并不像之前那么容易。为了在 GPU 上的数百甚至数千个线程上运行函数，需要先做一些初始计算。 实际上，您必须声明并管理网格，块和线程的层次结构。这并不那么难。
+您也可以像装饰器一样传递 @jit 来运行 cuda/GPU 上的函数。 为此您必须从 `numba` 库中导入 `cuda`。 但是要在 GPU 上运行代码并不像之前那么容易。为了在 GPU 上的数百甚至数千个线程上运行函数，需要先做一些初始计算。 实际上，您必须声明并管理网格，块和线程的层次结构。这并不那么难。
 
 要在GPU上执行函数，您必须定义一个叫做 **核函数** 或 **设备函数** 的函数。首先让我们来看 **核函数**。
 
@@ -464,9 +428,7 @@ def func(a, result):
     # (Your answer is stored in 'result')
 ```
 
-
 ------
-
 
 So for launching a kernel you will have to pass two things:
 
@@ -492,7 +454,6 @@ def func(a, result):
         result[pos] = a[pos] * (some computation)
 ```
 
-
 因此，要启动核函数，您必须传入两个参数：
 
 1. 每块的线程数，
@@ -517,9 +478,7 @@ def func(a, result):
         result[pos] = a[pos] * (some computation)
 ```
 
-
 ------
-
 
 To save the time which will be wasted in copying numpy array to a specific device and then again storing result in numpy array, Numba provides some [functions](https://numba.pydata.org/numba-doc/dev/cuda/memory.html) to declare and send arrays to specific device, like: `numba.cuda.device_array`, `numba.cuda.device_array_like`, `numba.cuda.to_device`, etc. to save time of needless copies to cpu(unless necessary).
 
@@ -533,10 +492,9 @@ def device_function(a, b):
 
 ```
 
-
 为了节省将 numpy 数组复制到指定设备，然后又将结果存储到 numpy 数组中所浪费的时间，Numba 提供了一些 [函数](https://numba.pydata.org/numba-doc/dev/cuda/memory.html) 来声明并将数组送到指定设备，如：`numba.cuda.device_array`，`numba.cuda。 device_array_like`，`numba.cuda.to_device` 等函数来节省不必要的复制到 cpu 的时间（除非必要）。
 
-另一方面，**设备函数** 只能从设备内部（通过核函数或其他设备函数）调用。 比较好的一点是，您可以从 **设备函数** 中返回一个值。 因此，您可以用此函数的返回值来计算 `核函数` 或 `设备函数` 里的内容。
+另一方面，**设备函数** 只能从设备内部（通过核函数或其他设备函数）调用。 比较好的一点是，您可以从 **设备函数** 中返回一个值。 因此，您可以用此函数的返回值来计算 `核函数` 或 `设备函数` 里的内容。
 
 ```python
 from numba import cuda
@@ -546,9 +504,7 @@ def device_function(a, b):
 
 ```
 
-
 ------
-
 
 You should also look into supported functionality of Numba’s cuda library, [here](https://numba.pydata.org/numba-doc/dev/cuda/cudapysupported.html).
 
@@ -572,9 +528,7 @@ ctypes/cffi/cython 的互用性：
 - `ctypes`  - 在 nopython 模式下支持调用 [ctypes](http://numba.pydata.org/numba-doc/latest/reference/pysupported.html#ctypes-support) 包装函数。
 - Cython 导出的函数是 [可调用](http://numba.pydata.org/numba-doc/latest/extending/high-level.html#cython-support) 的。
 
-
 ------
-
 
 ### 7. Further Reading
 
@@ -591,7 +545,6 @@ ctypes/cffi/cython 的互用性：
 3. <http://stephanhoyer.com/2015/04/09/numba-vs-cython-how-to-choose/>
 
 > Thank You for reading!
-
 
 ### 7. 扩展阅读
 
