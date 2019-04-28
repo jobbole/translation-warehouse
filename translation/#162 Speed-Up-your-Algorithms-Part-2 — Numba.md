@@ -3,7 +3,6 @@
 ## 加速你的算法第2部分 -  Numba
 
 
-
 > Get C++/Fortran like speed for your functions with Numba
 
 > Numba 使您的函数像 C++/Fortran 一样快速
