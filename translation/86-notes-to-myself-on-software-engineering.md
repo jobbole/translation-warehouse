@@ -1,21 +1,12 @@
----
-editor: jessie-alpha
-published: false
-title: Notes to Myself on Software Engineering
----
-## A New Post
-
-Enter text in [Markdown](http://daringfireball.net/projects/markdown/). Use the toolbar above, or click the **?** button for formatting help.
-
-#Notes to Myself on Software Engineering
+# Notes to Myself on Software Engineering
 
 A laundry list of personal reminders
 
 On the Development Process
-Code isn’t just meant to be executed. Code is also a means of communication across a team, a way to describe to others the solution to a problem. Readable code is not a nice-to-have, it is a fundamental part of what writing code is about. This involves factoring code clearly, picking self-explanatory variable names, and inserting comments to describe anything that’s implicit.
-Ask not what your pull request can do for your next promotion, ask what your pull request can do for your users and your community. Avoid “conspicuous contribution” at all cost. Let no feature be added if it isn’t clearly helping with the purpose of your product.
+1.Code isn’t just meant to be executed. Code is also a means of communication across a team, a way to describe to others the solution to a problem. Readable code is not a nice-to-have, it is a fundamental part of what writing code is about. This involves factoring code clearly, picking self-explanatory variable names, and inserting comments to describe anything that’s implicit.
+2.Ask not what your pull request can do for your next promotion, ask what your pull request can do for your users and your community. Avoid “conspicuous contribution” at all cost. Let no feature be added if it isn’t clearly helping with the purpose of your product.
 Taste applies to code, too. Taste is a constraint-satisfaction process regularized by a desire for simplicity. Keep a bias toward simplicity.
-It’s okay to say no — just because someone asks for a feature doesn’t mean you should do it. Every feature has a cost that goes beyond the initial implementation: maintenance cost, documentation cost, and cognitive cost for your users. Always ask: Should we really do this? Often, the answer is simply no.
+3.It’s okay to say no — just because someone asks for a feature doesn’t mean you should do it. Every feature has a cost that goes beyond the initial implementation: maintenance cost, documentation cost, and cognitive cost for your users. Always ask: Should we really do this? Often, the answer is simply no.
 When you say yes to a request for supporting a new use case, remember that literally adding what the user requested is often not the optimal choice. Users are focused on their own specific use case, and you must counter this with a holistic and principled vision of the whole project. Often, the right answer is to extend an existing feature.
 Invest in continuous integration and aim for full unit test coverage. Make sure you are in an environment where you can code with confidence; if that isn’t the case, start by focusing on building the right infrastructure.
 It’s okay not to plan everything in advance. Try things and see how they turn out. Revert incorrect choices early. Make sure you create an environment where that is possible.
