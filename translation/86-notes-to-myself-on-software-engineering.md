@@ -8,11 +8,11 @@
 
 1.Code isn’t just meant to be executed. Code is also a means of communication across a team, a way to describe to others the solution to a problem. Readable code is not a nice-to-have, it is a fundamental part of what writing code is about. This involves factoring code clearly, picking self-explanatory variable names, and inserting comments to describe anything that’s implicit.
 
-1.代码不仅仅是意味着执行。代码也是团队间的沟通方式，一种向他人描述问题解决方案的途径。代码可读性不是可有可无，而是写代码的基本目的之一。这涉及清晰地分解代码，选择能不言自明的变量名，以及插入注释来说明任何隐含的内容。
+1.代码不仅仅意味着执行。代码也是团队间的沟通方式，一种向他人描述问题解决方案的途径。代码可读性不是可有可无，而是写代码的基本目的之一。这涉及清晰地分解代码，选择能不言自明的变量名，以及插入注释来说明任何隐含的内容。
 
 2.Ask not what your pull request can do for your next promotion, ask what your pull request can do for your users and your community. Avoid “conspicuous contribution” at all cost. Let no feature be added if it isn’t clearly helping with the purpose of your product.
 
-2.不要询问你的合并请求（pull request）是否有益于你的升职，而是询问这一合并请求为你的用户和社区能带来什么。尽可能地避免“表现贡献”。不要添加那些不是明确地有益于你的产品目的的功能。
+2.不要询问你的合并请求（pull request）是否有益于你的升职，而是询问这一合并请求为你的用户和社区能带来什么。尽可能地避免 “表现贡献”。不要添加那些不能明确地有益于你的产品目的的功能。
 
 3.Taste applies to code, too. Taste is a constraint-satisfaction process regularized by a desire for simplicity. Keep a bias toward simplicity.
 
@@ -20,7 +20,7 @@
 
 4.It’s okay to say no — just because someone asks for a feature doesn’t mean you should do it. Every feature has a cost that goes beyond the initial implementation: maintenance cost, documentation cost, and cognitive cost for your users. Always ask: Should we really do this? Often, the answer is simply no.
 
-4.可以说“不” - 仅仅因为有人要求某个功能并不意味着你就必须实现它。每个功能都有隐含在初始实现之后的成本：维护成本，文档成本，以及用户的认知成本。总是问一问：我们真的要实现这个功能吗？答案常常是 NO。
+4.可以说不 - 仅仅因为有人要求某个功能并不意味着你就必须实现它。每个功能都有隐含在初始实现之后的成本：维护成本，文档成本，以及用户的认知成本。总是问一问：我们真的要实现这个功能吗？答案常常是 NO。
 
 5.When you say yes to a request for supporting a new use case, remember that literally adding what the user requested is often not the optimal choice. Users are focused on their own specific use case, and you must counter this with a holistic and principled vision of the whole project. Often, the right answer is to extend an existing feature.
 
@@ -36,7 +36,7 @@
 
 8.Good software makes hard things easy. Just because a problem looks difficult at first doesn’t mean the solution will have to be complex or hard to use. Too often, engineers go with reflex solutions that introduce undesirable complexity (Let’s use ML! Let’s build an app! Let’s add blockchain!) in situations where a far easier, though maybe less obvious, alternative is available. Before you write any code, make sure your solution of choice cannot be made any simpler. Approach everything from first principles.
 
-8.好的软件让事情变容易。一个最初看上去很困难的问题并不意味着解决方案也会很复杂或者很难使用。常常可以看到，工程师下意识提供的方案引入了不必要的复杂度（我们 用 ML 吧！写个 APP！来个数据区块链！），其实可以有简单得多的替换方案，尽管这些方案可能不是那么显而易见。在写任何代码之前，确保你选择的方案不能更简化了。从基本原则入手。
+8.好的软件让事情变容易。一个最初看上去很困难的问题并不意味着解决方案也会很复杂或者很难使用。常常可以看到，工程师下意识提供的方案引入了不必要的复杂度（我们用 ML 吧！写个 APP！来个数据区块链！），其实可以有简单得多的替换方案，尽管这些方案可能不是那么显而易见。在写任何代码之前，确保你选择的方案不能更简化了。从基本原则入手。
 
 9.Avoid implicit rules. Implicit rules that you find yourself developing should always be made explicit and shared with others or automated. Whenever you find yourself coming up with a recurring, quasi-algorithmic workflow, you should seek to formalize it into a documented process, so that other team members will benefit from the experience. In addition, you should seek to automate in software any part of such a workflow that can be automated (e.g., correctness checks).
 
@@ -52,11 +52,11 @@
 
 ## On API Design
 
-## 关于API设计
+## 关于 API 设计
 
 1.Your API has users, thus it has a user experience. In every decision you make, always keep the user in mind. Have empathy for your users, whether they are beginners or experienced developers.
 
-1.API 给用户使用，因此它有用户体验。在你做的每个决定中，始终牢记用户。不管你的用户是初学者还是有经验的开发者，都对他们抱着同理心。
+1.API 是给用户使用的，因此它有用户体验。在你做的每个决定中，始终牢记用户。不管你的用户是初学者还是有经验的开发者，都对他们抱着同理心。
 
 2.Always seek to minimize the cognitive load imposed on your users in the course of using your API. Automate what can be automated, minimize the actions and choices needed from the user, don’t expose options that are unimportant, design simple and consistent workflows that reflect simple and consistent mental models.
 
@@ -96,7 +96,7 @@
 
 11.Because code is communication, naming matters — whether naming a project or a variable. Names reflect how you think about a problem. Avoid overly generic names (x, variable, parameter), avoid OverlyLongAndSpecificNamingPatterns, avoid terms that can create unnecessary friction (master, slave), and make sure you are consistent in your naming choices. Naming consistency means both internal naming consistency (don’t call “dim” what is called “axis” in other places) and consistency with established conventions for the problem domain. Before settling on a name, make sure to look up existing names used by domain experts (or other APIs).
 
-11.因为代码即沟通，所以命名很重要，不管是项目命名还是变量命名。名称反映出你对问题的看法。避免过于通用的命名（x,变量，参数），避免过长以及特定命名模式，避免可能导致不必要的摩擦的术语（主，从），确保在命名选择上保持一致性。命名一致性既包括内部的命名一致性（如果其它地方用的是“axis"，就不要再用“dim”)，也包括与问题域既定约定的一致性。在确定名称前，确保查询领域专家在使用的现有名称（或者其它 API)。
+11.因为代码即沟通，所以命名很重要，不管是项目命名还是变量命名。名称反映出你对问题的看法。避免过于通用的命名（x,变量，参数），避免过长以及特定命名模式，避免可能导致不必要的摩擦的术语（主，从），确保在命名选择上保持一致性。命名一致性既包括内部的命名一致性（如果其它地方用的是 “axis"，就不要再用 “dim”)，也包括与问题域既定约定的一致性。在确定名称前，确保查询领域专家在使用的现有名称（或者其它 API)。
 
 12.Documentation is central to the user experience of your API. It is not an add-on. Invest in high-quality documentation; you will see higher returns than investing in more features.
 
@@ -120,7 +120,7 @@
 
 2.Software development is teamwork; it is about relationships as much as it is about technical ability. Be a good teammate. As you go on your way, stay in touch with people.
 
-2.软件开发是团队合作；人际关系与技术能力同样重要。做个好伙伴。在你继续前进时，和伙伴们保持联系。
+2.软件开发是团队合作；人际关系与技术能力同样重要。做个好队友。在你继续前进时，和伙伴们保持联系。
 
 3.Technology is never neutral. If your work has any impact on the world, then this impact has a moral direction. The seemingly innocuous technical choices we make in software products modulate the terms of access to technology, its usage incentives, who will benefit, and who will suffer. Technical choices are also ethical choices. Thus, always be deliberate and explicit about the values you want your choices to support. Design for ethics. Bake your values into your creations. Never think, I’m just building the capability; that in itself is neutral. It is not because the way you build it determines how it will get used.
 
@@ -128,7 +128,7 @@
 
 4.Self-direction — agency over your work and your circumstances — is the key to life satisfaction. Make sure you grant sufficient self-direction to the people around you, and make sure your career choices result in greater agency for yourself.
 
-4.自我导向-掌控你的工作和你的环境 - 这是生活满意度的关键。确保给予身边的人足够的自我导向，并且确保你的职业选择为你带来更多的控制能力。
+4.自我导向 - 掌控你的工作和你的环境 - 这是生活满意度的关键。确保给予身边的人足够的自我导向，并且确保你的职业选择为你带来更多的控制能力。
 
 5.Build what the world needs — not just what you wish you had. Too often, technologists live rarefied lives and focus on products catering to their own specific needs. Seek opportunities to broaden your life experience, which will give you better visibility into what the world needs.
 
@@ -136,7 +136,7 @@
 
 6.When making any choice with long-term repercussions, place your values above short-term self-interest and passing emotions — such as greed or fear. Know what your values are, and let them guide you.
 
-6.在做任何具有长期影响的决定时，将你的价值观置于短期自身利益和情绪之上- 例如贪婪或恐惧。了解你的价值观是什么，让它引导你的行动。
+6.在做任何具有长期影响的决定时，将你的价值观置于短期自身利益和情绪之上 - 例如贪婪或恐惧。了解你的价值观是什么，让它引导你的行动。
 
 7.When we find ourselves in a conflict, it’s a good idea to pause to acknowledge our shared values and our shared goals, and remind ourselves that we are, almost certainly, on the same side.
 
