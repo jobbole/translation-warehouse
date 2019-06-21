@@ -28,7 +28,7 @@
 
 6.Invest in continuous integration and aim for full unit test coverage. Make sure you are in an environment where you can code with confidence; if that isn’t the case, start by focusing on building the right infrastructure.
 
-6.投资于持续的集成并且以全面的单元测试覆盖为目标。确保在你所处的环境中你可以自信地编程。如果不是这样的话，着手建立一个好的基础设施。
+6.增加在持续集成上的投入并且以100%单元测试覆盖率为目标
 
 7.It’s okay not to plan everything in advance. Try things and see how they turn out. Revert incorrect choices early. Make sure you create an environment where that is possible.
 
