@@ -36,11 +36,11 @@
 
 8.Good software makes hard things easy. Just because a problem looks difficult at first doesn’t mean the solution will have to be complex or hard to use. Too often, engineers go with reflex solutions that introduce undesirable complexity (Let’s use ML! Let’s build an app! Let’s add blockchain!) in situations where a far easier, though maybe less obvious, alternative is available. Before you write any code, make sure your solution of choice cannot be made any simpler. Approach everything from first principles.
 
-8.好的软件让事情变容易。一个最初看上去很困难的问题并不意味着解决方案也会很复杂或者很难使用。常常可以看到，工程师下意识提供的方案引入了不必要的复杂度（我们用 ML 吧！写个 APP！来个数据区块链！），其实可以有简单得多的替换方案，尽管这些方案可能不是那么显而易见。在写任何代码之前，确保你选择的方案不能更简化了。从基本原则入手。
+8.好的软件让事情变容易。一个最初看上去很困难的问题并不意味着解决方案也会很复杂或者很难使用。常常可以看到，工程师下意识提供的方案引入了不必要的复杂度（我们用 ML 吧！写个 APP！加个区块链！），其实可以有简单得多的替换方案，尽管这些方案可能不是那么显而易见。在写任何代码之前，确保你选择的方案不能更简化了。从基本原则入手。
 
 9.Avoid implicit rules. Implicit rules that you find yourself developing should always be made explicit and shared with others or automated. Whenever you find yourself coming up with a recurring, quasi-algorithmic workflow, you should seek to formalize it into a documented process, so that other team members will benefit from the experience. In addition, you should seek to automate in software any part of such a workflow that can be automated (e.g., correctness checks).
 
-9.避免隐性规则。你开发的任何隐性规则总是可以明确表达并且和他人分享，或者自动化。每当你想到一个会反复出现的准算法工作流，你就应该寻求将其文档格式化，这样其它团队成员可以受益于你的经验。此外，你应寻求将任何可能自动化的工作流用软件自动化（比如，正确性检查）。
+9.避免隐性规则。你开发的任何隐性规则总是可以明确表达并且和他人分享，或者自动化。每当你想到一个会反复出现的准算法工作流，你就应该将这个流程用正式的方式形成文档化的流程，这样其它团队成员可以受益于你的经验。此外，你应寻求将任何可能自动化的工作流用软件自动化（比如，正确性检查）。
 
 10.The total impact of your choices should be taken into account in the design process, not just the bits you want to focus on — such as revenue or growth. Beyond the metrics you are monitoring, what total impact does your software have on its users, on the world? Are there undesirable side effects that outweigh the value proposition? What can you do to address them while preserving the software’s usefulness?
 
@@ -96,7 +96,8 @@
 
 11.Because code is communication, naming matters — whether naming a project or a variable. Names reflect how you think about a problem. Avoid overly generic names (x, variable, parameter), avoid OverlyLongAndSpecificNamingPatterns, avoid terms that can create unnecessary friction (master, slave), and make sure you are consistent in your naming choices. Naming consistency means both internal naming consistency (don’t call “dim” what is called “axis” in other places) and consistency with established conventions for the problem domain. Before settling on a name, make sure to look up existing names used by domain experts (or other APIs).
 
-11.因为代码即沟通，所以命名很重要，不管是项目命名还是变量命名。名称反映出你对问题的看法。避免过于通用的命名（x,变量，参数），避免过长以及特定命名模式，避免可能导致不必要的摩擦的术语（主，从），确保在命名选择上保持一致性。命名一致性既包括内部的命名一致性（如果其它地方用的是 “axis"，就不要再用 “dim”)，也包括与问题域既定约定的一致性。在确定名称前，确保查询领域专家在使用的现有名称（或者其它 API)。
+11.因为代码即沟通，所以命名很重要，不管是项目命名还是变量命名。名称反映出你对问题的看法。避免过于通用的命名（x,变量，参数），避免过长以及特定命名模式，避免可能导致不必要的摩擦的术语（比如，master,slave）（译注：master和slave有些人认为政治不正确，因为是salve是奴隶的意思），确保在命名选择上保持一致性。命名一致性既包括内部的命名一致性（如果其它地方用的是 “axis"，就不要再用 “dim”)，也包括与问题域既定约定的一致性。在确定名称前，确保查询领域专家在使用的现有名称（或者其它 API)。
+
 
 12.Documentation is central to the user experience of your API. It is not an add-on. Invest in high-quality documentation; you will see higher returns than investing in more features.
 
@@ -104,7 +105,7 @@
 
 13.Show, don’t tell: Your documentation should not talk about how the software works, it should show how to use it. Show code examples for end-to-end workflows; show code examples for each and every common use case and key feature of your API.
 
-13.示范，而不是告知。悄的文档不应该讨论软件如何工作，而是示范怎样使用它。给出端到端工作流的代码示例，显示每一 API 及所有常规用例和关键功能的示例代码。
+13.示范，而不是告知。你的文档不应该讨论软件如何工作，而是示范怎样使用它。给出端到端工作流的代码示例，显示每一 API 及所有常规用例和关键功能的示例代码。
 
 # Productivity boils down to high-velocity decision-making and a bias for action.
 
