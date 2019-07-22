@@ -18,7 +18,7 @@ Now, as we know, Spring Batch jobs are used whenever we want to run any business
 at any particular time/day. There are two ways to implement jobs: `tasklet`  and `chunks` . 
 In this tutorial, I will create a simple job using a `tasklet`, which will print a  `logger`.   
 
-正如我们现在所了解的，无论何时我们想运行任何处理特定事情的代码或者在任何特定的时间来处理或者生成任何报告都会用到Spring Batch任务。
+正如我们现在所了解的，无论何时我们想运行任何处理特定事情的代码，或者在任何特定的时间来处理或生成任何报告都会用到Spring Batch任务。
 这有两种途径实现任务： `tasklet` 和 `chunks` 。在这篇教程中我将会使用 `tasklet` 来创建一个简单的任务，这个任务将用来输出 `logger`  
 
 The basic idea here is what all configurations are required to make this job run. 
@@ -463,4 +463,4 @@ We have set the cron to 1 minute. After 1 minute, the job will be run.
 The bold lines indicate your job ran and completed successfully. That's all for this tutorial. 
 Please comment if you would like to add anything. Happy learning!  
 
-加粗线表明你的任务已经成功地运行并完成。这就是此篇教程的全部内容了。如果你想加些其他的请在下方评论，欢迎学习！
+加粗线部分的输出表明你的任务已经成功地完成了运行。这就是此篇教程的全部内容了。如果你想加些其他的请在下方评论，欢迎学习！
