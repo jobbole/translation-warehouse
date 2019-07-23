@@ -60,7 +60,7 @@ You can’t do everything — that’s why we have teams. It’s impossible to b
 
 There are good ways to do things, and there are bad ways, but in real life there’s no “correct” way. It’s not right vs. wrong, but more a vague sort of best fit. Even with code. Especially with code.
 
-做事方法有好有坏，但是现实生活中却没有"绝对正确"的方法。解决方法并不是一定就是对的或错的，反而更像是最适合的。即使对于编程来说也是如此，甚至尤为突出。
+做事方法有好有坏，但是现实生活中却没有“绝对正确“的方法。解决方法并不是一定就是对的或错的，反而更像是最适合的。即使对于编程来说也是如此，甚至尤为突出。
 
 **Figure out your goal**
 
@@ -84,7 +84,7 @@ As developers, most of our knowledge comes from self-teaching — but it’s a f
 
 One of the biggest roadblocks with self-teaching is knowing what to learn — knowing where to start, what’s important, and how much there is to cover. Nobody is setting a curriculum for you, so **it’s crucial to define some structure for yourself.** It’ll lessen the cognitive load to have it all out in the open, and give you a boost to tick things off later. Doing some exploratory research can help you get a handle on everything; try these:
 
-自学之路上最大的障碍之一就是了解到底要学什么 - 从何学起，哪些是重点，以及有多少东西要学。由于没有课程表，所以**自己定义结构非常关键**。这样可以减轻你要“女娲补天”的心理压力，还可以为以后逐条划掉增添动力。做一些探索性的研究可以帮你你更好掌控它们；试下这些：
+自学之路上最大的障碍之一就是知道到底要学什么 - 从何学起，哪些是重点，以及有多少东西要学。由于没有课程表，所以**自己定义结构非常关键**。这样可以减轻你要“女娲补天”的心理压力，还可以为以后逐条划掉增添动力。做一些探索性的研究可以帮你你更好掌控它们；试下这些：
 
 - **Developer roadmaps,** like [Kamran Ahmed’s](https://github.com/kamranahmedse/developer-roadmap). It’s still overwhelming, but it gives you some visual structure, and puts everything into context. Remember, no one knows everything on it.
 
@@ -92,7 +92,7 @@ One of the biggest roadblocks with self-teaching is knowing what to learn — kn
 
 - **Make a list of what you don’t know,** and add to it every time you hear something you’re unfamiliar with. You’ll see the same things crop up over and over.
 
-- **列一个你所不知道的知识清单**，每次你听到不熟悉的东西，更新一下这个清单。你会发现好多东西都是一而重复出现的。
+- **列一个你所不知道的知识清单**，每当你听到不熟悉的东西，更新一下这个清单。你会发现好多东西都是不断重复出现的。
 
 - **Online courses, and course outlines** — even if you’re not a beginner. You don’t have to do the course, but you can still learn from what topics they cover.
 
@@ -108,11 +108,11 @@ One of the biggest roadblocks with self-teaching is knowing what to learn — kn
 
 **Establish your core resources**
 
-**建立你的核心资源**
+**建立你的核心资源列表**
 
 There’s a lot of content out there, and not all of it is useful and accurate. Remember how easy it is to publish an article. **The most valuable posts will mostly be the ones you find when you need them**, the ones which deal with the exact issue you’re searching for. Aside from those, it’s a good idea to find your core resources — **the key websites and experts you can rely on again and again.** There are a few main types:
 
-现在的资源太多了，但是并不是每个都有用或者准确。想想现在发布一篇文章门槛有多低就明白了。**最有用的文章往往是那些在你最需要它们的时候找到的**，还有那些刚好在讨论与你正搜索的相同问题的。除此之外，你还可以查找你的核心资源 - **那些你可以一再依赖的网站和专家**。以下是一些主要的类型： 
+现在的资源实在太多了，但是并不是每个都有用或者准确。想想现在发布一篇文章门槛有多低就明白了。**最有用的文章往往是那些在你最需要它们的时候找到的**，还有那些刚好在讨论与你正搜索的相同问题的。除此之外，你还可以查找你的核心资源 - **那些你可以一再依赖的网站和专家**。以下是一些主要的类型： 
 
 - **Documentation.** The docs are always going to be the most accurate and up-to-date information that you need, even if they’re not that readable.
 
@@ -120,11 +120,11 @@ There’s a lot of content out there, and not all of it is useful and accurate. 
 
 - **References & learning resources.** These are the websites that make a huge effort to present all the real-life best practice information, in as practical and as useful a format as possible.
 
-- **参考和学习资源**。有些网站花费了大量精力来整理实际项目中的最佳实践，并以最实用的方式将其展示出来。
+- **参考资料和学习资源**。有些网站花费了大量精力来整理实际项目中的最佳实践，并以最有效的方式将其展示出来。
   
 - **Experts.** These are the people and blogs that know their niche inside out, and who write articles about new and better ways to do things. You’ll find them because their names crop up time and time again, they’re always top of your search results, or because they seem to have written a bunch of the articles you refer to a lot. If you’re new to an area, a lot of blog posts will be too in-depth and just confuse you more, but over time they’ll empower you to explore new ideas.
   
-- **专家**。有些人和博客作者对他们的细分领域了如指掌，还有人会写文章介绍一些关于最新的和更好的做事方法。这些人并不难找，因为他们的名字总是不时浮现，要么是出现在搜索结果前排，要么他们好像写了好多你经常引用的文章。当你刚进入一个新的领域的时候，许多博客文章会因为过于深入，而让你感到困惑。但是假以时日，这些文章会促使你探索新的想法。
+- **专家**。有些人和博客作者对他们的细分领域了如指掌，还有人会写文章介绍一些关于最新的和更好的做事方法。这些人并不难找，因为他们的名字总是不时浮现，要么是出现在搜索结果前排，要么就是他们好像写了好多你经常引用的文章。当你刚进入一个新的领域的时候，许多博客文章会因为写得过于深入，而让你感到困惑。但是假以时日，这些文章会促使你探索新的想法。
 
 Once you have your favourites, you’ll find you rarely need to look elsewhere. It’s good to get out of your bubble occasionally of course, but do it when you’ve got a handle on everything, not when you’re trying to figure it all out. When you’re overwhelmed it can feel like chaos out there, while when you’re comfortable it will seem like a lot of it covers the same stuff.
 
@@ -136,7 +136,7 @@ Once you have your favourites, you’ll find you rarely need to look elsewhere. 
 
 Dedicate some time every week to exploring and learning. **It doesn’t have to be a big thing**, just have a look at a couple of the items on your list to get familiar with them. An hour of studying can make a world of difference.
 
-每周都预留出来一些专门的时间来用于探索和学习。**不一定非得是什么大项目**，随便看看清单上的事项拿来熟悉熟悉。一个小时的学习就可以有奇效。
+每周都预留出来一些时间来专门用于探索和学习。**不一定非得是什么大项目**，随便看看清单上的事项有什么可以拿来熟悉一下。一个小时的学习就可以有奇效。
 
 - **Use [Pocket](https://getpocket.com/) to save articles for later, instead of keeping them in tabs,** or trying to read them mid-flow. You can tag them as you like, which will help you with focused reading later.
 
@@ -183,7 +183,7 @@ Just like a lot of people are bad writers, bad singers, or bad at maths. Startup
 
 No one talks about the fact that they were up til 2am trying to fix a simple bug, or the fact that in their day job they’re stuck working on legacy code. They talk about their side projects, and the latest shiny thing they tried. **Social media makes it seem like everyone’s working their dream job**, but actually a lot of people are working long hours to tight deadlines, and leaving the office well into the evening.
 
-没有人会愿意提起他们一直熬到凌晨两点修复一个简单的软件缺陷，或者他们日常工作中遗留代码缠身的事实。他们更愿意讨论自己的业余项目，和试过的又新又酷炫的小玩意。**社交网络让人产生大家都在做着他们理想的工作的错觉**，但是其实许多人都在加班加点赶截止日期，一直到深更半夜才离开公司。
+没有人会愿意提及他们一直熬到凌晨两点去修复一个简单的软件缺陷，或者他们日常工作中遗留代码缠身的事实。他们更愿意讨论自己的业余项目，和试过的又新又酷炫的小玩意。**社交网络让人产生大家都在做着他们理想工作的错觉**，但是其实许多人都在加班加点赶截止日期，一直到深更半夜才离开公司。
 
 **People have different priorities**
 
@@ -191,7 +191,7 @@ No one talks about the fact that they were up til 2am trying to fix a simple bug
 
 Some people see development as their main interest, and some people have other priorities, and other things in their lives. Some people live for the newest tech, some people are dead set on their side hustle, and some people just want to be popular on social media. You don’t have to keep up with people who spend every spare minute reading the latest blog posts. Let them sum it up for you.
 
-有些人一心扑在事业上，而其他人则会有其它不同的优先级和忙于生命中的其它事情。有人离了最新的技术活不了，有人则下定决心要做好自己的第二职业，还有人只想在社交网络中扬名立万。不必和那些一有时间就阅读最新博客文章的人攀比。等他们总结完你再看就好了。
+有些人一心扑在事业上，而另一些人则可能会有其它不同的优先级或忙于生命中的其它事情。有人离了最新的技术活不了，有人则下定决心要做好自己的副业，还有些人只想在社交网络中扬名立万。不必和那些一有时间就阅读最新博客文章的人攀比。等他们总结完你再看就好了。
 
 **People have different opinions**
 
@@ -199,15 +199,15 @@ Some people see development as their main interest, and some people have other p
 
 While one person is proclaiming that a framework or methodology is the next big thing, another is proclaiming that it’s dead. People always have different opinions, because they have different perspectives, different experiences, and different use cases. Maybe they’re both right. Maybe neither of them are right. Most likely, they both have some good points. It’s up to you to evaluate things for yourself and to form your own opinion.
 
-当一个人宣称某个框架或方法是下一个大事件的时候，另一个人则会宣称它已经死了。由于视角，经验和用例的差异，人们总会有不同的观点。可能他们都对，也可能他们都不对。当然最可能的是，他们说的都有一定的道理。最终还是要由你自己评估来形成自己的观点。
+当一个人宣称某个框架或方法是下一个大事件的时候，另一个人则可能会宣称它已经过气了。由于视角，经验和用例的差异，人们总会有不同的观点。可能他们都对，也可能他们都不对。当然最可能的是，他们说的都有一定的道理。最终还是要由你自己评估来形成自己的观点。
 
 **Articles are deceptive**
 
-**文章会骗人**
+**文章会有欺骗性**
 
 People like to write articles about what’s possible, not what’s common practice. **Most stuff you don’t need on a day-to-day basis.** Just because it’s cool or impressive doesn’t mean it’s useful, or that you need to be able to do it.
 
-人们喜欢写一些文章探讨可能性，而不是最常用的做法是什么。**好多东西日常中压根用不到**。仅仅因为某个技术很酷炫或者让人印象深刻，并不意味着你就一定要会用它。
+人们喜欢写一些文章探讨事情的可能性，而不是最常用的做法是什么。**好多东西日常中压根用不到**。仅仅因为某个技术很酷炫或者让人印象深刻，并不意味着你就非要掌握它不可。
 
 **Job adverts exaggerate**
 
@@ -215,9 +215,10 @@ People like to write articles about what’s possible, not what’s common pract
 
 Job adverts seem to have endless lists of requirements, but they’re written with the perfect candidate in mind. **A lot of what’s listed you will need, but the rest is often just fantasy.** Some of it you’ll learn on the job, some of it they want to use but aren’t in practice, and some of it is just part of their 5-year roadmap. Some of it is just keyword stuffing, to attract candidates with a ballpark skillset: if you know LESS, you’ll be able to pick up Sass easily.
 
-职位广告似乎有着没完没了的条件要求，但是它们是人事部门照着完美候选人的情况写出来的。**有些列举的条件是必需的，但是剩下的常常是他们闭门造车胡思乱想出来的**。有些是你在工作中可以学到的，有些是公司想要用但是还没有开始的，还有些只是存在于它们的五年路线图中。有些则只是占位关键词来吸引有近似技能的候选人：如果你知道 LESS （一种层叠样式表预处理器），那你也可以很快就学会与之类似的 Sass。
+职位广告似乎有着没完没了的条件要求，但是它们是人事部门照着完美候选人的情况写出来的。**有些列举的条件是必需的，但是其余的往往是他们闭门造车胡思乱想出来的**。有些是你在工作中可以学到的，有些是公司想要用但是还没有开始的，还有些只是存在于它们的五年路线图中。有些则只是占位关键词来吸引有近似技能的候选人：如果你知道 LESS （一种层叠样式表预处理器），那你也可以很快就学会与之类似的 Sass。
 
 **Make sure your managers are informed**
+
 **确保你的经理们知道你在做什么**
 
 **Sometimes your managers aren’t aware of the level of work involved** in things. Maybe they’re not technical, or maybe their knowledge is out of date. Often they don’t realise that you can’t just “add a dropdown”, that actually, it’s a custom select component with autocomplete functionality, and it needs two new API routes.
@@ -238,7 +239,7 @@ Coding’s just part of it, and having a good set of tools will help you to work
 
 Skills like **problem solving, critical thinking & testing** are like power-ups for developers. Dedicating a little time to learning how to approach problems in a methodical and systematic way will save you countless hours going round in circles. And they’re helpful in every area of life.
 
-诸如**解决问题，批评性思维和测试**之类的技能是开发人员的利器。花点时间学习如何用有策略性的和系统性的方式解决问题，可以帮你节省无数钻死胡同的时间。这些技能在生活的方方面面中也大有裨益。
+诸如**解决问题，批评性思维和测试**之类的技能是程序员的利器。花点时间学习如何用有策略性的和系统性的方式解决问题，可以帮你节省无数钻死胡同的时间。这些技能在生活的方方面面中也大有裨益。
 
 **Use proper project management tools**
 
@@ -273,7 +274,7 @@ There are things you do a lot, and some of them you can cut out to make things e
 
 Sitting in a room staring at a screen for 10 hours straight isn’t healthy. You can get too caught up in imaginary problems and **lose sight of the big picture.** It’s important to get out of your own head, as well as to keep your body and brain healthy. Go outside. Pet a dog. Let your eyes readjust. Talk to someone who doesn’t know what HTML is.
 
-坐在房间里面连续十个小时盯着屏幕并不是什么健康的生活方式。你可能会纠缠于想象中的问题，从而**失去了对全局的掌控**。能够跳出自己的思考，和保持身体及大脑的健康都很重要。可以出门走走，哄哄狗狗，让你的眼睛休息一会。或者跟连 HTML 是什么都不知道的人聊会天。
+坐在房间里面连续十个小时盯着屏幕可并不是什么健康的生活方式。你可能会纠缠于想象中的问题，从而**失去了对全局的把控**。能够跳出自己的思考，以及保持身体和大脑的健康这些事情同样重要。可以出门溜达溜达，哄哄狗狗，让你的眼睛休息一会儿。或者跟连 HTML 是什么都不知道的人聊会天。
 
 **Ask for help**
 
