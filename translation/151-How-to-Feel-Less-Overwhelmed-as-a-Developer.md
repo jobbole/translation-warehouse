@@ -52,7 +52,6 @@ You can’t do everything — that’s why we have teams. It’s impossible to b
 
 [comment]: # (Julia's tweet here)
 <blockquote class="twitter-tweet" data-lang="en"><p lang="en" dir="ltr">Remember, you don&#39;t have to know everything 🌻</p>&mdash; Julia Haigh (@UmOkJulia) <a href="https://twitter.com/UmOkJulia/status/1088054367029202945?ref_src=twsrc%5Etfw">January 23, 2019</a></blockquote>
-<script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
 
 **Know that there’s no “right” way**
 
